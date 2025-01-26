@@ -7,6 +7,7 @@ use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\InformationController;
 use App\Http\Controllers\Guest\HomeController;
+use App\Http\Controllers\Dashboard\LibrariesController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -18,16 +19,8 @@ Route::middleware('auth-check')->group(function () {
     Route::resource('user', UserController::class);
     Route::resource('information-categories', InformationCategoriesController::class);
     Route::resource('ae-information', InformationController::class);
-});
-
-Route::get('/ae-pustaka', function () {
-    return view('admin.dashboard.ae-library.index');
-});
-
-Route::get('/ae-pustaka/create', function () {
-    return view('admin.dashboard.ae-library.create');
-});
-
-Route::get('/ae-pustaka/edit', function () {
-    return view('admin.dashboard.ae-library.edit');
+    Route::resource('ae-pustaka',LibrariesController::class)->except(['edit','update','destroy']);
+    Route::get('/ae-pustaka/edit/{libraries:slug}', [LibrariesController::class, 'edit'])->name('ae-pustaka.edit');
+    Route::put('/ae-pustaka/update/{libraries:slug}', [LibrariesController::class, 'update'])->name('ae-pustaka.update');
+    Route::delete('/ae-pustaka/delete/{libraries:slug}', [LibrariesController::class, 'destroy'])->name('ae-pustaka.destroy');
 });

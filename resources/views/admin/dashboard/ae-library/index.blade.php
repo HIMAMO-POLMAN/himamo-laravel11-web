@@ -4,7 +4,7 @@
 @section('keterangan', 'Lihat Pustaka')
 
 @section('content')
-    {{-- @if (session()->has('success'))
+    @if (session()->has('success'))
         <div class="alert alert-success" role="alert">
             {{ session('success') }}
         </div>
@@ -13,16 +13,16 @@
         <div class="alert alert-danger" role="alert">
             {{ session('error') }}
         </div>
-    @endif --}}
+    @endif
 
     <div class="d-flex card shadow p-3">
         <div class="table-responsive col-lg-12">
             <div class="d-flex justify-content-between mb-3">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#largeModal">
+                <a href="{{route('ae-pustaka.create')}}" class="btn btn-primary">
                     Buat Pustaka
-                </button>
+                </a>
 
-                <form action="/create user" method="GET" class="form-inline navbar-search justify-content-end">
+                <form method="GET" class="form-inline navbar-search justify-content-end">
                     <div class="input-group">
                         <input type="text" class="form-control bg-light border-1 small" placeholder="Cari..."
                             name="search" value="{{ request('search') }}">
@@ -35,6 +35,7 @@
                 </form>
             </div>
 
+            @if ($pustakas->count() > 0)
             <table class="table table-hover mt-3">
                 <thead>
                     <tr>
@@ -46,34 +47,43 @@
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                    <tr>
-                        <td>1</td>
-                        <td>asdfadfs</td>
-                        <td>asdfaf</td>
-                        <td>adsfasdf</td>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="/edit"><i class="bx bx-edit-alt me-1"></i> Edit</a>
-                                    <form action="/edit" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="dropdown-item text-danger"><i
-                                                class="bx bx-trash me-1 text-danger"></i> Delete</button>
-                                    </form>
+                    @php
+                        $no = 1;
+                    @endphp
+                    @foreach ($pustakas as $pustaka)
+                        <tr>
+                            <td>{{ $no++ }}</td>
+                            <td class="p-2"><img src="{{$pustaka->cover ?? asset('assets/img/avatars/book.svg')}}" style="max-width:160px; max-height:98px;" alt="Cover"></td>
+                            <td>{{ $pustaka->title }}</td>
+                            <td>{{ $pustaka->collection }}</td>
+                            <td>
+                                <div class="dropdown">
+                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="{{ $pustaka->url }}" target="_blank"><i class="bx bx-edit-alt me-1"></i> Lihat Pustaka</a>
+                                        <a class="dropdown-item" href="{{ route('ae-pustaka.edit',['libraries' => $pustaka->slug]) }}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                        <form action="{{ route('ae-pustaka.destroy', ['libraries' => $pustaka->slug]) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="dropdown-item"><i class="bx bx-trash me-1"></i> Delete</button>
+                                        </form>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
-            <div class="alert alert-light" role="alert">
-                Tidak ada data!
+            <div class="d-flex justify-content-center py-3">
+                {{ $pustakas->links('pagination::bootstrap-4') }}
             </div>
+            @else
+                <div class="alert alert-light text-center" role="alert">
+                    Tidak ada data!
+                </div>
+            @endif
 
         </div>
     </div>

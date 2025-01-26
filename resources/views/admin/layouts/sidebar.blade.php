@@ -73,14 +73,14 @@
                 <div data-i18n="AE Pustaka">AE Pustaka</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item {{ Request::is('ae-pustaka/lihat-data*') ? 'active' : '' }}">
-                    <a href="{{ url('ae-pustaka/lihat-data') }}" class="menu-link">
+                <li class="menu-item {{ Request::is('ae-pustaka') ? 'active' : '' }}">
+                    <a href="{{ url('ae-pustaka') }}" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-show"></i>
                         <div data-i18n="Lihat Data">Lihat Data</div>
                     </a>
                 </li>
-                <li class="menu-item {{ Request::is('ae-pustaka/tambah-data*') ? 'active' : '' }}">
-                    <a href="{{ url('ae-pustaka/tambah-data') }}" class="menu-link">
+                <li class="menu-item {{ Request::is('ae-pustaka/create*') ? 'active' : '' }}">
+                    <a href="{{ url('ae-pustaka/create') }}" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-plus"></i>
                         <div data-i18n="Tambah Data">Tambah Data</div>
                     </a>

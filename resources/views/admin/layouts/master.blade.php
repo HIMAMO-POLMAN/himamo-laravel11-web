@@ -84,7 +84,9 @@
                     ['para', ['ul', 'ol', 'paragraph']],
                     ['height', ['height']],
                     ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
+                    @if (!Request::is('ae-pustaka*'))
+                        ['insert', ['link', 'picture', 'video']],
+                    @endif
                     ['view', ['fullscreen', 'codeview', 'help']],
 
                 ]
