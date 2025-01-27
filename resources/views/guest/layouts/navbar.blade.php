@@ -8,7 +8,7 @@
         <i class='bx bx-menu' id="header-toggle"></i>
     </div>
     <div class="row pe-2">
-        <div class="col pe-3 text-center">
+        <div class="col pe-3">
             <span class="buttondark">
                 <label class="switch" for="darkSwitch">
                     <input type="checkbox" id="darkSwitch">
@@ -68,6 +68,10 @@
                     class="nav_link @if (Route::currentRouteNamed('information.*')) active @endif">
                     <i class='bx bxs-info-square nav_icon'></i>
                     <span class="nav_name">AE-Informasi</span>
+                </a>
+                <a target="_blank" href="https://fuse2024.com/" class="nav_link">
+                    <i class='bx bx-trophy nav_icon'></i>
+                    <span class="nav_name">FUSE 2024</span>
                 </a>
                 <a href="{{ url('/contact') }}" class="nav_link">
                     <i class='bx bxs-phone nav_icon'></i>

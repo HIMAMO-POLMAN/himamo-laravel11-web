@@ -37,14 +37,26 @@ class PustakaController extends Controller
             'title' => 'required',
             'url' => 'required|url|regex:/^https:\/\/drive\.google\.com/',
             'collection' => 'required|in:TRO,TRMO,TRIN,Teori',
+            'penulis' => 'nullable',
+            'penerbit' => 'nullable',
+            'tahun_terbit' => 'nullable',
+            'isbn' => 'nullable',
+            'cover' => 'nullable',
+            'abstrak' => 'required',
+            'bahasa' => 'required',
+            'jumlah_halaman' => 'required',
         ];
 
         $messages = [
             'title.required' => 'Judul wajib diisi!',
             'url.required' => 'URL wajib diisi!',
             'url.url' => 'URL tidak valid!',
+            'cover.url' => 'URL Cover tidak valid!',
             'collection.required' => 'Koleksi wajib diisi!',
             'collection.in' => 'Data yang dipilih tidak valid!',
+            'abstrak.required' => 'Abstrak wajib diisi!',
+            'bahasa.required' => 'Bahasa wajib diisi!',
+            'jumlah_halaman.required' => 'Jumlah Halaman wajib diisi!',
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -56,8 +68,16 @@ class PustakaController extends Controller
         try {
             Pustaka::create([
                 'title' => $request->title,
-                'slug' => Str::slug($request->title, '-'),
                 'url' => $request->url,
+                'penulis' => $request->penulis ?? NULL,
+                'penerbit' => $request->penerbit ?? NULL,
+                'tahun_terbit' => $request->tahun_terbit ?? NULL,
+                'isbn' => $request->isbn ?? NULL,
+                'cover' => $request->cover ?? NULL,
+                'bahasa' => $request->bahasa,
+                'abstrak' => $request->abstrak,
+                'jumlah_halaman' => $request->jumlah_halaman,
+                'slug' => Str::slug($request->title, '-'),
                 'collection' => $request->collection
             ]);
 
@@ -78,14 +98,26 @@ class PustakaController extends Controller
             'title' => 'required',
             'url' => 'required|url|regex:/^https:\/\/drive\.google\.com/',
             'collection' => 'required|in:TRO,TRMO,TRIN,Teori',
+            'penulis' => 'nullable',
+            'penerbit' => 'nullable',
+            'tahun_terbit' => 'nullable',
+            'isbn' => 'nullable',
+            'cover' => 'nullable|url',
+            'abstrak' => 'required',
+            'bahasa' => 'required',
+            'jumlah_halaman' => 'required',
         ];
 
         $messages = [
             'title.required' => 'Judul wajib diisi!',
             'url.required' => 'URL wajib diisi!',
             'url.url' => 'URL tidak valid!',
+            'cover.url' => 'URL Cover tidak valid!',
             'collection.required' => 'Koleksi wajib diisi!',
             'collection.in' => 'Data yang dipilih tidak valid!',
+            'abstrak.required' => 'Abstrak wajib diisi!',
+            'bahasa.required' => 'Bahasa wajib diisi!',
+            'jumlah_halaman.required' => 'Jumlah Halaman wajib diisi!',
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -98,6 +130,14 @@ class PustakaController extends Controller
             $pustaka->update([
                 'title' => $request->title,
                 'url' => $request->url,
+                'penulis' => $request->penulis,
+                'penerbit' => $request->penerbit,
+                'tahun_terbit' => $request->tahun_terbit,
+                'isbn' => $request->isbn,
+                'cover' => $request->cover,
+                'bahasa' => $request->bahasa,
+                'abstrak' => $request->abstrak,
+                'jumlah_halaman' => $request->jumlah_halaman,
                 'slug' => Str::slug($request->title, '-'),
                 'collection' => $request->collection
             ]);

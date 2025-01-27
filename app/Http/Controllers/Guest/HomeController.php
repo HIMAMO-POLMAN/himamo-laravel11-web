@@ -9,12 +9,13 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
 
-   
+
     public function index(){
         return view('guest.index',[
             "informasi" => informasi::with(['user'])->orderBy('updated_at', 'asc')->paginate(4),
         ]);
     }
+
 
     public function d2mekatronika() {
         return view('guest.prodi.prodi-d2-trmo');
@@ -30,5 +31,9 @@ class HomeController extends Controller
 
     public function d4trin() {
         return view('guest.prodi.prodi-d4-trin');
+    }
+
+    public function about() {
+        return view('guest.about.index');
     }
 }

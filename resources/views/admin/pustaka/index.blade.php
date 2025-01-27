@@ -37,6 +37,7 @@
                     <thead>
                         <tr>
                             <th>No.</th>
+                            <th>Cover</th>
                             <th>Title</th>
                             <th>Koleksi</th>
                             <th>Aksi</th>
@@ -49,6 +50,7 @@
                         @foreach ($pustakas as $pustaka)
                             <tr>
                                 <td>{{ $no++ }}</td>
+                                <td class="p-2"><img src="{{$pustaka->cover ?? asset('assets/img/book.svg')}}" style="max-width:160px; max-height:98px;" alt="Cover"></td>
                                 <td>{{ $pustaka->title }}</td>
                                 <td>{{ $pustaka->collection }}</td>
                                 <td>

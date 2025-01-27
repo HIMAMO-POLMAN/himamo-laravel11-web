@@ -17,7 +17,7 @@ class InformasiController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('cari');
-    
+
         $informasi = Informasi::with('kategori_informasi')->orderBy('title', 'asc');
 
         if ($request->get('sort') == 'terbaru' || !$request->has('sort')) {
@@ -27,13 +27,13 @@ class InformasiController extends Controller
         }
         if ($search) {
             $informasi->where('title', 'like', "%{$search}%")
-                      ->orWhere('description', 'like', "%{$search}%");
+                ->orWhere('description', 'like', "%{$search}%");
         }
         $informasis = $informasi->paginate(10);
-    
+
         return view('admin.informasi.index', compact('informasis'));
     }
-    
+
 
     public function create()
     {
@@ -57,7 +57,7 @@ class InformasiController extends Controller
             'image' => 'required|max:1000|mimes:jpg,jpeg,png,webp',
             'desc' => 'required|min:20',
         ];
-    
+
         $messages = [
             'title.required' => 'Title wajib diisi!',
             'image.required' => 'Image wajib diisi!',
@@ -65,28 +65,28 @@ class InformasiController extends Controller
             'desc.required' => 'Description wajib diisi!',
             'desc.min' => 'Description minimal 20 karakter!',
         ];
-    
+
         $validator = Validator::make($request->all(), $rules, $messages);
-    
+
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-    
+
         try {
             // Image
             $fileName = time() . '.' . $request->image->extension();
             $request->file('image')->storeAs('public/informasi', $fileName);
-    
+
             // Artikel
             $storage = "storage/content-informasi";
             $dom = new \DOMDocument();
-    
+
             libxml_use_internal_errors(true);
             $dom->loadHTML($request->desc, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NOIMPLIED);
             libxml_clear_errors();
-    
+
             $images = $dom->getElementsByTagName('img');
-    
+
             foreach ($images as $img) {
                 $src = $img->getAttribute('src');
                 if (preg_match('/data:image/', $src)) {
@@ -104,17 +104,17 @@ class InformasiController extends Controller
                     }
                 }
             }
-    
+
             Informasi::create([
                 'user_id' => $request->user()->id,
                 'title' => $request->title,
                 'slug' => Str::slug($request->title, '-'),
-               "excerpt" => Str::limit(strip_tags($request->desc), 60),
+                "excerpt" => Str::limit(strip_tags($request->desc), 100),
                 'image' => $fileName,
                 'kategori_informasi_id' => $request->kategori_informasi_id,
                 'desc' => $dom->saveHTML(),
             ]);
-    
+
             return redirect(route('informasi.index'))->with('success', 'Data berhasil disimpan');
         } catch (Exception $e) {
             return redirect()->route('informasi.index')->with('error', 'Gagal menambahkan data! Silakan coba lagi.');
@@ -128,7 +128,7 @@ class InformasiController extends Controller
             if (Storage::exists('public/informasi/' . $informasi->image)) {
                 Storage::delete('public/informasi/' . $informasi->image);
             }
-            
+
             // Hapus data informasi dari database
             $informasi->delete();
 
@@ -146,7 +146,7 @@ class InformasiController extends Controller
             'kategori_informasi' => $kategori_informasi
         ]);
     }
-    
+
     public function update(Request $request, Informasi $informasi)
     {
         $rules = [
@@ -155,7 +155,7 @@ class InformasiController extends Controller
             'image' => 'nullable|max:1000|mimes:jpg,jpeg,png,webp',
             'desc' => 'required|min:20',
         ];
-    
+
         $messages = [
             'title.required' => 'Title wajib diisi!',
             'kategori_informasi_id.required' => 'Kategori wajib diisi!',
@@ -163,36 +163,34 @@ class InformasiController extends Controller
             'desc.required' => 'Description wajib diisi!',
             'desc.min' => 'Description minimal 20 karakter!',
         ];
-    
+
         $validator = Validator::make($request->all(), $rules, $messages);
-    
+
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-    
+
         try {
             if ($request->hasFile('image')) {
                 if (Storage::exists('public/informasi/' . $informasi->image)) {
                     Storage::delete('public/informasi/' . $informasi->image);
                 }
-    
+
                 $fileName = time() . '.' . $request->image->extension();
                 $request->file('image')->storeAs('public/informasi', $fileName);
                 $informasi->image = $fileName;
             }
-    
+
             $informasi->title = $request->title;
             $informasi->slug = Str::slug($request->title, '-');
-            $informasi->excerpt = Str::limit(strip_tags($request->desc), 60);
+            $informasi->excerpt = Str::limit(strip_tags($request->desc), 100);
             $informasi->desc = $request->desc;
             $informasi->kategori_informasi_id = $request->kategori_informasi_id; // Perbaiki ini
             $informasi->save();
-    
+
             return redirect()->route('informasi.index')->with('success', 'Informasi berhasil diperbarui');
         } catch (Exception $e) {
             return redirect()->route('informasi.edit', $informasi->slug)->with('error', 'Gagal memperbarui data! Silakan coba lagi.');
         }
     }
-    
-    
 }

@@ -11,6 +11,14 @@ class Pustaka extends Model
     protected $table = 'pustakas';
     protected $fillable = [
         'title',
+        'isbn',
+        'penulis',
+        'penerbit',
+        'tahun_terbit',
+        'abstrak',
+        'cover',
+        'bahasa',
+        'jumlah_halaman',
         'slug',
         'url',
         'collection',

@@ -19,6 +19,7 @@ Route::get('/prodi-d2-trmo', [HomeController::class, 'd2mekatronika'])->name('pr
 Route::get('/prodi-d4-trmo', [HomeController::class, 'd4mekatronika'])->name('prodi-d4-trmo');
 Route::get('/prodi-d4-tro', [HomeController::class, 'd4otomasi'])->name('prodi-d4-tro');
 Route::get('/prodi-d4-trin', [HomeController::class, 'd4trin'])->name('prodi-d4-trin');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
 
 // Rute untuk guest informasi
 Route::get('/ae-informasi', [guestInformasiController::class, 'informasi'])->name('guest.information.index');
@@ -60,4 +61,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
