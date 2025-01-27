@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="carousel-item drk">
-                    <img src="{{ asset('assets-guest/img/img-carousel-2.jpg') }}" class="d-block gbr img-fluid" loading="lazy">
+                    <img src="{{ asset('assets-guest/img/img-carousel-2.jpg') }}" class="d-block gbr img-fluid" >
                     <div class="carousel-caption">
                         <div class="row no-gutters slider-text align-items-center justify-content-center">
                             <h1 class="quote">Still <span>The Highest</span></h1>
@@ -49,7 +49,7 @@
             <div class="container pb-5 px-5 pt-5">
                 <div class="row">
                     <div class="col-md text-md-start">
-                        <img class="logoae gs_reveal gs_reveal_fromLeft pt-3" src="{{ asset('assets-guest/img/img-logo-jurusan.png') }}" alt="Logo Jurusan" loading="lazy">
+                        <img class="logoae gs_reveal gs_reveal_fromLeft pt-3" src="{{ asset('assets-guest/img/img-logo-jurusan.png') }}" alt="Logo Jurusan" >
                     </div>
                     <div class="col-md-7 gs_reveal gs_reveal_fromRight">
                         <h2 class="text-dark quote text-md-end pt-3">Apa itu <span class="judul">Jurusan
@@ -93,7 +93,7 @@
                         <a href="/prodi-d4-tro" class=" col-lg col-md-6 col-12 mt-4" style="text-decoration: none;">
                             <div class=" text-center">
                             <div class="subject-box">
-                                <img src="{{ asset('assets-guest/img/tro_subject.svg') }}" alt="Robotika" class="subject-image" loading="lazy">
+                                <img src="{{ asset('assets-guest/img/tro_subject.svg') }}" alt="Robotika" class="subject-image" >
                                 <p class="subject-name fw-bold ">D4 - Teknologi Rekayasa<br>Otomasi</p>
                             </div>
                         </div>
@@ -101,7 +101,7 @@
                         <a href="/prodi-d4-trmo" class="col-12 col-lg col-md-6 mt-4" style="text-decoration: none;">
                             <div class=" text-center">
                             <div class="subject-box">
-                                <img src="{{ asset('assets-guest/img/trmo_subject.svg') }}" alt="Robotika" class="subject-image" loading="lazy">
+                                <img src="{{ asset('assets-guest/img/trmo_subject.svg') }}" alt="Robotika" class="subject-image" >
                                 <p class="subject-name fw-bold ">D4 - Teknologi Rekayasa <br>Mekatronika</p>
                             </div>
                         </div>
@@ -109,7 +109,7 @@
                         <a href="prodi-d4-trin" class="col-12 col-lg col-md-6 mt-4" style="text-decoration: none;">
                             <div class=" text-center">
                                 <div class="subject-box" >
-                                    <img src="{{ asset('assets-guest/img/trin_subject.svg') }}" alt="Robotika" class="subject-image" loading="lazy">
+                                    <img src="{{ asset('assets-guest/img/trin_subject.svg') }}" alt="Robotika" class="subject-image" >
                                     <p class="subject-name fw-bold ">D4 - Teknologi Rekayasa <br> Informatika Industri</p>
                                 </div>
                             </div>
@@ -117,7 +117,7 @@
                         <a href="prodi-d2-trmo" class="col-lg col-12 col-md-6 mt-4 " style="text-decoration: none;">
                             <div class=" text-center ">
                             <div class="subject-box">
-                                <img src="{{ asset('assets-guest/img/trmo-d2_subject.svg') }}" alt="Robotika" class="subject-image" loading="lazy">
+                                <img src="{{ asset('assets-guest/img/trmo-d2_subject.svg') }}" alt="Robotika" class="subject-image" >
                                 <p class="subject-name fw-bold">D2 Fast Track - Teknik <br> Mekatronika</p>
                             </div>
                         </div>
@@ -149,7 +149,7 @@
 
                     </div>
                     <div class="col-md pb-5 text-md-end">
-                        <img class="logoae gs_reveal gs_reveal_fromLeft pt-5" src="{{ asset('assets-guest/img/img-himamo.png') }}" loading="lazy">
+                        <img class="logoae gs_reveal gs_reveal_fromLeft pt-5" src="{{ asset('assets-guest/img/img-himamo.png') }}" >
                     </div>
                 </div>
             </div>
@@ -181,7 +181,7 @@
 
         </div>
     </section>
-    <section id="history" class="about">
+    <section id="history" class="history">
         <div class="parallax">
             <div class="container pt-4 pb-5 px-5">
                 <div class="row">
@@ -209,7 +209,7 @@
                 </div>
             </div>
     </section>
-    <section id="division">
+    <section id="division"  class="division">
         <div class="container gs_reveal gs_reveal_fromRight pt-5 pb-5 px-5">
             <div class="row">
                 <div class="col pt-5 text-center">
@@ -219,7 +219,7 @@
                         Divisi Himamo dibagi menjadi 12 divisi.
                         yaitu sebagai berikut :</p>
                 </div>
-                <div class="pt-3 col-md-10">
+                <div class="pt-3 col-lg-10">
                     <div class="owl-carousel owl-one owl-theme">
                         <div class="block block-8">
                             <h1 class="judul">MTH.</h1>
@@ -286,10 +286,10 @@
             </div>
         </div>
     </section>
-    <section id="leader">
+    <section id="leader" class="leader">
         <div class="container gs_reveal gs_reveal_fromLeft pt-4 pb-5 px-5">
             <div class="row">
-                <div class="col-md-8 text-md-start">
+                <div class="col-lg-8 text-md-start">
                     <div class="featured-carousel owl-carousel">
                         <div class="item">
                             <div class="work pb-4">
@@ -297,7 +297,7 @@
                                 style="background-image: url('{{ asset('assets-guest/img/img-leader-pria.jpg') }}');">                           
                                     <div class="text w-100">
                                         <span class="cat">KETUA HIMPUNAN</span>
-                                        <h3><a href="#">Adnan Maulana</a></h3>
+                                        <h3><a href="https://www.linkedin.com/in/adnan-maulana-07060486/" target= "_blank">Adnan Maulana</a></h3>
                                         <span>Masa jabatan : 2012 s/d 2013</span>
                                         <span>NIM : 210345003</span>
                                     </div>
@@ -310,7 +310,7 @@
                                 style="background-image: url('{{ asset('assets-guest/img/img-leader-2013-2014.jpg') }}');">                           
                                     <div class="text w-100">
                                         <span class="cat">KETUA HIMPUNAN</span>
-                                        <h3><a href="#">Dimas Nugraha</a></h3>
+                                        <h3><a href="https://www.linkedin.com/in/ngrhadimas/" target= "_blank">Dimas Nugraha</a></h3>
                                         <span>Masa jabatan : 2013 s/d 2014</span>
                                         <span>NIM : 211341007</span>
                                     </div>
@@ -323,7 +323,7 @@
                                 style="background-image: url('{{ asset('assets-guest/img/img-leader-2014-2015.jpg') }}');">                           
                                     <div class="text w-100">
                                         <span class="cat">KETUA HIMPUNAN</span>
-                                        <h3><a href="#">Mohamed Iqbal</a></h3>
+                                        <h3>Mohamed Iqbal</h3>
                                         <span>Masa jabatan : 2014 s/d 2015</span>
                                         <span>NIM : 212341042</span>
                                     </div>
@@ -336,7 +336,7 @@
                                 style="background-image: url('{{ asset('assets-guest/img/img-leader-pria.jpg') }}');">                           
                                     <div class="text w-100">
                                         <span class="cat">KETUA HIMPUNAN</span>
-                                        <h3><a href="#">Jefri Maulana</a></h3>
+                                        <h3>Jefri Maulana</h3>
                                         <span>Masa jabatan : 2015 s/d 2016</span>
                                         <span>NIM : 210345003</span>
                                     </div>
@@ -349,7 +349,7 @@
      style="background-image: url('{{ asset('assets-guest/img/img-leader-2016-2017.jpg') }}');">
                                     <div class="text w-100">
                                         <span class="cat">KETUA HIMPUNAN</span>
-                                        <h3><a href="#">Saptianhadi</a></h3>
+                                        <h3><a href="https://www.linkedin.com/in/saptian-hadi-175275129/"  target= "_blank">Saptianhadi</a></h3>
                                         <span>Masa jabatan : 2016 s/d 2017</span>
                                         <span>NIM : 214341047</span>
                                     </div>
@@ -363,7 +363,7 @@
                                 style="background-image: url('{{ asset('assets-guest/img/img-leader-2017-2018.jpg') }}');">                           
                                     <div class="text w-100">
                                         <span class="cat">KETUA HIMPUNAN</span>
-                                        <h3><a href="#">Eko Rahayu Tali jiwa</a></h3>
+                                        <h3><a href="https://www.linkedin.com/in/eko-rahayu-tali-jiwa/"  target= "_blank">Eko Rahayu Tali jiwa</a></h3>
                                         <span>Masa jabatan : 2017 s/d 2018</span>
                                         <span>NIM : 215341004</span>
                                     </div>
@@ -376,7 +376,7 @@
      style="background-image: url('{{ asset('assets-guest/img/img-leader-2018-2019.jpg') }}');">
                                     <div class="text w-100">
                                         <span class="cat">KETUA HIMPUNAN</span>
-                                        <h3><a href="#">Sulthan M . F</a></h3>
+                                        <h3><a href="https://www.linkedin.com/in/sulthan-muhammad-firdaus-6a822a208/"  target= "_blank">Sulthan M . F</a></h3>
                                         <span>Masa jabatan : 2018 s/d 2019</span>
                                         <span>NIM : 216341069</span>
                                     </div>
@@ -390,7 +390,7 @@
                            
                                     <div class="text w-100">
                                         <span class="cat">KETUA HIMPUNAN</span>
-                                        <h3><a href="#">Riyadh Tsaniyadi D</a></h3>
+                                        <h3><a href="https://www.linkedin.com/in/riyadh-tsaniyadi-3aa676198/"  target= "_blank">Riyadh Tsaniyadi D</a></h3>
                                         <span>Masa jabatan : 2019 s/d 2020</span>
                                         <span>NIM : 217341068</span>
                                     </div>
@@ -404,7 +404,7 @@
 
                                     <div class="text w-100">
                                         <span class="cat">KETUA HIMPUNAN</span>
-                                        <h3><a href="#">Sendi Dika Prasenda</a></h3>
+                                        <h3><a href="https://www.linkedin.com/in/sendi-dika-prasenda-b64170203/"  target= "_blank">Sendi Dika Prasenda</a></h3>
                                         <span>Masa jabatan : 2020 s/d 2021</span>
                                         <span>NIM : 218441046</span>
                                     </div>
@@ -418,7 +418,7 @@
                            
                                     <div class="text w-100">
                                         <span class="cat">KETUA HIMPUNAN</span>
-                                        <h3><a href="#">Hery Ardiyanto</a></h3>
+                                        <h3><a href="https://www.linkedin.com/in/heryardiyanto/"  target= "_blank">Hery Ardiyanto</a></h3>
                                         <span>Masa jabatan : 2021 s/d 2022</span>
                                         <span>NIM : 219441010</span>
                                     </div>
@@ -432,7 +432,7 @@
                            
                                     <div class="text w-100">
                                         <span class="cat">KETUA HIMPUNAN</span>
-                                        <h3><a href="#">Yugi Prasetara</a></h3>
+                                        <h3><a href="https://www.linkedin.com/in/yugi-prasetara-850097250/"  target= "_blank">Yugi Prasetara</a></h3>
                                         <span>Masa jabatan : 2022 s/d 2023</span>
                                         <span>NIM : 220441023 </span>
                                     </div>
@@ -446,7 +446,7 @@
                            
                                     <div class="text w-100">
                                         <span class="cat">KETUA HIMPUNAN</span>
-                                        <h3><a href="#">Farhan Ali Madani</a></h3>
+                                        <h3><a href="https://www.linkedin.com/in/farhan-ali-madani-466b2321a/"  target= "_blank">Farhan Ali Madani</a></h3>
                                         <span>Masa jabatan : 2023 s/d 2024</span>
                                         <span>NIM : 221441030 </span>
                                     </div>
@@ -460,7 +460,7 @@
                            
                                     <div class="text w-100">
                                         <span class="cat">KETUA HIMPUNAN</span>
-                                        <h3><a href="#">Rifqiaqil Mufahir E</a></h3>
+                                        <h3><a href="https://www.linkedin.com/in/rifqiaqil-mufahir-erwansyah-68a011248/"  target= "_blank">Rifqiaqil Mufahir E</a></h3>
                                         <span>Masa jabatan : 2024 s/d 2025</span>
                                         <span>NIM : 222442020 </span>
                                     </div>
@@ -480,16 +480,8 @@
             </div>
         </div>
     </section>
-    <section id="division">
-        <div class="container gs_reveal gs_reveal_fromRight pt-5 pb-5 px-5">
-            <div class="row">
-                <div class="col pt-5 text-center">
-                    <h2 class="text-dark quote text-md-start">Atribut <span class="judul">HIMAMO</span>
-                    </h2>
-                    <p class="text-dark text-md-start">
-                        Himamo memiliki 6 atribut.
-                        yaitu sebagai berikut :</p>
-                </div>
+    <section id="atribute" class="atribute">
+        <div class="container gs_reveal gs_reveal_fromRight pt-5 pb-5 px-5">         
                 <div class="row">
                     <div class="col pt-5 text-center">
                         <h2 class="text-dark quote text-md-start">Atribut <span class="judul">HIMAMO</span>
@@ -498,7 +490,7 @@
                             Himamo memiliki 6 atribut.
                             yaitu sebagai berikut :</p>
                     </div>
-                    <div class="pt-3 col-md-10">
+                    <div class="pt-3 col-lg-10">
                         <div class="owl-carousel owl-one owl-theme">
                             <div class="block block-1">
                                 <h1 class="judul">Baju PMPO</h1>
@@ -524,10 +516,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
     </section>
-    <section id="ae-pustaka" class="about">
+    <section id="ae-pustaka" class=" ae-pustaka">
         <div class="parallax2">
             <div class="container pb-3">
                 <div class="container pb-5 px-5 pt-5">
@@ -555,28 +546,28 @@
                     <div class="row pt-1 pb-4 subject-list gs_reveal">
                         <div class="col-12 col-md-6 mt-4 col-lg text-center">
                             <div class="subject-box">
-                                <img src="{{ asset('assets-guest/img/tro_subject.svg') }}" alt="Robotika" class="subject-image" loading="lazy">
+                                <img src="{{ asset('assets-guest/img/tro_subject.svg') }}" alt="Robotika" class="subject-image" >
 
                                 <p class="subject-name">Teknologi Rekayasa<br>Otomasi</p>
                             </div>
                         </div>
                         <div class="col-12 col-md-6 mt-4 col-lg text-center">
                             <div class="subject-box">
-                                <img src="{{ asset('assets-guest/img/trmo_subject.svg') }}" alt="Robotika" class="subject-image" loading="lazy">
+                                <img src="{{ asset('assets-guest/img/trmo_subject.svg') }}" alt="Robotika" class="subject-image" >
 
                                 <p class="subject-name">Teknologi Rekayasa Mekatronika</p>
                             </div>
                         </div>
                         <div class="col-12 col-md-6 mt-4 col-lg text-center">
                             <div class="subject-box">
-                                <img src="{{ asset('assets-guest/img/trin_subject.svg') }}" alt="Robotika" class="subject-image" loading="lazy">
+                                <img src="{{ asset('assets-guest/img/trin_subject.svg') }}" alt="Robotika" class="subject-image" >
 
                                 <p class="subject-name">Teknologi Rekayasa Informatika Industri</p>
                             </div>
                         </div>
                         <div class="col-12 col-md-6 mt-4 col-lg text-center">
                             <div class="subject-box">
-                                <img src="{{ asset('assets-guest/img/teori_subject.svg') }}" alt="Robotika" class="subject-image" loading="lazy">
+                                <img src="{{ asset('assets-guest/img/teori_subject.svg') }}" alt="Robotika" class="subject-image" >
 
                                 <p class="subject-name">Penunjang Teori <br><br></p>
                             </div>
@@ -587,7 +578,7 @@
         </div>
     </section>
 
-    <section id="ae-informasi" class="about bg-light">
+    <section id="ae-informasi" class=" bg-light ae-informasi">
         <div class="container pb-3">
             <div class="container pb-5 px-5 pt-5">
                 <div class="row">
@@ -617,7 +608,7 @@
                                 <div class="info-box">
                                     <div class="img-box align-items-center">
                                         <img src="{{ asset('storage/informasi/' . $item->image) }}" alt="{{ $item->title }}"
-                                             class="info-image rounded mx-auto" loading="lazy">
+                                             class="info-image rounded mx-auto" >
                                     </div>
                                     <p class="info-date">{{ date('d/m/Y', strtotime($item->created_at)) }}</p>
                                     <p class="info-title">{{ $item->title }}</p>
@@ -769,7 +760,7 @@
             </div>
             <div class="row">
                 <div class="text-center embed-responsive">
-                    <iframe class="gs_reveal pideo" src="https://www.youtube.com/embed/rdPUrmRmNoU"
+                    <iframe class="gs_reveal pideo" src="https://www.youtube.com/embed/rdPUrmRmNoU?si=59Pi-h0UHwpuMQ-m"
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>

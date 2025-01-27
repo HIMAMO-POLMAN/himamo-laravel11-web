@@ -37,7 +37,7 @@
                 </span>
             </a>
             <div class="nav_list">
-                <a href="{{ url('/') }}" class="nav_link @if (Route::currentRouteNamed('landing-page')) active @endif">
+                <a href="{{ Route::currentRouteNamed('landing-page') ? '#' : url('/') }}" class="nav_link @if (Route::currentRouteNamed('landing-page')) active @endif ">
                     <i class='bx bx-home nav_icon'></i>
                     <span class="nav_name">Home</span>
                 </a>
@@ -73,7 +73,6 @@
                     <i class='bx bxs-phone nav_icon'></i>
                     <span class="nav_name">Contact</span>
                 </a>
-            </div>
         </div>
     </nav>
 </div>

@@ -143,6 +143,7 @@ p {
     color: var(--first-color-light);
     margin-bottom: 1.5rem;
     transition: 0.3s;
+    text-decoration: none;
 }
 
 .nav_link:hover {
@@ -468,7 +469,7 @@ html {
         height: 20em !important;
     }
 
-    #division .owl-carousel .owl-next {
+    #division .owl-carousel .owl-next , #atribute .owl-carousel .owl-next{
         position: absolute;
         top: 50%;
         right: 0;
@@ -477,7 +478,7 @@ html {
         font-size: 1.5em;
     }
 
-    #division .owl-carousel .owl-prev {
+    #division .owl-carousel .owl-prev , #atribute .owl-carousel .owl-prev{
         position: absolute;
         top: 50%;
         left: 0;
@@ -672,7 +673,7 @@ html {
     }
 
 
-    #division .owl-carousel .owl-next {
+    #division .owl-carousel .owl-next, #atribute .owl-carousel .owl-next {
         position: absolute;
         top: 50%;
         right: 0;
@@ -683,7 +684,7 @@ html {
         margin: 0 0 0 0;
     }
 
-    #division .owl-carousel .owl-prev {
+    #division .owl-carousel .owl-prev , #atribute .owl-carousel .owl-prev{
         visibility: hidden;
     }
 
@@ -783,17 +784,24 @@ html {
 
 #history {
     padding-top: 3rem;
-    margin-top: -3rem;
+    /* margin-top: -3rem; */
 }
 
 #leader {
     padding-top: 3rem;
-    margin-top: -3rem;
+    /* margin-top: -3rem; */
 }
 
-#division {
+#division, #atribute {
     padding-top: 3rem;
-    margin-top: -3rem;
+    /* margin-top: -3rem; */
+}
+
+#ae-pustaka{
+    padding-top: 3rem;
+}
+#ae-informasi{
+    padding-top: 3rem;
 }
 
 /*----------------------scroll up--------------------------*/
