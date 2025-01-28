@@ -47,15 +47,15 @@
     <section id="about" class="about">
         <div class="container pb-3">
             <div class="container pb-5 px-5 pt-5">
-                <div class="row">
-                    <div class="col-md text-md-start">
+                <div class=" d-flex flex-lg-row-reverse flex-column">
+                    <div class="col-12 col-lg-4 text-center">
                         <img class="logoae gs_reveal gs_reveal_fromLeft pt-3" src="{{ asset('assets-guest/img/img-logo-jurusan.png') }}" alt="Logo Jurusan" >
                     </div>
-                    <div class="col-md-7 gs_reveal gs_reveal_fromRight">
-                        <h2 class="text-dark quote text-md-end pt-3">Apa itu <span class="judul">Jurusan
+                    <div class=" gs_reveal gs_reveal_fromRight about-text ">
+                        <h2 class="text-dark quote pt-3 text-center text-lg-start">Apa itu <span class="judul">Jurusan
                                 Teknik Otomasi
                                 Manufaktur dan Mekatronika?</span></h2>
-                        <p class="text-dark pt-2 text-md-end">
+                        <p class="text-dark pt-2 ">
                             AE Memiliki kompetensi inti pada perancangan dan pembuatan teknologi terpadu
                             dalam
                             mekatronik
@@ -126,9 +126,9 @@
                 </div>
 
             <div class="container cont-2 px-5">
-                <div class="row">
-                    <div class="col-md-7 gs_reveal gs_reveal_fromRight">
-                        <h2 class="text-dark quote text-md-start pt-5">Apa itu <span class="judul">Himpunan
+                <div class="d-flex flex-lg-row flex-column-reverse">
+                    <div class="  gs_reveal gs_reveal_fromRight">
+                        <h2 class="text-dark quote text-center text-xl-start pt-5">Apa itu <span class="judul">Himpunan
                                 Otomasi Manufaktur
                                 dan Mekatronika?</span></h2>
                         <p class="text-dark pt-2 text-md-start">
@@ -148,7 +148,7 @@
                             dan Mekatronika untuk melatih diri dalam hal berorganisasi.</p>
 
                     </div>
-                    <div class="col-md pb-5 text-md-end">
+                    <div class=" col-lg-4 pb-lg-5 text-center">
                         <img class="logoae gs_reveal gs_reveal_fromLeft pt-5" src="{{ asset('assets-guest/img/img-himamo.png') }}" >
                     </div>
                 </div>
@@ -211,15 +211,15 @@
     </section>
     <section id="division"  class="division">
         <div class="container gs_reveal gs_reveal_fromRight pt-5 pb-5 px-5">
-            <div class="row">
-                <div class="col pt-5 text-center">
+            <div class="d-flex flex-column flex-md-row">
+                <div class="col-md-3 pt-5 text-center">
                     <h2 class="text-dark quote text-md-start">Divisi <span class="judul">HIMAMO</span>
                     </h2>
                     <p class="text-dark text-md-start">
                         Divisi Himamo dibagi menjadi 12 divisi.
                         yaitu sebagai berikut :</p>
                 </div>
-                <div class="pt-3 col-lg-10">
+                <div class="pt-3 col-lg-8">
                     <div class="owl-carousel owl-one owl-theme">
                         <div class="block block-8">
                             <h1 class="judul">MTH.</h1>
@@ -288,33 +288,37 @@
     </section>
     <section id="leader" class="leader">
         <div class="container gs_reveal gs_reveal_fromLeft pt-4 pb-5 px-5">
-            <div class="row">
+            <div class="d-flex flex-column-reverse flex-md-row">
                 <div class="col-lg-8 text-md-start">
                     <div class="featured-carousel owl-carousel">
                         <div class="item">
                             <div class="work pb-4">
+                                <a href="https://www.linkedin.com/in/adnan-maulana-07060486/" target= "_blank" class="text-light">
                                 <div class="img d-flex align-items-end justify-content-center"
                                 style="background-image: url('{{ asset('assets-guest/img/img-leader-pria.jpg') }}');">                           
                                     <div class="text w-100">
                                         <span class="cat">KETUA HIMPUNAN</span>
-                                        <h3><a href="https://www.linkedin.com/in/adnan-maulana-07060486/" target= "_blank">Adnan Maulana</a></h3>
+                                        <h3>Adnan Maulana</h3>
                                         <span>Masa jabatan : 2012 s/d 2013</span>
                                         <span>NIM : 210345003</span>
                                     </div>
                                 </div>
+                                </a>
                             </div>
                         </div>
                         <div class="item">
                             <div class="work">
+                                <a href="https://www.linkedin.com/in/ngrhadimas/" target= "_blank" class="text-light">
                                 <div class="img d-flex align-items-end justify-content-center"
                                 style="background-image: url('{{ asset('assets-guest/img/img-leader-2013-2014.jpg') }}');">                           
                                     <div class="text w-100">
                                         <span class="cat">KETUA HIMPUNAN</span>
-                                        <h3><a href="https://www.linkedin.com/in/ngrhadimas/" target= "_blank">Dimas Nugraha</a></h3>
+                                        <h3>Dimas Nugraha</h3>
                                         <span>Masa jabatan : 2013 s/d 2014</span>
                                         <span>NIM : 211341007</span>
                                     </div>
                                 </div>
+                                </a>
                             </div>
                         </div>
                         <div class="item">
@@ -345,126 +349,144 @@
                         </div>
                         <div class="item">
                             <div class="work">
+                                <a href="https://www.linkedin.com/in/saptian-hadi-175275129/"  target= "_blank" class="text-light">
                                 <div class="img d-flex align-items-end justify-content-center"
      style="background-image: url('{{ asset('assets-guest/img/img-leader-2016-2017.jpg') }}');">
                                     <div class="text w-100">
                                         <span class="cat">KETUA HIMPUNAN</span>
-                                        <h3><a href="https://www.linkedin.com/in/saptian-hadi-175275129/"  target= "_blank">Saptianhadi</a></h3>
+                                        <h3>Saptianhadi</h3>
                                         <span>Masa jabatan : 2016 s/d 2017</span>
                                         <span>NIM : 214341047</span>
                                     </div>
                                 </div>
+                                </a>
                             </div>
                         </div>
 
                         <div class="item">
                             <div class="work pb-4">
+                                <a href="https://www.linkedin.com/in/eko-rahayu-tali-jiwa/"  target= "_blank" class="text-light">
                                 <div class="img d-flex align-items-end justify-content-center"
                                 style="background-image: url('{{ asset('assets-guest/img/img-leader-2017-2018.jpg') }}');">                           
                                     <div class="text w-100">
                                         <span class="cat">KETUA HIMPUNAN</span>
-                                        <h3><a href="https://www.linkedin.com/in/eko-rahayu-tali-jiwa/"  target= "_blank">Eko Rahayu Tali jiwa</a></h3>
+                                        <h3>Eko Rahayu Tali jiwa</h3>
                                         <span>Masa jabatan : 2017 s/d 2018</span>
                                         <span>NIM : 215341004</span>
                                     </div>
                                 </div>
+                                </a>
                             </div>
                         </div>
                         <div class="item">
                             <div class="work">
+                                <a href="https://www.linkedin.com/in/sulthan-muhammad-firdaus-6a822a208/"  target= "_blank" class="text-light">
                                 <div class="img d-flex align-items-end justify-content-center"
      style="background-image: url('{{ asset('assets-guest/img/img-leader-2018-2019.jpg') }}');">
                                     <div class="text w-100">
                                         <span class="cat">KETUA HIMPUNAN</span>
-                                        <h3><a href="https://www.linkedin.com/in/sulthan-muhammad-firdaus-6a822a208/"  target= "_blank">Sulthan M . F</a></h3>
+                                        <h3>Sulthan M . F</h3>
                                         <span>Masa jabatan : 2018 s/d 2019</span>
                                         <span>NIM : 216341069</span>
                                     </div>
                                 </div>
+                                </a>
                             </div>
                         </div>
                         <div class="item">
                             <div class="work">
+                                <a href="https://www.linkedin.com/in/riyadh-tsaniyadi-3aa676198/"  target= "_blank" class="text-light">
                                 <div class="img d-flex align-items-end justify-content-center"
                                 style="background-image: url('{{ asset('assets-guest/img/img-leader-2019-2020.jpg') }}');">
                            
                                     <div class="text w-100">
                                         <span class="cat">KETUA HIMPUNAN</span>
-                                        <h3><a href="https://www.linkedin.com/in/riyadh-tsaniyadi-3aa676198/"  target= "_blank">Riyadh Tsaniyadi D</a></h3>
+                                        <h3>Riyadh Tsaniyadi D</h3>
                                         <span>Masa jabatan : 2019 s/d 2020</span>
                                         <span>NIM : 217341068</span>
                                     </div>
                                 </div>
+                                </a>
                             </div>
                         </div>
                         <div class="item">
                             <div class="work">
+                                <a href="https://www.linkedin.com/in/sendi-dika-prasenda-b64170203/"  target= "_blank" class="text-light">
                                 <div class="img d-flex align-items-end justify-content-center"
      style="background-image: url('{{ asset('assets-guest/img/img-leader-2020-2021.jpg') }}');">
 
                                     <div class="text w-100">
                                         <span class="cat">KETUA HIMPUNAN</span>
-                                        <h3><a href="https://www.linkedin.com/in/sendi-dika-prasenda-b64170203/"  target= "_blank">Sendi Dika Prasenda</a></h3>
+                                        <h3>Sendi Dika Prasenda</h3>
                                         <span>Masa jabatan : 2020 s/d 2021</span>
                                         <span>NIM : 218441046</span>
                                     </div>
                                 </div>
+                                </a>
                             </div>
                         </div>
                         <div class="item">
                             <div class="work">
+                                <a href="https://www.linkedin.com/in/heryardiyanto/"  target= "_blank" class="text-light">
                                 <div class="img d-flex align-items-end justify-content-center"
                                 style="background-image: url('{{ asset('assets-guest/img/img-leader-2021-2022.jpg') }}');">
                            
                                     <div class="text w-100">
                                         <span class="cat">KETUA HIMPUNAN</span>
-                                        <h3><a href="https://www.linkedin.com/in/heryardiyanto/"  target= "_blank">Hery Ardiyanto</a></h3>
+                                        <h3>Hery Ardiyanto</h3>
                                         <span>Masa jabatan : 2021 s/d 2022</span>
                                         <span>NIM : 219441010</span>
                                     </div>
                                 </div>
+                                </a>
                             </div>
                         </div>
                         <div class="item">
                             <div class="work">
+                                <a href="https://www.linkedin.com/in/yugi-prasetara-850097250/"  target= "_blank" class="text-light">
                                 <div class="img d-flex align-items-end justify-content-center"
                                 style="background-image: url('{{ asset('assets-guest/img/img-leader-pria.jpg') }}');">
                            
                                     <div class="text w-100">
                                         <span class="cat">KETUA HIMPUNAN</span>
-                                        <h3><a href="https://www.linkedin.com/in/yugi-prasetara-850097250/"  target= "_blank">Yugi Prasetara</a></h3>
+                                        <h3>Yugi Prasetara</h3>
                                         <span>Masa jabatan : 2022 s/d 2023</span>
                                         <span>NIM : 220441023 </span>
                                     </div>
                                 </div>
+                                </a>
                             </div>
                         </div>
                         <div class="item">
                             <div class="work">
+                                <a href="https://www.linkedin.com/in/farhan-ali-madani-466b2321a/"  target= "_blank" class="text-light">
                                 <div class="img d-flex align-items-end justify-content-center"
                                 style="background-image: url('{{ asset('assets-guest/img/img-leader-pria.jpg') }}');">
                            
                                     <div class="text w-100">
                                         <span class="cat">KETUA HIMPUNAN</span>
-                                        <h3><a href="https://www.linkedin.com/in/farhan-ali-madani-466b2321a/"  target= "_blank">Farhan Ali Madani</a></h3>
+                                        <h3>Farhan Ali Madani</h3>
                                         <span>Masa jabatan : 2023 s/d 2024</span>
                                         <span>NIM : 221441030 </span>
                                     </div>
                                 </div>
+                                </a>
                             </div>
                         </div>
                         <div class="item">
                             <div class="work">
+                                <a href="https://www.linkedin.com/in/rifqiaqil-mufahir-erwansyah-68a011248/"  target= "_blank" class="text-light">
                                 <div class="img d-flex align-items-end justify-content-center"
                                 style="background-image: url('{{ asset('assets-guest/img/img-leader-2024-2025.jpg') }}');">
                            
                                     <div class="text w-100">
                                         <span class="cat">KETUA HIMPUNAN</span>
-                                        <h3><a href="https://www.linkedin.com/in/rifqiaqil-mufahir-erwansyah-68a011248/"  target= "_blank">Rifqiaqil Mufahir E</a></h3>
+                                        <h3>Rifqiaqil Mufahir E</h3>
                                         <span>Masa jabatan : 2024 s/d 2025</span>
                                         <span>NIM : 222442020 </span>
                                     </div>
                                 </div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -482,15 +504,15 @@
     </section>
     <section id="atribute" class="atribute">
         <div class="container gs_reveal gs_reveal_fromRight pt-5 pb-5 px-5">         
-                <div class="row">
-                    <div class="col pt-5 text-center">
+                <div class="d-flex flex-column flex-md-row">
+                    <div class="col-md-3 pt-5 text-center">
                         <h2 class="text-dark quote text-md-start">Atribut <span class="judul">HIMAMO</span>
                         </h2>
                         <p class="text-dark text-md-start">
                             Himamo memiliki 6 atribut.
                             yaitu sebagai berikut :</p>
                     </div>
-                    <div class="pt-3 col-lg-10">
+                    <div class="pt-3 col-lg-8">
                         <div class="owl-carousel owl-one owl-theme">
                             <div class="block block-1">
                                 <h1 class="judul">Baju PMPO</h1>
