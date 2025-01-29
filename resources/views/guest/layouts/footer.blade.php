@@ -108,10 +108,10 @@
                 </div>
             </div>
         </div>
-        <div class="credit py-2">
+        {{-- <div class="credit py-2">
             <div class="container pt-3 px-5">
                 <p>Copyright © 2017 - 2024 All rights reserved | Made with <span><i class='bx bxs-heart'></i></span> by <span class="text-white">KOMINFO & INFORMATION Division</span></p>
             </div>
-        </div>
+        </div> --}}
     </footer>
 </main>
