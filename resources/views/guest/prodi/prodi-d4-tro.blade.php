@@ -23,14 +23,14 @@
         <div class="container mt-4">
             <div class="row">
                 <div class="col-12">
-                    <img src="{{ asset('assets-guest/img/img-prodi-tro.jpg') }}" width="600px" alt="Building" class="img-cover img-fluid rounded-5">
+                    <img src="{{ asset('assets-guest/img/img-prodi-tro.jpg') }}" width="600px" alt="Building" class="img-cover img-fluid rounded-5 mx-auto d-block" >
                 </div>
             </div>
         </div>
         <div class="container book-info text-black">
             <div class="row mt-4">
                 <div class="col-12 ps-5 pe-5">
-                    <div class="shadow-lg p-3 mb-4  text-dark rounded">
+                    <div class=" p-3 mb-4  text-dark rounded">
                         <div class="card-body text-start description-card">
                             <h3 class="card-title fw-bold mb-4">D4 Teknologi Rekayasa Otomasi</h3>
                             <h5 class="card-text fw-bold">Program Studi Teknologi Rekayasa Otomasi</h5>
@@ -73,20 +73,40 @@
                             <p>10. Merumuskan penyelesaian permasalahan pada bidang otomasi dan industri manufaktur dengan penalaran ilmiah.</p>
                             <p>11. Mengikuti perkembangan IPTEK pada bidang otomasi manufaktur yang terbaru dan siap bersaing dalam pasar global.</p>
                             <p>12. Berperan dalam organisasi profesi di bidang otomasi manufaktur.</p>
-                            <a href="https://drive.google.com/drive/folders/1I2hqDn9o81xM8cNGPYZFuT1-_AaDqsts?usp=drive_link" class="btn btn-primary form-control mt-3">Bahan Ajar D4 Teknologi Rekayasa Otomasi</a>
+                            <a href="https://drive.google.com/drive/folders/1I2hqDn9o81xM8cNGPYZFuT1-_AaDqsts?usp=drive_link" class="btn btn-primary form-control mt-3" target="_blank">Bahan Ajar D4 Teknologi Rekayasa Otomasi</a>
                         </div>
                     </div>
-                    <div class="prodi-lainnya">
-                        <h3 class="text-dark fw-bold ">Lihat lainnya</h3>
-                        <div class="link-prodi">
-                            <div class="d2-mekatronika">
-                            <a href="prodi-d2-trmo" class="text-dark">D2 Jalur Cepat Teknik Mekatronika</a>
+                    <div class="container cont-2 px-5 pb-2">
+                            <div class="row">
+                                <div class="col-md-12 text-center ">
+                                    <h3 class="text-dark fw-bold">Lihat lainnya</h3>
+                                </div>
                             </div>
-                            <div class="d4-mekatronika">
-                                <a href="prodi-d4-trmo" class="text-dark">D4 Prodi Teknologi Rekayasa Mekatronika</a>
-                            </div>
-                            <div class="d4-informatika">
-                            <a href="prodi-d4-trin" class="text-dark">D4 Prodi Teknologi Rekayasa Informatika Industri</a>
+                            <div class="row pt-1 pb-4 subject-list ">
+                            <div class="col-12 col-md-6 mt-4 col-lg text-center">
+                                    <div class="subject-box">
+                                        <a href="prodi-d2-trmo" class="text-dark">
+                                        <img src="{{ asset('assets-guest/img/trmo-d2_subject.svg') }}" alt="Robotika" class="subject-image" >
+                                            <p class="subject-name">D2 Jalur Cepat<br>Teknik  Mekatronika</p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 mt-4 col-lg text-center">
+                                    <div class="subject-box">
+                                        <a href="prodi-d2-trmo" class="text-dark">
+                                        <img src="{{ asset('assets-guest/img/trmo_subject.svg') }}" alt="Robotika" class="subject-image" >
+                                            <p class="subject-name">D4 Prodi<br>Teknik Rekayasa Mekatronika</p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 mt-4 col-lg text-center">
+                                    <div class="subject-box">
+                                        <a href="prodi-d4-trmo" class="text-dark">
+                                        <img src="{{ asset('assets-guest/img/trin_subject.svg') }}" alt="Robotika" class="subject-image" >
+                                            <p class="subject-name">D4 Prodi<br>Teknologi Rekayasa Informatika Industri</p>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

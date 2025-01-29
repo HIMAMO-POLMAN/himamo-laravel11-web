@@ -21,14 +21,14 @@
         <div class="container mt-4">
             <div class="row">
                 <div class="col-12">
-                    <img src="{{ asset('assets-guest/img/img-prodi-trin.jpg') }}" alt="Building" class="img-cover img-fluid rounded-5">
+                    <img src="{{ asset('assets-guest/img/img-prodi-trin.jpg') }}" width="600px" alt="Building" class="img-cover img-fluid rounded-5 mx-auto d-block" >
                 </div>
             </div>
         </div>
         <div class="container book-info text-black">
             <div class="row mt-4">
                 <div class="col-12 ps-5 pe-5">
-                    <div class="shadow-lg p-3 mb-4 text-dark rounded">
+                    <div class="p-3 mb-4 text-dark rounded">
                         <div class="card-body text-start description-card">
                             <h3 class="card-title fw-bold mb-4">D4 Teknologi Rekayasa Informatika Industri</h3>
                             <h5 class="card-text fw-bold">Program Studi Teknologi Rekayasa Informatika Industri</h5>
@@ -57,14 +57,14 @@
                             <hr>
                             <h5 class="fw-bold">Struktur Kurikulum Program Studi Teknologi Rekayasa Informatika Industri</h5>
                             <p>Struktur kurikulum pada Prodi TRIN memiliki total 146 SKS yang dapat ditempuh selama kurun waktu 4 tahun. Pada penyusunan struktur kurikulum Prodi TRIN terdapat dua referensi yang digunakan yaitu Indonesian Accreditation Board for Engineering Education dan Standar Nasional Perguruan Tinggi Dikti.</p>
-                            <p>1. Struktur kurikulum berdasarkan Indonesian Accreditation Board for Engineering Education dengan total SKS 146 yang dibagi menjadi tiga kategori yaitu: </p>
+                            <p>Struktur kurikulum berdasarkan Indonesian Accreditation Board for Engineering Education dengan total SKS 146 yang dibagi menjadi tiga kategori yaitu: </p>
                             <p>1. Math & Basic Science dan General Engineer (min 30% = 44 sks) = 45 SKS</p>
                             <p>2. Core dan Common Basic Engineering Science (min 45% = 70 sks) = 75 SKS</p>
                             <p>3. General Education (max 20% = 30 sks) = 26 SKS</p>
-                            <p>2. Struktur kurikulum berdasarkan Standar Nasional Perguruan Tinggi Dikti total keseluruhan SKS adalah 146 SKS yang dibagi menjadi dua kategori yaitu: </p>
-                            <p>2. SKS Teori = 72 SKS</p>
+                            <p> Struktur kurikulum berdasarkan Standar Nasional Perguruan Tinggi Dikti total keseluruhan SKS adalah 146 SKS yang dibagi menjadi dua kategori yaitu: </p>
+                            <p>1. SKS Teori = 72 SKS</p>
                             <p>3. SKS Praktik = 74 SKS</p>
-                            <a href="https://drive.google.com/drive/folders/1qnazc3vwgD_1NJJDapS1va_tDk51BTCR?usp=drive_link" class="btn btn-primary form-control mt-3" >Bahan Ajar D4 Teknologi Rekayasa Informatika Industri</a>
+                            <a href="https://drive.google.com/drive/folders/1qnazc3vwgD_1NJJDapS1va_tDk51BTCR?usp=drive_link" class="btn btn-primary form-control mt-3" target="_blank">Bahan Ajar D4 Teknologi Rekayasa Informatika Industri</a>
                         </div>
                     </div>
                     <!-- <ul class="list-group mb-4">
@@ -78,17 +78,37 @@
                             <a href="#">• D4 Prodi Teknologi Rekayasa Otomasi</a>
                         </li>
                     </ul> -->
-                    <div class="prodi-lainnya">
-                        <h3 class="text-dark fw-bold ">Lihat lainnya</h3>
-                        <div class="link-prodi">
-                            <div class="d2-mekatronika">
-                            <a href="prodi-d2-trmo" class="text-dark">D2 Jalur Cepat Teknik Mekatronika</a>
+                    <div class="container cont-2 px-5 pb-2">
+                            <div class="row">
+                                <div class="col-md-12 text-center ">
+                                    <h3 class="text-dark fw-bold">Lihat lainnya</h3>
+                                </div>
                             </div>
-                            <div class="d4-otomasi">
-                                <a href="prodi-d4-tro" class="text-dark">D4 Prodi Teknologi Rekayasa Otomasi</a>
-                            </div>
-                            <div class="d4-mekatronika">
-                            <a href="prodi-d4-trmo" class="text-dark">D4 Prodi Teknologi Rekayasa Mekatronika</a>
+                            <div class="row pt-1 pb-4 subject-list ">
+                                <div class="col-12 col-md-6 mt-4 col-lg text-center">
+                                    <div class="subject-box">
+                                        <a href="prodi-d2-trmo" class="text-dark">
+                                        <img src="{{ asset('assets-guest/img/trmo-d2_subject.svg') }}" alt="Robotika" class="subject-image" >
+                                            <p class="subject-name">D2 Jalur Cepat<br>Teknik Mekatronika</p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 mt-4 col-lg text-center">
+                                    <div class="subject-box">
+                                        <a href="prodi-d4-tro" class="text-dark">
+                                        <img src="{{ asset('assets-guest/img/tro_subject.svg') }}" alt="Robotika" class="subject-image" >
+                                            <p class="subject-name">D4 Prodi<br>Teknologi Rekayasa Otomasi</p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 mt-4 col-lg text-center">
+                                    <div class="subject-box">
+                                        <a href="prodi-d4-trmo" class="text-dark">
+                                        <img src="{{ asset('assets-guest/img/trmo_subject.svg') }}" alt="Robotika" class="subject-image" >
+                                            <p class="subject-name">D4 Prodi<br>Teknologi Rekayasa Mekatronika</p>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
