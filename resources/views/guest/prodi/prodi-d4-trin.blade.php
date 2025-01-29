@@ -120,3 +120,26 @@
 </div>
 <!--Container Main end-->
 @endsection
+@push('scripts')
+    <script>
+            // Ambil elemen header dan tombol
+        var header = document.getElementById('header');
+        var mybutton = document.getElementById('myBtn');
+
+        // Fungsi untuk menangani scroll
+        function handleScroll() {
+            var scroll = window.scrollY; // Ambil posisi scroll
+
+            if (scroll > 20) {
+                mybutton.style.display = "block"; // Tampilkan tombol
+                header.classList.add('bg-light'); // Tambahkan class bg-light
+            } else {
+                mybutton.style.display = "none"; // Sembunyikan tombol
+                header.classList.remove('bg-light'); // Hapus class bg-light
+            }
+        }
+
+        // Tambahkan event listener untuk scroll
+        window.addEventListener('scroll', handleScroll);
+    </script>
+@endpush
