@@ -211,8 +211,8 @@
     </section>
     <section id="division"  class="division">
         <div class="container gs_reveal gs_reveal_fromRight pt-5 pb-5 px-5">
-            <div class="d-flex flex-column flex-md-row">
-                <div class="col-md-3 pt-5 text-center">
+            <div class="d-flex flex-column flex-md-row row">
+                <div class="col-lg-3 pt-5 text-center">
                     <h2 class="text-dark quote text-md-start">Divisi <span class="judul">HIMAMO</span>
                     </h2>
                     <p class="text-dark text-md-start">
@@ -288,7 +288,7 @@
     </section>
     <section id="leader" class="leader">
         <div class="container gs_reveal gs_reveal_fromLeft pt-4 pb-5 px-5">
-            <div class="d-flex flex-column-reverse flex-md-row">
+            <div class="d-flex flex-column-reverse flex-lg-row row">
                 <div class="col-lg-8 text-md-start">
                     <div class="featured-carousel owl-carousel">
                         <div class="item">
@@ -502,7 +502,7 @@
             </div>
         </div>
     </section>
-    <section id="atribute" class="atribute">
+    {{-- <section id="atribute" class="atribute">
         <div class="container gs_reveal gs_reveal_fromRight pt-5 pb-5 px-5">         
                 <div class="d-flex flex-column flex-md-row">
                     <div class="col-md-3 pt-5 text-center">
@@ -539,7 +539,7 @@
                     </div>
                 </div>
         </div>
-    </section>
+    </section> --}}
     <section id="ae-pustaka" class=" ae-pustaka">
         <div class="parallax2">
             <div class="container pb-3">
