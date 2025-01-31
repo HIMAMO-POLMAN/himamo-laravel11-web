@@ -27,7 +27,7 @@
         </div>
         <div class="container book-info text-black">
             <div class="row mt-4">
-                <div class="col-12 ps-5 pe-5">
+                <div class="col-12 px-3">
                     <div class="p-3 mb-4 text-dark rounded">
                         <div class="card-body text-start description-card">
                             <h3 class="card-title fw-bold mb-4">D4 Teknologi Rekayasa Informatika Industri</h3>
