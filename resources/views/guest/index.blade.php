@@ -47,6 +47,47 @@
     <section id="about" class="about">
         <div class="container pb-3">
             <div class="container pb-5 px-5 pt-5">
+                <div class="container cont-2 px-5 pb-5">
+                    <div class="row">
+                        <div class="col-md-12 text-center gs_reveal">
+                            <h3 class="text-dark quote">Program Studi <span class="judul">Jurusan Teknik Otomasi Manufaktur dan Mekatronika</span></h3>
+                        </div>
+                    </div>
+                    <div class="row pt-3 subject-list">
+                        <a href="#ae-pustaka" class=" col-lg col-md-6 col-12 mt-4" style="text-decoration: none;">
+                            <div class=" text-center">
+                            <div class="subject-box">
+                                <img src="{{ asset('assets-guest/img/tro_subject.svg') }}" alt="Robotika" class="subject-image" >
+                                <p class="subject-name fw-bold ">AE Pustaka</p>
+                            </div>
+                        </div>
+                        </a>
+                        <a href="/#ae-informasi" class="col-12 col-lg col-md-6 mt-4" style="text-decoration: none;">
+                            <div class=" text-center">
+                            <div class="subject-box">
+                                <img src="{{ asset('assets-guest/img/trmo_subject.svg') }}" alt="Robotika" class="subject-image" >
+                                <p class="subject-name fw-bold ">AE Informasi</p>
+                            </div>
+                        </div>
+                        </a>
+                        <a href="prodi-d4-trin" class="col-12 col-lg col-md-6 mt-4" style="text-decoration: none;">
+                            <div class=" text-center">
+                                <div class="subject-box" >
+                                    <img src="{{ asset('assets-guest/img/trin_subject.svg') }}" alt="Robotika" class="subject-image" >
+                                    <p class="subject-name fw-bold ">FUSE</p>
+                                </div>
+                            </div>
+                        </a>
+                        {{-- <a href="prodi-d2-trmo" class="col-lg col-12 col-md-6 mt-4 " style="text-decoration: none;">
+                            <div class=" text-center ">
+                            <div class="subject-box">
+                                <img src="{{ asset('assets-guest/img/trmo-d2_subject.svg') }}" alt="Robotika" class="subject-image" >
+                                <p class="subject-name fw-bold">D2 Fast Track - Teknik <br> Mekatronika</p>
+                            </div>
+                        </div>
+                        </a> --}}
+                    </div>
+                </div>
                 <div class=" d-flex flex-lg-row-reverse flex-column">
                     <div class="col-12 col-lg-4 text-center">
                         <img class="logoae gs_reveal gs_reveal_fromLeft pt-3" src="{{ asset('assets-guest/img/img-logo-jurusan.png') }}" alt="Logo Jurusan" >

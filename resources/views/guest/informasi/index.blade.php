@@ -15,7 +15,7 @@
             </div>
         </div>
 
-        <section id="ae-informasi" class="about bg-light">
+        <section id="ae-informasi" class="about bg-light content-ae-informasi">
             <div class="container pb-3">
                 <div class="row pt-3 info-list">
                     @foreach ($informasi as $item)
