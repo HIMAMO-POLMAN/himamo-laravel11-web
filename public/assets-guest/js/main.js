@@ -217,11 +217,9 @@ $(document).ready(function () {
         if (scroll > 20) {
             mybutton.style.display = "block";
             document.getElementById("header").classList.add('bg-light');
-            header.addClass('bg-light');
         } else {
             mybutton.style.display = "none";
             document.getElementById("header").classList.remove('bg-light');
-            header.removeClass('bg-light');
             nav_home.classList.add("active");
             nav_about.classList.remove("active");
             nav_history.classList.remove("active");
