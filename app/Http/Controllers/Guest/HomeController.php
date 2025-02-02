@@ -12,7 +12,7 @@ class HomeController extends Controller
 
     public function index(){
         return view('guest.index',[
-            "informasi" => informasi::with(['user'])->orderBy('updated_at', 'asc')->paginate(4),
+            "informasi" => informasi::with(['user'])->orderBy('updated_at', 'asc')->paginate(3),
         ]);
     }
 

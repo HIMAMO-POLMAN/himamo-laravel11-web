@@ -1,7 +1,7 @@
 @extends('guest.layouts.app')
 @section('content')
 <!--Container Main start-->
-<div class="wrap bg-light">
+<div class="wrap bg-light detail-informasi-body">
 
     <section>
         <!-- Program di sini -->
