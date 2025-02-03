@@ -411,6 +411,90 @@ html {
     -webkit-text-stroke-width: 0px;
 }
 
+.detail-informasi-body{
+    min-height: 100vh;
+}
+
+.informasi-list{
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px
+}
+
+.sort-by-text{
+    margin-right: 20px;
+}
+
+.dropdown .dropdown-toggle{
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: 1px solid #dee2e6;
+}
+
+.dropdown .dropdown-toggle::after {
+    display: none; /* Menyembunyikan panah dropdown bawaan */
+}
+
+.dropdown .dropdown-toggle i{
+    margin-left: 12px;
+}
+
+@media (max-width:576px){
+    .dropdown .dropdown-menu{
+        width: 100%;
+    }
+}
+
+@media (max-width:1200px){
+    .informasi-list{
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0px;
+    }
+}
+
+@media (max-width:990px){
+    .informasi-list{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0px;
+    }
+}
+
+@media (max-width:576px){
+    .informasi-list{
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: 0px;
+    }
+}
+
+.informasi-content{
+    margin-bottom: 24px;
+    width: 280px;
+}
+
+@media (max-width: 1200px){
+    .informasi-content{
+        /* width: 30px; */
+    }
+}
+
+@media (max-width:990px){
+    .informasi-content{
+        width: 100%;
+    }
+}
+
+.info-list > a{
+    display: block;
+    width: 300px;
+}
+
+
 /* ------------Breakpoints (responsive)---------------------*/
 @media (max-width: 320px) {
     .px-5 {
@@ -427,7 +511,7 @@ html {
 
 @media (max-width: 992px) {
     #ae-informasi .info-image {
-        width: 50%;
+        width: 100%;
     }
     .detail-information-text {
         margin-top: 15px;
@@ -887,6 +971,10 @@ html {
     padding-top: 3rem;
 }
 
+.content-ae-informasi{
+    min-height: 100vh;
+}
+
 /*----------------------scroll up--------------------------*/
 #myBtn {
     background-color: #028784;
@@ -1297,6 +1385,15 @@ html {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+@media (max-width: 990px){
+    .landing-page-ae-informasi a, .landing-page-ae-informasi img{
+        width: 100%;
+    }
+    .landing-page-ae-informasi img{
+        height: 100% !important;
+    }
+}
+
 #ae-pustaka .subject-image {
     max-width: 100%; /* Ensures the image scales proportionally */
     height: auto; /* Keeps the height proportional */
@@ -1309,21 +1406,34 @@ html {
 }
 
 #ae-informasi a {
-    padding: 0;
-    margin-top: 20px;
+    padding: 10px 5px;
+    /* margin-top: 20px; */
     margin-left: 10px;
+    border-top: 1px solid slategray;
+}
+
+@media (max-width: 576px){
+    #ae-informasi a{
+    margin-left: 0px;
+    }
 }
 
 #ae-informasi .info-box {
-    background-color: white;
+    /* background-color: white; */
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Efek bayangan */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transisi untuk hover */
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  */
+    /* transition: transform 0.3s ease, box-shadow 0.3s ease; Transisi untuk hover */
     text-align: left;
     display: flex;
     flex-direction: column;
-    height: 100%; /* Mengatur tinggi card untuk memudahkan alignment */
+    height: 400px; /* Mengatur tinggi card untuk memudahkan alignment */
+}
+
+@media (max-width: 576px){
+    #ae-informasi .info-box {
+        padding: 0px;
+    }
 }
 
 #ae-informasi .img-box {
@@ -1334,17 +1444,60 @@ html {
     overflow: hidden; /* Menyembunyikan bagian gambar yang meluap */
 }
 
+@media (max-width: 990px){
+    #ae-informasi .img-box{
+        height: 300px;
+    }
+}
+
 #ae-informasi .info-image {
-    max-width: 100%;
-    max-height: 100%;
+    width: 300px;
+    height: 300px;
     object-fit: contain; /* Menjaga gambar tetap utuh tanpa terpotong */
-    border-radius: 10px;
+    /* border-radius: 10px; */
+}
+
+@media (max-width:990px){
+    #ae-informasi .info-image{
+    width: 100%;
+    object-fit: cover; /* Menjaga gambar tetap utuh tanpa terpotong */
+    }
+}
+
+#ae-informasi .input-search{
+    width: 300px;
+}
+
+
+#ae-informasi .search-input:focus{
+    border-color: #028784 !important;
+    box-shadow: none;
+}
+
+#ae-informasi .search-button{
+    border-color: #028784;
+}
+
+#ae-informasi .search-button:hover{
+    border-color: transparent;
+}
+
+@media (max-width: 990px){
+    #ae-informasi .search-text{
+        width: 60%;
+    }
+}
+
+@media (max-width: 576px){
+    #ae-informasi .search-text{
+        width: 100%;
+    }
 }
 
 
 #ae-informasi .info-box:hover {
-    transform: translateY(-5px); /* Efek hover naik */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Efek bayangan lebih gelap saat hover */
+    /* transform: translateY(-5px); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  */
 }
 
 #ae-informasi .info-date {
@@ -1356,6 +1509,7 @@ html {
     font-weight: bold;
     color: #212529;
     margin: 0;
+    font-size: 24px;
 }
 
 #ae-informasi .info-button {

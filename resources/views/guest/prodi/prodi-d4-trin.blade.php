@@ -27,7 +27,7 @@
         </div>
         <div class="container book-info text-black">
             <div class="row mt-4">
-                <div class="col-12 ps-5 pe-5">
+                <div class="col-12 px-3">
                     <div class="p-3 mb-4 text-dark rounded">
                         <div class="card-body text-start description-card">
                             <h3 class="card-title fw-bold mb-4">D4 Teknologi Rekayasa Informatika Industri</h3>
@@ -120,3 +120,26 @@
 </div>
 <!--Container Main end-->
 @endsection
+@push('scripts')
+    <script>
+            // Ambil elemen header dan tombol
+        var header = document.getElementById('header');
+        var mybutton = document.getElementById('myBtn');
+
+        // Fungsi untuk menangani scroll
+        function handleScroll() {
+            var scroll = window.scrollY; // Ambil posisi scroll
+
+            if (scroll > 20) {
+                mybutton.style.display = "block"; // Tampilkan tombol
+                header.classList.add('bg-light'); // Tambahkan class bg-light
+            } else {
+                mybutton.style.display = "none"; // Sembunyikan tombol
+                header.classList.remove('bg-light'); // Hapus class bg-light
+            }
+        }
+
+        // Tambahkan event listener untuk scroll
+        window.addEventListener('scroll', handleScroll);
+    </script>
+@endpush

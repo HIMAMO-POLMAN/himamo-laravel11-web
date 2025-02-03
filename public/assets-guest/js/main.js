@@ -97,12 +97,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 //ambil icon sidebar 
 var nav_home = document.querySelector('.nav_list a:nth-child(1)');
-var nav_about = document.querySelector('.nav_list a:nth-child(2)');
-var nav_history = document.querySelector('.nav_list a:nth-child(3)');
-var nav_divisi = document.querySelector('.nav_list a:nth-child(4)');
-var nav_leader = document.querySelector('.nav_list a:nth-child(5)');
-var nav_aepustaka = document.querySelector('.nav_list a:nth-child(6)');
-var nav_aeinformasi = document.querySelector('.nav_list a:nth-child(7)');
+var nav_aeinformasi = document.querySelector('.nav_list a:nth-child(2)');
+var nav_aepustaka = document.querySelector('.nav_list a:nth-child(3)');
+var nav_about = document.querySelector('.nav_list a:nth-child(4)');
+var nav_history = document.querySelector('.nav_list a:nth-child(5)');
+var nav_divisi = document.querySelector('.nav_list a:nth-child(6)');
+var nav_leader = document.querySelector('.nav_list a:nth-child(7)');
 
 //ambil height dari setiaps section
 var home_value = (document.querySelector('section#home .carousel').clientHeight) - 100;
@@ -211,7 +211,6 @@ $(document).ready(function () {
         }
     });
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
     // ++++++++++++++++++++++++++++++++++++++++++saat scroll lakukan++++++++++++++++++++++++++++++++++++++++++++
     $(window).scroll(function () {
         var scroll = $(window).scrollTop();
@@ -230,69 +229,65 @@ $(document).ready(function () {
             nav_aeinformasi.classList.remove('active');
         }
 
-        if (scroll > home_value && scroll < (home_value + about_value)) {
-            nav_about.classList.add('active');
+        if (scroll > home_value && scroll < (home_value + aeinformasi_value)) {
+            nav_about.classList.remove('active');
             nav_home.classList.remove('active');
             nav_history.classList.remove('active');
+            nav_divisi.classList.remove('active');
+            nav_leader.classList.remove('active');
+            nav_aepustaka.classList.remove('active');
+            nav_aeinformasi.classList.add('active');
+        } else if (scroll > (home_value + aeinformasi_value) &&
+            scroll < (home_value + aeinformasi_value + aepustaka_value)) {
+            nav_history.classList.remove('active');
+            nav_about.classList.remove('active');
+            nav_home.classList.remove('active');
+            nav_divisi.classList.remove('active');
+            nav_leader.classList.remove('active');
+            nav_aepustaka.classList.add('active');
+            nav_aeinformasi.classList.remove('active');
+        } else if (scroll > (home_value + aeinformasi_value + aepustaka_value) &&
+            scroll < (home_value + aeinformasi_value + aepustaka_value + about_value )) {
+            nav_history.classList.remove('active');
+            nav_about.classList.add('active');
+            nav_home.classList.remove('active');
             nav_divisi.classList.remove('active');
             nav_leader.classList.remove('active');
          
             nav_aepustaka.classList.remove('active');
             nav_aeinformasi.classList.remove('active');
-        } else if (scroll > (home_value + about_value) &&
-            scroll < (home_value + about_value + history_value)) {
+        } else if (scroll > (home_value + aeinformasi_value + aepustaka_value + about_value ) &&
+            scroll < (home_value + aeinformasi_value + aepustaka_value + about_value + history_value)) {
             nav_history.classList.add('active');
             nav_about.classList.remove('active');
             nav_home.classList.remove('active');
             nav_divisi.classList.remove('active');
             nav_leader.classList.remove('active');
-         
-            nav_aepustaka.classList.remove('active');
-            nav_aeinformasi.classList.remove('active');
-        } else if (scroll > (home_value + about_value + history_value) &&
-            scroll < (home_value + about_value + history_value + division_value)) {
-            nav_history.classList.remove('active');
-            nav_about.classList.remove('active');
-            nav_home.classList.remove('active');
-            nav_divisi.classList.add('active');
-            nav_leader.classList.remove('active');
-         
-            nav_aepustaka.classList.remove('active');
-            nav_aeinformasi.classList.remove('active');
-        } else if (scroll > (home_value + about_value + history_value + division_value) &&
-            scroll < (home_value + about_value + history_value + division_value + leader_value )) {
-            nav_history.classList.remove('active');
-            nav_about.classList.remove('active');
-            nav_home.classList.remove('active');
-            nav_divisi.classList.remove('active');
-            nav_leader.classList.add('active');
-         
             nav_aepustaka.classList.remove('active');
             nav_aeinformasi.classList.remove('active');
         }
-    else if (scroll > (home_value + about_value + history_value + division_value + leader_value ) &&
-        scroll < (home_value + about_value + history_value + division_value + leader_value  + aepustaka_value)) {
+    else if (scroll > (home_value + aeinformasi_value + aepustaka_value + about_value + history_value) &&
+        scroll < (home_value + aeinformasi_value + aepustaka_value + about_value + history_value + division_value)) {
         nav_history.classList.remove('active');
         nav_about.classList.remove('active');
         nav_home.classList.remove('active');
-        nav_divisi.classList.remove('active');
-        nav_leader.classList.remove('active');
-     
-        nav_aepustaka.classList.add('active');
-        nav_aeinformasi.classList.remove('active');
-    }
-    else if (scroll > (home_value + about_value + history_value + division_value + leader_value  + aepustaka_value) &&
-        scroll < (home_value + about_value + history_value + division_value + leader_value  + aepustaka_value + aeinformasi_value)) {
-        nav_history.classList.remove('active');
-        nav_about.classList.remove('active');
-        nav_home.classList.remove('active');
-        nav_divisi.classList.remove('active');
+        nav_divisi.classList.add('active');
         nav_leader.classList.remove('active');
      
         nav_aepustaka.classList.remove('active');
-        nav_aeinformasi.classList.add('active');
+        nav_aeinformasi.classList.remove('active');
     }
-         else if (scroll > (home_value + about_value + history_value + division_value + leader_value  + aepustaka_value + aeinformasi_value)) {
+    else if (scroll > (home_value + aeinformasi_value + aepustaka_value + about_value + history_value + division_value) &&
+        scroll < (home_value + aeinformasi_value + aepustaka_value + about_value + history_value + division_value + leader_value)) {
+        nav_history.classList.remove('active');
+        nav_about.classList.remove('active');
+        nav_home.classList.remove('active');
+        nav_divisi.classList.remove('active');
+        nav_leader.classList.add('active');
+        nav_aepustaka.classList.remove('active');
+        nav_aeinformasi.classList.remove('active');
+    }
+         else if (scroll > (home_value + aeinformasi_value + aepustaka_value + about_value + history_value + division_value + leader_value)) {
             nav_history.classList.remove('active');
             nav_about.classList.remove('active');
             nav_home.classList.remove('active');
@@ -316,6 +311,8 @@ document.getElementById("darkSwitch").addEventListener("click", function () {
 });
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
 
 // ++++++++++++++++++++++++++++++++++++++++++counter up function++++++++++++++++++++++++++++++++++++++++++++
 

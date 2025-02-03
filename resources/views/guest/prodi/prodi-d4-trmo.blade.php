@@ -21,13 +21,13 @@
         <div class="container mt-4">
             <div class="row">
                 <div class="col-12">
-                    <img src="{{ asset('assets-guest/img/img-prodi-trmo.jpg') }}" alt="Building" class="img-cover img-fluid rounded-5 mx-auto d-block">
+                    <img src="{{ asset('assets-guest/img/img-prodi-trmo.jpg') }}" alt="Building" width="600px" class="img-cover img-fluid rounded-5 mx-auto d-block">
                 </div>
             </div>
         </div>
         <div class="container book-info text-black">
             <div class="row mt-4">
-                <div class="col-12 ps-5 pe-5">
+                <div class="col-12 px-3">
                     <div class="p-3 mb-4 text-dark rounded">
                         <div class="card-body text-start description-card">
                             <h3 class="card-title fw-bold mb-4">D4 Teknologi Rekayasa Mekatronika </h3>
@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="col-12 col-md-6 mt-4 col-lg text-center">
                                     <div class="subject-box">
-                                        <a href="prodi-d4-trmo" class="text-dark">
+                                        <a href="prodi-d4-trin" class="text-dark">
                                         <img src="{{ asset('assets-guest/img/trin_subject.svg') }}" alt="Robotika" class="subject-image" >
                                             <p class="subject-name">D4 Prodi<br>Teknologi Rekayasa Informatika Industri</p>
                                         </a>
@@ -106,3 +106,27 @@
 </div>
 <!--Container Main end-->
 @endsection
+
+@push('scripts')
+    <script>
+            // Ambil elemen header dan tombol
+        var header = document.getElementById('header');
+        var mybutton = document.getElementById('myBtn');
+
+        // Fungsi untuk menangani scroll
+        function handleScroll() {
+            var scroll = window.scrollY; // Ambil posisi scroll
+
+            if (scroll > 20) {
+                mybutton.style.display = "block"; // Tampilkan tombol
+                header.classList.add('bg-light'); // Tambahkan class bg-light
+            } else {
+                mybutton.style.display = "none"; // Sembunyikan tombol
+                header.classList.remove('bg-light'); // Hapus class bg-light
+            }
+        }
+
+        // Tambahkan event listener untuk scroll
+        window.addEventListener('scroll', handleScroll);
+    </script>
+@endpush
