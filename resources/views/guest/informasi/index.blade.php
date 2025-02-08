@@ -34,18 +34,18 @@
                             Subjek/Pencarian)
                         </div>
                         <div class="sort-by d-flex flex-column flex-lg-row align-items-left align-items-lg-center">
-                            <div class="sort-by-text text-dark">Pilih berdasarkan :</div>
+                            <div class="sort-by-text text-dark mb-2">Pilih berdasarkan :</div>
                             <div class="dropdown">
-                                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
+                                <button class="btn dropdown-toggle bg-light text-dark" type="button" id="dropdownMenuButton"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     Paling Relevan <i class="fas fa-chevron-down"></i>
                                 </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#"><li>Paling Relevan</li></a>
-                                    <a class="dropdown-item" href="#"><li>Terbaru</li></a>
-                                    <a class="dropdown-item" href="#"><li>Sering Dibaca</li></a>
-                                    <a class="dropdown-item" href="#"><li>Tahun terbit (terbaru)</li></a>
-                                    <a class="dropdown-item" href="#"><li>Tahun terbit (terlama)</li></a>
+                                <ul class="dropdown-menu bg-light" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item text-dark" href="#"><li>Paling Relevan</li></a>
+                                    <a class="dropdown-item text-dark" href="#"><li>Terbaru</li></a>
+                                    <a class="dropdown-item text-dark" href="#"><li>Sering Dibaca</li></a>
+                                    <a class="dropdown-item text-dark" href="#"><li>Tahun terbit (terbaru)</li></a>
+                                    <a class="dropdown-item text-dark" href="#"><li>Tahun terbit (terlama)</li></a>
                                 </ul>
                             </div>
                         </div>

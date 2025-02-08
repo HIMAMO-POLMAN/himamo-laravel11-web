@@ -175,6 +175,13 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
+        @media (max-width:768px){
+            #ae-pustaka .book-card > .flex-row , #ae-pustaka .book-card > .align-self-end, #ae-pustaka .book-card .read-button{
+                width: 100%
+            }
+            
+        }
+
         /* Book Cover */
         #ae-pustaka .book-cover {
             background-color: #e9ecef;
@@ -236,6 +243,12 @@
             align-self: flex-end;
             width: 96px;
             /* Align the button to the right */
+        }
+
+        @media (max-width:768px){
+            #ae-pustaka .read-button {
+                margin-top: 30px
+            }
         }
 
         #ae-pustaka .read-button:hover {
@@ -442,49 +455,65 @@
                 <!-- Books Section -->
                 <!-- Loop through books and create cards dynamically -->
                 <div class="book-cards-container">
-                    <div class="book-card bg-light text-dark">
-                        <div class="book-cover">COVER BUKU</div>
-                        <div class="book-info">
-                            <div class="book-title"><a class="text-dark" href="book-detail.html">Judul Buku</a></div>
-                            <div class="book-details text-dark">Penulis : Lorem Ipsum</div>
-                            <div class="book-details text-dark">Jenis Koleksi : Lorem Ipsum</div>
-                            <div class="book-details text-dark">Jumlah Hal : 1XX</div>
-                            <div class="book-details text-dark">Tahun Terbit : 20XX</div>
+                    <div class="book-card bg-light text-dark d-flex flex-column flex-md-row">
+                        <div class="d-flex flex-row">
+                            <div class="book-cover">COVER BUKU</div>
+                            <div class="book-info">
+                                <div class="book-title"><a class="text-dark" href="book-detail.html">Judul Buku</a></div>
+                                <div class="book-details text-dark">Penulis : Lorem Ipsum</div>
+                                <div class="book-details text-dark">Jenis Koleksi : Lorem Ipsum</div>
+                                <div class="book-details text-dark">Jumlah Hal : 1XX</div>
+                                <div class="book-details text-dark">Tahun Terbit : 20XX</div>
+                            </div>
                         </div>
-                        <a href="#" class="btn btn-primary read-button">Baca</a>
+                        <div class="align-self-end">
+                            <a href="#" class="btn btn-primary read-button">Baca</a>
+                        </div>
                     </div>
-                    <div class="book-card bg-light">
-                        <div class="book-cover">COVER BUKU</div>
-                        <div class="book-info">
-                            <div class="book-title"><a href="book-detail.html" class="text-dark">Judul Buku</a></div>
-                            <div class="book-details text-dark">Penulis : Lorem Ipsum</div>
-                            <div class="book-details text-dark">Jenis Koleksi : Lorem Ipsum</div>
-                            <div class="book-details text-dark">Jumlah Hal : 1XX</div>
-                            <div class="book-details text-dark">Tahun Terbit : 20XX</div>
+                    <div class="book-card bg-light text-dark d-flex flex-column flex-md-row">
+                        <div class="d-flex flex-row">
+                            <div class="book-cover">COVER BUKU</div>
+                            <div class="book-info">
+                                <div class="book-title"><a class="text-dark" href="book-detail.html">Judul Buku</a></div>
+                                <div class="book-details text-dark">Penulis : Lorem Ipsum</div>
+                                <div class="book-details text-dark">Jenis Koleksi : Lorem Ipsum</div>
+                                <div class="book-details text-dark">Jumlah Hal : 1XX</div>
+                                <div class="book-details text-dark">Tahun Terbit : 20XX</div>
+                            </div>
                         </div>
-                        <a href="#" class="btn btn-primary read-button">Baca</a>
+                        <div class="align-self-end">
+                            <a href="#" class="btn btn-primary read-button">Baca</a>
+                        </div>
                     </div>
-                    <div class="book-card bg-light">
-                        <div class="book-cover">COVER BUKU</div>
-                        <div class="book-info">
-                            <div class="book-title"><a href="book-detail.html" class="text-dark">Judul Buku</a></div>
-                            <div class="book-details text-dark">Penulis : Lorem Ipsum</div>
-                            <div class="book-details text-dark">Jenis Koleksi : Lorem Ipsum</div>
-                            <div class="book-details text-dark">Jumlah Hal : 1XX</div>
-                            <div class="book-details text-dark">Tahun Terbit : 20XX</div>
+                    <div class="book-card bg-light text-dark d-flex flex-column flex-md-row">
+                        <div class="d-flex flex-row">
+                            <div class="book-cover">COVER BUKU</div>
+                            <div class="book-info">
+                                <div class="book-title"><a class="text-dark" href="book-detail.html">Judul Buku</a></div>
+                                <div class="book-details text-dark">Penulis : Lorem Ipsum</div>
+                                <div class="book-details text-dark">Jenis Koleksi : Lorem Ipsum</div>
+                                <div class="book-details text-dark">Jumlah Hal : 1XX</div>
+                                <div class="book-details text-dark">Tahun Terbit : 20XX</div>
+                            </div>
                         </div>
-                        <a href="#" class="btn btn-primary read-button">Baca</a>
+                        <div class="align-self-end">
+                            <a href="#" class="btn btn-primary read-button">Baca</a>
+                        </div>
                     </div>
-                    <div class="book-card bg-light">
-                        <div class="book-cover">COVER BUKU</div>
-                        <div class="book-info">
-                            <div class="book-title"><a href="book-detail.html" class="text-dark">Judul Buku</a></div>
-                            <div class="book-details text-dark">Penulis : Lorem Ipsum</div>
-                            <div class="book-details text-dark">Jenis Koleksi : Lorem Ipsum</div>
-                            <div class="book-details text-dark">Jumlah Hal : 1XX</div>
-                            <div class="book-details text-dark">Tahun Terbit : 20XX</div>
+                    <div class="book-card bg-light text-dark d-flex flex-column flex-md-row">
+                        <div class="d-flex flex-row">
+                            <div class="book-cover">COVER BUKU</div>
+                            <div class="book-info">
+                                <div class="book-title"><a class="text-dark" href="book-detail.html">Judul Buku</a></div>
+                                <div class="book-details text-dark">Penulis : Lorem Ipsum</div>
+                                <div class="book-details text-dark">Jenis Koleksi : Lorem Ipsum</div>
+                                <div class="book-details text-dark">Jumlah Hal : 1XX</div>
+                                <div class="book-details text-dark">Tahun Terbit : 20XX</div>
+                            </div>
                         </div>
-                        <a href="#" class="btn btn-primary read-button">Baca</a>
+                        <div class="align-self-end">
+                            <a href="#" class="btn btn-primary read-button">Baca</a>
+                        </div>
                     </div>
                 </div>
             </div>
