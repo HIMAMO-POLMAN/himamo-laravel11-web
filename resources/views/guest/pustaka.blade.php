@@ -120,38 +120,32 @@
             font-weight: bold;
         }
 
-        #ae-pustaka .search-info .dropdown {
-            margin-left: 10px;
-        }
 
-        #ae-pustaka .dropdown-toggle {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            /* Agar ikon berada di ujung kanan */
-            background-color: white;
-            color: black;
-            border-radius: 5px;
-            padding: 5px 10px;
-            border: 1px solid #dee2e6;
-        }
+        .dropdown .dropdown-toggle{
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: 1px solid #dee2e6;
+}
 
-        .dropdown-toggle i {
-            margin-left: 10px;
-            /* Agar panah berada di sisi paling kanan */
-        }
+.dropdown .dropdown-toggle::after {
+    display: none; /* Menyembunyikan panah dropdown bawaan */
+}
 
-        /* Menghapus panah bawaan Bootstrap */
-        .dropdown-toggle::after {
-            display: none !important;
-        }
+.dropdown .dropdown-toggle i{
+    margin-left: 12px;
+}
 
-        #ae-pustaka .dropdown-menu {
-            background-color: #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
+@media (max-width:576px){
+    .dropdown .dropdown-menu{
+        width: 100%;
+    }
+}
         /* Book Card */
         #ae-pustaka .book-card {
             background-color: rgba(255, 255, 255, 0.8);
@@ -432,19 +426,19 @@
                             <div class="text-dark search-text">Ditemukan 1XX pencarian Anda melalui kata kunci: (Nama
                                 Subjek/Pencarian)
                             </div>
-                            <div class="sort-by">
-                                <div class="sort-by-text text-dark">Sort By</div>
+                            <div class="sort-by d-flex flex-column flex-lg-row align-items-left align-items-lg-center">
+                                <div class="sort-by-text text-dark mb-2">Pilih berdasarkan :</div>
                                 <div class="dropdown">
-                                    <button class="btn bg-light text-dark dropdown-toggle" type="button" id="dropdownMenuButton"
+                                    <button class="btn dropdown-toggle bg-light text-dark" type="button" id="dropdownMenuButton"
                                         data-bs-toggle="dropdown" aria-expanded="false">
                                         Paling Relevan <i class="fas fa-chevron-down"></i>
                                     </button>
-                                    <ul class="dropdown-menu bg-light text-dark" aria-labelledby="dropdownMenuButton">
-                                        <li><a class="dropdown-item text-dark" href="#">Paling Relevan</a></li>
-                                        <li><a class="dropdown-item text-dark" href="#">Terbaru</a></li>
-                                        <li><a class="dropdown-item text-dark" href="#">Sering Dibaca</a></li>
-                                        <li><a class="dropdown-item text-dark" href="#">Tahun terbit (terbaru)</a></li>
-                                        <li><a class="dropdown-item text-dark" href="#">Tahun terbit (terlama)</a></li>
+                                    <ul class="dropdown-menu bg-light" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item text-dark" href="#"><li>Paling Relevan</li></a>
+                                        <a class="dropdown-item text-dark" href="#"><li>Terbaru</li></a>
+                                        <a class="dropdown-item text-dark" href="#"><li>Sering Dibaca</li></a>
+                                        <a class="dropdown-item text-dark" href="#"><li>Tahun terbit (terbaru)</li></a>
+                                        <a class="dropdown-item text-dark" href="#"><li>Tahun terbit (terlama)</li></a>
                                     </ul>
                                 </div>
                             </div>
@@ -661,26 +655,26 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
         </script>
     <script>
-        //Get the button:
-        mybutton = document.getElementById("myBtn");
-        // When the user clicks on the button, scroll to the top of the document
+        // //Get the button:
+        // mybutton = document.getElementById("myBtn");
+        // // When the user clicks on the button, scroll to the top of the document
 
-        function topFunction() {
-            document.body.scrollTop = 0; // For Safari
-            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-        }
+        // function topFunction() {
+        //     document.body.scrollTop = 0; // For Safari
+        //     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        // }
 
-        //scroll function saat scroll lakukan...
-        $(window).scroll(function () {
-            var scroll = $(window).scrollTop();
-            if (scroll > 20) {
-                mybutton.style.display = "block";
-                document.getElementById("header").classList.add('bg-light');
-            } else {
-                mybutton.style.display = "none";
-                document.getElementById("header").classList.remove('bg-light');
-            }
-        })
+        // //scroll function saat scroll lakukan...
+        // $(window).scroll(function () {
+        //     var scroll = $(window).scrollTop();
+        //     if (scroll > 20) {
+        //         mybutton.style.display = "block";
+        //         document.getElementById("header").classList.add('bg-light');
+        //     } else {
+        //         mybutton.style.display = "none";
+        //         document.getElementById("header").classList.remove('bg-light');
+        //     }
+        // })
     </script>
     <script>
         //switch 2 mode
@@ -716,6 +710,7 @@
     // Menangani klik pada tombol dropdown
     dropdownButton.addEventListener('click', function(event) {
         event.stopPropagation(); // Mencegah event bubbling
+        dropdownButton.classList.toggle('show');
         dropdownMenu.classList.toggle('show'); // Tambahkan atau hapus kelas 'show'
     });
 
@@ -726,6 +721,14 @@
         }
     });
 });
+    </script>
+    <script>
+        $(window).scroll(function () {
+        var scroll = $(window).scrollTop();
+        if (scroll > 20) {
+            document.getElementById("header").classList.add('bg-light');
+        } else {
+            document.getElementById("header").classList.remove('bg-light');}});
     </script>
 {{-- </body>
 

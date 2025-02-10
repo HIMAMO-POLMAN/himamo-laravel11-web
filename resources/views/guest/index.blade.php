@@ -202,7 +202,7 @@
                         </div>
                     </div>
                     <div class="row pt-3 subject-list">
-                        <a href="/prodi-d4-tro" class=" col-lg col-md-6 col-12 mt-2" style="text-decoration: none;">
+                        <a href="/prodi-d4-tro" class=" col-lg col-md-12 col-12 mt-2" style="text-decoration: none;">
                             <div class=" text-center">
                             <div class="subject-box bg-light shadow-sm">
                                 <img src="{{ asset('assets-guest/img/tro_subject.svg') }}" alt="Robotika" class="subject-image" >
@@ -210,7 +210,7 @@
                             </div>
                         </div>
                         </a>
-                        <a href="/prodi-d4-trmo" class="col-12 col-lg col-md-6 mt-2" style="text-decoration: none;">
+                        <a href="/prodi-d4-trmo" class="col-12 col-lg col-md-12 mt-2" style="text-decoration: none;">
                             <div class=" text-center">
                             <div class="subject-box bg-light shadow-sm ">
                                 <img src="{{ asset('assets-guest/img/trmo_subject.svg') }}" alt="Robotika" class="subject-image" >
@@ -218,7 +218,7 @@
                             </div>
                         </div>
                         </a>
-                        <a href="prodi-d4-trin" class="col-12 col-lg col-md-6 mt-2" style="text-decoration: none;">
+                        <a href="prodi-d4-trin" class="col-12 col-lg col-md-12 mt-2" style="text-decoration: none;">
                             <div class=" text-center">
                                 <div class="subject-box bg-light shadow-sm " >
                                     <img src="{{ asset('assets-guest/img/trin_subject.svg') }}" alt="Robotika" class="subject-image" >
@@ -226,7 +226,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="prodi-d2-trmo" class="col-lg col-12 col-md-6 mt-2 " style="text-decoration: none;">
+                        <a href="prodi-d2-trmo" class="col-lg col-12 col-md-12 mt-2 " style="text-decoration: none;">
                             <div class=" text-center ">
                             <div class="subject-box bg-light shadow-sm ">
                                 <img src="{{ asset('assets-guest/img/trmo-d2_subject.svg') }}" alt="Robotika" class="subject-image" >
