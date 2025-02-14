@@ -494,6 +494,13 @@ html {
     width: 300px;
 }
 
+@media (max-width: 992px){
+    #about .subject-list{
+        gap: 20px;
+    }
+}
+
+
 
 /* ------------Breakpoints (responsive)---------------------*/
 @media (max-width: 320px) {
@@ -865,6 +872,8 @@ html {
     #about .container .col-6 {
         width: 25%;
     }
+
+    
 
     .pideo {
         width: 100%;

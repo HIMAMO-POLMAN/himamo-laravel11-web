@@ -21,6 +21,13 @@ Route::get('/prodi-d4-tro', [HomeController::class, 'd4otomasi'])->name('prodi-d
 Route::get('/prodi-d4-trin', [HomeController::class, 'd4trin'])->name('prodi-d4-trin');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 
+
+Route::get('/ae-pustaka', function () {
+    return view('guest.pustaka');
+});
+Route::get('/ae-pustaka/detail', function () {
+    return view('guest.book-detail');
+});
 // Rute untuk guest informasi
 Route::get('/ae-informasi', [guestInformasiController::class, 'informasi'])->name('guest.information.index');
 Route::get('/ae-informasi/detail/{informasi:slug}', [guestInformasiController::class, 'show'])->name('guest.information.detail');

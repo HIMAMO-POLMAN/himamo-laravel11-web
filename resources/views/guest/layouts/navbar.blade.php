@@ -1,7 +1,7 @@
-<div class="bg-light" id="loading">
+{{-- <div class="bg-light" id="loading">
     <img class="heartbeat" src="{{ asset('assets-guest/img/load.png') }}" alt="Loading">
     <div id="bruh"></div>
-</div>
+</div> --}}
 
 <header class="header" id="header">
     <div class="header_toggle">
