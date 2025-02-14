@@ -1408,7 +1408,7 @@ html {
 #ae-informasi a {
     padding: 10px 5px;
     /* margin-top: 20px; */
-    margin-left: 10px;
+    /* margin-left: 10px; */
     border-top: 1px solid slategray;
 }
 
@@ -1442,6 +1442,7 @@ html {
     align-items: center; /* Vertikal center gambar */
     justify-content: center; /* Horizontal center gambar */
     overflow: hidden; /* Menyembunyikan bagian gambar yang meluap */
+    border-radius: 10px;
 }
 
 @media (max-width: 990px){
@@ -1454,7 +1455,7 @@ html {
     width: 300px;
     height: 300px;
     object-fit: contain; /* Menjaga gambar tetap utuh tanpa terpotong */
-    /* border-radius: 10px; */
+    /* border-radius: 25px; */
 }
 
 @media (max-width:990px){
@@ -1503,13 +1504,14 @@ html {
 #ae-informasi .info-date {
     color: #212529;
     margin: 0;
+    padding: 0;
 }
 
 #ae-informasi .info-title {
     font-weight: bold;
     color: #212529;
     margin: 0;
-    font-size: 24px;
+    font-size: 30px;
 }
 
 #ae-informasi .info-button {
