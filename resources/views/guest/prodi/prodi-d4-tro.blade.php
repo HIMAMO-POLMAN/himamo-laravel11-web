@@ -13,7 +13,7 @@
                     <h2 class="text-center text-dark text-black fw-bold py-4">D4 Teknologi Rekayasa Otomasi</h2>
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#" class="text-dark">Home</a></li>
                             <li class="breadcrumb-item active text-dark" aria-current="page">D4 Teknologi Rekayasa Otomasi</li>
                         </ol>
                     </nav>

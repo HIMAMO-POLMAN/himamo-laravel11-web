@@ -1436,7 +1436,7 @@ html {
     text-align: left;
     display: flex;
     flex-direction: column;
-    height: 400px; /* Mengatur tinggi card untuk memudahkan alignment */
+    height: 350px; /* Mengatur tinggi card untuk memudahkan alignment */
 }
 
 @media (max-width: 576px){

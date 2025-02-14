@@ -12,7 +12,7 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb justify-content-center">
                                 <li class="breadcrumb-item"><a href="#" class="text-dark">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">D2 Jalur Cepat Teknik Mekatronika</li>
+                                <li class="breadcrumb-item active text-dark" aria-current="page">D2 Jalur Cepat Teknik Mekatronika</li>
                             </ol>
                         </nav>
                     </div>
