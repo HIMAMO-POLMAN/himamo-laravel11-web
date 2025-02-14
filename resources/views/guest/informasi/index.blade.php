@@ -61,9 +61,9 @@
                                         <img src="{{ asset('storage/informasi/' . $item->image) }}" alt="{{ $item->title }}"
                                             class="info-image mx-auto" loading="lazy">
                                     </div>
-                                    <p class="info-date text-dark">{{ date('d/m/Y', strtotime($item->created_at)) }}</p>
                                     <p class="info-title text-dark mt-2">{{ $item->title }}</p>
-                                    <p>{{ $item->excerpt }}</p>
+                                    <!-- <p>{{ $item->excerpt }}</p> -->
+                                    <p class="info-date text-dark">{{ date('d/m/Y', strtotime($item->created_at)) }}</p>
                                 </div>
                             </a>
                         </div>
