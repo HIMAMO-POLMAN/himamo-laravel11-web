@@ -23,6 +23,14 @@ Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/ae-informasi', [GuestInformationController::class, 'index'])->name('guest.information.index');
 Route::get('/ae-informasi/detail/{informasi:slug}', [GuestInformationController::class, 'show'])->name('guest.information.detail');
 
+Route::get('/library', function () {
+    return view('guest.library.index');
+});
+
+Route::get('/library/details', function () {
+    return view('guest.library.detail');
+});
+
 Route::middleware('auth-check')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::delete('/profile-delete', [ProfileController::class, 'destroy'])->name('profile.destroy');

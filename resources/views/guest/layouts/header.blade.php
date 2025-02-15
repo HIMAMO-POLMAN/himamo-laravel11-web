@@ -36,8 +36,6 @@
         <title>HIMAMO | Himpunan Mahasiswa Otomasi Manufaktur & Mekatronika</title>
     @endif
 
-
-
     {{-- Custom CSS --}}
     <link href="{{ asset('assets-guest/css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets-guest/css/dark-mode.css') }}">
@@ -81,5 +79,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     {{-- Scripts --}}
+    @once
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @endonce
 </head>

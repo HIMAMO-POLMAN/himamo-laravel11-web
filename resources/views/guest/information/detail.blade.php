@@ -3,17 +3,6 @@
 @section('content')
 <div class="wrap bg-light detail-informasi-body">
     <section>
-        <div class="parallax3">
-            <div class="container pt-4 pb-5">
-                <div class="row">
-                    <div class="col pt-4">
-                        <div class="row slider-text text-center">
-                            <h1 class="pt-5 quote"><span>AE</span> Informasi</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="container">
             <div class="mb-5 mt-5">
                 <p>Kategori: {{ $informasi->kategori_informasi->name }}</p>

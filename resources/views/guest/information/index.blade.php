@@ -1,7 +1,7 @@
 @extends('guest.layouts.app')
 @section('content')
     <div class="wrap bg-light">
-        <div class="parallax3">
+        <div class="contain-ae-informasi">
             <div class="container pt-4 pb-5">
                 <div class="row">
                     <div class="col pt-4">
