@@ -17,18 +17,12 @@ class UserSeeder extends Seeder
             [
                 "username" => "Divisi Informasi",
                 "name" => "HIMAMO",
-                "email" => "divisiinformasi2024@gmail.com",
+                "email" => "informasihimamo@gmail.com",
                 "email_verified_at" => "1995-07-17 10:23:34",
-                "password" => bcrypt("divisiinformasi2024"),
+                "password" => bcrypt("informasiMO24"),
                 "role" => "admin",
-            ],
-            [
-                "username" => "MO 2300811",
-                "name" => "Diaz Adriansyah",
-                "email" => "diazadr.dev@gmail.com",
-                "email_verified_at" => now(),
-                "password" => bcrypt("2300811"),
-                "role" => "staff",
+                'created_at' => now(),
+                'updated_at' => now(),
             ]
         ];
 

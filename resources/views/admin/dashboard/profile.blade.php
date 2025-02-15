@@ -4,8 +4,29 @@
 @section('keterangan', 'Pengaturan Profil')
 @section('content')
 
+    @if ($errors->updatePassword->any())
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <ul>
+                @foreach ($errors->updatePassword->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
 
-    <!-- Content -->
+    @if ($errors->updateProfileInformation->any())
+
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <ul>
+                @foreach ($errors->updateProfileInformation->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
     <div class="row">
         <div class="col-md-12">
             <ul class="nav nav-pills flex-column flex-md-row mb-3">
@@ -15,7 +36,6 @@
             </ul>
             <div class="card mb-4">
                 <h5 class="card-header">Detail Profil</h5>
-                <!-- Account -->
                 <div class="card-body">
                     <div class="d-flex align-items-start align-items-sm-center gap-4">
                         <img src="{{ asset('assets/img/avatars/img-avatar-pria.svg') }}" alt="user-avatar"
@@ -46,16 +66,13 @@
                                 readonly />
                         </div>
                     </div>
-                    <div class="mt-2">
+                    <div class="demo-inline-spacing">
                         <button type="submit" class="btn btn-primary me-2" data-bs-toggle="modal"
                             data-bs-target="#profileModal">Ubah Profil</button>
                         <button type="submit" class="btn btn-warning me-2" data-bs-toggle="modal"
                             data-bs-target="#passwordModal">Ubah Kata Sandi</button>
                     </div>
                 </div>
-                <!-- /Account -->
-
-                {{-- Edit Modal Start --}}
                 <div class="modal fade" id="profileModal" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
@@ -121,9 +138,6 @@
                         </div>
                     </div>
                 </div>
-                {{-- Edit Modal End --}}
-
-                {{-- Edit Modal Password Start --}}
                 <div class="modal fade" id="passwordModal" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
@@ -138,8 +152,8 @@
                                 <div class="modal-body">
                                     <div class="row">
                                         <div class="col mb">
-                                            <label for="html5-password-input" class="col-md-2 col-form-label">Kata Sandi
-                                                Sekarang</label>
+                                            <label for="html5-password-input" class="col-md col-form-label">Kata Sandi
+                                                Sekarang <span class="text-danger">*</span></label>
                                             <input class="form-control @error('current_password') is-invalid @enderror"
                                                 type="password" placeholder="******" id="html5-password-input"
                                                 name="current_password" />
@@ -153,7 +167,7 @@
                                     <div class="row">
                                         <div class="col mb-3">
                                             <label for="html5-password-input" class="col-md-2 col-form-label">Kata
-                                                Sandi</label>
+                                                Sandi <span class="text-danger">*</span></label>
                                             <input class="form-control @error('password') is-invalid @enderror"
                                                 type="password" placeholder="******" id="html5-password-input"
                                                 name="password" />
@@ -167,7 +181,7 @@
                                     <div class="row">
                                         <div class="col mb-3">
                                             <label for="html5-password-input" class="col-md col-form-label">Konfirmasi
-                                                Kata Sandi</label>
+                                                Kata Sandi <span class="text-danger">*</span></label>
                                             <input
                                                 class="form-control @error('password_confirmation') is-invalid @enderror"
                                                 type="password" placeholder="******" id="html5-password-input"
@@ -190,8 +204,6 @@
                         </div>
                     </div>
                 </div>
-                {{-- Edit Modal Password End --}}
-
             </div>
             <div class="card">
                 <h5 class="card-header">Hapus Akun</h5>
@@ -213,10 +225,6 @@
                         class="btn btn-danger deactivate-account">Nonaktifkan Akun</button>
                 </div>
             </div>
-
-
-
-            <!-- Modal -->
             <div class="modal fade" id="modalHapus" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-scrollable" role="document">
                     <div class="modal-content">
@@ -227,7 +235,8 @@
                         </div>
                         <div class="modal-body">
                             <p>
-                                Apakah Anda yakin ingin menghapus akun ini? Setelah akun dihapus, semua data yang terkait dengan akun Anda akan hilang secara permanen dan tidak dapat dipulihkan.
+                                Apakah Anda yakin ingin menghapus akun ini? Setelah akun dihapus, semua data yang terkait
+                                dengan akun Anda akan hilang secara permanen dan tidak dapat dipulihkan.
                             </p>
                             <p>
                                 Tindakan ini tidak dapat dibatalkan. Mohon pastikan keputusan Anda sebelum melanjutkan.
@@ -246,10 +255,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
-    </div>
-    <!-- / Content -->
 @endsection

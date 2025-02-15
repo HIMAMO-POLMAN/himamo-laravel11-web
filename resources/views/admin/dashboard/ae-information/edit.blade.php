@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('title', 'Edit AE Informasi')
-@section('card', 'Edit AE Informasi')
+@section('card', 'AE Informasi')
 @section('keterangan', 'Buat Informasi')
 @section('content')
 
@@ -16,6 +16,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
+
     <div class="d-flex card shadow p-3">
         <h5 class="card-header">Edit Informasi</h5>
         <div class="card-body">
@@ -23,18 +24,20 @@
                 enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                <div class="col mb-3">
-                    <label for="title" class="form-label">Judul</label>
-                    <input type="text" id="title" class="form-control @error('title') is-invalid @enderror"
-                        placeholder="Masukan Judul" name="title" value="{{ old('title', $informasi->title) }}" />
-                    @error('title')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="title" class="form-label">Judul</label>
+                        <input type="text" id="title" class="form-control @error('title') is-invalid @enderror"
+                            placeholder="Masukan Judul" name="title" value="{{ old('title', $informasi->title) }}" />
+                        @error('title')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
                 </div>
-                <div class="row g-2">
-                    <div class="col mb-3">
+                <div class="row">
+                    <div class="col-12 col-md-6 mb-3">
                         <label for="categories" class="form-label">Kategori Informasi</label>
                         <select name="kategori_informasi_id"
                             class="form-select  @error('kategori_informasi_id') is-invalid @enderror" id="categories"
@@ -53,7 +56,7 @@
                             </div>
                         @enderror
                     </div>
-                    <div class="col mb-3">
+                    <div class="col-12 col-md-6 mb-3">
                         <label for="image" class="form-label">Pilih Gambar</label>
                         <input class="form-control @error('image') is-invalid @enderror" type="file" id="image"
                             name="image" />
@@ -70,20 +73,25 @@
                         @endif
                     </div>
                 </div>
-                <div class="col mb-3">
-                    <label for="desc" class="form-label">Abstrak Pustaka</label>
-                    <textarea name="desc" class="form-control" id="summernote" rows="3">{{ old('desc', $informasi->desc) }}</textarea>
-                    @error('desc')
-                        <div class="text-danger">
-                            {{ $message }}
-                        </div>
-                    @enderror
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="desc" class="form-label">Abstrak Pustaka</label>
+                        <textarea name="desc" class="form-control" id="summernote" rows="3">{{ old('desc', $informasi->desc) }}</textarea>
+                        @error('desc')
+                            <div class="text-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
                 </div>
-                <a href="{{ route('ae-information.index') }}" class="btn btn-outline-secondary">
-                    Kembali
-                </a>
-                <button type="submit" class="btn btn-primary">Perbarui</button>
-            </form> <!-- Tambahkan penutup form di sini -->
+                <div class="d-flex flex-wrap gap-2">
+                    <a href="{{ route('ae-information.index') }}" class="btn btn-outline-secondary">
+                        Kembali
+                    </a>
+                    <button type="submit" class="btn btn-primary">Perbarui</button>
+                </div>
+            </form>
         </div>
     </div>
+
 @endsection

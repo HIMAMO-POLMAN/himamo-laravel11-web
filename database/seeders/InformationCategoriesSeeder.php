@@ -16,23 +16,33 @@ class InformationCategoriesSeeder extends Seeder
         $data = [
             [
                 "name" => "Lomba",
-                "slug" => "lomba"
+                "slug" => "lomba",
+                'created_at' => now(),
+                'updated_at' => now(),
+
             ],
             [
                 "name" => "Beasiswa",
-                "slug" => "beasiswa"
+                "slug" => "beasiswa",
+                'created_at' => now(),
+                'updated_at' => now(),
+
             ],
             [
                 "name" => "Berita",
-                "slug" => "berita"
+                "slug" => "berita",
+                'created_at' => now(),
+                'updated_at' => now(),
+
             ],
             [
                 "name" => "Pengumuman",
-                "slug" => "pengumuman"
+                "slug" => "pengumuman",
+                'created_at' => now(),
+                'updated_at' => now(),
             ]
         ];
 
-        // Masukkan data ke dalam tabel
         DB::table('information_categories')->insert($data);
     }
 }

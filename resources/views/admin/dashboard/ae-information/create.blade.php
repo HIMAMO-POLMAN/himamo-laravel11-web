@@ -1,9 +1,9 @@
 @extends('admin.layouts.master')
 @section('title', 'Buat AE Informasi')
-@section('card', 'Buat AE Informasi')
+@section('card', 'AE Informasi')
 @section('keterangan', 'Buat Informasi')
-
 @section('content')
+
     @if (session()->has('success'))
         <div class="alert alert-success alert-dismissible" role="alert">
             {{ session('success') }}
@@ -22,21 +22,23 @@
         <form action="{{ route('ae-information.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('POST')
-
             <div class="card-body">
-                <div class="col mb-3">
-                    <label for="title" class="form-label">Judul</label>
-                    <input type="text" id="title" class="form-control @error('title') is-invalid @enderror"
-                        placeholder="Masukan Judul" name="title" value="{{ old('title') }}" />
-                    @error('title')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="title" class="form-label">Judul <span class="text-danger">*</span></label>
+                        <input type="text" id="title" class="form-control @error('title') is-invalid @enderror"
+                            placeholder="Masukan Judul" name="title" value="{{ old('title') }}" />
+                        @error('title')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
                 </div>
-                <div class="row g-2">
-                    <div class="col mb-3">
-                        <label for="kategori_informasi_id" class="form-label">Kategori Informasi</label>
+                <div class="row">
+                    <div class="col-12 col-md-6 mb-3">
+                        <label for="kategori_informasi_id" class="form-label">Kategori Informasi <span
+                                class="text-danger">*</span></label>
                         <select name="kategori_informasi_id"
                             class="form-select  @error('kategori_informasi_id') is-invalid @enderror"
                             id="kategori_informasi_id" aria-label="Default select example">
@@ -51,8 +53,8 @@
                             </div>
                         @enderror
                     </div>
-                    <div class="col mb-3">
-                        <label for="image" class="form-label">Pilih Gambar</label>
+                    <div class="col-12 col-md-6 mb-3">
+                        <label for="image" class="form-label">Pilih Gambar <span class="text-danger">*</span></label>
                         <input class="form-control @error('image') is-invalid @enderror" type="file" id="image"
                             name="image" />
                         @error('image')
@@ -62,21 +64,26 @@
                         @enderror
                     </div>
                 </div>
-                <div class="col mb-3">
-                    <label for="desc" class="form-label">Artikel Informasi</label>
-                    <textarea name="desc" class="form-control @error('desc') is-invalid @enderror" id="summernote" id="desc" rows="3">{{ old('desc') }}</textarea>
-                    @error('desc')
-                        <div class="text-danger">
-                            {{ $message }}
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="desc" class="form-label">Artikel Informasi <span
+                                class="text-danger">*</span></label>
+                        <textarea name="desc" class="form-control @error('desc') is-invalid @enderror" id="summernote" id="desc"
+                            rows="3">{{ old('desc') }}</textarea>
+                        @error('desc')
+                            <div class="text-danger">
+                                {{ $message }}
+                            </div>
                         @enderror
                     </div>
                 </div>
-
-                <a href="{{ route('ae-information.index') }}" class="btn btn-outline-secondary">
-                    Kembali
-                </a>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="d-flex flex-wrap gap-2">
+                    <a href="{{ route('ae-information.index') }}" class="btn btn-outline-secondary">
+                        Kembali
+                    </a>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
             </div>
         </form>
     </div>
-@endsection
+    @endsection

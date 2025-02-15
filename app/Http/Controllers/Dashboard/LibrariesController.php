@@ -17,12 +17,27 @@ class LibrariesController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-
+        $sort = $request->input('sort', 'terbaru');
+        $koleksi = $request->input('koleksi');
         $pustakas = Libraries::orderBy('id', 'desc');
 
+        if ($koleksi) {
+            $pustakas->where('collection', $koleksi);
+        }
+
+
+        if ($sort === 'terbaru') {
+            $pustakas->orderByDesc('id');
+        } elseif ($sort === 'terlama') {
+            $pustakas->orderBy('id');
+        }
+
+
         if ($search) {
-            $pustakas->where('title', 'like', "%{$search}%")
-                     ->orWhere('collection', 'like', "%{$search}%");
+            $pustakas->where(function ($query) use ($search) {
+                $query->where('title', 'like', "%{$search}%")
+                    ->orWhere('collection', 'like', "%{$search}%");
+            });
         }
 
         $pustakas = $pustakas->paginate(10);
@@ -91,16 +106,16 @@ class LibrariesController extends Controller
                 'collection' => $request->collection
             ]);
 
-            return redirect(route('ae-pustaka.index'))->with('success', 'Data berhasil disimpan');
+            return redirect(route('ae-library.index'))->with('success', 'Data berhasil disimpan');
         } catch (Exception $e) {
-            return redirect()->route('ae-pustaka.index')->with('error', 'Gagal menambahkan data! Silakan coba lagi.');
+            return redirect()->route('ae-library.index')->with('error', 'Gagal menambahkan data! Silakan coba lagi.');
         }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Libraries $libraries)
+    public function show(Libraries $ae_library)
     {
         //
     }
@@ -108,16 +123,16 @@ class LibrariesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Libraries $libraries)
+    public function edit(Libraries $ae_library)
     {
-        $pustaka = $libraries;
-        return view('admin.dashboard.ae-library.edit',compact('pustaka'));
+        $pustaka = $ae_library;
+        return view('admin.dashboard.ae-library.edit', compact('pustaka'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Libraries $libraries)
+    public function update(Request $request, Libraries $ae_library)
     {
         $rules = [
             'title' => 'required',
@@ -153,7 +168,7 @@ class LibrariesController extends Controller
         }
 
         try {
-            $libraries->update([
+            $ae_library->update([
                 'title' => $request->title,
                 'url' => $request->url,
                 'penulis' => $request->penulis,
@@ -167,22 +182,22 @@ class LibrariesController extends Controller
                 'slug' => Str::slug($request->title, '-'),
                 'collection' => $request->collection
             ]);
-            return redirect(route('ae-pustaka.index'))->with('success', 'Data berhasil diubah');
+            return redirect(route('ae-library.index'))->with('success', 'Data berhasil diubah');
         } catch (Exception $e) {
-            return redirect()->route('ae-pustaka.index')->with('error', 'Gagal mengubah data! Silakan coba lagi.');
+            return redirect()->route('ae-library.index')->with('error', 'Gagal mengubah data! Silakan coba lagi.');
         }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Libraries $libraries)
+    public function destroy(Libraries $ae_library)
     {
         try {
-            $libraries->delete();
-            return redirect(route('ae-pustaka.index'))->with('success', 'Pustaka berhasil dihapus!');
+            $ae_library->delete();
+            return redirect(route('ae-library.index'))->with('success', 'Pustaka berhasil dihapus!');
         } catch (Exception $e) {
-            return redirect()->route('ae-pustaka.index')->with('error', 'Gagal menghapus data! Silakan coba lagi.');
+            return redirect()->route('ae-library.index')->with('error', 'Gagal menghapus data! Silakan coba lagi.');
         }
     }
 }

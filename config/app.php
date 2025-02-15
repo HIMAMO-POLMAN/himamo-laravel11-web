@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', '| Himpunan Mahasiswa Teknik Otomasi Manufaktur dan Mekatronika'),
 
     /*
     |--------------------------------------------------------------------------

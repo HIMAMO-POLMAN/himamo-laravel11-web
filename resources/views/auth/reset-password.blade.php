@@ -1,22 +1,18 @@
 @extends('auth.layout.master')
 @section('title', 'Reset Kata Sandi')
 @section('content')
-    <!-- Content -->
     <div class="container-xxl">
         <div class="authentication-wrapper authentication-basic container-p-y">
             <div class="authentication-inner">
-                <!-- Register -->
                 <div class="card">
                     <div class="card-body">
-                        <!-- Logo -->
                         <div class="app-brand justify-content-center">
-                            <a href="index.html" class="app-brand-link gap-2">
+                            <a href="{{ route('home')}}" class="app-brand-link gap-2">
                                 <span class="app-brand-logo demo">
                                     <img height="50" src="{{ asset('assets/img/icons/img-himamo.webp') }}" alt="Logo">
                                 </span>
                             </a>
                         </div>
-                        <!-- /Logo -->
                         <h4 class="mb-2"><strong>Reset Kata Sandi 🔐</strong></h4>
                         <p class="mb-4">Silahkan masukkan kata sandi baru</p>
                         @if ($errors->any())
@@ -69,10 +65,7 @@
                         </form>
                     </div>
                 </div>
-                <!-- /Register -->
             </div>
         </div>
     </div>
-
-    <!-- / Content -->
 @endsection

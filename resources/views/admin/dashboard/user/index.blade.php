@@ -2,8 +2,8 @@
 @section('title', 'Pengguna')
 @section('card', 'Pengguna')
 @section('keterangan', 'Lihat Pengguna')
-
 @section('content')
+
     @if (session()->has('success'))
         <div class="alert alert-success alert-dismissible" role="alert">
             {{ session('success') }}
@@ -18,26 +18,22 @@
     @endif
 
     <div class="d-flex card shadow p-3">
-        <div class="table-responsive col-lg-12">
-            <div class="d-flex justify-content-between mb-3">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#largeModal">
+        <div class="row mb-3">
+            <div class="col-12 col-md-auto mb-2">
+                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#largeModal">
                     Buat Pengguna
                 </button>
-                <form action="{{ route('user.index') }}" method="GET"
-                    class="form-inline navbar-search justify-content-end">
-                    <div class="input-group">
-                        <input type="text" class="form-control bg-light border-1 small" placeholder="Cari..."
-                            name="search" value="{{ request('search') }}">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="submit">
-                                <i class="fa fa-search fa-sm"></i>
-                            </button>
-                        </div>
-                    </div>
+            </div>
+            <div class="col-12 col-md mb-2">
+                <form action="{{ route('user.index') }}" method="GET" class="d-flex">
+
+                    <input type="text" class="form-control bg-light border-1 small me-2" placeholder="Cari..."
+                        name="search" value="{{ request('search') }}">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fa fa-search fa-sm"></i>
+                    </button>
                 </form>
             </div>
-
-            {{-- Create Modal Start --}}
             <div class="modal fade" id="largeModal" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
@@ -51,7 +47,8 @@
                             <div class="modal-body">
                                 <div class="row">
                                     <div class="col mb-3">
-                                        <label for="username" class="form-label">Nomor Anggota</label>
+                                        <label for="username" class="form-label">Nomor Anggota <span
+                                                class="text-danger">*</span></label>
                                         <input type="text" id="username"
                                             class="form-control @error('username') is-invalid @enderror" name="username"
                                             required value="{{ old('username') }}" placeholder="MO xxxxxxx" />
@@ -64,7 +61,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="col mb-3">
-                                        <label for="name" class="form-label">Nama</label>
+                                        <label for="name" class="form-label">Nama <span
+                                                class="text-danger">*</span></label>
                                         <input type="text" id="name"
                                             class="form-control @error('name') is-invalid @enderror" name="name" required
                                             value="{{ old('name') }}" placeholder="Masukan Nama" />
@@ -77,7 +75,8 @@
                                 </div>
                                 <div class="row g-2">
                                     <div class="col mb-3">
-                                        <label for="emailLarge" class="form-label">Email</label>
+                                        <label for="emailLarge" class="form-label">Email <span
+                                                class="text-danger">*</span></label>
                                         <input type="email" id="emailLarge"
                                             class="form-control @error('email') is-invalid @enderror" name="email"
                                             required value="{{ old('email') }}" placeholder="xxxx@xxxxx.xxx" />
@@ -88,7 +87,8 @@
                                         @enderror
                                     </div>
                                     <div class="col mb-3">
-                                        <label for="role" class="form-label">Peran</label>
+                                        <label for="role" class="form-label">Peran <span
+                                                class="text-danger">*</span></label>
                                         <select class="form-select @error('role') is-invalid @enderror" name="role"
                                             required id="role" aria-label="Default select example">
                                             <option selected>Pilih Peran</option>
@@ -106,9 +106,11 @@
                                 </div>
                                 <div class="row">
                                     <div class="col mb-3">
-                                        <label for="password" class="col-md-2 col-form-label">Kata Sandi</label>
-                                        <input class="form-control @error('password') is-invalid @enderror" name="password"
-                                            required type="password" placeholder="******" id="password" />
+                                        <label for="password" class="col-md-2 col-form-label">Kata Sandi <span
+                                                class="text-danger">*</span></label>
+                                        <input class="form-control @error('password') is-invalid @enderror"
+                                            name="password" required type="password" placeholder="******"
+                                            id="password" />
                                         @error('password')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -119,7 +121,7 @@
                                 <div class="row">
                                     <div class="col mb-3">
                                         <label for="password_confirmation" class="col-md col-form-label">Konfirmasi Kata
-                                            Sandi</label>
+                                            Sandi <span class="text-danger">*</span></label>
                                         <input
                                             class="form-control @error('password_confirmation') is-invalid @enderror "name="password_confirmation"
                                             required type="password" placeholder="******" id="password_confirmation" />
@@ -141,11 +143,10 @@
                     </div>
                 </div>
             </div>
-            {{-- Create Modal End --}}
-
-            @if ($users->count() > 0)
+        </div>
+        @if ($users->count() > 0)
+            <div class="table-responsive">
                 <table class="table table-hover mt-3">
-
                     <thead>
                         <tr>
                             <th>No.</th>
@@ -154,13 +155,14 @@
                             <th>Email</th>
                             <th>Verifikasi</th>
                             <th>Role</th>
-                            <th>Aksi</th>
+                            <th>Dibuat</th>
+                            <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
                         @foreach ($users as $index => $user)
                             <tr>
-                                <td>{{ $index + 1 }}</td>
+                                <td>{{ $index + $users->firstItem() }}</td>
                                 <td>{{ $user->username }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
@@ -172,16 +174,18 @@
                                     @endif
                                 </td>
                                 <td>{{ $user->role }}</td>
-                                <td>
+                                <td>{{ $user->created_at ? $user->created_at->format('d M Y') : '-' }}</td>
+                                <td class="text-center">
                                     <div class="dropdown">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
                                             data-bs-toggle="dropdown">
                                             <i class="bx bx-dots-vertical-rounded"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item"
-                                                href="{{ route('user.edit', $user->id) }}"><i class="bx bx-edit-alt
-                                                me-1"></i> Ubah</a>
+                                            <a class="dropdown-item" href="{{ route('user.edit', $user->id) }}"><i
+                                                    class="bx bx-edit-alt
+                                                me-1"></i>
+                                                Ubah</a>
                                             <form action="{{ route('user.destroy', $user->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
@@ -195,14 +199,14 @@
                         @endforeach
                     </tbody>
                 </table>
-                <div class="d-flex justify-content-center py-3">
-                    {{ $users->links('pagination::bootstrap-4') }}
-                </div>
-            @else
-                <div class="alert alert-light" role="alert">
-                    Tidak ada data!
-                </div>
-            @endif
-        </div>
+            </div>
+            <div class="d-flex justify-content-center py-3">
+                {{ $users->links('pagination::bootstrap-4') }}
+            </div>
+        @else
+            <div class="alert alert-light text-center" role="alert">
+                Tidak ada data!
+            </div>
+        @endif
     </div>
 @endsection

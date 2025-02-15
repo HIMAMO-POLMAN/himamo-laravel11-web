@@ -1,22 +1,18 @@
 @extends('auth.layout.master')
 @section('title', 'Masuk')
 @section('content')
-    <!-- Content -->
     <div class="container-xxl">
         <div class="authentication-wrapper authentication-basic container-p-y">
             <div class="authentication-inner">
-                <!-- Register -->
                 <div class="card">
                     <div class="card-body">
-                        <!-- Logo -->
                         <div class="app-brand justify-content-center">
-                            <a href="index.html" class="app-brand-link gap-2">
+                            <a href="{{ route('home')}}" class="app-brand-link gap-2">
                                 <span class="app-brand-logo demo">
                                     <img height="50" src="{{ asset('assets/img/icons/img-himamo.webp') }}" alt="Logo">
                                 </span>
                             </a>
                         </div>
-                        <!-- /Logo -->
                         <h4 class="mb-2"><strong>Selamat datang Staff! 👋</strong></h4>
                         <p class="mb-4">Silahkan masuk ke akun Anda dan selamat bertugas</p>
                         @if ($errors->any())
@@ -39,7 +35,7 @@
                             <div class="mb-3 form-password-toggle">
                                 <div class="d-flex justify-content-between">
                                     <label class="form-label" for="password">Kata Sandi</label>
-                                    <a href="/forgot-password">
+                                    <a href="{{ route('password.request')}}">
                                         <small>Lupa Kata Sandi?</small>
                                     </a>
                                 </div>
@@ -57,10 +53,7 @@
                         </form>
                     </div>
                 </div>
-                <!-- /Register -->
             </div>
         </div>
     </div>
-
-    <!-- / Content -->
 @endsection

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Information extends Model
 {
     use HasFactory;
+
     protected $table = 'information';
     protected $fillable = [
         'user_id',
@@ -27,6 +28,10 @@ class Information extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function views(){
+        return $this->hasMany(InformationView::class, 'information_id');
     }
 
     public function getRouteKeyName()

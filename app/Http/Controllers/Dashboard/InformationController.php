@@ -18,23 +18,29 @@ class InformationController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-
-        $ae_information = Information::with('kategori_informasi')->orderBy('title', 'asc');
-
-        if ($request->get('sort') == 'terbaru' || !$request->has('sort')) {
+        $sort = $request->input('sort', 'terbaru');
+        $kategori = $request->input('kategori');
+        $ae_information = Information::with('kategori_informasi')->withCount('views');
+        if ($kategori) {
+            $ae_information->where('kategori_informasi_id', $kategori);
+        }
+        if ($sort === 'terbaru') {
             $ae_information->orderByDesc('id');
-        } else {
-            $ae_information->orderByRaw('LENGTH(title) ASC')->orderBy('title');
+        } elseif ($sort === 'terlama') {
+            $ae_information->orderBy('id');
+        } elseif ($sort === 'terpopuler') {
+            $ae_information->orderByDesc('views_count');
         }
         if ($search) {
-            $ae_information->where('title', 'like', "%{$search}%")
-                ->orWhere('desc', 'like', "%{$search}%");
+            $ae_information->where(function ($query) use ($search) {
+                $query->where('title', 'like', "%{$search}%")
+                    ->orWhere('desc', 'like', "%{$search}%");
+            });
         }
         $ae_informations = $ae_information->paginate(10);
-
-        return view('admin.dashboard.ae-information.index', compact('ae_informations'));
+        $kategori_informasi = InformationCategories::all();
+        return view('admin.dashboard.ae-information.index', compact('ae_informations', 'kategori_informasi'));
     }
-
 
     public function create()
     {
@@ -74,11 +80,9 @@ class InformationController extends Controller
         }
 
         try {
-            // Image
             $fileName = time() . '.' . $request->image->extension();
             $request->file('image')->storeAs('public/informasi', $fileName);
 
-            // Artikel
             $storage = "storage/content-informasi";
             $dom = new \DOMDocument();
 
@@ -119,23 +123,6 @@ class InformationController extends Controller
             return redirect(route('ae-information.index'))->with('success', 'Data berhasil disimpan');
         } catch (Exception $e) {
             return redirect()->route('ae-information.index')->with('error', 'Gagal menambahkan data! Silakan coba lagi.');
-        }
-    }
-
-    public function destroy(Information $ae_information)
-    {
-        try {
-            // Hapus file gambar dari storage
-            if (Storage::exists('public/informasi/' . $ae_information->image)) {
-                Storage::delete('public/informasi/' . $ae_information->image);
-            }
-
-            // Hapus data informasi dari database
-            $ae_information->delete();
-
-            return redirect(route('ae-information.index'))->with('success', 'Informasi berhasil dihapus!');
-        } catch (Exception $e) {
-            return redirect()->route('ae-information.index')->with('error', 'Gagal menghapus data! Silakan coba lagi.');
         }
     }
 
@@ -186,7 +173,7 @@ class InformationController extends Controller
             $ae_information->slug = Str::slug($request->title, '-');
             $ae_information->excerpt = Str::limit(strip_tags($request->desc), 100);
             $ae_information->desc = $request->desc;
-            $ae_information->kategori_informasi_id = $request->kategori_informasi_id; // Perbaiki ini
+            $ae_information->kategori_informasi_id = $request->kategori_informasi_id;
             $ae_information->save();
 
             return redirect()->route('ae-information.index')->with('success', 'Informasi berhasil diperbarui');
@@ -194,4 +181,21 @@ class InformationController extends Controller
             return redirect()->route('ae-information.edit', $ae_information->slug)->with('error', 'Gagal memperbarui data! Silakan coba lagi.');
         }
     }
+
+    public function destroy(Information $ae_information)
+    {
+        try {
+            if (Storage::exists('public/informasi/' . $ae_information->image)) {
+                Storage::delete('public/informasi/' . $ae_information->image);
+            }
+
+            $ae_information->delete();
+
+            return redirect(route('ae-information.index'))->with('success', 'Informasi berhasil dihapus!');
+        } catch (Exception $e) {
+            return redirect()->route('ae-information.index')->with('error', 'Gagal menghapus data! Silakan coba lagi.');
+        }
+    }
+
+
 }

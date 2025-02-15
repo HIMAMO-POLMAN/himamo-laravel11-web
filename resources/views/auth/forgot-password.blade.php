@@ -4,18 +4,15 @@
     <div class="container-xxl">
         <div class="authentication-wrapper authentication-basic container-p-y">
             <div class="authentication-inner py-4">
-                <!-- Forgot Password -->
                 <div class="card">
                     <div class="card-body">
-                        <!-- Logo -->
                         <div class="app-brand justify-content-center">
-                            <a href="index.html" class="app-brand-link gap-2">
+                            <a href="{{ route('home')}}" class="app-brand-link gap-2">
                                 <span class="app-brand-logo demo">
                                     <img height="50" src="{{ asset('assets/img/icons/img-himamo.webp') }}" alt="Logo">
                                 </span>
                             </a>
                         </div>
-                        <!-- /Logo -->
                         <h4 class="mb-2"><strong>Lupa Kata Sandi? 🔒</strong></h4>
                         @if (session('status'))
                             <div class="alert alert-info alert-dismissible" role="alert">
@@ -53,10 +50,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- /Forgot Password -->
             </div>
         </div>
     </div>
-
-    <!-- / Content -->
 @endsection

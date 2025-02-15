@@ -7,10 +7,19 @@ use App\Http\Controllers\Dashboard\UserController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\InformationController;
 use App\Http\Controllers\Guest\HomeController;
+use App\Http\Controllers\Guest\GuestInformationController;
+use App\Http\Controllers\Guest\ContactController;
 use App\Http\Controllers\Dashboard\LibrariesController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
+Route::get('/kontak', [ContactController::class, 'index'])->name('contact');
+Route::get('/prodi-d2-trmo', [HomeController::class, 'd2mekatronika'])->name('prodi-d2-trmo');
+Route::get('/prodi-d4-trmo', [HomeController::class, 'd4mekatronika'])->name('prodi-d4-trmo');
+Route::get('/prodi-d4-tro', [HomeController::class, 'd4otomasi'])->name('prodi-d4-tro');
+Route::get('/prodi-d4-trin', [HomeController::class, 'd4trin'])->name('prodi-d4-trin');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/ae-informasi', [GuestInformationController::class, 'index'])->name('guest.information.index');
+Route::get('/ae-informasi/detail/{informasi:slug}', [GuestInformationController::class, 'show'])->name('guest.information.detail');
 
 Route::middleware('auth-check')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -19,8 +28,5 @@ Route::middleware('auth-check')->group(function () {
     Route::resource('user', UserController::class);
     Route::resource('information-categories', InformationCategoriesController::class);
     Route::resource('ae-information', InformationController::class);
-    Route::resource('ae-pustaka',LibrariesController::class)->except(['edit','update','destroy']);
-    Route::get('/ae-pustaka/edit/{libraries:slug}', [LibrariesController::class, 'edit'])->name('ae-pustaka.edit');
-    Route::put('/ae-pustaka/update/{libraries:slug}', [LibrariesController::class, 'update'])->name('ae-pustaka.update');
-    Route::delete('/ae-pustaka/delete/{libraries:slug}', [LibrariesController::class, 'destroy'])->name('ae-pustaka.destroy');
+    Route::resource('ae-library',LibrariesController::class);
 });

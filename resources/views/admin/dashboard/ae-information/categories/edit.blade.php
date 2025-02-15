@@ -24,20 +24,24 @@
             <form action="{{ route('information-categories.update', $information_category->id) }}" method="POST">
                 @csrf
                 @method('PUT')
-                <div class="col mb-3">
-                    <label for="name" class="form-label @error('name') is-invalid @enderror">Nama Kategori</label>
-                    <input type="text" id="name" class="form-control" placeholder="Masukan Nama Kategori"
-                        name="name" value="{{ old('name', $information_category->name) }}" />
-                    @error('name')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="name" class="form-label @error('name') is-invalid @enderror">Nama Kategori</label>
+                        <input type="text" id="name" class="form-control" placeholder="Masukan Nama Kategori"
+                            name="name" value="{{ old('name', $information_category->name) }}" />
+                        @error('name')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
                 </div>
-                <a href="{{ route('information-categories.index') }}" class="btn btn-outline-secondary">
-                    Kembali
-                </a>
-                <button type="submit" class="btn btn-primary">Perbarui</button>
+                <div class="d-flex flex-wrap gap-2">
+                    <a href="{{ route('information-categories.index') }}" class="btn btn-outline-secondary">
+                        Kembali
+                    </a>
+                    <button type="submit" class="btn btn-primary">Perbarui</button>
+                </div>
             </form>
         </div>
     </div>

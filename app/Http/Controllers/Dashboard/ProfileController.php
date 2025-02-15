@@ -12,10 +12,9 @@ class ProfileController extends Controller
     public function index() {
         return view('admin.dashboard.profile');
     }
-    
+
     public function destroy(Request $request)
     {
-
         $user = $request->user();
 
         Auth::logout();
