@@ -3,14 +3,18 @@
 namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
+
 use App\Models\Information;
+
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+
     public function index(){
         return view('guest.index',[
             "informasi" => Information::with(['user'])->orderBy('updated_at', 'asc')->paginate(4),
+
         ]);
     }
 

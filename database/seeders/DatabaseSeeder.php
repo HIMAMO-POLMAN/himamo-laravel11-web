@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             InformationCategoriesSeeder::class,
             LibrariesSeeder::class,
             UserSeeder::class
+
         ]);
     }
 }

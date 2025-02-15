@@ -1,7 +1,7 @@
-<div class="bg-light" id="loading">
-    <img class="heartbeat" src="{{ asset('assets-guest/img/load.webp') }}" alt="Loading">
+{{-- <div class="bg-light" id="loading">
+    <img class="heartbeat" src="{{ asset('assets-guest/img/load.png') }}" alt="Loading">
     <div id="bruh"></div>
-</div>
+</div> --}}
 
 <header class="header" id="header">
     <div class="header_toggle">
@@ -39,6 +39,16 @@
                     <i class='bx bx-home nav_icon'></i>
                     <span class="nav_name">Home</span>
                 </a>
+                <a href="{{ Route::currentRouteNamed('landing-page') ? '#ae-informasi' : url('/#ae-informasi') }}"
+                    class="nav_link @if (Route::currentRouteNamed('information.*')) active @endif">
+                    <i class='bx bxs-info-square nav_icon'></i>
+                    <span class="nav_name">AE-Informasi</span>
+                </a>
+                <a href="{{ Route::currentRouteNamed('landing-page') ? '#ae-pustaka' : url('/#ae-pustaka') }}"
+                    class="nav_link">
+                    <i class='bx bxs-book nav_icon'></i>
+                    <span class="nav_name">AE-Pustaka</span>
+                </a>
                 <a href="{{ Route::currentRouteNamed('landing-page') ? '#about' : url('/#about') }}" class="nav_link">
                     <i class='bx bx-info-circle nav_icon'></i>
                     <span class="nav_name">About</span>
@@ -56,16 +66,6 @@
                 <a href="{{ Route::currentRouteNamed('landing-page') ? '#leader' : url('/#leader') }}" class="nav_link">
                     <i class='bx bxs-user-account nav_icon'></i>
                     <span class="nav_name">Leadership</span>
-                </a>
-                <a href="{{ Route::currentRouteNamed('landing-page') ? '#ae-pustaka' : url('/#ae-pustaka') }}"
-                    class="nav_link">
-                    <i class='bx bxs-book nav_icon'></i>
-                    <span class="nav_name">AE-Pustaka</span>
-                </a>
-                <a href="{{ Route::currentRouteNamed('landing-page') ? '#ae-informasi' : url('/#ae-informasi') }}"
-                    class="nav_link @if (Route::currentRouteNamed('information.*')) active @endif">
-                    <i class='bx bxs-info-square nav_icon'></i>
-                    <span class="nav_name">AE-Informasi</span>
                 </a>
                 <a target="_blank" href="https://fuse2024.com/" class="nav_link">
                     <i class='bx bx-trophy nav_icon'></i>

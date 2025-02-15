@@ -22,6 +22,7 @@
             <meta property="og:image" content="{{ asset('storage/informasi/' . $informasi->image) }}" />
         @else
             <meta property="og:image" content="{{ asset('assets-guest/img/img-himamo.webp') }}" />
+
         @endif
         <title>HIMAMO | {{ $informasi->title }}</title>
     @else
@@ -31,6 +32,7 @@
         <meta property="og:url" content="https://himamopolman.org/" />
         <meta property="og:description" content="Himpunan Mahasiswa Teknik Otomasi Manufaktur dan Mekatronika" />
         <meta property="og:image" content="{{ asset('assets-guest/img/img-himamo.webp') }}" />
+
         <title>HIMAMO | Himpunan Mahasiswa Otomasi Manufaktur & Mekatronika</title>
     @endif
 

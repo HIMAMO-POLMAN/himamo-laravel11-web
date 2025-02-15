@@ -1,7 +1,7 @@
+
 @extends('guest.layouts.app')
 @section('content')
-
-<div class="wrap bg-light">
+<div class="wrap bg-light detail-informasi-body">
     <section>
         <div class="parallax3">
             <div class="container pt-4 pb-5">
@@ -16,7 +16,6 @@
         </div>
         <div class="container">
             <div class="mb-5 mt-5">
-             
                 <p>Kategori: {{ $informasi->kategori_informasi->name }}</p>
                 <h1 class="text-dark quote text-md-start pt-8">{{ $informasi->title }}</h1>
                 <p>Tanggal: {{ date('d/m/Y', strtotime($informasi->created_at)) }}</p>
@@ -45,7 +44,6 @@
 @push('scripts')
 <script>
     mybutton = document.getElementById("myBtn");
-
     function topFunction() {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;

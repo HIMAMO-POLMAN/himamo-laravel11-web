@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\InformationCategoriesController;
@@ -18,6 +19,7 @@ Route::get('/prodi-d4-trmo', [HomeController::class, 'd4mekatronika'])->name('pr
 Route::get('/prodi-d4-tro', [HomeController::class, 'd4otomasi'])->name('prodi-d4-tro');
 Route::get('/prodi-d4-trin', [HomeController::class, 'd4trin'])->name('prodi-d4-trin');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
+
 Route::get('/ae-informasi', [GuestInformationController::class, 'index'])->name('guest.information.index');
 Route::get('/ae-informasi/detail/{informasi:slug}', [GuestInformationController::class, 'show'])->name('guest.information.detail');
 
@@ -30,3 +32,4 @@ Route::middleware('auth-check')->group(function () {
     Route::resource('ae-information', InformationController::class);
     Route::resource('ae-library',LibrariesController::class);
 });
+

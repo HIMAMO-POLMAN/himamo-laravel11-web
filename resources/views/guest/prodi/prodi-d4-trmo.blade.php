@@ -3,29 +3,16 @@
 
 <div class="wrap bg-light">
     <section id="ae-pustaka" class="about bg-light">
-            <div class="container my-4">
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="text-center text-dark text-black fw-bold py-4">D4 Teknologi Rekayasa Mekatronika</h2>
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb justify-content-center breadcrumb-prodi">
-                                <li class="breadcrumb-item"><a class="text-dark" href="#">Home</a></li>
-                                <li class="breadcrumb-item active text-dark" aria-current="page">D4 Teknologi Rekayasa Mekatronika</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            </div>
         <div class="container mt-4">
             <div class="row">
                 <div class="col-12">
-                    <img src="{{ asset('assets-guest/img/img-prodi-trmo.webp') }}" alt="Building" class="img-cover img-fluid rounded-5 mx-auto d-block">
+                    <img src="{{ asset('assets-guest/img/img-prodi-trmo.webp') }}" alt="Building" width="600px" class="img-cover img-fluid rounded-5 mx-auto d-block">
                 </div>
             </div>
         </div>
         <div class="container book-info text-black">
             <div class="row mt-4">
-                <div class="col-12 ps-5 pe-5">
+                <div class="col-12 px-3">
                     <div class="p-3 mb-4 text-dark rounded">
                         <div class="card-body text-start description-card">
                             <h3 class="card-title fw-bold mb-4">D4 Teknologi Rekayasa Mekatronika </h3>
@@ -57,29 +44,29 @@
                                 </div>
                             </div>
                             <div class="row pt-1 pb-4 subject-list ">
-                                <div class="col-12 col-md-6 mt-4 col-lg text-center">
-                                    <div class="subject-box">
-                                        <a href="{{ route('prodi-d2-trmo')}}" class="text-dark">
+                            <div class="col-12 col-md-6 mt-4 col-lg text-center">
+                                <a href="prodi-d2-trmo">
+                                    <div class="subject-box text-dark">
                                         <img src="{{ asset('assets-guest/img/trmo-d2_subject.svg') }}" alt="Robotika" class="subject-image" >
-                                            <p class="subject-name">D2 Jalur Cepat<br>Teknik  Mekatronika</p>
-                                        </a>
+                                        <p class="subject-name">D2 Jalur Cepat<br>Teknik Rekayasa Mekatronika</p>
                                     </div>
+                                    </a>
                                 </div>
                                 <div class="col-12 col-md-6 mt-4 col-lg text-center">
-                                    <div class="subject-box">
-                                        <a href="{{ route('prodi-d4-tro')}}" class="text-dark">
+                                <a href="prodi-d4-tro">
+                                    <div class="subject-box text-dark">
                                         <img src="{{ asset('assets-guest/img/tro_subject.svg') }}" alt="Robotika" class="subject-image" >
                                             <p class="subject-name">D4 Prodi<br>Teknologi Rekayasa Otomasi</p>
-                                        </a>
                                     </div>
+                                    </a>
                                 </div>
                                 <div class="col-12 col-md-6 mt-4 col-lg text-center">
-                                    <div class="subject-box">
-                                        <a href="{{ route('prodi-d4-trin')}}" class="text-dark">
+                                <a href="prodi-d4-trin">
+                                    <div class="subject-box text-dark">
                                         <img src="{{ asset('assets-guest/img/trin_subject.svg') }}" alt="Robotika" class="subject-image" >
                                             <p class="subject-name">D4 Prodi<br>Teknologi Rekayasa Informatika Industri</p>
-                                        </a>
                                     </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -89,7 +76,6 @@
         </div>
     </section>
 </div>
-
 @endsection
 
 @push('scripts')
@@ -108,7 +94,6 @@
                 header.classList.remove('bg-light');
             }
         }
-
         window.addEventListener('scroll', handleScroll);
     </script>
 @endpush

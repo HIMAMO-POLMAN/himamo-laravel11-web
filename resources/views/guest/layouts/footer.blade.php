@@ -5,6 +5,7 @@
             <div class="row">
                 <div class="col-md pt-5 text-md-start">
                     <img src="{{ asset('assets-guest/img/logo.webp') }}" alt="Logo HIMAMO">
+
                     <p class="text-white pt-3">HIMAMO merupakan himpunan pertama yang didirikan di kampus Politeknik Manufaktur Negeri Bandung.</p>
                     <ul class="footer-social list-unstyled pt-1">
                         <li>
@@ -19,6 +20,7 @@
                         </li>
                         <li>
                             <a class="email" target="_blank" href="mailto:informasihimamo@gmail.com">
+
                                 <i class='text-white bx bxs-envelope'></i>
                             </a>
                         </li>
@@ -34,6 +36,7 @@
                                 </div>
                                 <div class="col-tulisan">
                                     <a target="_blank" href="https://ae.polman-bandung.ac.id/" class="ps-2 text-white d-inline-block">
+
                                         Website Jurusan AE
                                     </a>
                                 </div>
@@ -76,6 +79,7 @@
                                 <div class="col-tulisan">
                                     <p class="ps-2">
                                         informasihimamo@gmail.com
+
                                     </p>
                                 </div>
                             </div>
@@ -88,6 +92,7 @@
                                 <div class="col-tulisan">
                                     <p class="ps-2">
                                         himamopolman.org
+
                                     </p>
                                 </div>
                             </div>
