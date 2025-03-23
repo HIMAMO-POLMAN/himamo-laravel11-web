@@ -1,5 +1,17 @@
 @extends('guest.layouts.app')
 @section('content')
+<style>
+.update-notice {
+            background-color: red;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+</style>
+
     <div class="wrap bg-light">
         <section id="home">
             <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
@@ -64,7 +76,7 @@
                             <h3 class="text-dark quote">Berita & Pengumuman Terbaru</h3>
                         </div>
                     </div>
-                    <div class=" d-flex flex-column flex-lg-row justify-content-center landing-page-ae-informasi">
+                    {{-- <div class=" d-flex flex-column flex-lg-row justify-content-center landing-page-ae-informasi">
                         @foreach ($informasi as $item)
                             <div class=" pt-3 info-list gs_reveal">
                                 <a class="text-center text-dark" href="{{ url('ae-informasi/detail/' . $item->slug) }}">
@@ -79,6 +91,10 @@
                                 </a>
                             </div>
                         @endforeach
+                    </div> --}}
+                    <div class="update-notice gs-reveal">
+                        <h1>Mohon Maaf!</h1>
+                        <p>Fitur ini sedang dalam proses pembaruan.</p>
                     </div>
                     <div class="row justify-content-center mt-4 gs_reveal">
                         <div class="col-md-4 text-center">
@@ -116,7 +132,7 @@
                                 <h3 class="text-white quote">Jelajahi Koleksi Kami</h3>
                             </div>
                         </div>
-                        <div class="d-flex flex-row">
+                        {{-- <div class="d-flex flex-row">
                             <div class="book-cover">COVER BUKU</div>
                             <div class="book-info">
                                 <div class="book-title"><a class="text-dark" href="book-detail.html">Judul Buku</a></div>
@@ -125,6 +141,10 @@
                                 <div class="book-details text-dark">Jumlah Hal : 1XX</div>
                                 <div class="book-details text-dark">Tahun Terbit : 20XX</div>
                             </div>
+                        </div> --}}
+                        <div class="update-notice gs-reveal">
+                            <h1>Mohon Maaf!</h1>
+                            <p>Fitur ini sedang dalam proses pembaruan.</p>
                         </div>
                         <div class="row justify-content-center mt-4 gs_reveal">
                             <div class="col-md-4 text-center">
@@ -322,12 +342,25 @@
                         <div class="featured-carousel owl-carousel">
                             <div class="item">
                                 <div class="work">
+                                    <a class="text-light">
+                                        <div class="img d-flex align-items-end justify-content-center"
+                                            style="background-image: url('{{ asset('assets-guest/img/img-leader-2025-2026.webp') }}');">
+                                            <div class="text w-100">
+                                                <span class="cat">KETUA HIMPUNAN</span>
+                                                <h3>Alwan Pramudia</h3>
+                                                <span>Masa jabatan : 2025 s/d 2026</span>
+                                                <span>NIM : 223442076 </span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="work">
                                     <a href="https://www.linkedin.com/in/rifqiaqil-mufahir-erwansyah-68a011248/"
                                         target= "_blank" class="text-light">
                                         <div class="img d-flex align-items-end justify-content-center"
                                             style="background-image: url('{{ asset('assets-guest/img/img-leader-2024-2025.webp') }}');">
-
-
                                             <div class="text w-100">
                                                 <span class="cat">KETUA HIMPUNAN</span>
                                                 <h3>Rifqiaqil Mufahir E</h3>
@@ -360,7 +393,6 @@
                                         class="text-light">
                                         <div class="img d-flex align-items-end justify-content-center"
                                             style="background-image: url('{{ asset('assets-guest/img/img-leader-pria.webp') }}');">
-
                                             <div class="text w-100">
                                                 <span class="cat">KETUA HIMPUNAN</span>
                                                 <h3>Yugi Prasetara</h3>
@@ -377,7 +409,6 @@
                                         class="text-light">
                                         <div class="img d-flex align-items-end justify-content-center"
                                             style="background-image: url('{{ asset('assets-guest/img/img-leader-2021-2022.webp') }}');">
-
                                             <div class="text w-100">
                                                 <span class="cat">KETUA HIMPUNAN</span>
                                                 <h3>Hery Ardiyanto</h3>
@@ -394,7 +425,6 @@
                                         class="text-light">
                                         <div class="img d-flex align-items-end justify-content-center"
                                             style="background-image: url('{{ asset('assets-guest/img/img-leader-2020-2021.webp') }}');">
-
                                             <div class="text w-100">
                                                 <span class="cat">KETUA HIMPUNAN</span>
                                                 <h3>Sendi Dika Prasenda</h3>
@@ -411,7 +441,6 @@
                                         class="text-light">
                                         <div class="img d-flex align-items-end justify-content-center"
                                             style="background-image: url('{{ asset('assets-guest/img/img-leader-2019-2020.webp') }}');">
-
                                             <div class="text w-100">
                                                 <span class="cat">KETUA HIMPUNAN</span>
                                                 <h3>Riyadh Tsaniyadi D</h3>
@@ -444,7 +473,6 @@
                                         class="text-light">
                                         <div class="img d-flex align-items-end justify-content-center"
                                             style="background-image: url('{{ asset('assets-guest/img/img-leader-2017-2018.webp') }}');">
-
                                             <div class="text w-100">
                                                 <span class="cat">KETUA HIMPUNAN</span>
                                                 <h3>Eko Rahayu Tali jiwa</h3>
@@ -461,7 +489,6 @@
                                         class="text-light">
                                         <div class="img d-flex align-items-end justify-content-center"
                                             style="background-image: url('{{ asset('assets-guest/img/img-leader-2016-2017.webp') }}');">
-
                                             <div class="text w-100">
                                                 <span class="cat">KETUA HIMPUNAN</span>
                                                 <h3>Saptianhadi</h3>
@@ -476,7 +503,6 @@
                                 <div class="work">
                                     <div class="img d-flex align-items-end justify-content-center"
                                         style="background-image: url('{{ asset('assets-guest/img/img-leader-pria.webp') }}');">
-
                                         <div class="text w-100">
                                             <span class="cat">KETUA HIMPUNAN</span>
                                             <h3>Jefri Maulana</h3>
@@ -490,7 +516,6 @@
                                 <div class="work">
                                     <div class="img d-flex align-items-end justify-content-center"
                                         style="background-image: url('{{ asset('assets-guest/img/img-leader-2014-2015.webp') }}');">
-
                                         <div class="text w-100">
                                             <span class="cat">KETUA HIMPUNAN</span>
                                             <h3>Mohamed Iqbal</h3>
