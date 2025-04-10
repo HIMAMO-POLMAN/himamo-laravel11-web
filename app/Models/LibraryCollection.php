@@ -10,4 +10,9 @@ class LibraryCollection extends Model
         "name",
         "slug"
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

@@ -114,7 +114,6 @@ class LibrariesController extends Controller
 
             return redirect(route('ae-library.index'))->with('success', 'Data berhasil disimpan');
         } catch (Exception $e) {
-            dd($e);
             return redirect()->route('ae-library.index')->with('error', 'Gagal menambahkan data! Silakan coba lagi.');
         }
     }

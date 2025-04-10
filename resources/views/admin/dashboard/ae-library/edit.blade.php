@@ -16,7 +16,7 @@
     @endif
 
     <div class="d-flex card shadow p-3">
-        <h5 class="card-header">Buat Pustaka</h5>
+        <h5 class="card-header">Edit Pustaka</h5>
         <div class="card-body">
             <form action="{{ route('ae-library.update', $pustaka->slug) }}" method="POST">
                 @csrf

@@ -88,6 +88,27 @@
             </ul>
         </li>
 
+        <li class="menu-item {{ Request::is('library-collection*') ? 'active open' : '' }}">
+            <a href="javascript:void(0)" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-tag"></i>
+                <div data-i18n="AE Pustaka">Koleksi Pustaka</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ Request::routeIs('library-collection.index') || Request::routeIs('library-collection.edit') ? 'active' : '' }}">
+                    <a href="{{ route('library-collection.index') }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-show"></i>
+                        <div data-i18n="Lihat Data">Lihat Data</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ Request::routeIs('library-collection.create') ? 'active' : '' }}">
+                    <a href="{{ route('library-collection.create') }}" class="menu-link">
+                        <i class="menu-icon tf-icons bx bx-plus"></i>
+                        <div data-i18n="Tambah Data">Tambah Data</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Bantuan</span>
         </li>
