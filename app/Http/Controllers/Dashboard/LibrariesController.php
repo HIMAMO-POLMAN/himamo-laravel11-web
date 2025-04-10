@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Libraries;
+use App\Models\LibraryCollection;
 use Exception;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -16,13 +17,16 @@ class LibrariesController extends Controller
      */
     public function index(Request $request)
     {
+        $collections = LibraryCollection::all();
         $search = $request->input('search');
         $sort = $request->input('sort', 'terbaru');
         $koleksi = $request->input('koleksi');
-        $pustakas = Libraries::orderBy('id', 'desc');
+        $pustakas = Libraries::with("collections")->orderBy('id', 'desc');
 
         if ($koleksi) {
-            $pustakas->where('collection', $koleksi);
+            $pustakas->whereHas('collections', function ($query) use ($koleksi) {
+                $query->where('slug', $koleksi);
+            });
         }
 
 
@@ -41,7 +45,7 @@ class LibrariesController extends Controller
         }
 
         $pustakas = $pustakas->paginate(10);
-        return view('admin.dashboard.ae-library.index', compact('pustakas'));
+        return view('admin.dashboard.ae-library.index', compact('pustakas','collections'));
     }
 
     /**
@@ -49,7 +53,8 @@ class LibrariesController extends Controller
      */
     public function create()
     {
-        return view('admin.dashboard.ae-library.create');
+        $collections = LibraryCollection::all();
+        return view('admin.dashboard.ae-library.create',compact('collections'));
     }
 
     /**
@@ -60,7 +65,7 @@ class LibrariesController extends Controller
         $rules = [
             'title' => 'required',
             'url' => 'required|url|regex:/^https:\/\/drive\.google\.com\/.*\/view$/',
-            'collection' => 'required|in:TRO,TRMO,TRIN,Teori',
+            'collection' => 'required',
             'penulis' => 'nullable',
             'penerbit' => 'nullable',
             'tahun_terbit' => 'nullable',
@@ -91,6 +96,7 @@ class LibrariesController extends Controller
         }
 
         try {
+            $collectionId = LibraryCollection::where("slug",$request->collection)->first()->id;
             Libraries::create([
                 'title' => $request->title,
                 'url' => $request->url,
@@ -103,11 +109,12 @@ class LibrariesController extends Controller
                 'abstrak' => $request->abstrak,
                 'jumlah_halaman' => $request->jumlah_halaman,
                 'slug' => Str::slug($request->title, '-'),
-                'collection' => $request->collection
+                'collection' => $collectionId
             ]);
 
             return redirect(route('ae-library.index'))->with('success', 'Data berhasil disimpan');
         } catch (Exception $e) {
+            dd($e);
             return redirect()->route('ae-library.index')->with('error', 'Gagal menambahkan data! Silakan coba lagi.');
         }
     }
@@ -126,7 +133,8 @@ class LibrariesController extends Controller
     public function edit(Libraries $ae_library)
     {
         $pustaka = $ae_library;
-        return view('admin.dashboard.ae-library.edit', compact('pustaka'));
+        $collections = LibraryCollection::all();
+        return view('admin.dashboard.ae-library.edit', compact('pustaka','collections'));
     }
 
     /**
@@ -137,7 +145,7 @@ class LibrariesController extends Controller
         $rules = [
             'title' => 'required',
             'url' => 'required|url|regex:/^https:\/\/drive\.google\.com\/.*\/view$/',
-            'collection' => 'required|in:TRO,TRMO,TRIN,Teori',
+            'collection' => 'required',
             'penulis' => 'nullable',
             'penerbit' => 'nullable',
             'tahun_terbit' => 'nullable',
@@ -168,6 +176,7 @@ class LibrariesController extends Controller
         }
 
         try {
+            $collectionId = LibraryCollection::where("slug",$request->collection)->first()->id;
             $ae_library->update([
                 'title' => $request->title,
                 'url' => $request->url,
@@ -180,7 +189,7 @@ class LibrariesController extends Controller
                 'abstrak' => $request->abstrak,
                 'jumlah_halaman' => $request->jumlah_halaman,
                 'slug' => Str::slug($request->title, '-'),
-                'collection' => $request->collection
+                'collection' => $collectionId
             ]);
             return redirect(route('ae-library.index'))->with('success', 'Data berhasil diubah');
         } catch (Exception $e) {

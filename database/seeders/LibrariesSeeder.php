@@ -27,7 +27,7 @@ class LibrariesSeeder extends Seeder
                 'bahasa' => 'Inggris',
                 'jumlah_halaman' => 875,
                 'cover' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvnMtmsNYrl0GUB-lHJT3iyAF0nj34OG3YCPMOTA&s=0',
-                'collection' => 'Teori',
+                'collection' => 1,
             ],
             [
                 'title' => 'Fundamentals of Physics 9th Edition',
@@ -42,7 +42,7 @@ class LibrariesSeeder extends Seeder
                 'bahasa' => 'Inggris',
                 'jumlah_halaman' => 1330,
                 'cover' => 'https://images.braincandy.com/covers/2/9781118115596.jpg',
-                'collection' => 'Teori',
+                'collection' => 1,
             ],
             [
                 'title' => 'Calculus 9th Edition',
@@ -56,7 +56,7 @@ class LibrariesSeeder extends Seeder
                 'bahasa' => 'Inggris',
                 'jumlah_halaman' => 797,
                 'cover' => 'https://i.ebayimg.com/images/g/hjYAAOSw3v5YpL3w/s-l600.jpg',
-                'collection' => 'Teori',
+                'collection' => 1,
             ],
             [
                 'title' => 'Elektronika : Teori dan Penerapan',
@@ -70,7 +70,7 @@ class LibrariesSeeder extends Seeder
                 'bahasa' => 'Indonesia',
                 'jumlah_halaman' => 197,
                 'cover' => 'https://library.utp.ac.id/lib/minigalnano/createthumb.php?filename=images/docs/EL.jpg.jpg&width=200',
-                'collection' => 'Teori',
+                'collection' => 1,
             ],
             // TRMO
             [
@@ -85,7 +85,7 @@ class LibrariesSeeder extends Seeder
                 'bahasa' => 'Indonesia',
                 'jumlah_halaman' => 56,
                 'cover' => NULL,
-                'collection' => 'TRMO',
+                'collection' => 3,
             ],
             // TRO
             [
@@ -100,7 +100,7 @@ class LibrariesSeeder extends Seeder
                 'bahasa' => 'Inggris',
                 'jumlah_halaman' => 285,
                 'cover' => 'https://www.makershed.com/cdn/shop/products/GSW_Arduino_4th_CVR.jpg?v=1646414000',
-                'collection' => 'TRO',
+                'collection' => 2,
             ],
             [
                 'title' => 'Praktik Digital dan Mikrokontroler',
@@ -114,7 +114,7 @@ class LibrariesSeeder extends Seeder
                 'bahasa' => 'Indonesia',
                 'jumlah_halaman' => 65,
                 'cover' => NULL,
-                'collection' => 'TRO',
+                'collection' => 2,
             ],
             [
                 'title' => 'Mikrokontroler Menggunakan Arduino IDE',
@@ -128,7 +128,7 @@ class LibrariesSeeder extends Seeder
                 'bahasa' => 'Indonesia',
                 'jumlah_halaman' => 28,
                 'cover' => NULL,
-                'collection' => 'TRO',
+                'collection' => 2,
             ],
             [
                 'title' => 'Elektronika Otomasi Industri (Modul 1)',
@@ -142,7 +142,7 @@ class LibrariesSeeder extends Seeder
                 'bahasa' => 'Indonesia',
                 'jumlah_halaman' => 63,
                 'cover' => NULL,
-                'collection' => 'TRO',
+                'collection' => 2,
             ],
             [
                 'title' => 'Introducing SolidWorks',
@@ -156,7 +156,7 @@ class LibrariesSeeder extends Seeder
                 'bahasa' => 'Inggris',
                 'jumlah_halaman' => 120,
                 'cover' => 'https://images.squarespace-cdn.com/content/v1/5c880b08809d8e5586fe04e1/1553534747021-TP6QWAYDAXT6ONG52Z0Z/54.jpg',
-                'collection' => 'TRO',
+                'collection' => 2,
             ],
             [
                 'title' => 'Learn AutoCAD: Mechanical Drawing Using AutoCAD 2016',
@@ -170,7 +170,7 @@ class LibrariesSeeder extends Seeder
                 'bahasa' => 'Inggris',
                 'jumlah_halaman' => 314,
                 'cover' => 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTAwJDfH6UNPumehlXD6ma41S6zRtqETJ1CCdo1jiYDXkS_Wqpg',
-                'collection' => 'TRO',
+                'collection' => 2,
             ],
             [
                 'title' => 'Application Note: PCB Design with EAGLE',
@@ -184,7 +184,7 @@ class LibrariesSeeder extends Seeder
                 'bahasa' => 'Inggris',
                 'jumlah_halaman' => 43,
                 'cover' => 'https://cdn.hackaday.io/images/resize/600x600/5705491448916077669.jpg',
-                'collection' => 'TRO',
+                'collection' => 2,
             ],
             [
                 'title' => 'Piping and Instrumentation Diagram -P&ID',
@@ -198,7 +198,7 @@ class LibrariesSeeder extends Seeder
                 'bahasa' => 'Indonesia',
                 'jumlah_halaman' => 30,
                 'cover' => NULL,
-                'collection' => 'TRO',
+                'collection' => 2,
             ],
             [
                 'title' => 'Advanced Industrial Automation',
@@ -212,7 +212,7 @@ class LibrariesSeeder extends Seeder
                 'bahasa' => 'Inggris',
                 'jumlah_halaman' => 311,
                 'cover' => 'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1591833956i/53947775.jpg',
-                'collection' => 'TRO',
+                'collection' => 2,
             ],
             [
                 'title' => 'PLC Basics Course',
@@ -226,7 +226,7 @@ class LibrariesSeeder extends Seeder
                 'bahasa' => 'Inggris',
                 'jumlah_halaman' => 114,
                 'cover' => NULL,
-                'collection' => 'TRO',
+                'collection' => 2,
             ],
             [
                 'title' => 'Introduction to PLC Programming and Implementation from Relay Logic to PLC Logic',
@@ -240,7 +240,7 @@ class LibrariesSeeder extends Seeder
                 'bahasa' => 'Inggris',
                 'jumlah_halaman' => 76,
                 'cover' => 'https://img.yumpu.com/44829310/1/500x640/programmable-controllers-theory-and-implementation.jpg',
-                'collection' => 'TRO',
+                'collection' => 2,
             ],
             [
                 'title' => 'Programmable Logic Controllers - Programming Methods and Applications',
@@ -254,7 +254,7 @@ class LibrariesSeeder extends Seeder
                 'bahasa' => 'Inggris',
                 'jumlah_halaman' => 272,
                 'cover' => 'https://cdn.slidesharecdn.com/ss_thumbnails/plcprogrammingmethodsandapplicationsbyjohnrhackworthandfrederickdhackworthjr-220612064218-46632bb9-thumbnail.jpg?width=640&height=640&fit=bounds',
-                'collection' => 'TRO',
+                'collection' => 2,
             ],
             [
                 'title' => 'Programmable Controllers Theory and Implementation Second Edition',
@@ -268,7 +268,7 @@ class LibrariesSeeder extends Seeder
                 'bahasa' => 'Inggris',
                 'jumlah_halaman' => 1047,
                 'cover' => 'https://images.tokopedia.net/img/cache/700/hDjmkQ/2023/8/24/9c3c7dd1-9866-440e-b664-6abadc67bb8c.jpg',
-                'collection' => 'TRO',
+                'collection' => 2,
             ],
             [
                 'title' => 'Data Acquisition Handbook',
@@ -282,7 +282,7 @@ class LibrariesSeeder extends Seeder
                 'bahasa' => 'Inggris',
                 'jumlah_halaman' => 145,
                 'cover' => 'https://img.yumpu.com/33318965/1/500x640/data-acquisition-handbook-from-measurement-computing.jpg',
-                'collection' => 'TRO',
+                'collection' => 2,
             ],
             [
                 'title' => 'Mechatronics Electronic Control Systems in Mechanical and Electrical Engineering',
@@ -296,7 +296,7 @@ class LibrariesSeeder extends Seeder
                 'bahasa' => 'Inggris',
                 'jumlah_halaman' => 663,
                 'cover' => 'https://catalog.umj.ac.id/lib/minigalnano/createthumb.php?filename=images/docs/download_%2865%29.jpg.jpg&width=200',
-                'collection' => 'TRO',
+                'collection' => 2,
             ],
             [
                 'title' => 'Sensors For Mechatronics',
@@ -310,7 +310,7 @@ class LibrariesSeeder extends Seeder
                 'bahasa' => 'Inggris',
                 'jumlah_halaman' => 451,
                 'cover' => 'https://m.media-amazon.com/images/I/61xiiehSkyL._AC_UF1000,1000_QL80_.jpg',
-                'collection' => 'TRO',
+                'collection' => 2,
             ],
             [
                 'title' => 'Control of Mechatronic Systems',
@@ -324,7 +324,7 @@ class LibrariesSeeder extends Seeder
                 'bahasa' => 'Inggris',
                 'jumlah_halaman' => 217,
                 'cover' => 'https://imgv2-2-f.scribdassets.com/img/document/520004192/original/e34696a952/1720861242?v=1',
-                'collection' => 'TRO',
+                'collection' => 2,
             ],
             [
                 'title' => 'Control Systems Engineering 6th Edition',
@@ -338,7 +338,7 @@ class LibrariesSeeder extends Seeder
                 'bahasa' => 'Inggris',
                 'jumlah_halaman' => 984,
                 'cover' => 'https://i.pinimg.com/736x/9d/ee/85/9dee85ffe1a21abb705fb05d2164c455.jpg',
-                'collection' => 'TRO',
+                'collection' => 2,
             ],
             [
                 'title' => 'Control Theory A guided tour 3rd Edition',
@@ -352,7 +352,7 @@ class LibrariesSeeder extends Seeder
                 'bahasa' => 'Inggris',
                 'jumlah_halaman' => 472,
                 'cover' => 'https://image.ebooks.com/cover/1117244.jpg',
-                'collection' => 'TRO',
+                'collection' => 2,
             ],
             [
                 'title' => 'Manual for Modern Control Engineering 5th Edition',
@@ -366,7 +366,7 @@ class LibrariesSeeder extends Seeder
                 'bahasa' => 'Inggris',
                 'jumlah_halaman' => 240,
                 'cover' => 'https://image.slidesharecdn.com/moderncontrolengineering5thedsolutionmanual2010-181112184617/85/Modern-control-engineering-5th-ed-solution-manual-2010-1-320.jpg',
-                'collection' => 'TRO',
+                'collection' => 2,
             ],
             [
                 'title' => 'Modern Control Engineering 5th Edition',
@@ -380,7 +380,7 @@ class LibrariesSeeder extends Seeder
                 'bahasa' => 'Inggris',
                 'jumlah_halaman' => 905,
                 'cover' => 'https://image.slidesharecdn.com/moderncontrolengineering5thedsolutionmanual2010-181112184617/85/Modern-control-engineering-5th-ed-solution-manual-2010-1-320.jpg',
-                'collection' => 'TRO',
+                'collection' => 2,
             ],
             [
                 'title' => 'Solved Problems in Dynamical Systems and Control',
@@ -394,7 +394,7 @@ class LibrariesSeeder extends Seeder
                 'bahasa' => 'Inggris',
                 'jumlah_halaman' => 448,
                 'cover' => 'https://im2.book.com.tw/image/getImage?i=https://www.books.com.tw/img/F01/384/95/F013849503.jpg&v=609a8fa4k&w=375&h=375',
-                'collection' => 'TRO',
+                'collection' => 2,
             ],
             // TRIN
         ];

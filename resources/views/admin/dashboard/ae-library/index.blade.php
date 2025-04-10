@@ -51,30 +51,14 @@
                                 Semua
                             </a>
                         </li>
+                        @foreach ($collections as $collection)
                         <li>
                             <a class="dropdown-item"
-                                href="{{ route('ae-library.index', ['koleksi' => 'TRO', 'search' => request('search')]) }}">
-                                TRO
+                                href="{{ route('ae-library.index', ['koleksi' => $collection->slug , 'search' => request('search')]) }}">
+                                {{$collection->name}}
                             </a>
                         </li>
-                        <li>
-                            <a class="dropdown-item"
-                                href="{{ route('ae-library.index', ['koleksi' => 'TRMO', 'search' => request('search')]) }}">
-                                TRMO
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item"
-                                href="{{ route('ae-library.index', ['koleksi' => 'TRIN', 'search' => request('search')]) }}">
-                                TRIN
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item"
-                                href="{{ route('ae-library.index', ['koleksi' => 'Teori', 'search' => request('search')]) }}">
-                                Teori
-                            </a>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -134,7 +118,7 @@
                                 <td class="p-2"><img src="{{ $pustaka->cover ?? asset('assets/img/avatars/book.svg') }}"
                                         style="max-width:160px; max-height:98px;" alt="Cover"></td>
                                 <td>{{ $pustaka->title }}</td>
-                                <td>{{ $pustaka->collection }}</td>
+                                <td>{{ $pustaka->collections->name }}</td>
                                 <td>{{ $pustaka->created_at ? $pustaka->created_at->format('d M Y') : '-' }}</td>
                                 <td class="text-center">
                                     <div class="dropdown">

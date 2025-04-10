@@ -130,11 +130,10 @@
                             class="text-danger">*</span></label>
                     <select class="form-select @error('collection') is-invalid @enderror" name="collection"
                         id="exampleFormControlSelect1" aria-label="Default select example">
-                        <option selected>Pilih Koleksi Pustaka</option>
-                        <option value="TRO" @if (old('collection', $pustaka->collection) == 'TRO') selected @endif>TRO</option>
-                        <option value="TRMO" @if (old('collection', $pustaka->collection) == 'TRMO') selected @endif>TRMO</option>
-                        <option value="TRIN" @if (old('collection', $pustaka->collection) == 'TRIN') selected @endif>TRIN</option>
-                        <option value="Teori" @if (old('collection', $pustaka->collection) == 'Teori') selected @endif>Teori</option>
+                        <option selected value="">Pilih Koleksi Pustaka</option>
+                        @foreach ($collections as $collection)
+                            <option value="{{$collection->name}}" @if (old('collection', $pustaka->collection) == $collection->id) selected @endif>{{$collection->name}}</option>
+                        @endforeach
                     </select>
                     @error('collection')
                         <span class="text-danger">
