@@ -5,10 +5,20 @@
     <section>
         <div class="container">
             <div class="mb-5 mt-5">
-                <p>Kategori: {{ $informasi->kategori_informasi->name }}</p>
                 <h1 class="text-dark quote text-md-start pt-8">{{ $informasi->title }}</h1>
-                <p>Tanggal: {{ date('d/m/Y', strtotime($informasi->created_at)) }}</p>
-                <p>Oleh: <img src="{{asset('img/person_icon.svg')}}" alt=""> ({{$informasi->user->name}})</p>
+                <div class="d-flex align-items-center gap-4 flex-wrap mb-3">
+                    {{-- <p>Kategori: {{ $informasi->kategori_informasi->name }}</p>
+                    <p>Tanggal: {{ date('d/m/Y', strtotime($informasi->created_at)) }}</p>
+                    <p>Oleh: <img src="{{asset('img/person_icon.svg')}}" alt=""> ({{$informasi->user->name}})</p> --}}
+                    <span class="d-flex align-items-center"><i class="bx bx-category me-2"></i>
+                        {{ $informasi->kategori_informasi->name }}</span>
+                    <span class="d-flex align-items-center">
+                        <i class="bx bx-calendar me-2"></i>
+                        {{ \Carbon\Carbon::parse($informasi->created_at)->translatedFormat('d F Y') }}
+                    </span>
+                    <span class="d-flex align-items-center"><i class="bx bx-user me-2"></i> Oleh:
+                        {{ $informasi->user->name ?? 'Ristek Himamo' }}</span>
+                </div>
                 <div class="d-flex flex-column">
                     <div class="col text-center">
                         <img src="{{ asset('storage/informasi/' . $informasi->image) }}" alt="{{ $informasi->title }}" class="rounded-3 img-fluid" style="height: 300px;">

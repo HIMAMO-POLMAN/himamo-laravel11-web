@@ -1319,11 +1319,21 @@ html {
     background-color: #f0f0f0;
 }
 
-#ae-informasi a {
+#ae-informasi a .link{
     padding: 10px 5px;
     /* margin-top: 20px; */
     /* margin-left: 10px; */
     border-top: 1px solid slategray;
+}
+
+#body-pd .book-info{
+    width: 70%;
+}
+
+@media (max-width: 1200px){
+    #body-pd .book-info{
+        width: 100%;
+    }
 }
 
 @media (max-width: 576px) {
