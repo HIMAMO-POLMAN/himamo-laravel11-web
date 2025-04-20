@@ -1,16 +1,6 @@
 @extends('guest.layouts.app')
 @section('content')
-<style>
-.update-notice {
-            background-color: red;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 5px;
-        }
-</style>
+
 
     <div class="wrap bg-light">
         <section id="home">
@@ -76,7 +66,7 @@
                             <h3 class="text-dark quote">Berita & Pengumuman Terbaru</h3>
                         </div>
                     </div>
-                    {{-- <div class=" d-flex flex-column flex-lg-row justify-content-center landing-page-ae-informasi">
+                    <div class=" d-flex flex-column flex-lg-row justify-content-center landing-page-ae-informasi">
                         @foreach ($informasi as $item)
                             <div class=" pt-3 info-list gs_reveal">
                                 <a class="text-center text-dark" href="{{ url('ae-informasi/detail/' . $item->slug) }}">
@@ -91,10 +81,6 @@
                                 </a>
                             </div>
                         @endforeach
-                    </div> --}}
-                    <div class="update-notice gs-reveal">
-                        <h1>Mohon Maaf!</h1>
-                        <p>Fitur ini sedang dalam proses pembaruan.</p>
                     </div>
                     <div class="row justify-content-center mt-4 gs_reveal">
                         <div class="col-md-4 text-center">
@@ -142,10 +128,6 @@
                                 <div class="book-details text-dark">Tahun Terbit : 20XX</div>
                             </div>
                         </div> --}}
-                        <div class="update-notice gs-reveal">
-                            <h1>Mohon Maaf!</h1>
-                            <p>Fitur ini sedang dalam proses pembaruan.</p>
-                        </div>
                         <div class="row justify-content-center mt-4 gs_reveal">
                             <div class="col-md-4 text-center">
                                 <div class="info-button">
@@ -301,7 +283,7 @@
                                 kemampuan dan keterampilan mahasiswa dalam
                                 teknologi manufaktur dan otomasi, serta meningkatkan kesadaran dan partisipasi
                                 mahasiswa dalam pengembangan teknologi
-                                manufaktur dan otomasi di Indonesia..</p>
+                                manufaktur dan otomasi di Indonesia.</p>
                         </div>
                     </div>
                 </div>
