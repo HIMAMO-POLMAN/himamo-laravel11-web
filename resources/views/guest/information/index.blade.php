@@ -40,22 +40,24 @@
                         <div class="dropdown">
                             <button class="btn dropdown-toggle bg-light text-dark" type="button" id="dropdownMenuButton"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                Paling Relevan <i class="fas fa-chevron-down"></i>
+                                Paling Relevan <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="down" width="20" height="20" x="0" y="0" version="1.1" viewBox="0 0 64 64" class="ms-4">
+                                    <path d="M48.293 23.293L32 39.586 15.707 23.293l-1.414 1.561 17 17.146h1.414l17-17.146z"></path>
+                                  </svg>
                             </button>
                             <ul class="dropdown-menu bg-light" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item text-dark" href="#">
+                                <a class="dropdown-item text-dark border-bottom border-gray-600 border-2" href="#">
                                     <li>Paling Relevan</li>
                                 </a>
-                                <a class="dropdown-item text-dark" href="#">
+                                <a class="dropdown-item text-dark border-bottom border-gray-600 border-2" href="#">
                                     <li>Terbaru</li>
                                 </a>
-                                <a class="dropdown-item text-dark" href="#">
+                                <a class="dropdown-item text-dark border-bottom border-gray-600 border-2" href="#">
                                     <li>Sering Dibaca</li>
                                 </a>
-                                <a class="dropdown-item text-dark" href="#">
+                                <a class="dropdown-item text-dark border-bottom border-gray-600 border-2" href="#">
                                     <li>Tahun terbit (terbaru)</li>
                                 </a>
-                                <a class="dropdown-item text-dark" href="#">
+                                <a class="dropdown-item text-dark border-bottom border-gray-600 border-2" href="#">
                                     <li>Tahun terbit (terlama)</li>
                                 </a>
                             </ul>
