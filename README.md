@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/badge/status-in%20development-yellow"> <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue"></a>
 </p>
 
-# HIMAMO_Web
+# HIMAMO Website
 
 **HIMAMO_Web** is the official web platform for the Student Association of Manufacturing Automation and Mechatronics Engineering (HIMAMO) at Politeknik Manufaktur Negeri Bandung. The platform is designed to provide organizational information, academic resources, and updates relevant to students and the public.
 
