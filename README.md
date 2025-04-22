@@ -1,66 +1,98 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="https://github.com/user-attachments/assets/1f414f61-39f0-48af-b59c-e0d3137db76d" alt="himamobanner" width="600">
 </p>
 
-## About Laravel
+<p align="center">
+  <img src="https://img.shields.io/badge/status-in%20development-yellow"> <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue"></a>
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# HIMAMO_Web
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+**HIMAMO_Web** is the official web platform for the Student Association of Manufacturing Automation and Mechatronics Engineering (HIMAMO) at Politeknik Manufaktur Negeri Bandung. The platform is designed to provide organizational information, academic resources, and updates relevant to students and the public.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Technologies Used
 
-## Learning Laravel
+- **Laravel 11**: Backend PHP framework.
+  - Uses **Laravel Fortify** for authentication and security.
+- **Vite**: Frontend asset bundler for fast development.
+- **SCSS & Bootstrap**: UI styling and responsive layout.
+- **MySQL & phpMyAdmin**: Relational database system.
+- **PHP 8.3**: Server-side scripting language.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Features
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **AE Informasi**  
+  Centralized information portal for HIMAMO activities, announcements, and organizational updates.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **AE Pustaka**  
+  A digital library (in development) intended to host academic documents, learning materials, and student references.
 
-## Laravel Sponsors
+## Installation & Setup
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/HIMAMO-POLMAN/himamo-laravel11-web/
+   cd himamo-web
+   ```
 
-### Premium Partners
+2. **Install dependencies**
+   ```bash
+   composer install
+   npm install
+   ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+3. **Environment configuration**
+   - Copy `.env.example` to `.env`
+   - Configure your database and other environment variables. For full configuration details, please contact the development team.
 
-## Contributing
+4. **Generate application key**
+   ```bash
+   php artisan key:generate
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+5. **Run database migration and seeders**
+   ```bash
+   php artisan migrate --seed
+   # Or if the database already exists:
+   php artisan migrate:fresh --seed
+   ```
 
-## Code of Conduct
+6. **Run development server**
+   ```bash
+   php artisan serve
+   npm run dev
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Usage
 
-## Security Vulnerabilities
+- Visit `http://localhost:8000` or `http://127.0.0.1:8000` in your web browser.
+- Log in with an authorized account to access protected content.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Git/GitHub Branching Standards
+
+- `main`: Production-ready code
+- `develop`: Active development branch
+- `feature/<name>`: Feature-specific development
+- `bugfix/<name>`: Bug fixes
+- `release/<version>`: Pre-release version staging
+
+## Project Status
+
+This project is currently **in development** and subject to continuous updates and improvements.
+
+## Contributions
+
+Contributions are welcome. Feel free to fork the repository, create issues, or submit pull requests for enhancements and fixes.
+
+## Development Team
+
+- **Kominfo 2020**: Initial project setup and development.
+- **Divisi Informasi 2023**: Ongoing development and feature implementation.
+
+## Contact
+
+- **Email**: [informasihimamo@gmail.com](mailto:informasihimamo@gmail.com)
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
