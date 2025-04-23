@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('information', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained();
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('excerpt');
-            $table->foreignId('kategori_informasi_id');
+            $table->foreignId('category_id')->nullable()->constrained('information_categories')->onDelete('set null');
             $table->text('image');
             $table->text('desc');
             $table->timestamps();

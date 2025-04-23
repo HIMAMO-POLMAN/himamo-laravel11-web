@@ -1,7 +1,5 @@
 @extends('guest.layouts.app')
 @section('content')
-
-
     <div class="wrap bg-light">
         <section id="home">
             <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">

@@ -9,7 +9,7 @@
             <h1 class="mb-3">{{ $informasi->title }}</h1>
             <div class="d-flex align-items-center gap-4 flex-wrap mb-3">
                 <span class="d-flex align-items-center"><i class="bx bx-category me-2"></i>
-                    {{ $informasi->kategori_informasi->name }}</span>
+                    {{ $informasi->category->name }}</span>
                 <span class="d-flex align-items-center">
                     <i class="bx bx-calendar me-2"></i>
                     {{ \Carbon\Carbon::parse($informasi->created_at)->translatedFormat('d F Y') }}

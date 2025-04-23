@@ -35,17 +35,12 @@ class LibraryCollectionController extends Controller
         }
 
         $collections = $collections->paginate(10);
-        return view('admin.dashboard.ae-library-collection.index', compact('collections'));
+        return view('admin.dashboard.ae-library.collection.index', compact('collections'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        $collections = LibraryCollection::all();
-        return view('admin.dashboard.ae-library-collection.create',compact('collections'));
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -92,7 +87,7 @@ class LibraryCollectionController extends Controller
     public function edit(LibraryCollection $library_collection)
     {
         $koleksi = $library_collection;
-        return view('admin.dashboard.ae-library-collection.edit', compact('koleksi'));
+        return view('admin.dashboard.ae-library.collection.edit', compact('koleksi'));
     }
 
     /**
