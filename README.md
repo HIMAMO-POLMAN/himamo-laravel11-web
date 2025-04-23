@@ -1,98 +1,114 @@
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/1f414f61-39f0-48af-b59c-e0d3137db76d" alt="himamobanner" width="600">
-</p>
+## Panduan Standar Branch `develop` HIMAMO_Web
 
-<p align="center">
-  <img src="https://img.shields.io/badge/status-in%20development-yellow"> <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue"></a>
-</p>
+Branch `develop` adalah cabang utama untuk pengembangan aktif pada proyek **HIMAMO_Web**. Semua fitur baru, perbaikan bug, dan perubahan signifikan lainnya harus dibuat melalui branch turunan dari `develop`, dan tidak langsung pada `main`.
 
-# HIMAMO Website
+> 📚 kita mengikuti standarisasi Git berdasarkan [Git Feature Branch Workflow by DigitalJhelms](https://gist.github.com/digitaljhelms/4287848).
 
-**HIMAMO_Web** is the official web platform for the Student Association of Manufacturing Automation and Mechatronics Engineering (HIMAMO) at Politeknik Manufaktur Negeri Bandung. The platform is designed to provide organizational information, academic resources, and updates relevant to students and the public.
+---
 
-## Technologies Used
+### 1. **Alur Git yang Direkomendasikan**
 
-- **Laravel 11**: Backend PHP framework.
-  - Uses **Laravel Fortify** for authentication and security.
-- **Vite**: Frontend asset bundler for fast development.
-- **SCSS & Bootstrap**: UI styling and responsive layout.
-- **MySQL & phpMyAdmin**: Relational database system.
-- **PHP 8.3**: Server-side scripting language.
+#### A. Membuat Branch Baru dari `develop`
+Gunakan penamaan branch yang sesuai dengan jenis pekerjaan:
 
-## Features
+- `feature/<nama-fitur>` untuk fitur baru
+- `bugfix/<nama-bug>` untuk perbaikan bug
+- `hotfix/<nama-hotfix>` untuk perbaikan kritikal
 
-- **AE Informasi**  
-  Centralized information portal for HIMAMO activities, announcements, and organizational updates.
+```bash
+git checkout develop
+git pull origin develop
+git checkout -b feature/nama-fitur
+```
 
-- **AE Pustaka**  
-  A digital library (in development) intended to host academic documents, learning materials, and student references.
+#### B. Commit Standar
+Gunakan pesan commit yang deskriptif dan konsisten:
 
-## Installation & Setup
+```bash
+git add .
+git commit -m "[fitur] Menambahkan halaman pustaka"
+```
 
-1. **Clone the repository**
+Prefix commit yang digunakan:
+- `[fitur]` untuk penambahan
+- `[perbaikan]` untuk bug fix
+- `[refactor]` untuk refactor kode
+- `[hapus]` untuk penghapusan fitur/kode
+
+#### C. Push ke Remote
+```bash
+git push origin feature/nama-fitur
+```
+
+---
+
+### 2. **Pull Request ke `develop`**
+
+Setelah pekerjaan pada branch selesai:
+
+1. Pastikan branch `develop` terbaru sudah digabung:
    ```bash
-   git clone https://github.com/HIMAMO-POLMAN/himamo-laravel11-web/
-   cd himamo-web
+   git checkout develop
+   git pull origin develop
+   git checkout feature/nama-fitur
+   git merge develop
    ```
 
-2. **Install dependencies**
+2. Resolusi konflik jika ada, lalu push kembali:
    ```bash
-   composer install
-   npm install
+   git push origin feature/nama-fitur
    ```
 
-3. **Environment configuration**
-   - Copy `.env.example` to `.env`
-   - Configure your database and other environment variables. For full configuration details, please contact the development team.
+3. Buka Pull Request (PR) dari branch ke `develop` via GitHub.
 
-4. **Generate application key**
+4. Reviewer akan mengevaluasi dan menyetujui PR sebelum merge.
+
+---
+
+### 3. **Migrasi Database di Branch `develop`**
+
+Untuk perubahan struktur database:
+
+1. Tambahkan file migration via artisan:
    ```bash
-   php artisan key:generate
+   php artisan make:migration nama_migration
    ```
 
-5. **Run database migration and seeders**
+2. Jalankan migrasi lokal terlebih dahulu:
    ```bash
-   php artisan migrate --seed
-   # Or if the database already exists:
-   php artisan migrate:fresh --seed
+   php artisan migrate
    ```
 
-6. **Run development server**
-   ```bash
-   php artisan serve
-   npm run dev
-   ```
+3. Sertakan info pada PR tentang file migrasi dan instruksi migrasi.
 
-## Usage
+---
 
-- Visit `http://localhost:8000` or `http://127.0.0.1:8000` in your web browser.
-- Log in with an authorized account to access protected content.
+### 4. **Standar Sync `develop` Lokal dengan Remote**
 
-## Git/GitHub Branching Standards
+Untuk menghindari konflik saat update:
 
-- `main`: Production-ready code
-- `develop`: Active development branch
-- `feature/<name>`: Feature-specific development
-- `bugfix/<name>`: Bug fixes
-- `release/<version>`: Pre-release version staging
+```bash
+git checkout develop
+git pull origin develop
+```
 
-## Project Status
+Jika kamu sudah berada di branch kerja dan ingin update develop:
 
-This project is currently **in development** and subject to continuous updates and improvements.
+```bash
+git checkout develop
+git pull origin develop
+git checkout feature/nama-fitur
+git merge develop
+```
 
-## Contributions
+---
 
-Contributions are welcome. Feel free to fork the repository, create issues, or submit pull requests for enhancements and fixes.
+### 5. **Konvensi Umum**
+- Jangan langsung push ke `develop` atau `main`.
+- Gunakan Pull Request untuk semua perubahan.
+- Sertakan deskripsi PR dengan jelas dan ringkas.
+- Setiap perubahan signifikan pada database harus dilengkapi dengan migrasi dan dokumentasi.
 
-## Development Team
+---
 
-- **Kominfo 2020**: Initial project setup and development.
-- **Divisi Informasi 2023**: Ongoing development and feature implementation.
-
-## Contact
-
-- **Email**: [informasihimamo@gmail.com](mailto:informasihimamo@gmail.com)
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+> 📩 Jika bingung atau terjadi konflik besar, diskusikan saja sebelum lanjut merge atau migrasi besar.
