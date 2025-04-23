@@ -67,10 +67,6 @@
                     <i class='bx bxs-user-account nav_icon'></i>
                     <span class="nav_name">Leadership</span>
                 </a>
-                <a target="_blank" href="https://fuse2024.com/" class="nav_link">
-                    <i class='bx bx-trophy nav_icon'></i>
-                    <span class="nav_name">FUSE 2024</span>
-                </a>
                 <a href="{{ route('contact') }}" class="nav_link">
                     <i class='bx bxs-phone nav_icon'></i>
                     <span class="nav_name">Contact</span>

@@ -38,19 +38,19 @@
                 </div>
                 <div class="row">
                     <div class="col-12 col-md-6 mb-3">
-                        <label for="categories" class="form-label">Kategori Informasi</label>
-                        <select name="kategori_informasi_id"
-                            class="form-select  @error('kategori_informasi_id') is-invalid @enderror" id="categories"
+                        <label for="category_id" class="form-label">Kategori Informasi</label>
+                        <select name="category_id"
+                            class="form-select  @error('category_id') is-invalid @enderror" id="category_id"
                             aria-label="Default select example">
                             <option selected>Pilih Kategori</option>
                             @foreach ($kategori_informasi as $kategori)
                                 <option value="{{ $kategori->id }}"
-                                    {{ $informasi->kategori_informasi_id == $kategori->id ? 'selected' : '' }}>
+                                    {{ $informasi->category_id == $kategori->id ? 'selected' : '' }}>
                                     {{ $kategori->name }}
                                 </option>
                             @endforeach
                         </select>
-                        @error('kategori_informasi_id')
+                        @error('category_id')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>

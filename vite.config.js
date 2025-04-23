@@ -7,7 +7,7 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/js/app.js',
-                'resources/sass/app.scss' // Tambahkan ini jika Anda menggunakan SCSS
+                'resources/sass/app.scss'
             ],
             refresh: true,
         }),
