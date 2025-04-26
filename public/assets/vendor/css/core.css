@@ -6338,7 +6338,7 @@ label.btn {
 }
 .btn-outline-secondary:hover {
   color: #fff;
-  background-color: #788393;
+  /* background-color: #788393; */
   border-color: #788393;
   box-shadow: 0 0.125rem 0.25rem 0 rgba(133, 146, 163, 0.4);
   transform: translateY(-1px);
@@ -6973,6 +6973,7 @@ label.btn {
 
 button:focus {
   outline: none;
+  box-shadow: none;
 }
 
 .dropdown-toggle-split,
