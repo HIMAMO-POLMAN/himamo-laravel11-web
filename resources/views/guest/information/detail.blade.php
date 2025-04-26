@@ -10,7 +10,7 @@
                     <p>Tanggal: {{ date('d/m/Y', strtotime($informasi->created_at)) }}</p>
                     <p>Oleh: <img src="{{asset('img/person_icon.svg')}}" alt=""> ({{$informasi->user->name}})</p> --}}
                     <span class="d-flex align-items-center"><i class="bx bx-category me-2"></i>
-                        {{ $informasi->kategori_informasi->name }}</span>
+                       {{ $informasi->category->name }}</span>
                     <span class="d-flex align-items-center">
                         <i class="bx bx-calendar me-2"></i>
                         {{ \Carbon\Carbon::parse($informasi->created_at)->translatedFormat('d F Y') }}
@@ -29,9 +29,9 @@
             </div>
             <p>Kategori</p>
             <div class="">
-              @foreach ($kategori_informasi as $kategori)
+              @foreach ($categories as $category)
               <ul>
-                <li><a href="#">{{$kategori->name}} <span>({{count($kategori->informasi)}})</span></a></li>
+                <li><a href="#">{{$category->name}} <span>({{$category->information_count}})</span></a></li>
               </ul>
               @endforeach
             </div>

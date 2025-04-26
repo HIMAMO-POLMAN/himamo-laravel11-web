@@ -37,17 +37,17 @@
                 </div>
                 <div class="row">
                     <div class="col-12 col-md-6 mb-3">
-                        <label for="kategori_informasi_id" class="form-label">Kategori Informasi <span
+                        <label for="category_id" class="form-label">Kategori Informasi <span
                                 class="text-danger">*</span></label>
-                        <select name="kategori_informasi_id"
-                            class="form-select  @error('kategori_informasi_id') is-invalid @enderror"
-                            id="kategori_informasi_id" aria-label="Default select example">
+                        <select name="category_id"
+                            class="form-select  @error('category_id') is-invalid @enderror"
+                            id="category_id" aria-label="Default select example">
                             <option value="" selected="selected" hidden="hidden">Pilih Kategori</option>
                             @foreach ($kategori_informasi as $kategori)
                                 <option value="{{ $kategori->id }}">{{ $kategori->name }}</option>
                             @endforeach
                         </select>
-                        @error('kategori_informasi_id')
+                        @error('category_id')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>

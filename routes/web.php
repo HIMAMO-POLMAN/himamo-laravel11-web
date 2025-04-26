@@ -37,9 +37,9 @@ Route::middleware('auth-check')->group(function () {
     Route::delete('/profile-delete', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
     Route::resource('user', UserController::class);
-    Route::resource('information-categories', InformationCategoriesController::class);
     Route::resource('ae-information', InformationController::class);
     Route::resource('ae-library',LibrariesController::class);
+    Route::resource('information-categories', InformationCategoriesController::class);
     Route::resource('library-collection',LibraryCollectionController::class);
 });
 

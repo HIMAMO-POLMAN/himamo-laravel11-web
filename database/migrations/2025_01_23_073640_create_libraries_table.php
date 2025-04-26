@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('cover')->nullable();
             $table->string('slug')->unique();
             $table->text('url');
-            $table->enum('collection', ['TRO', 'TRMO','TRIN','Teori']);
+            $table->foreignId('collection')->nullable()->constrained('library_collections')->onDelete('set null');
             $table->timestamps();
         });
     }

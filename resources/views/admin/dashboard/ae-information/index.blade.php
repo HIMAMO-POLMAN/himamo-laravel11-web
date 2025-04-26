@@ -106,7 +106,7 @@
                                         style="max-height: 100px; width: auto;">
                                 </td>
                                 <td>{{ $ae_information->title }}</td>
-                                <td>{{ $ae_information->kategori_informasi->name ?? 'Tidak ada kategori' }}</td>
+                                <td>{{ $ae_information->category->name ?? 'Tidak ada kategori' }}</td>
                                 <td>{{ $ae_information->user->name ?? 'Tidak diketahui' }}</td>
                                 <td>{{ $ae_information->created_at ? $ae_information->created_at->format('d M Y') : '-' }}
                                 </td>

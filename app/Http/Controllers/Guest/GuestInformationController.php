@@ -15,18 +15,18 @@ class GuestInformationController extends Controller
 
         $search = $request->input('search');
         $kategoriId = $request->input('kategori');
-        $query = Information::with(['kategori_informasi', 'user'])
+        $query = Information::with(['category', 'user'])
             ->when($search, function ($q) use ($search) {
                 return $q->where('title', 'like', '%' . $search . '%');
             })
             ->when($kategoriId, function ($q) use ($kategoriId) {
-                return $q->where('kategori_informasi_id', $kategoriId);
+                return $q->where('category_id', $kategoriId);
             })
             ->orderBy('updated_at', 'asc');
 
         return view('guest.information.index', [
             "informasi" => $query->paginate(12),
-            'kategori_informasi' => InformationCategories::with('informasi')->get(),
+            'category' => InformationCategories::with('information')->get(),
             'populer' => Information::withCount('views')
                 ->orderBy('views_count', 'desc')
                 ->limit(5)
@@ -44,9 +44,8 @@ class GuestInformationController extends Controller
 
 
         return view('guest.information.detail', [
-            'informasi' => $informasi->load('kategori_informasi','user')
-                ->loadCount('views'),
-            'kategori_informasi' => InformationCategories::with(['informasi'])->get(),
+            'informasi' => $informasi->load('category','user')->loadCount('views'),
+            'categories' => InformationCategories::with(['information'])->get(),
         ]);
     }
 }

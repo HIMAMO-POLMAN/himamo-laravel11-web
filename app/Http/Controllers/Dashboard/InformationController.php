@@ -20,9 +20,9 @@ class InformationController extends Controller
         $search = $request->input('search');
         $sort = $request->input('sort', 'terbaru');
         $kategori = $request->input('kategori');
-        $ae_information = Information::with('kategori_informasi')->withCount('views');
+        $ae_information = Information::with('category')->withCount('views');
         if ($kategori) {
-            $ae_information->where('kategori_informasi_id', $kategori);
+            $ae_information->where('category_id', $kategori);
         }
         if ($sort === 'terbaru') {
             $ae_information->orderByDesc('id');
@@ -52,7 +52,7 @@ class InformationController extends Controller
     public function show(Information $ae_information)
     {
         return view('admin.dashboard.ae-information.show', [
-            'informasi' => $ae_information->load('kategori_informasi', 'user'),
+            'informasi' => $ae_information->load('category', 'user'),
         ]);
     }
 
@@ -60,7 +60,7 @@ class InformationController extends Controller
     {
         $rules = [
             'title' => 'required',
-            'kategori_informasi_id' => 'required',
+            'category_id' => 'required',
             'image' => 'required|max:1000|mimes:jpg,jpeg,png,webp',
             'desc' => 'required|min:20',
         ];
@@ -68,7 +68,7 @@ class InformationController extends Controller
         $messages = [
             'title.required' => 'Title wajib diisi!',
             'image.required' => 'Image wajib diisi!',
-            'kategori_informasi_id.required' => 'Kategori informasi wajib diisi!',
+            'category_id.required' => 'Kategori informasi wajib diisi!',
             'desc.required' => 'Description wajib diisi!',
             'desc.min' => 'Description minimal 20 karakter!',
         ];
@@ -116,7 +116,7 @@ class InformationController extends Controller
                 'slug' => Str::slug($request->title, '-'),
                 "excerpt" => Str::limit(strip_tags($request->desc), 100),
                 'image' => $fileName,
-                'kategori_informasi_id' => $request->kategori_informasi_id,
+                'category_id' => $request->category_id,
                 'desc' => $dom->saveHTML(),
             ]);
 
@@ -139,14 +139,14 @@ class InformationController extends Controller
     {
         $rules = [
             'title' => 'required',
-            'kategori_informasi_id' => 'required',
+            'category_id' => 'required',
             'image' => 'nullable|max:1000|mimes:jpg,jpeg,png,webp',
             'desc' => 'required|min:20',
         ];
 
         $messages = [
             'title.required' => 'Title wajib diisi!',
-            'kategori_informasi_id.required' => 'Kategori wajib diisi!',
+            'category_id.required' => 'Kategori wajib diisi!',
             'image.mimes' => 'Format gambar tidak valid!',
             'desc.required' => 'Description wajib diisi!',
             'desc.min' => 'Description minimal 20 karakter!',
@@ -173,7 +173,7 @@ class InformationController extends Controller
             $ae_information->slug = Str::slug($request->title, '-');
             $ae_information->excerpt = Str::limit(strip_tags($request->desc), 100);
             $ae_information->desc = $request->desc;
-            $ae_information->kategori_informasi_id = $request->kategori_informasi_id;
+            $ae_information->category_id = $request->category_id;
             $ae_information->save();
 
             return redirect()->route('ae-information.index')->with('success', 'Informasi berhasil diperbarui');

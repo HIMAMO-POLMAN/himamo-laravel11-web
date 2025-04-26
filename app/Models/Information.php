@@ -15,14 +15,14 @@ class Information extends Model
         'title',
         'slug',
         'excerpt',
-        'kategori_informasi_id',
+        'category_id',
         'image',
         'desc',
     ];
 
-    public function kategori_informasi()
+    public function category()
     {
-        return $this->belongsTo(InformationCategories::class, 'kategori_informasi_id');
+        return $this->belongsTo(InformationCategories::class, 'category_id');
     }
 
     public function user()
