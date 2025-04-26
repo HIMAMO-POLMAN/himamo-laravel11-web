@@ -92,7 +92,7 @@ p {
     top: 0;
     left: -30%;
     width: var(--nav-width);
-    height: 100vh;
+    height: 150vh;
     background-color: var(--first-color);
     padding: 0.5rem 1rem 0 0;
     transition: 0.5s;
@@ -1405,6 +1405,7 @@ html {
 
 #ae-informasi .search-button:hover {
     border-color: transparent;
+    outline: none;
 }
 
 @media (max-width: 990px) {
@@ -1936,6 +1937,7 @@ html {
 .btn-primary:hover {
     background: #005c5a !important;
     border: 1px solid transparent;
+    outline: none;
 }
 
 /*

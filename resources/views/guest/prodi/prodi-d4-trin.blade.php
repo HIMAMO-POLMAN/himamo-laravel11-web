@@ -60,25 +60,25 @@
                             <div class="row pt-1 pb-4 subject-list ">
                                 <div class="col-12 col-md-6 mt-4 col-lg text-center">
                                 <a href="prodi-d2-trmo">
-                                    <div class="subject-box text-dark">
+                                    <div class="subject-box bg-light shadow-sm">
                                         <img src="{{ asset('assets-guest/img/trmo-d2_subject.svg') }}" alt="Robotika" class="subject-image" >
-                                            <p class="subject-name">D2 Jalur Cepat<br>Teknik Mekatronika</p>
+                                            <p class="subject-name text-dark fw-bold">D2 Jalur Cepat<br>Teknik Mekatronika</p>
                                     </div>
                                     </a>
                                 </div>
                                 <div class="col-12 col-md-6 mt-4 col-lg text-center">
                                 <a href="prodi-d4-tro">
-                                    <div class="subject-box text-dark">
+                                    <div class="subject-box bg-light shadow-sm">
                                         <img src="{{ asset('assets-guest/img/tro_subject.svg') }}" alt="Robotika" class="subject-image" >
-                                            <p class="subject-name">D4 Prodi<br>Teknologi Rekayasa Otomasi</p>
+                                            <p class="subject-name text-dark fw-bold">D4 Prodi<br>Teknologi Rekayasa Otomasi</p>
                                     </div>
                                     </a>
                                 </div>
                                 <div class="col-12 col-md-6 mt-4 col-lg text-center">
                                 <a href="prodi-d4-trmo">
-                                    <div class="subject-box text-dark">
+                                    <div class="subject-box bg-light shadow-sm">
                                         <img src="{{ asset('assets-guest/img/trmo_subject.svg') }}" alt="Robotika" class="subject-image" >
-                                            <p class="subject-name">D4 Prodi<br>Teknologi Rekayasa Mekatronika</p>
+                                            <p class="subject-name text-dark fw-bold">D4 Prodi<br>Teknologi Rekayasa Mekatronika</p>
                                     </div>
                                     </a>
                                 </div>

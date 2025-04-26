@@ -1,7 +1,6 @@
-
 @extends('guest.layouts.app')
 @section('content')
-<div class="wrap bg-light detail-informasi-body">
+<div class="wrap bg-light detail-informasi-body d-flex flex-column min-vh-100">
     <section>
         <div class="container">
             <div class="mb-5 mt-5">
