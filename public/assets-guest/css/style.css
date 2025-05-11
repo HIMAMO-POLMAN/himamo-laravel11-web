@@ -1366,7 +1366,7 @@ html {
 }
 
 #ae-informasi .img-box {
-    height: 150px; /* Atur tinggi tetap untuk img-box */
+    min-height: 180px; /* Atur tinggi tetap untuk img-box */
     display: flex;
     align-items: center; /* Vertikal center gambar */
     justify-content: center; /* Horizontal center gambar */
@@ -1379,11 +1379,16 @@ html {
     }
 }
 
+#ae-informasi .img-box .info-image:hover{
+     transform: scale(1.2);
+}
+
 #ae-informasi .info-image {
     width: 300px;
-    height: 300px;
+    /* height: 300px; */
     object-fit: contain; /* Menjaga gambar tetap utuh tanpa terpotong */
     /* border-radius: 25px; */
+    transition: all 0.3s ease;
 }
 
 @media (max-width: 990px) {
