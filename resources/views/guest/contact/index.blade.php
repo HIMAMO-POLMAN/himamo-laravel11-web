@@ -75,7 +75,7 @@
                                     </div>
                                 </div>
                                 <div class="row justify-content-center align-items-stretch gx-4 gy-4">
-                                    <div class="col-md-6">
+                                    <div class="col-lg-6">
                                         <div class="media-embed-scrollable">
                                             <iframe class="w-100"
                                                 src="https://www.instagram.com/p/DIGQEvhPLk3/embed/captioned/"
@@ -84,7 +84,7 @@
                                             </iframe>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-lg-6">
                                         <div class="media-embed-box">
                                             <blockquote class="tiktok-embed w-100 h-100"
                                                 cite="https://www.tiktok.com/@himamo_official"
@@ -148,43 +148,43 @@
                                 </div>
                             </div>
                             <div class="row my-5 g-0 contact-wrap">
-                                <div class="col-md-5">
+                                <div class="col-lg-6">
                                     <div id="map"></div>
                                 </div>
-                                <div class="col-md-6 formisi">
+                                <div class="col-lg-6 formisi">
                                     <div class="w-100 p-md-5">
                                         <h2 class="quote text-dark mb-4">Hubungi <span class="judul"> Kami </span></h2>
                                         <form name="submit-to-google-sheet" class="contactForm">
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-6 mt-2 col-sm-12">
                                                     <div class="form-group">
                                                         <label class="label" for="name">Nama Lengkap</label>
                                                         <input id="input-nama" type="text" class="form-control"
                                                             name="Name" id="name" placeholder="Nama">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-6 mt-2 col-sm-12">
                                                     <div class="form-group">
                                                         <label class="label" for="email">Alamat Email</label>
                                                         <input id="input-mail" type="email" class="form-control"
                                                             name="Email" id="email" placeholder="Email">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-12">
+                                                <div class="col-md-12 mt-2 col-sm-12">
                                                     <div class="form-group pt-3">
                                                         <label class="label" for="subject">Subjek</label>
                                                         <input type="text" class="form-control" name="Subject"
                                                             id="subject" placeholder="Subjek">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-12">
+                                                <div class="col-md-12 mt-2 col-sm-12">
                                                     <div class="form-group pt-3">
                                                         <label class="label" for="#">Pesan</label>
                                                         <textarea id="input-pesan" name="Message" class="form-control" id="Message" cols="30" rows="6"
                                                             placeholder="Pesan"></textarea>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-12">
+                                                <div class="col-md-12 mt-2 col-sm-12">
                                                     <div class="form-group pt-4">
                                                         <input onClick="return empty()" type="submit"
                                                             value="Kirim Pesan" class="btn-kirim btn btn-primary">
