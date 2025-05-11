@@ -22,7 +22,6 @@ class GuestInformationController extends Controller
         $kategoriId = $request->input('kategori');
         $sort = $request->input('sort', 'terbaru');
         $query = Information::with(['category:id,name', 'user:id,name'])
-            ->select('id', 'title', 'image', 'category_id', 'user_id', 'created_at')
             ->when($search, function ($q) use ($search) {
                 $q->where('title', 'like', '%' . $search . '%');
             })
