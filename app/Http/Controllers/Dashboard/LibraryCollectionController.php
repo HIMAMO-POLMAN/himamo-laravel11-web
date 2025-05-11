@@ -11,9 +11,7 @@ use Illuminate\Support\Str;
 
 class LibraryCollectionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index(Request $request)
     {
         $search = $request->input('search');
@@ -38,13 +36,6 @@ class LibraryCollectionController extends Controller
         return view('admin.dashboard.ae-library.collection.index', compact('collections'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $rules = [
@@ -73,26 +64,17 @@ class LibraryCollectionController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(LibraryCollection $library_collection)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(LibraryCollection $library_collection)
     {
         $koleksi = $library_collection;
         return view('admin.dashboard.ae-library.collection.edit', compact('koleksi'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, LibraryCollection $library_collection)
     {
         $rules = [
@@ -120,9 +102,6 @@ class LibraryCollectionController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(LibraryCollection $library_collection)
     {
         try {

@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('cover')->nullable();
             $table->string('slug')->unique();
             $table->text('url');
-            $table->foreignId('collection')->nullable()->constrained('library_collections')->onDelete('set null');
+            $table->foreignId('collection_id')->nullable()->constrained('library_collections')->onDelete('set null');
             $table->timestamps();
         });
     }

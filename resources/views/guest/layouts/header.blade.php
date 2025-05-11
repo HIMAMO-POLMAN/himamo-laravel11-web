@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {{-- CSRF Token --}}
@@ -22,7 +22,6 @@
             <meta property="og:image" content="{{ asset('storage/informasi/' . $informasi->image) }}" />
         @else
             <meta property="og:image" content="{{ asset('assets-guest/img/img-himamo.webp') }}" />
-
         @endif
         <title>HIMAMO | {{ $informasi->title }}</title>
     @else
@@ -80,6 +79,6 @@
 
     {{-- Scripts --}}
     @once
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @endonce
 </head>

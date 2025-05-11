@@ -1,6 +1,5 @@
 @extends('guest.layouts.app')
 @section('content')
-
     <style>
         .book-cover {
             width: 100%;
@@ -38,16 +37,8 @@
             height: 40px;
         }
     </style>
-    <a onclick="topFunction()">
-        <div id="myBtn" class="scroll-up text-center butonUP">
-            <span>
-                <i class='text-white pt-2 bx bx-up-arrow-alt'></i>
-            </span>
-        </div>
-    </a>
 
     <div class="wrap bg-light">
-
         <section id="ae-pustaka" class="about bg-light">
             <div class="container book-info text-black">
                 <div class="row">
@@ -122,53 +113,4 @@
             </div>
         </section>
     </div>
-
-
-    </div>
-    <!--Container Main end-->
-    <!--jquery-->
-    <script>
-        //Get the button:
-        mybutton = document.getElementById("myBtn");
-        // When the user clicks on the button, scroll to the top of the document
-
-        function topFunction() {
-            document.body.scrollTop = 0; // For Safari
-            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-        }
-
-        //scroll function saat scroll lakukan...
-        $(window).scroll(function() {
-            var scroll = $(window).scrollTop();
-            if (scroll > 20) {
-                mybutton.style.display = "block";
-                document.getElementById("header").classList.add('bg-light');
-            } else {
-                mybutton.style.display = "none";
-                document.getElementById("header").classList.remove('bg-light');
-            }
-        })
-    </script>
-    <script>
-        //switch 2 mode
-        var moon = document.querySelector('.btn-moon');
-        var sun = document.querySelector('.btn-sun');
-
-        document.getElementById("darkSwitch").addEventListener("click", function() {
-            moon.classList.toggle('d-none');
-            sun.classList.toggle('d-none');
-        });
-    </script>
-    <script>
-        // account settings
-        var user_button = document.querySelector('.bxs-user-circle');
-        var settings_account = document.querySelector('.settings_account');
-
-        user_button.addEventListener("click", function() {
-            settings_account.classList.toggle('d-none');
-        })
-    </script>
-
-    {{-- </body>
-
-</html> --}}
+@endsection

@@ -22,19 +22,27 @@ class Libraries extends Model
         'jumlah_halaman',
         'slug',
         'url',
-        'collection',
+        'collection_id',
     ];
 
-    public function views(){
+    public function views()
+    {
         return $this->hasMany(LibrariesView::class, 'libraries_id');
     }
 
-    public function collections(){
-        return $this->belongsTo(LibraryCollection::class,"collection");
+    public function collection()
+    {
+        return $this->belongsTo(LibraryCollection::class, "collection_id");
     }
 
     public function getRouteKeyName()
     {
         return 'slug';
     }
+
+    public function user()
+{
+    return $this->belongsTo(User::class);
+}
+
 }

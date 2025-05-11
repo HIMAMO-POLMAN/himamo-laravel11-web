@@ -6,11 +6,10 @@
                 <div class="carousel-inner gs_reveal">
                     <div class="carousel-item drk active">
                         <img src="{{ asset('assets-guest/img/img-carousel-1.webp') }}" class="d-block gbr img-fluid">
-
                         <div class="carousel-caption">
                             <div class="row no-gutters slider-text2 align-items-center justify-content-center">
                                 <h1 class="quote">WELCOME TO <span>HIMAMO</span></h1>
-                                <p class="quote">HIMPUNAN MAHASISWA OTOMASI MANUFAKTUR & MEKATRONIKA. </span>
+                                <p class="quote">HIMPUNAN MAHASISWA TEKNIK OTOMASI MANUFAKTUR & MEKATRONIKA</span>
                                 </p>
                             </div>
                         </div>
@@ -61,7 +60,7 @@
                 <div class="container cont-2">
                     <div class="row">
                         <div class="col-md-12 text-center gs_reveal">
-                            <h3 class="text-dark quote">Berita & Pengumuman Terbaru</h3>
+                            <h3 class="text-dark quote">Berita & Artikel Terbaru</h3>
                         </div>
                     </div>
                     <div class=" d-flex flex-column flex-lg-row justify-content-center landing-page-ae-informasi">
@@ -70,11 +69,15 @@
                                 <a class="text-center text-dark" href="{{ url('ae-informasi/detail/' . $item->slug) }}">
                                     <div class="info-box">
                                         <div class="img-box align-items-center">
-                                            <img src="{{ asset('storage/informasi/' . $item->image) }}"
-                                                alt="{{ $item->title }}" class="info-image mx-auto">
+                                            <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}"
+                                                class="info-image mx-auto">
                                         </div>
-                                        <p class="info-title text-dark mt-2">{{ $item->title }}</p>
-                                        <p class="info-date text-dark">{{ date('d/m/Y', strtotime($item->created_at)) }}</p>
+                                        <p class="info-date text-dark mt-2">{{ $item->category->name }}</p>
+                                        <p class="info-title text-dark">{{ Str::limit($item->title, 40) }}</p>
+                                        <p class="info-date text-dark">
+                                            {{ \Carbon\Carbon::parse($item->created_at)->locale('id')->translatedFormat('d F Y') }}
+
+                                        </p>
                                     </div>
                                 </a>
                             </div>
@@ -149,8 +152,7 @@
                                 loading="lazy">
                         </div>
                         <div class=" gs_reveal gs_reveal_fromRight about-text ">
-                            <h2 class="text-dark quote pt-3 text-center text-lg-start">Apa itu <span
-                                    class="judul">Jurusan
+                            <h2 class="text-dark quote pt-3 text-center text-lg-start">Apa itu <span class="judul">Jurusan
                                     Teknik Otomasi
                                     Manufaktur dan Mekatronika?</span></h2>
                             <p class="text-dark pt-2 ">

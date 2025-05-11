@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class LibraryCollection extends Model
 {
+       protected $table = 'library_collections';
     protected $fillable = [
         "name",
         "slug"
@@ -14,5 +15,10 @@ class LibraryCollection extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function libraries()
+    {
+        return $this->hasMany(Libraries::class, 'collection_id');
     }
 }

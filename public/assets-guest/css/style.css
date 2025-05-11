@@ -450,6 +450,11 @@ html {
     margin-left: 12px;
 }
 
+
+.dropdown-item {
+    white-space: normal;
+}
+
 @media (max-width: 576px) {
     .dropdown .dropdown-menu {
         width: 100%;
@@ -1319,19 +1324,19 @@ html {
     background-color: #f0f0f0;
 }
 
-#ae-informasi a .link{
+#ae-informasi a .link {
     padding: 10px 5px;
     /* margin-top: 20px; */
     /* margin-left: 10px; */
     border-top: 1px solid slategray;
 }
 
-#body-pd .book-info{
+#body-pd .book-info {
     width: 70%;
 }
 
-@media (max-width: 1200px){
-    #body-pd .book-info{
+@media (max-width: 1200px) {
+    #body-pd .book-info {
         width: 100%;
     }
 }
@@ -1366,8 +1371,6 @@ html {
     align-items: center; /* Vertikal center gambar */
     justify-content: center; /* Horizontal center gambar */
     overflow: hidden; /* Menyembunyikan bagian gambar yang meluap */
-
-    border-radius: 10px;
 }
 
 @media (max-width: 990px) {
@@ -1437,12 +1440,19 @@ html {
     color: #212529;
     margin: 0;
 
-    font-size: 30px;
+    font-size: 20px;
 }
 
 #ae-informasi .info-button {
     margin-bottom: 20px;
 }
+
+
+#ae-informasi .dropdown-menu {
+    min-width: auto;
+    width: 100%;
+}
+
 
 /* Apa Kata Mereka */
 .user-img {
@@ -1616,6 +1626,17 @@ html {
     background-position: 100px;
 }
 
+.tiktok:hover {
+    background: #25f4ee;
+    background: radial-gradient(
+        circle at 30% 107%,
+        #25f4ee 0%,
+        #fe2c55 50%,
+        #000000 100%
+    );
+    background-position: 100px;
+}
+
 .yt:hover {
     background: #ff0000;
     background-position: 100px;
@@ -1623,6 +1644,11 @@ html {
 
 .email:hover {
     background: #ea4335;
+    background-position: 100px;
+}
+
+.linkedin:hover {
+    background: #0077b5;
     background-position: 100px;
 }
 
@@ -2075,9 +2101,6 @@ select:-webkit-autofill:focus {
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
-
-.link-prodi a {
 }
 
 .breadcrumb-prodi a {

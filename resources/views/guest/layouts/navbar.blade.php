@@ -1,8 +1,3 @@
-{{-- <div class="bg-light" id="loading">
-    <img class="heartbeat" src="{{ asset('assets-guest/img/load.png') }}" alt="Loading">
-    <div id="bruh"></div>
-</div> --}}
-
 <header class="header" id="header">
     <div class="header_toggle">
         <i class='bx bx-menu' id="header-toggle"></i>
@@ -37,7 +32,7 @@
                 <a href="{{ Route::currentRouteNamed('landing-page') ? '#' : url('/') }}"
                     class="nav_link @if (Route::currentRouteNamed('landing-page')) active @endif ">
                     <i class='bx bx-home nav_icon'></i>
-                    <span class="nav_name">Home</span>
+                    <span class="nav_name">Beranda</span>
                 </a>
                 <a href="{{ Route::currentRouteNamed('landing-page') ? '#ae-informasi' : url('/#ae-informasi') }}"
                     class="nav_link @if (Route::currentRouteNamed('information.*')) active @endif">
@@ -51,25 +46,25 @@
                 </a>
                 <a href="{{ Route::currentRouteNamed('landing-page') ? '#about' : url('/#about') }}" class="nav_link">
                     <i class='bx bx-info-circle nav_icon'></i>
-                    <span class="nav_name">About</span>
+                    <span class="nav_name">Tentang</span>
                 </a>
                 <a href="{{ Route::currentRouteNamed('landing-page') ? '#history' : url('/#history') }}"
                     class="nav_link">
                     <i class='bx bx-time nav_icon'></i>
-                    <span class="nav_name">History</span>
+                    <span class="nav_name">Sejarah</span>
                 </a>
                 <a href="{{ Route::currentRouteNamed('landing-page') ? '#division' : url('/#division') }}"
                     class="nav_link">
                     <i class='bx bxs-network-chart nav_icon'></i>
-                    <span class="nav_name">Division</span>
+                    <span class="nav_name">Struktur</span>
                 </a>
                 <a href="{{ Route::currentRouteNamed('landing-page') ? '#leader' : url('/#leader') }}" class="nav_link">
                     <i class='bx bxs-user-account nav_icon'></i>
-                    <span class="nav_name">Leadership</span>
+                    <span class="nav_name">Kepemimpinan</span>
                 </a>
                 <a href="{{ route('contact') }}" class="nav_link">
                     <i class='bx bxs-phone nav_icon'></i>
-                    <span class="nav_name">Contact</span>
+                    <span class="nav_name">Kontak</span>
                 </a>
             </div>
         </div>

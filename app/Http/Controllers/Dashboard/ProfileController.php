@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Redirect;
 
 class ProfileController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         return view('admin.dashboard.profile');
     }
 

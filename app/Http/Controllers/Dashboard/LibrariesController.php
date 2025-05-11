@@ -12,19 +12,16 @@ use Illuminate\Http\Request;
 
 class LibrariesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index(Request $request)
     {
         $collections = LibraryCollection::all();
         $search = $request->input('search');
         $sort = $request->input('sort', 'terbaru');
         $koleksi = $request->input('koleksi');
-        $pustakas = Libraries::with("collections")->orderBy('id', 'desc');
+        $pustakas = Libraries::with("collection")->orderBy('id', 'desc');
 
         if ($koleksi) {
-            $pustakas->whereHas('collections', function ($query) use ($koleksi) {
+            $pustakas->whereHas('collection', function ($query) use ($koleksi) {
                 $query->where('slug', $koleksi);
             });
         }
@@ -40,32 +37,28 @@ class LibrariesController extends Controller
         if ($search) {
             $pustakas->where(function ($query) use ($search) {
                 $query->where('title', 'like', "%{$search}%")
-                    ->orWhere('collection', 'like', "%{$search}%");
+                    ->orWhereHas('collection', function ($q) use ($search) {
+                        $q->where('name', 'like', "%{$search}%");
+                    });
             });
         }
 
         $pustakas = $pustakas->paginate(10);
-        return view('admin.dashboard.ae-library.index', compact('pustakas','collections'));
+        return view('admin.dashboard.ae-library.index', compact('pustakas', 'collections'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $collections = LibraryCollection::all();
-        return view('admin.dashboard.ae-library.create',compact('collections'));
+        return view('admin.dashboard.ae-library.create', compact('collections'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $rules = [
             'title' => 'required',
             'url' => 'required|url|regex:/^https:\/\/drive\.google\.com\/.*\/view$/',
-            'collection' => 'required',
+            'collection_id' => 'required',
             'penulis' => 'nullable',
             'penerbit' => 'nullable',
             'tahun_terbit' => 'nullable',
@@ -82,8 +75,8 @@ class LibrariesController extends Controller
             'url.url' => 'URL tidak valid!',
             'url.regex' => 'Format URL tidak valid!',
             'cover.url' => 'URL Cover tidak valid!',
-            'collection.required' => 'Koleksi wajib diisi!',
-            'collection.in' => 'Data yang dipilih tidak valid!',
+            'collection_id.required' => 'Koleksi wajib diisi!',
+            'collection_id.in' => 'Data yang dipilih tidak valid!',
             'abstrak.required' => 'Abstrak wajib diisi!',
             'bahasa.required' => 'Bahasa wajib diisi!',
             'jumlah_halaman.required' => 'Jumlah Halaman wajib diisi!',
@@ -96,7 +89,7 @@ class LibrariesController extends Controller
         }
 
         try {
-            $collectionId = LibraryCollection::where("slug",$request->collection)->first()->id;
+            $collectionId = LibraryCollection::where("slug", $request->collection)->first()->id;
             Libraries::create([
                 'title' => $request->title,
                 'url' => $request->url,
@@ -109,7 +102,7 @@ class LibrariesController extends Controller
                 'abstrak' => $request->abstrak,
                 'jumlah_halaman' => $request->jumlah_halaman,
                 'slug' => Str::slug($request->title, '-'),
-                'collection' => $collectionId
+                'collection_id' => $collectionId
             ]);
 
             return redirect(route('ae-library.index'))->with('success', 'Data berhasil disimpan');
@@ -118,33 +111,24 @@ class LibrariesController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Libraries $ae_library)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Libraries $ae_library)
     {
         $pustaka = $ae_library;
         $collections = LibraryCollection::all();
-        return view('admin.dashboard.ae-library.edit', compact('pustaka','collections'));
+        return view('admin.dashboard.ae-library.edit', compact('pustaka', 'collections'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Libraries $ae_library)
     {
         $rules = [
             'title' => 'required',
             'url' => 'required|url|regex:/^https:\/\/drive\.google\.com\/.*\/view$/',
-            'collection' => 'required',
+            'collection_id' => 'required',
             'penulis' => 'nullable',
             'penerbit' => 'nullable',
             'tahun_terbit' => 'nullable',
@@ -161,8 +145,8 @@ class LibrariesController extends Controller
             'url.url' => 'URL tidak valid!',
             'url.regex' => 'Format URL tidak valid!',
             'cover.url' => 'URL Cover tidak valid!',
-            'collection.required' => 'Koleksi wajib diisi!',
-            'collection.in' => 'Data yang dipilih tidak valid!',
+            'collection_id.required' => 'Koleksi wajib diisi!',
+            'collection_id.in' => 'Data yang dipilih tidak valid!',
             'abstrak.required' => 'Abstrak wajib diisi!',
             'bahasa.required' => 'Bahasa wajib diisi!',
             'jumlah_halaman.required' => 'Jumlah Halaman wajib diisi!',
@@ -175,7 +159,8 @@ class LibrariesController extends Controller
         }
 
         try {
-            $collectionId = LibraryCollection::where("slug",$request->collection)->first()->id;
+            $collectionId = LibraryCollection::where("slug", $request->collection_id)->first()->id;
+
             $ae_library->update([
                 'title' => $request->title,
                 'url' => $request->url,
@@ -188,7 +173,7 @@ class LibrariesController extends Controller
                 'abstrak' => $request->abstrak,
                 'jumlah_halaman' => $request->jumlah_halaman,
                 'slug' => Str::slug($request->title, '-'),
-                'collection' => $collectionId
+                'collection_id' => $collectionId
             ]);
             return redirect(route('ae-library.index'))->with('success', 'Data berhasil diubah');
         } catch (Exception $e) {
@@ -196,9 +181,6 @@ class LibrariesController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Libraries $ae_library)
     {
         try {

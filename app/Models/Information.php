@@ -30,7 +30,8 @@ class Information extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function views(){
+    public function views()
+    {
         return $this->hasMany(InformationView::class, 'information_id');
     }
 

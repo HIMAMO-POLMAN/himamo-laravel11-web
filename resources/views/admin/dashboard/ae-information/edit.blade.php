@@ -39,9 +39,8 @@
                 <div class="row">
                     <div class="col-12 col-md-6 mb-3">
                         <label for="category_id" class="form-label">Kategori Informasi</label>
-                        <select name="category_id"
-                            class="form-select  @error('category_id') is-invalid @enderror" id="category_id"
-                            aria-label="Default select example">
+                        <select name="category_id" class="form-select  @error('category_id') is-invalid @enderror"
+                            id="category_id" aria-label="Default select example">
                             <option selected>Pilih Kategori</option>
                             @foreach ($kategori_informasi as $kategori)
                                 <option value="{{ $kategori->id }}"
@@ -67,7 +66,7 @@
                         @enderror
                         @if ($informasi->image)
                             <div class="mt-2">
-                                <img src="{{ asset('storage/informasi/' . $informasi->image) }}" alt="Current Image"
+                                <img src="{{ asset('storage/' . $informasi->image) }}" alt="Current Image"
                                     style="width: 150px;">
                             </div>
                         @endif

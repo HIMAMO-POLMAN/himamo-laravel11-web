@@ -1,4 +1,3 @@
-// ++++++++++++++++++++++++++++++++++++++++++SIDEBAR++++++++++++++++++++++++++++++++++++++++++++
 document.addEventListener("DOMContentLoaded", function (event) {
 
     const showNavbar = (toggleId, navId, bodyId, headerId) => {
@@ -93,9 +92,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
         });
     });
 });
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-//ambil icon sidebar
+
+// ambil icon sidebar
 var nav_home = document.querySelector('.nav_list a:nth-child(1)');
 var nav_aeinformasi = document.querySelector('.nav_list a:nth-child(2)');
 var nav_aepustaka = document.querySelector('.nav_list a:nth-child(3)');
@@ -104,7 +103,7 @@ var nav_history = document.querySelector('.nav_list a:nth-child(5)');
 var nav_divisi = document.querySelector('.nav_list a:nth-child(6)');
 var nav_leader = document.querySelector('.nav_list a:nth-child(7)');
 
-//ambil height dari setiaps section
+// ambil height dari setiaps section
 var home_value = (document.querySelector('section#home .carousel').clientHeight) - 100;
 var about_value = document.querySelector('section#about .container').clientHeight;
 var history_value = document.querySelector('section#history .container').clientHeight;
@@ -113,19 +112,17 @@ var leader_value = document.querySelector('section#leader .container').clientHei
 var aepustaka_value = document.querySelector('section#ae-pustaka .container').clientHeight;
 var aeinformasi_value = document.querySelector('section#ae-informasi .container').clientHeight;
 
-// ++++++++++++++++++++++++++++++++++++++++++tombol to up++++++++++++++++++++++++++++++++++++++++++++
-//Get the button:
+
+
+// TOMBOL KE ATAS
 mybutton = document.getElementById("myBtn");
 
-// When the user clicks on the button, scroll to the top of the document
 function topFunction() {
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
 }
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 $(document).ready(function () {
-    // ++++++++++++++++++++++++++++++++++++++++++owl-carousel+++++++++++++++++++++++++++++++++++++++++++
     $('.owl-one').owlCarousel({
         autoplay: false,
         margin: 30,
@@ -210,8 +207,9 @@ $(document).ready(function () {
             }
         }
     });
-    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    // ++++++++++++++++++++++++++++++++++++++++++saat scroll lakukan++++++++++++++++++++++++++++++++++++++++++++
+
+
+    // SCROLLING
     $(window).scroll(function () {
         var scroll = $(window).scrollTop();
         if (scroll > 20) {
@@ -299,20 +297,7 @@ $(document).ready(function () {
     })
 });
 
-// ++++++++++++++++++++++++++++++++++++++++++tombolnya 2 mode++++++++++++++++++++++++++++++++++++++++++++
-
-var moon = document.querySelector('.btn-moon');
-var sun = document.querySelector('.btn-sun');
-
-document.getElementById("darkSwitch").addEventListener("click", function () {
-    moon.classList.toggle('d-none');
-    sun.classList.toggle('d-none');
-});
-
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-// ++++++++++++++++++++++++++++++++++++++++++counter up function++++++++++++++++++++++++++++++++++++++++++++
-
+// COUNTER UP FUNCTION
 const counters = document.querySelectorAll('.value');
 const speed = 1000;
 
@@ -333,9 +318,10 @@ counters.forEach(counter => {
 
     animate();
 });
-// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-// ++++++++++++++++++++++++++++++++++++++++++preloader++++++++++++++++++++++++++++++++++++++++++++
+
+
+// PRELOADER
 var preloader = document.getElementById("loading");
 
 function load() {
@@ -343,15 +329,6 @@ function load() {
         document.getElementById("loading").style.display = 'none';
     },1500);
 }
-
-// account settings
-
-var user_button = document.querySelector('.bxs-user-circle');
-var settings_account = document.querySelector('.settings_account');
-
-user_button.addEventListener("click", function () {
-    settings_account.classList.toggle('d-none');
-})
 
 function animateFrom(elem, direction) {
     direction = direction | 1;

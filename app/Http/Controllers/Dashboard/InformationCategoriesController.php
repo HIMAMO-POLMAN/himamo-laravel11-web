@@ -17,7 +17,7 @@ class InformationCategoriesController extends Controller
 
         if ($search) {
             $information_category->where('name', 'like', "%{$search}%")
-                              ->orWhere('slug', 'like', "%{$search}%");
+                ->orWhere('slug', 'like', "%{$search}%");
         }
 
         $information_category = $information_category->paginate(10);
@@ -27,8 +27,10 @@ class InformationCategoriesController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|unique:information_categories|max:255',
+        ], [
+            'name.required' => 'Nama wajib diisi',
         ]);
 
         InformationCategories::create([

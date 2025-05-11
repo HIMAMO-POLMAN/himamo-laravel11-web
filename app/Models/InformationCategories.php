@@ -15,7 +15,8 @@ class InformationCategories extends Model
         'slug',
     ];
 
-    public function information(){
+    public function information()
+    {
         return $this->hasMany(Information::class, 'category_id');
     }
 }

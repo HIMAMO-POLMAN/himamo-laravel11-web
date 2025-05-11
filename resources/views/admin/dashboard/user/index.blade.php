@@ -137,7 +137,7 @@
                                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                                     Tutup
                                 </button>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Kirim</button>
                             </div>
                         </form>
                     </div>
@@ -154,7 +154,7 @@
                             <th>Nama</th>
                             <th>Email</th>
                             <th>Verifikasi</th>
-                            <th>Role</th>
+                            <th>Peran</th>
                             <th>Dibuat</th>
                             <th class="text-center">Aksi</th>
                         </tr>
@@ -174,7 +174,7 @@
                                     @endif
                                 </td>
                                 <td>{{ $user->role }}</td>
-                                <td>{{ $user->created_at ? $user->created_at->format('d M Y') : '-' }}</td>
+                                <td>{{ $user->created_at ? $user->created_at->locale('id')->translatedFormat('d F Y') : '-' }}</td>
                                 <td class="text-center">
                                     <div class="dropdown">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
