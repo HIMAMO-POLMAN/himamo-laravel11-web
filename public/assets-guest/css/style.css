@@ -959,7 +959,7 @@ html {
     background-attachment: fixed;
     background-position: top center; /* Pindahkan gambar ke atas */
     background-repeat: no-repeat;
-    background-size: 100% auto; /* Lebar penuh, tinggi otomatis */
+    background-size: 100% 300px; /* Lebar penuh, tinggi otomatis */
 }
 
 /* ----------------------fix when scrolling--------------------- */
@@ -1451,6 +1451,11 @@ html {
 #ae-informasi .dropdown-menu {
     min-width: auto;
     width: 100%;
+}
+
+.img-blog{
+    max-height: 300px;
+    
 }
 
 
