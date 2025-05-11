@@ -103,7 +103,7 @@
                                             class="info-image mx-auto">
                                     </div>
                                     <p class="info-date text-dark mt-2">{{ $item->category->name }}</p>
-                                    <p class="info-title text-dark mt-2">{{ Str::limit($item->title, 40) }}</p>
+                                    <p class="info-title text-dark mt-2">{{ Str::limit($item->title, 20) }}</p>
                                     <p class="info-date text-dark">
                                         {{ \Carbon\Carbon::parse($item->created_at)->locale('id')->translatedFormat('d F Y') }}
                                     </p>
