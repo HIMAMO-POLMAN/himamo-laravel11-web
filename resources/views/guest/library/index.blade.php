@@ -1,7 +1,7 @@
 @extends('guest.layouts.app')
 @section('content')
     <style>
-        .search-wrapper {
+        /* .search-wrapper {
             max-width: 600px;
             margin: 0 auto;
             padding: 0 15px;
@@ -88,7 +88,7 @@
             padding: 10px 20px;
             background: #f8f9fa;
             border-radius: 15px 15px 0 0;
-        }
+        } */
 
         #ae-pustaka {
             min-height: 100vh;
@@ -291,7 +291,7 @@
             </div>
         </div>
         <section id="ae-pustaka" class="about bg-light">
-            <div class="search-wrapper">
+            {{-- <div class="search-wrapper">
                 <div class="search-box">
                     <form class=" justify-content-center" method="GET" action="{{ url()->current() }}">
                         <div class="input-group mb-3 input-search">
@@ -331,12 +331,33 @@
                         </div>
                     </div>
                 </div>
+            </div> --}}
+
+            <section id="ae-informasi" class="about bg-light ">
+                <div class="justify-content-center search-bar">
+                <form class="d-flex justify-content-center" method="GET" action="{{ url()->current() }}">
+                    <div class="input-group mb-3 input-search">
+                        <input type="text" name="search" class="form-control bg-light text-dark search-input"
+                            placeholder="Search" aria-label="Search" value="{{ old('search', request('search')) }}">
+                        <button class="btn btn-primary search-button" type="submit" id="button-addon2">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M19 19L14.65 14.65M17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 4.58172 4.58172 1 9 1C13.4183 1 17 4.58172 17 9Z"
+                                    stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                    @if (request('kategori'))
+                        <input type="hidden" name="kategori" value="{{ request('kategori') }}">
+                    @endif
+                </form>
             </div>
+            </section>
 
 
-            <div class="pt-5">
-           <div
-                    class="container search-info d-flex flex-column gap-2 gap-sm-0 flex-sm-row justify-content-between align-items-start">
+        <div class="pt-5">
+           <div class="container search-info d-flex flex-column gap-2 gap-sm-0 flex-sm-row justify-content-between align-items-start">
                     <div class="text-dark search-text">
                         @if (request('search'))
                             <div class="text-dark search-text">
