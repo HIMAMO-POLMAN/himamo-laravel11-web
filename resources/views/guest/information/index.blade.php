@@ -115,7 +115,24 @@
                     @endforeach
                 </div>
             </div>
-            <div class="pagination-wrapper d-flex justify-content-center mt-4">
+           <nav aria-label="Page navigation">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link text-white btn-primary" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link text-white btn-primary" href="#">1</a></li>
+    <li class="page-item"><a class="page-link text-white btn-primary" href="#">2</a></li>
+    <li class="page-item"><a class="page-link text-white btn-primary" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link btn-primary text-white" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+            <div class="pagination-wrapper d-flex  mt-4">
                 {{ $informasi->appends(request()->query())->links() }}
             </div>
         </section>
