@@ -113,22 +113,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container cont-2 px-5 pb-2">
+                    {{-- <div class="container cont-2 px-5 pb-2">
                         <div class="row">
                             <div class="col-md-12 text-center gs_reveal">
                                 <h3 class="text-white quote">Jelajahi Koleksi Kami</h3>
                             </div>
                         </div>
-                        {{-- <div class="d-flex flex-row">
-                            <div class="book-cover">COVER BUKU</div>
-                            <div class="book-info">
-                                <div class="book-title"><a class="text-dark" href="book-detail.html">Judul Buku</a></div>
-                                <div class="book-details text-dark">Penulis : Lorem Ipsum</div>
-                                <div class="book-details text-dark">Jenis Koleksi : Lorem Ipsum</div>
-                                <div class="book-details text-dark">Jumlah Hal : 1XX</div>
-                                <div class="book-details text-dark">Tahun Terbit : 20XX</div>
-                            </div>
-                        </div> --}}
                         <div class="row justify-content-center mt-4 gs_reveal">
                             <div class="col-md-4 text-center">
                                 <div class="info-button">
@@ -137,7 +127,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </section>
