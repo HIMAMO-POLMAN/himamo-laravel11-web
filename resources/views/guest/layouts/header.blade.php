@@ -9,31 +9,42 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- Title Page --}}
-    <title>{{ config('app.name', 'HIMAMO') }} | Himpunan Mahasiswa Otomasi Manufaktur & Mekatronika</title>
+    <title>@yield('title', 'HIMAMO | Himpunan Teknik Mahasiswa Otomasi Manufaktur & Mekatronika')</title>
+    <meta name="description" content="@yield('meta_description', 'Website resmi Himpunan Mahasiswa Teknik Otomasi Manufaktur dan Mekatronika POLMAN Bandung')">
+
 
     {{-- Meta Open Graph --}}
-    @if (Request::segment(2) == 'detail')
+    {{-- Meta Open Graph --}}
+    @if (Request::segment(2) == 'detail' && isset($informasi))
+        @php
+            $desc = strip_tags($informasi->excerpt ?? Str::limit($informasi->desc, 150));
+            $imagePath = $informasi->image
+                ? asset('storage/informasi/' . $informasi->image)
+                : asset('assets-guest/img/img-himamo.webp');
+            $url = url()->current();
+        @endphp
+
         <meta property="og:title" content="{{ $informasi->title }}" />
-        <meta name="description" content="{{ strip_tags($informasi->excerpt ?? $informasi->title) }}" />
+        <meta property="og:description" content="{{ $desc }}" />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://himamopolman.org/ae-informasi/detail/{{ $informasi->slug }}" />
-        <meta property="og:description" content="{{ strip_tags($informasi->excerpt ?? $informasi->title) }}" />
-        @if ($informasi->image)
-            <meta property="og:image" content="{{ asset('storage/informasi/' . $informasi->image) }}" />
-        @else
-            <meta property="og:image" content="{{ asset('assets-guest/img/img-himamo.webp') }}" />
-        @endif
-        <title>HIMAMO | {{ $informasi->title }}</title>
+        <meta property="og:url" content="{{ $url }}" />
+        <meta property="og:image" content="{{ $imagePath }}" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:site_name" content="HIMAMO" />
     @else
         <meta property="og:title" content="HIMAMO" />
-        <meta name="description" content="Himpunan Mahasiswa Teknik Otomasi Manufaktur dan Mekatronika" />
+        <meta property="og:description"
+            content="Website resmi Himpunan Mahasiswa Teknik Otomasi Manufaktur dan Mekatronika POLMAN Bandung" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://himamopolman.org/" />
-        <meta property="og:description" content="Himpunan Mahasiswa Teknik Otomasi Manufaktur dan Mekatronika" />
+        <meta property="og:url" content="{{ url('/') }}" />
         <meta property="og:image" content="{{ asset('assets-guest/img/img-himamo.webp') }}" />
-
-        <title>HIMAMO | Himpunan Mahasiswa Otomasi Manufaktur & Mekatronika</title>
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:site_name" content="HIMAMO" />
     @endif
+
+
 
     {{-- Custom CSS --}}
     <link href="{{ asset('assets-guest/css/style.css') }}" rel="stylesheet">

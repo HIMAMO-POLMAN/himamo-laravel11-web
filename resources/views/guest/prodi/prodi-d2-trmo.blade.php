@@ -1,4 +1,6 @@
 @extends('guest.layouts.app')
+@section('title', 'D2 Jalur Cepat Teknik Mekatronika | POLMAN Bandung')
+@section('meta_description', 'Program D2 Jalur Cepat Teknik Mekatronika POLMAN Bandung dirancang untuk lulusan SMK dengan pembelajaran singkat 3 semester dan magang industri. Pelajari teknik mesin, elektro, dan komputer untuk jadi teknisi andal.')
 @section('content')
     <div class="wrap bg-light">
         <section id="ae-pustaka" class="about bg-light">

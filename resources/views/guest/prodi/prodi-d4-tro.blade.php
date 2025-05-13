@@ -1,4 +1,6 @@
 @extends('guest.layouts.app')
+@section('title', 'D4 Teknologi Rekayasa Otomasi | POLMAN Bandung')
+@section('meta_description', 'Program D4 Teknologi Rekayasa Otomasi POLMAN Bandung membekali mahasiswa dengan keahlian otomasi industri 4.0, sistem kontrol, dan teknologi manufaktur modern.')
 @section('content')
     <div class="wrap bg-light">
         <section id="ae-pustaka" class="about bg-light">

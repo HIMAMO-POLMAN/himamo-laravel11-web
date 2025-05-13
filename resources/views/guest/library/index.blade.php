@@ -1,4 +1,6 @@
 @extends('guest.layouts.app')
+@section('title', 'AE Pustaka | HIMAMO')
+@section('meta_description', 'AE Pustaka adalah sumber informasi dan referensi terlengkap seputar Teknik Otomasi Manufaktur dan Mekatronika. Temukan berbagai macam buku, jurnal, artikel, dan materi pembelajaran lainnya untuk mendukung pengembangan pengetahuan dan keterampilan Anda.')
 @section('content')
     <style>
         /* .search-wrapper {

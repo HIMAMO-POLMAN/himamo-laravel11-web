@@ -1,4 +1,6 @@
 @extends('guest.layouts.app')
+@section('title', 'Hubungi Kami | HIMAMO')
+@section('meta_description', 'Hubungi kami melalui media sosial, email, atau formulir kontak untuk pertanyaan dan informasi lebih lanjut tentang HIMAMO.')
 @section('content')
     <div class="wrap bg-light">
         <div class="parallax3">
@@ -13,7 +15,6 @@
             </div>
         </div>
         <section id="contact-form">
-
                 <div class="container pb-5 px-5 pt-5 py-5">
                     <div class="row d-flex flex-col flex-lg-row ">
                         <div class="col-md-12 text-center gs_reveal">

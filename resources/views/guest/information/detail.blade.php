@@ -1,4 +1,6 @@
 @extends('guest.layouts.app')
+@section('title', $informasi->title . ' | HIMAMO')
+@section('meta_description', strip_tags($informasi->excerpt ?? \Illuminate\Support\Str::limit($informasi->desc, 150)))
 @section('content')
     <div class="wrap bg-light">
         <section id="ae-pustaka" class="about bg-light">

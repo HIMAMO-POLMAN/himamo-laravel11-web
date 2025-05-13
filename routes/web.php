@@ -12,6 +12,7 @@ use App\Http\Controllers\Guest\GuestInformationController;
 use App\Http\Controllers\Guest\ContactController;
 use App\Http\Controllers\Dashboard\LibrariesController;
 use App\Http\Controllers\Dashboard\LibraryCollectionController;
+use Spatie\Sitemap\SitemapGenerator;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/kontak', [ContactController::class, 'index'])->name('contact');
@@ -42,4 +43,3 @@ Route::middleware('auth-check')->group(function () {
     Route::resource('information-categories', InformationCategoriesController::class);
     Route::resource('library-collection',LibraryCollectionController::class);
 });
-

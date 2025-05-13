@@ -1,4 +1,6 @@
 @extends('guest.layouts.app')
+@section('title', 'AE Informasi | HIMAMO')
+@section('meta_description', 'Dapatkan informasi terbaru seputar jurusan Teknik Otomasi Manufaktur dan Mekatronika, termasuk berita terkini, acara mendatang, prestasi mahasiswa, lowongan pekerjaan, dan perkembangan teknologi di bidang ini.')
 @section('content')
     <div class="wrap bg-light d-flex flex-column min-vh-100">
         <div class="contain-ae-informasi">

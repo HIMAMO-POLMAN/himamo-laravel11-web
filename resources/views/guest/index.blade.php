@@ -1,4 +1,6 @@
 @extends('guest.layouts.app')
+@section('title', 'HIMAMO | Polman Bandung')
+@section('meta_description', 'HIMAMO merupakan himpunan pertama yang didirikan di kampus Politeknik Manufaktur Negeri Bandung.')
 @section('content')
     <div class="wrap bg-light">
         <section id="home">
