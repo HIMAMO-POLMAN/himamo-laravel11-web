@@ -103,9 +103,12 @@
                                             class="info-image mx-auto">
                                     </div>
                                     <p class="info-date text-dark mt-2">{{ $item->category->name }}</p>
-                                    <p class="info-title text-dark mt-2 d-block d-sm-none">{{ Str::limit($item->title, 26) }}</p>
-                                    <p class="info-title text-dark mt-2 d-none d-md-none">{{ Str::limit($item->title, 32) }}</p>
-                                    <p class="info-title text-dark mt-2 d-none text-break d-md-block">{{ Str::limit($item->title, 20) }}</p>
+                                    <p class="info-title text-dark mt-2 d-block d-sm-none">
+                                        {{ Str::limit($item->title, 26) }}</p>
+                                    <p class="info-title text-dark mt-2 d-none d-md-none">
+                                        {{ Str::limit($item->title, 32) }}</p>
+                                    <p class="info-title text-dark mt-2 d-none text-break d-md-block">
+                                        {{ Str::limit($item->title, 20) }}</p>
                                     <p class="info-date text-dark">
                                         {{ \Carbon\Carbon::parse($item->created_at)->locale('id')->translatedFormat('d F Y') }}
                                     </p>
@@ -115,26 +118,39 @@
                     @endforeach
                 </div>
             </div>
-           <nav aria-label="Page navigation">
-  <ul class="pagination justify-content-center">
-    <li class="page-item">
-      <a class="page-link text-white btn-primary" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li class="page-item"><a class="page-link text-white btn-primary" href="#">1</a></li>
-    <li class="page-item"><a class="page-link text-white btn-primary" href="#">2</a></li>
-    <li class="page-item"><a class="page-link text-white btn-primary" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link btn-primary text-white" href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
-            <div class="pagination-wrapper d-flex  mt-4">
-                {{ $informasi->appends(request()->query())->links() }}
-            </div>
+            @php
+                $currentPage = $informasi->currentPage();
+                $lastPage = $informasi->lastPage();
+            @endphp
+
+            <nav aria-label="Page navigation" class="mt-4">
+                <ul class="pagination justify-content-center">
+                    {{-- Previous Page Link --}}
+                    <li class="page-item {{ $currentPage == 1 ? 'disabled' : '' }}">
+                        <a class="page-link text-white btn-primary" href="{{ $informasi->url($currentPage - 1) }}"
+                            aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+
+                    {{-- Page Number Links --}}
+                    @for ($i = 1; $i <= $lastPage; $i++)
+                        <li class="page-item {{ $currentPage == $i ? 'active' : '' }}">
+                            <a class="page-link text-white btn-primary"
+                                href="{{ $informasi->url($i) }}">{{ $i }}</a>
+                        </li>
+                    @endfor
+
+                    {{-- Next Page Link --}}
+                    <li class="page-item {{ $currentPage == $lastPage ? 'disabled' : '' }}">
+                        <a class="page-link text-white btn-primary" href="{{ $informasi->url($currentPage + 1) }}"
+                            aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
         </section>
     </div>
 @endsection

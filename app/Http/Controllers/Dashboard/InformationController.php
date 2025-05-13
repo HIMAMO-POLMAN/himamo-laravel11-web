@@ -110,8 +110,8 @@ class InformationController extends Controller
 
             // Pusing bang
             $cleanedHTML = Purifier::clean($processedHTML, [
-                'HTML.Allowed' => 'u, i, span, b,h1,h2,h3,h4,p,br,ul,ol,li,strong,em,a[href|title|rel|target],img[src|alt|class],table[class],thead,tbody,tr,th,td',
-                'CSS.AllowedProperties' => [],
+                'HTML.Allowed' => 'u,i,span[style],b,h1[style],h2[style],h3[style],h4[style],p[style],br,ul,ol,li,strong,em,a[href|title|rel|target|style],img[src|alt|class|style],table[class|style],thead,tbody,tr,th,td',
+                'CSS.AllowedProperties' => ['font-size'],
                 'AutoFormat.RemoveEmpty' => true,
                 'URI.AllowedSchemes' => [
                     'http' => true,
@@ -122,7 +122,7 @@ class InformationController extends Controller
             $information = Information::create([
                 'user_id' => Auth::id(),
                 'title' => $request->title,
-            'slug' => $this->generateUniqueSlug($request->title),
+                'slug' => $this->generateUniqueSlug($request->title),
 
                 'excerpt' => Str::limit(strip_tags($cleanedHTML), 160),
                 'image' => $mainImagePath,
@@ -183,22 +183,22 @@ class InformationController extends Controller
         return $mimeMap[strtolower($mime)] ?? 'png';
     }
 
-private function generateUniqueSlug(string $title, int $ignoreId = null): string
-{
-    $slug = Str::slug($title);
-    $originalSlug = $slug;
-    $counter = 1;
+    private function generateUniqueSlug(string $title, int $ignoreId = null): string
+    {
+        $slug = Str::slug($title);
+        $originalSlug = $slug;
+        $counter = 1;
 
-    while (
-        Information::where('slug', $slug)
+        while (
+            Information::where('slug', $slug)
             ->when($ignoreId, fn($query) => $query->where('id', '!=', $ignoreId))
             ->exists()
-    ) {
-        $slug = $originalSlug . '-' . $counter++;
-    }
+        ) {
+            $slug = $originalSlug . '-' . $counter++;
+        }
 
-    return $slug;
-}
+        return $slug;
+    }
 
 
 
@@ -263,8 +263,8 @@ private function generateUniqueSlug(string $title, int $ignoreId = null): string
             $processedHTML = $dom->saveHTML();
 
             $cleanedHTML = Purifier::clean($processedHTML, [
-                'HTML.Allowed' => 'h1,h2,h3,h4,p,br,ul,ol,li,strong,em,a[href|title|rel|target],img[src|alt|class],table[class],thead,tbody,tr,th,td',
-                'CSS.AllowedProperties' => [],
+                'HTML.Allowed' => 'u,i,span[style],b,h1[style],h2[style],h3[style],h4[style],p[style],br,ul,ol,li,strong,em,a[href|title|rel|target|style],img[src|alt|class|style],table[class|style],thead,tbody,tr,th,td',
+                'CSS.AllowedProperties' => ['font-size'],
                 'AutoFormat.RemoveEmpty' => true,
                 'URI.AllowedSchemes' => [
                     'http' => true,
@@ -273,7 +273,7 @@ private function generateUniqueSlug(string $title, int $ignoreId = null): string
             ]);
 
             $ae_information->title = $request->title;
-            $ae_information->slug = Str::slug($request->title) . '-' . Str::random(6);
+            $ae_information->slug = $this->generateUniqueSlug($request->title);
             $ae_information->excerpt = Str::limit(strip_tags($cleanedHTML), 160);
             $ae_information->desc = $cleanedHTML;
             $ae_information->category_id = $request->category_id;
