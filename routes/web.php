@@ -12,6 +12,7 @@ use App\Http\Controllers\Guest\GuestInformationController;
 use App\Http\Controllers\Guest\ContactController;
 use App\Http\Controllers\Dashboard\LibrariesController;
 use App\Http\Controllers\Dashboard\LibraryCollectionController;
+use App\Http\Controllers\Guest\GuestLibrariesController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/kontak', [ContactController::class, 'index'])->name('contact');
@@ -24,13 +25,9 @@ Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/ae-informasi', [GuestInformationController::class, 'index'])->name('guest.information.index');
 Route::get('/ae-informasi/detail/{informasi:slug}', [GuestInformationController::class, 'show'])->name('guest.information.detail');
 
-Route::get('/library', function () {
-    return view('guest.library.index');
-});
+Route::get('/ae-pustaka', [GuestLibrariesController::class,'index'])->name('pustaka');
 
-Route::get('/library/details', function () {
-    return view('guest.library.detail');
-});
+Route::get('/ae-pustaka/detail/{libraries:slug}', [GuestLibrariesController::class, 'show'])->name('pustaka-detail');
 
 Route::middleware('auth-check')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

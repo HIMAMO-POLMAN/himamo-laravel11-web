@@ -15,4 +15,8 @@ class LibraryCollection extends Model
     {
         return 'slug';
     }
+
+    public function libraries(){
+        return $this->hasMany(Libraries::class, 'collection');
+    }
 }

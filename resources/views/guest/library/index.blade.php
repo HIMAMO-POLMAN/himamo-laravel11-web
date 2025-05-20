@@ -288,18 +288,21 @@
     <section id="ae-pustaka" class="about">
         <div class=" justify-content-center search-bar">
             <div class="d-flex justify-content-center">
+                <form action="{{route('pustaka')}}" method="get">
                 <div class="input-group mb-3 input-search">
-                    <input type="text" class="form-control bg-light text-dark search-input" placeholder="Search"
-                        aria-label="Search">
-                    <button class="btn btn-primary search-button" type="button" id="button-addon2">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M19 19L14.65 14.65M17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 4.58172 4.58172 1 9 1C13.4183 1 17 4.58172 17 9Z"
-                                stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                    </button>
-                </div>
+                        <input type="hidden" name="sort" value="{{$sort}}">
+                        <input name="search" type="text" class="form-control bg-light text-dark search-input" placeholder="Search"
+                            aria-label="Search" value="{{$search ?? ''}}">
+                        <button class="btn btn-primary search-button" type="submit" id="button-addon2">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M19 19L14.65 14.65M17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 4.58172 4.58172 1 9 1C13.4183 1 17 4.58172 17 9Z"
+                                    stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
         <!-- dropdown -->
@@ -307,32 +310,34 @@
             <div class="row pt-5">
                 <div class="col-12">
                     <div class="search-info">
-                        <div class="text-dark search-text">Ditemukan 1XX pencarian Anda melalui kata kunci: (Nama
-                            Subjek/Pencarian)
+                        <div class="text-dark search-text">
+                            @if ($search)
+                                {!!"Ditemukan ". $pustakas->count() ." pencarian Anda melalui kata kunci: <b>\"$search\"</b>"!!}
+                            @endif
                         </div>
                         <div class="sort-by d-flex flex-column flex-lg-row align-items-left align-items-lg-center">
                             <div class="sort-by-text text-dark mb-2">Pilih berdasarkan :</div>
                             <div class="dropdown">
                                 <button class="btn dropdown-toggle bg-light text-dark" type="button"
                                     id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Paling Relevan <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="down" width="20" height="20" x="0" y="0" version="1.1" viewBox="0 0 64 64" class="ms-4">
+                                    {{$sort ? preg_replace('~-~', ' ', $sort) : "Terbaru"}} <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="down" width="20" height="20" x="0" y="0" version="1.1" viewBox="0 0 64 64" class="ms-4">
                                         <path d="M48.293 23.293L32 39.586 15.707 23.293l-1.414 1.561 17 17.146h1.414l17-17.146z"></path>
                                       </svg>
                                 </button>
                                 <ul class="dropdown-menu bg-light" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item text-dark border-bottom border-gray-600 border-2 " href="#">
+                                    {{-- <a class="dropdown-item text-dark border-bottom border-gray-600 border-2 " href="#">
                                         <li>Paling Relevan</li>
-                                    </a>
-                                    <a class="dropdown-item text-dark border-bottom border-gray-600 border-2" href="#">
+                                    </a> --}}
+                                    <a class="dropdown-item text-dark border-bottom border-gray-600 border-2" href="{{route('pustaka',['sort'=>'Terbaru','search'=>$search  ?? null])}}">
                                         <li>Terbaru</li>
                                     </a>
-                                    <a class="dropdown-item text-dark border-bottom border-gray-600 border-2" href="#">
+                                    <a class="dropdown-item text-dark border-bottom border-gray-600 border-2" href="{{route('pustaka',['sort'=>'Sering-dibaca','search'=>$search  ?? null])}}">
                                         <li>Sering Dibaca</li>
                                     </a>
-                                    <a class="dropdown-item text-dark border-bottom border-gray-600 border-2" href="#">
+                                    <a class="dropdown-item text-dark border-bottom border-gray-600 border-2" href="{{route('pustaka',['sort'=>'Terbit-terbaru','search'=>$search  ?? null])}}">
                                         <li>Tahun terbit (terbaru)</li>
                                     </a>
-                                    <a class="dropdown-item text-dark" href="#">
+                                    <a class="dropdown-item text-dark" href="{{route('pustaka',['sort'=>'Terbit-terlama','search'=>$search  ?? null])}}">
                                         <li>Tahun terbit (terlama)</li>
                                     </a>
                                 </ul>
@@ -345,66 +350,26 @@
             <!-- Books Section -->
             <!-- Loop through books and create cards dynamically -->
             <div class="book-cards-container">
+                @foreach ($pustakas as $pustaka)
                 <div class="book-card bg-light text-dark d-flex flex-column flex-md-row">
                     <div class="d-flex flex-row">
-                        <div class="book-cover">COVER BUKU</div>
+                        <div class="book-cover">
+                            <img src="{{ $pustaka->cover ?? asset('assets/img/avatars/book.svg') }}"
+                                        style="max-width:160px; max-height:98px;" alt="Cover">
+                        </div>
                         <div class="book-info">
-                            <div class="book-title"><a class="text-dark" href="book-detail.html">Judul Buku</a></div>
-                            <div class="book-details text-dark">Penulis : Lorem Ipsum</div>
-                            <div class="book-details text-dark">Jenis Koleksi : Lorem Ipsum</div>
-                            <div class="book-details text-dark">Jumlah Hal : 1XX</div>
-                            <div class="book-details text-dark">Tahun Terbit : 20XX</div>
+                            <div class="book-title"><a class="text-dark" href="book-detail.html">{{$pustaka->title}}</a></div>
+                            <div class="book-details text-dark">Penulis : {{$pustaka->penulis ?? "Penulis Tidak Diketahui"}}</div>
+                            <div class="book-details text-dark">Jenis Koleksi : {{$pustaka->collections->name}}</div>
+                            <div class="book-details text-dark">Jumlah Hal : {{$pustaka->jumlah_halaman}}</div>
+                            <div class="book-details text-dark">Tahun Terbit : {{$pustaka->tahun_terbit ?? "-"}}</div>
                         </div>
                     </div>
                     <div class="align-self-end">
-                        <a href="/library/details" class="btn btn-primary read-button">Baca</a>
+                        <a href="{{route('pustaka-detail',['libraries'=>$pustaka->slug])}}" class="btn btn-primary read-button">Baca</a>
                     </div>
                 </div>
-                <div class="book-card bg-light text-dark d-flex flex-column flex-md-row">
-                    <div class="d-flex flex-row">
-                        <div class="book-cover">COVER BUKU</div>
-                        <div class="book-info">
-                            <div class="book-title"><a class="text-dark" href="book-detail.html">Judul Buku</a></div>
-                            <div class="book-details text-dark">Penulis : Lorem Ipsum</div>
-                            <div class="book-details text-dark">Jenis Koleksi : Lorem Ipsum</div>
-                            <div class="book-details text-dark">Jumlah Hal : 1XX</div>
-                            <div class="book-details text-dark">Tahun Terbit : 20XX</div>
-                        </div>
-                    </div>
-                    <div class="align-self-end">
-                        <a href="/library/details" class="btn btn-primary read-button">Baca</a>
-                    </div>
-                </div>
-                <div class="book-card bg-light text-dark d-flex flex-column flex-md-row">
-                    <div class="d-flex flex-row">
-                        <div class="book-cover">COVER BUKU</div>
-                        <div class="book-info">
-                            <div class="book-title"><a class="text-dark" href="book-detail.html">Judul Buku</a></div>
-                            <div class="book-details text-dark">Penulis : Lorem Ipsum</div>
-                            <div class="book-details text-dark">Jenis Koleksi : Lorem Ipsum</div>
-                            <div class="book-details text-dark">Jumlah Hal : 1XX</div>
-                            <div class="book-details text-dark">Tahun Terbit : 20XX</div>
-                        </div>
-                    </div>
-                    <div class="align-self-end">
-                        <a href="/library/details" class="btn btn-primary read-button">Baca</a>
-                    </div>
-                </div>
-                <div class="book-card bg-light text-dark d-flex flex-column flex-md-row">
-                    <div class="d-flex flex-row">
-                        <div class="book-cover">COVER BUKU</div>
-                        <div class="book-info">
-                            <div class="book-title"><a class="text-dark" href="book-detail.html">Judul Buku</a></div>
-                            <div class="book-details text-dark">Penulis : Lorem Ipsum</div>
-                            <div class="book-details text-dark">Jenis Koleksi : Lorem Ipsum</div>
-                            <div class="book-details text-dark">Jumlah Hal : 1XX</div>
-                            <div class="book-details text-dark">Tahun Terbit : 20XX</div>
-                        </div>
-                    </div>
-                    <div class="align-self-end">
-                        <a href="/library/details" class="btn btn-primary read-button">Baca</a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
 
