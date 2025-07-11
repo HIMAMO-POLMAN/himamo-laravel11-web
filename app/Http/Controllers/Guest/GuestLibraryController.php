@@ -23,7 +23,7 @@ class GuestLibraryController extends Controller
         $collectionId = $request->input('collection_id');
         $sort = $request->input('sort', 'terbaru');
         $query = Libraries::with(['collection:id,name'])
-            ->select('id', 'title', 'cover', 'collection_id', 'created_at')
+->select('id', 'title', 'cover', 'collection_id', 'created_at', 'slug')
 
             ->when($search, function ($q) use ($search) {
                 $q->where('title', 'like', '%' . $search . '%');
@@ -47,7 +47,7 @@ class GuestLibraryController extends Controller
         }
 
         return view('guest.library.index', [
-            "library" => $query->paginate(9),
+            "library" => $query->paginate(8),
             'collection_id' => LibraryCollection::with('libraries')->get(),
 
             'populer' => Libraries::withCount('views')
@@ -57,6 +57,19 @@ class GuestLibraryController extends Controller
             'search' => $search,
             'collectionId' => $collectionId,
             'currentSort' => $sort,
+        ]);
+    }
+
+    public function show(Libraries $libraries)
+    {
+        LibrariesView::updateOrCreate([
+            'libraries_id' => $libraries->id,
+            'ip_address' => request()->ip(),
+        ]);
+
+
+        return view('guest.library.detail', [
+            'library' => $libraries->load('collection')->loadCount('views'),
         ]);
     }
 }

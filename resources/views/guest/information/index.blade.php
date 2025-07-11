@@ -20,7 +20,7 @@
                 <form class="d-flex justify-content-center" method="GET" action="{{ url()->current() }}">
                     <div class="input-group mb-3 input-search">
                         <input type="text" name="search" class="form-control bg-light text-dark search-input"
-                            placeholder="Search" aria-label="Search" value="{{ old('search', request('search')) }}">
+                            placeholder="Cari" aria-label="Search" value="{{ old('search', request('search')) }}">
                         <button class="btn btn-primary search-button" type="submit" id="button-addon2">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">

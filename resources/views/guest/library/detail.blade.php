@@ -43,69 +43,63 @@
             <div class="container book-info text-black">
                 <div class="row">
                     <div class="col-md-3 mt-5">
-                        <img src="img/img-one.jpeg" alt="Cover Buku" class="book-cover">
+                        <img src="{{ $library->cover ?? asset('img/default-cover.jpg') }}" alt="Cover Buku" class="book-cover">
                     </div>
                     <div class="col-md-9 mt-5">
                         <div class="text-start text-dark">
-                            <h3 class="fw-bold">Judul Buku</h3>
+                            <h3 class="fw-bold">{{ $library->title }}</h3>
+
                             <div class="row mb-2">
                                 <div class="col-md-2 info-label"><strong>Penulis</strong></div>
                                 <div class="col-md-1 info-separator">:</div>
-                                <div class="col-md-7 info-value">Lorem Ipsum</div>
+                                <div class="col-md-7 info-value">{{ $library->penulis ?? '-' }}</div>
                             </div>
                             <div class="row mb-2">
                                 <div class="col-md-2 info-label"><strong>Jenis Koleksi</strong></div>
                                 <div class="col-md-1 info-separator">:</div>
-                                <div class="col-md-7 info-value">Lorem Ipsum</div>
+                                <div class="col-md-7 info-value">{{ $library->collection->name ?? '-' }}</div>
                             </div>
                             <div class="row mb-2">
                                 <div class="col-md-2 info-label"><strong>Penerbit</strong></div>
                                 <div class="col-md-1 info-separator">:</div>
-                                <div class="col-md-7 info-value">Lorem Ipsum</div>
+                                <div class="col-md-7 info-value">{{ $library->penerbit ?? '-' }}</div>
                             </div>
                             <div class="row mb-2">
                                 <div class="col-md-2 info-label"><strong>Tahun Terbit</strong></div>
                                 <div class="col-md-1 info-separator">:</div>
-                                <div class="col-md-7 info-value">Lorem Ipsum</div>
+                                <div class="col-md-7 info-value">{{ $library->tahun_terbit ?? '-' }}</div>
                             </div>
                             <div class="row mb-2">
                                 <div class="col-md-2 info-label"><strong>ISBN/ISSN</strong></div>
                                 <div class="col-md-1 info-separator">:</div>
-                                <div class="col-md-7 info-value">Lorem Ipsum</div>
+                                <div class="col-md-7 info-value">{{ $library->isbn ?? '-' }}</div>
                             </div>
                             <div class="row mb-2">
                                 <div class="col-md-2 info-label"><strong>Jumlah Hal</strong></div>
                                 <div class="col-md-1 info-separator">:</div>
-                                <div class="col-md-7 info-value">Lorem Ipsum</div>
-                            </div>
-                            <div class="row mb-2">
-                                <div class="col-md-2 info-label"><strong>Deskripsi</strong></div>
-                                <div class="col-md-1 info-separator">:</div>
-                                <div class="col-md-7 info-value">Lorem Ipsum</div>
+                                <div class="col-md-7 info-value">{{ $library->jumlah_halaman ?? '-' }}</div>
                             </div>
                             <div class="row mb-2">
                                 <div class="col-md-2 info-label"><strong>Bahasa</strong></div>
                                 <div class="col-md-1 info-separator">:</div>
-                                <div class="col-md-7 info-value">Lorem Ipsum</div>
+                                <div class="col-md-7 info-value">{{ $library->bahasa ?? '-' }}</div>
                             </div>
                         </div>
-                        <div class="d-flex gap-2 mt-4">
-                            <button class="btn btn-primary btn-custom">Baca</button>
-                        </div>
+
+                        @if ($library->url)
+                            <div class="d-flex gap-2 mt-4">
+                                <a href="{{ $library->url }}" target="_blank" class="btn btn-primary btn-custom">Baca</a>
+                            </div>
+                        @endif
                     </div>
                 </div>
+
                 <div class="row mt-4">
                     <div class="col-12 ps-5 pe-5">
                         <div class="shadow-sm p-3 mb-5 bg-white rounded">
                             <div class="card-body text-start description-card">
                                 <h5 class="card-title fw-bold">Deskripsi Buku</h5>
-                                <p class="card-text ">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                                    do
-                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                                    dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                                    sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                <p class="card-text">{{ $library->abstrak ?? 'Tidak ada deskripsi.' }}</p>
                             </div>
                         </div>
                     </div>

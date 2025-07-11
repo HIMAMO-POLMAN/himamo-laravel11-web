@@ -188,7 +188,7 @@
                                                 <div class="col-md-12 mt-2 col-sm-12">
                                                     <div class="form-group pt-4">
                                                         <input onClick="return empty()" type="submit"
-                                                            value="Kirim Pesan" class="btn-kirim btn btn-primary">
+                                                            value="Send Message" class="btn-kirim btn btn-primary">
                                                         <div class="submitting"></div>
                                                     </div>
                                                     <button class="btn-load btn btn-primary d-none" type="button"
@@ -321,43 +321,51 @@
                 };
             }
         </script>
-        <script>
-            const scriptURL =
-                'https://script.google.com/macros/s/AKfycbxuHY2OfEhNZKWNCGxA_0ZjRCPIPTZ8FE2TQO__ZLiKq9zbEIX1wFpdorazjow42ew/exec'
-            const form = document.forms['submit-to-google-sheet']
-            const kirim = document.querySelector('.btn-kirim');
-            const loading = document.querySelector('.btn-load');
+       <script>
+        const scriptURL =
+            'https://script.google.com/macros/s/AKfycbwFXMLKZPnDbaLvm-siRDLfSwaBodlmty_F9XvVKv9BKQ-wH836iB6qaEl3MrN1v7nT/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const kirim = document.querySelector('.btn-kirim');
+        const loading = document.querySelector('.btn-load');
+        form.addEventListener('submit', e => {
+            let formData = new FormData(form);
 
-            form.addEventListener('submit', e => {
-                e.preventDefault()
-                loading.classList.toggle('d-none');
-                kirim.classList.toggle('d-none');
-                fetch(scriptURL, {
-                        method: 'POST',
-                        body: new FormData(form)
+            e.preventDefault();
+            loading.classList.toggle('d-none');
+            kirim.classList.toggle('d-none');
+            fetch(scriptURL,
+            {
+                    method: 'POST',
+                    body: formData,
+                    cache: "no-store"
+                })
+                .then(response => response.json()) // Parse JSON response
+                .then(data => {
+                    console.log("Form data sent successfully:", data); // Log received data
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Your Message Has Been Sent',
+                        icon: 'success',
+                        confirmButtonText: 'OK',
+                        confirmButtonColor: '#028784'
+                    });
+                    form.reset();
+                    loading.classList.toggle('d-none');
+                    kirim.classList.toggle('d-none');
+                })
+                .catch(error => {
+                    console.log(error);
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'Do you want to continue',
+                        icon: 'error',
+                        confirmButtonText: 'Back',
+                        confirmButtonColor: '#028784'
                     })
-                    .then(response => {
-                        Swal.fire({
-                            title: 'Success!',
-                            text: 'Your Message Has Been Sent',
-                            icon: 'success',
-                            confirmButtonText: 'OK',
-                            confirmButtonColor: '#028784'
-                        })
-                        form.reset();
-                        loading.classList.toggle('d-none');
-                        kirim.classList.toggle('d-none');
-                    })
-                    .catch(error => {
-                        Swal.fire({
-                            title: 'Error!',
-                            text: 'Do you want to continue',
-                            icon: 'error',
-                            confirmButtonText: 'Back',
-                            confirmButtonColor: '#028784'
-                        })
-                        form.reset();
-                    })
-            })
-        </script>
+                    form.reset();
+                }
+            )
+        }
+    )
+    </script>
     @endpush
