@@ -3,30 +3,33 @@
 namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
-use App\Models\Information;
-use App\Models\InformationCategories;
-use App\Models\InformationView;
+use App\Models\Libraries;
+use App\Models\LibrariesView;
+use App\Models\LibraryCollection;
 use Illuminate\Http\Request;
 
-class GuestInformationController extends Controller
+class GuestLibraryController extends Controller
 {
+
     public function index(Request $request)
     {
         $request->validate([
             'search' => 'nullable|string|max:100',
-            'kategori' => 'nullable|integer|exists:information_categories,id',
+            'collection_id' => 'nullable|integer|exists:library_collections,id',
             'sort' => 'nullable|in:terbaru,terlama,trending'
         ]);
 
         $search = $request->input('search');
-        $kategoriId = $request->input('kategori');
+        $collectionId = $request->input('collection_id');
         $sort = $request->input('sort', 'terbaru');
-        $query = Information::with(['category:id,name', 'user:id,name'])
+        $query = Libraries::with(['collection:id,name'])
+->select('id', 'title', 'cover', 'collection_id', 'created_at', 'slug')
+
             ->when($search, function ($q) use ($search) {
                 $q->where('title', 'like', '%' . $search . '%');
             })
-            ->when($kategoriId, function ($q) use ($kategoriId) {
-                $q->where('category_id', (int)$kategoriId);
+            ->when($collectionId, function ($q) use ($collectionId) {
+                $q->where('collection_id', (int)$collectionId);
             });
 
         switch ($sort) {
@@ -43,29 +46,30 @@ class GuestInformationController extends Controller
                 break;
         }
 
-        return view('guest.information.index', [
-            "informasi" => $query->paginate(9),
-            'category' => InformationCategories::with('information')->get(),
-            'populer' => Information::withCount('views')
+        return view('guest.library.index', [
+            "library" => $query->paginate(8),
+            'collection_id' => LibraryCollection::with('libraries')->get(),
+
+            'populer' => Libraries::withCount('views')
                 ->orderBy('views_count', 'desc')
                 ->limit(5)
                 ->get(),
             'search' => $search,
-            'kategoriId' => $kategoriId,
+            'collectionId' => $collectionId,
             'currentSort' => $sort,
         ]);
     }
 
-    public function show(Information $informasi)
+    public function show(Libraries $libraries)
     {
-        InformationView::updateOrCreate([
-            'information_id' => $informasi->id,
+        LibrariesView::updateOrCreate([
+            'libraries_id' => $libraries->id,
             'ip_address' => request()->ip(),
         ]);
 
-        return view('guest.information.detail', [
-            'informasi' => $informasi->load('category', 'user')->loadCount('views'),
-            'categories' => InformationCategories::with(['information'])->get(),
+
+        return view('guest.library.detail', [
+            'library' => $libraries->load('collection')->loadCount('views'),
         ]);
     }
 }

@@ -52,12 +52,12 @@
                             </a>
                         </li>
                         @foreach ($collections as $collection)
-                        <li>
-                            <a class="dropdown-item"
-                                href="{{ route('ae-library.index', ['koleksi' => $collection->slug , 'search' => request('search')]) }}">
-                                {{$collection->name}}
-                            </a>
-                        </li>
+                            <li>
+                                <a class="dropdown-item"
+                                    href="{{ route('ae-library.index', ['koleksi' => $collection->slug, 'search' => request('search')]) }}">
+                                    {{ $collection->name }}
+                                </a>
+                            </li>
                         @endforeach
                     </ul>
                 </div>
@@ -104,10 +104,11 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Cover</th>
-                            <th>Title</th>
+                            <th>Sampul</th>
+                            <th>Judul</th>
                             <th>Koleksi</th>
                             <th>Dibuat</th>
+                            <th>Dilihat</th>
                             <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
@@ -117,9 +118,11 @@
                                 <td>{{ $index + $pustakas->firstItem() }}</td>
                                 <td class="p-2"><img src="{{ $pustaka->cover ?? asset('assets/img/avatars/book.svg') }}"
                                         style="max-width:160px; max-height:98px;" alt="Cover"></td>
-                                <td>{{ $pustaka->title }}</td>
-                                <td>{{ $pustaka->collections->name }}</td>
-                                <td>{{ $pustaka->created_at ? $pustaka->created_at->format('d M Y') : '-' }}</td>
+                                <td>{{ Str::limit($pustaka->title, 40) }}</td>
+                                <td>{{ $pustaka->collection->name }}</td>
+                                <td>{{ $pustaka->created_at ? $pustaka->created_at->locale('id')->translatedFormat('d F Y') : '-' }}
+                                </td>
+                                <td>{{ $pustaka->views_count ?? 0 }}</td>
                                 <td class="text-center">
                                     <div class="dropdown">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow"

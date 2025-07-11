@@ -88,11 +88,12 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Image</th>
-                            <th>Title</th>
+                            <th>Gambar</th>
+                            <th>Judul</th>
                             <th>Kategori</th>
                             <th>Pembuat</th>
                             <th>Dibuat</th>
+                            <th>Diubah</th>
                             <th>Dilihat</th>
                             <th class="text-center">Aksi</th>
                         </tr>
@@ -102,13 +103,15 @@
                             <tr>
                                 <td>{{ $index + $ae_informations->firstItem() }}</td>
                                 <td>
-                                    <img src="{{ asset('storage/informasi/' . $ae_information->image) }}" class="img-fluid"
+                                    <img src="{{ asset('storage/' . $ae_information->image) }}" class="img-fluid"
                                         style="max-height: 100px; width: auto;">
                                 </td>
-                                <td>{{ $ae_information->title }}</td>
+                                <td>{{ Str::limit($ae_information->title, 40) }}</td>
                                 <td>{{ $ae_information->category->name ?? 'Tidak ada kategori' }}</td>
                                 <td>{{ $ae_information->user->name ?? 'Tidak diketahui' }}</td>
-                                <td>{{ $ae_information->created_at ? $ae_information->created_at->format('d M Y') : '-' }}
+                                <td>{{ $ae_information->created_at ? $ae_information->created_at->locale('id')->translatedFormat('d F Y') : '-' }}
+                                </td>
+                                <td>{{ $ae_information->updated_at ? $ae_information->updated_at->locale('id')->translatedFormat('d F Y') : '-' }}
                                 </td>
                                 <td>{{ $ae_information->views_count ?? '0' }} kali</td>
                                 <td class="text-center">

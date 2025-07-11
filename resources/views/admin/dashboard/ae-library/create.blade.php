@@ -90,82 +90,83 @@
                 </div>
                 <div class="row">
                     <div class="col-12 mb-3">
-                    <label for="name" class="form-label">Jumlah Halaman <span class="text-danger">*</span></label>
-                    <input type="number" id="name" name="jumlah_halaman" value="{{ old('jumlah_halaman') }}"
-                        class="form-control @error('jumlah_halaman') is-invalid @enderror"
-                        placeholder="Masukan Jumlah Halaman" />
-                    @error('jumlah_halaman')
-                        <span class="text-danger">
-                            {{ $message }}
-                        </span>
-                    @enderror
-                </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 mb-3">
-                    <label for="name" class="form-label">Cover (URL)</label>
-                    <input type="text" id="name" name="cover" value="{{ old('cover') }}"
-                        class="form-control @error('cover') is-invalid @enderror"
-                        placeholder="example : https://contoh.com/nama-url.png" />
-                    @error('cover')
-                        <span class="text-danger">
-                            {{ $message }}
-                        </span>
-                    @enderror
-                </div>
+                        <label for="name" class="form-label">Jumlah Halaman <span class="text-danger">*</span></label>
+                        <input type="number" id="name" name="jumlah_halaman" value="{{ old('jumlah_halaman') }}"
+                            class="form-control @error('jumlah_halaman') is-invalid @enderror"
+                            placeholder="Masukan Jumlah Halaman" />
+                        @error('jumlah_halaman')
+                            <span class="text-danger">
+                                {{ $message }}
+                            </span>
+                        @enderror
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-12 mb-3">
-                    <label for="name" class="form-label">URL Pustaka <span class="text-danger">*</span></label>
-                    <input type="text" id="name" name="url" value="{{ old('url') }}"
-                        class="form-control  @error('url') is-invalid @enderror"
-                        placeholder="example: https://drive.google.com/file/d/.../view" />
-                    @error('url')
-                        <span class="text-danger">
-                            {{ $message }}
-                        </span>
-                    @enderror
-                </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 mb-3">
-                    <label for="exampleFormControlSelect1" class="form-label">Koleksi Pustaka <span
-                            class="text-danger">*</span></label>
-                    <select class="form-select @error('collection') is-invalid @enderror" name="collection"
-                        id="exampleFormControlSelect1" aria-label="Default select example">
-                        <option selected value="">Pilih Koleksi Pustaka</option>
-                        @foreach ($collections as $collection)
-                            <option value="{{$collection->slug}}" @if (old('collection') == $collection->name) selected @endif>{{$collection->name}}</option>
-                        @endforeach
-                    </select>
-                    @error('collection')
-                        <span class="text-danger">
-                            {{ $message }}
-                        </span>
-                    @enderror
-                </div>
+                        <label for="name" class="form-label">Cover (URL)</label>
+                        <input type="text" id="name" name="cover" value="{{ old('cover') }}"
+                            class="form-control @error('cover') is-invalid @enderror"
+                            placeholder="example : https://contoh.com/nama-url.png" />
+                        @error('cover')
+                            <span class="text-danger">
+                                {{ $message }}
+                            </span>
+                        @enderror
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-12 mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Abstrak Pustaka <span
-                            class="text-danger">*</span></label>
-                    <textarea name="abstrak" class="form-control @error('abstrak') is-invalid @enderror" id="summernote"
-                        id="exampleFormControlTextarea1" rows="3">{{ old('abstrak') }}</textarea>
-                    @error('abstrak')
-                        <span class="text-danger">
-                            {{ $message }}
-                        </span>
-                    @enderror
+                        <label for="name" class="form-label">URL Pustaka <span class="text-danger">*</span></label>
+                        <input type="text" id="name" name="url" value="{{ old('url') }}"
+                            class="form-control  @error('url') is-invalid @enderror"
+                            placeholder="example: https://drive.google.com/file/d/.../view" />
+                        @error('url')
+                            <span class="text-danger">
+                                {{ $message }}
+                            </span>
+                        @enderror
+                    </div>
                 </div>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="exampleFormControlSelect1" class="form-label">Koleksi Pustaka <span
+                                class="text-danger">*</span></label>
+                        <select class="form-select @error('collection') is-invalid @enderror" name="collection"
+                            id="exampleFormControlSelect1" aria-label="Default select example">
+                            <option selected value="">Pilih Koleksi Pustaka</option>
+                            @foreach ($collections as $collection)
+                                <option value="{{ $collection->slug }}"
+                                    @if (old('collection') == $collection->name) selected @endif>{{ $collection->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('collection')
+                            <span class="text-danger">
+                                {{ $message }}
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Abstrak Pustaka <span
+                                class="text-danger">*</span></label>
+                        <textarea name="abstrak" class="form-control @error('abstrak') is-invalid @enderror" id="summernote"
+                            id="exampleFormControlTextarea1" rows="3">{{ old('abstrak') }}</textarea>
+                        @error('abstrak')
+                            <span class="text-danger">
+                                {{ $message }}
+                            </span>
+                        @enderror
+                    </div>
                 </div>
                 <div class="d-flex flex-wrap gap-2">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                    Kembali
-                </button>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Kembali
+                    </button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
-        </div>
+    </div>
     </div>
 
 @endsection

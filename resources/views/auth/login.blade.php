@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="app-brand justify-content-center">
-                            <a href="{{ route('home')}}" class="app-brand-link gap-2">
+                            <a href="{{ route('home') }}" class="app-brand-link gap-2">
                                 <span class="app-brand-logo demo">
                                     <img height="50" src="{{ asset('assets/img/icons/img-himamo.webp') }}" alt="Logo">
                                 </span>
@@ -35,7 +35,7 @@
                             <div class="mb-3 form-password-toggle">
                                 <div class="d-flex justify-content-between">
                                     <label class="form-label" for="password">Kata Sandi</label>
-                                    <a href="{{ route('password.request')}}">
+                                    <a href="{{ route('password.request') }}">
                                         <small>Lupa Kata Sandi?</small>
                                     </a>
                                 </div>

@@ -92,7 +92,7 @@ p {
     top: 0;
     left: -30%;
     width: var(--nav-width);
-    height: 100vh;
+    height: 150vh;
     background-color: var(--first-color);
     padding: 0.5rem 1rem 0 0;
     transition: 0.5s;
@@ -448,6 +448,11 @@ html {
 
 .dropdown .dropdown-toggle i {
     margin-left: 12px;
+}
+
+
+.dropdown-item {
+    white-space: normal;
 }
 
 @media (max-width: 576px) {
@@ -954,7 +959,7 @@ html {
     background-attachment: fixed;
     background-position: top center; /* Pindahkan gambar ke atas */
     background-repeat: no-repeat;
-    background-size: 100% auto; /* Lebar penuh, tinggi otomatis */
+    background-size: 100% 300px; /* Lebar penuh, tinggi otomatis */
 }
 
 /* ----------------------fix when scrolling--------------------- */
@@ -1319,19 +1324,19 @@ html {
     background-color: #f0f0f0;
 }
 
-#ae-informasi a .link{
+#ae-informasi a .link {
     padding: 10px 5px;
     /* margin-top: 20px; */
     /* margin-left: 10px; */
     border-top: 1px solid slategray;
 }
 
-#body-pd .book-info{
+#body-pd .book-info {
     width: 70%;
 }
 
-@media (max-width: 1200px){
-    #body-pd .book-info{
+@media (max-width: 1200px) {
+    #body-pd .book-info {
         width: 100%;
     }
 }
@@ -1361,13 +1366,11 @@ html {
 }
 
 #ae-informasi .img-box {
-    height: 150px; /* Atur tinggi tetap untuk img-box */
+    min-height: 180px; /* Atur tinggi tetap untuk img-box */
     display: flex;
     align-items: center; /* Vertikal center gambar */
     justify-content: center; /* Horizontal center gambar */
     overflow: hidden; /* Menyembunyikan bagian gambar yang meluap */
-
-    border-radius: 10px;
 }
 
 @media (max-width: 990px) {
@@ -1376,11 +1379,16 @@ html {
     }
 }
 
+#ae-informasi .img-box .info-image:hover{
+     transform: scale(1.2);
+}
+
 #ae-informasi .info-image {
     width: 300px;
-    height: 300px;
+    /* height: 300px; */
     object-fit: contain; /* Menjaga gambar tetap utuh tanpa terpotong */
     /* border-radius: 25px; */
+    transition: all 0.3s ease;
 }
 
 @media (max-width: 990px) {
@@ -1405,6 +1413,7 @@ html {
 
 #ae-informasi .search-button:hover {
     border-color: transparent;
+    outline: none;
 }
 
 @media (max-width: 990px) {
@@ -1436,12 +1445,24 @@ html {
     color: #212529;
     margin: 0;
 
-    font-size: 30px;
+    font-size: 20px;
 }
 
 #ae-informasi .info-button {
     margin-bottom: 20px;
 }
+
+
+#ae-informasi .dropdown-menu {
+    min-width: auto;
+    width: 100%;
+}
+
+.img-blog{
+    max-height: 300px;
+    
+}
+
 
 /* Apa Kata Mereka */
 .user-img {
@@ -1615,6 +1636,17 @@ html {
     background-position: 100px;
 }
 
+.tiktok:hover {
+    background: #25f4ee;
+    background: radial-gradient(
+        circle at 30% 107%,
+        #25f4ee 0%,
+        #fe2c55 50%,
+        #000000 100%
+    );
+    background-position: 100px;
+}
+
 .yt:hover {
     background: #ff0000;
     background-position: 100px;
@@ -1622,6 +1654,11 @@ html {
 
 .email:hover {
     background: #ea4335;
+    background-position: 100px;
+}
+
+.linkedin:hover {
+    background: #0077b5;
     background-position: 100px;
 }
 
@@ -1936,6 +1973,7 @@ html {
 .btn-primary:hover {
     background: #005c5a !important;
     border: 1px solid transparent;
+    outline: none;
 }
 
 /*
@@ -2073,9 +2111,6 @@ select:-webkit-autofill:focus {
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
-
-.link-prodi a {
 }
 
 .breadcrumb-prodi a {

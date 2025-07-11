@@ -1,6 +1,8 @@
 @extends('guest.layouts.app')
+@section('title', 'AE Informasi | HIMAMO')
+@section('meta_description', 'Dapatkan informasi terbaru seputar jurusan Teknik Otomasi Manufaktur dan Mekatronika, termasuk berita terkini, acara mendatang, prestasi mahasiswa, lowongan pekerjaan, dan perkembangan teknologi di bidang ini.')
 @section('content')
-    <div class="wrap bg-light">
+    <div class="wrap bg-light d-flex flex-column min-vh-100">
         <div class="contain-ae-informasi">
             <div class="container pt-4 pb-5">
                 <div class="row">
@@ -13,13 +15,13 @@
             </div>
         </div>
 
-        <section id="ae-informasi" class="about bg-light content-ae-informasi">
-            <div class=" justify-content-center search-bar">
-                <div class="d-flex justify-content-center">
+        <section id="ae-informasi" class="about bg-light content-ae-informasi flex-grow-1">
+            <div class="justify-content-center search-bar">
+                <form class="d-flex justify-content-center" method="GET" action="{{ url()->current() }}">
                     <div class="input-group mb-3 input-search">
-                        <input type="text" class="form-control bg-light text-dark search-input" placeholder="Search"
-                            aria-label="Search">
-                        <button class="btn btn-primary search-button" type="button" id="button-addon2">
+                        <input type="text" name="search" class="form-control bg-light text-dark search-input"
+                            placeholder="Cari" aria-label="Search" value="{{ old('search', request('search')) }}">
+                        <button class="btn btn-primary search-button" type="submit" id="button-addon2">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -28,64 +30,130 @@
                             </svg>
                         </button>
                     </div>
-                </div>
+                    @if (request('kategori'))
+                        <input type="hidden" name="kategori" value="{{ request('kategori') }}">
+                    @endif
+                </form>
             </div>
-            <div class=" pt-5 ">
-                <div class="container search-info d-flex flex-column gap-2 gap-sm-0 flex-sm-row justify-content-between">
-                    <div class="text-dark search-text">Ditemukan 1XX pencarian Anda melalui kata kunci: (Nama
-                        Subjek/Pencarian)
-                    </div>
+
+            <div class="pt-5">
+                <div class="container search-info d-flex flex-column gap-2 gap-sm-0 flex-sm-row justify-content-between ">
+                    @if (request('search'))
+                        <div class="text-dark search-text">
+                            Ditemukan {{ $informasi->total() }} pencarian Anda melalui kata kunci:
+                            {{ request('search') }}
+                        </div>
+                    @else
+                        <div></div>
+                    @endif
+
                     <div class="sort-by d-flex flex-column flex-lg-row align-items-left align-items-lg-center">
                         <div class="sort-by-text text-dark mb-2">Pilih berdasarkan :</div>
                         <div class="dropdown">
                             <button class="btn dropdown-toggle bg-light text-dark" type="button" id="dropdownMenuButton"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                Paling Relevan <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="down" width="20" height="20" x="0" y="0" version="1.1" viewBox="0 0 64 64" class="ms-4">
-                                    <path d="M48.293 23.293L32 39.586 15.707 23.293l-1.414 1.561 17 17.146h1.414l17-17.146z"></path>
-                                  </svg>
+                                @switch($currentSort)
+                                    @case('terlama')
+                                        Terlama
+                                    @break
+
+                                    @case('trending')
+                                        Trending
+                                    @break
+
+                                    @default
+                                        Terbaru
+                                @endswitch
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="ms-2"
+                                    viewBox="0 0 64 64">
+                                    <path
+                                        d="M48.293 23.293L32 39.586 15.707 23.293l-1.414 1.561 17 17.146h1.414l17-17.146z">
+                                    </path>
+                                </svg>
                             </button>
-                            <ul class="dropdown-menu bg-light" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item text-dark border-bottom border-gray-600 border-2" href="#">
-                                    <li>Paling Relevan</li>
-                                </a>
-                                <a class="dropdown-item text-dark border-bottom border-gray-600 border-2" href="#">
-                                    <li>Terbaru</li>
-                                </a>
-                                <a class="dropdown-item text-dark border-bottom border-gray-600 border-2" href="#">
-                                    <li>Sering Dibaca</li>
-                                </a>
-                                <a class="dropdown-item text-dark border-bottom border-gray-600 border-2" href="#">
-                                    <li>Tahun terbit (terbaru)</li>
-                                </a>
-                                <a class="dropdown-item text-dark border-bottom border-gray-600 border-2" href="#">
-                                    <li>Tahun terbit (terlama)</li>
-                                </a>
+                            <ul class="dropdown-menu dropdown-menu-end bg-light border-0 shadow rounded mt-2"
+                                aria-labelledby="dropdownMenuButton">
+                                <li>
+                                    <h6 class="dropdown-header text-uppercase">URUTKAN</h6>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item text-dark {{ $currentSort === 'terbaru' ? 'active' : '' }}"
+                                        href="{{ request()->fullUrlWithQuery(['sort' => 'terbaru']) }}">Terbaru</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item text-dark {{ $currentSort === 'terlama' ? 'active' : '' }}"
+                                        href="{{ request()->fullUrlWithQuery(['sort' => 'terlama']) }}">Terlama</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item text-dark {{ $currentSort === 'trending' ? 'active' : '' }}"
+                                        href="{{ request()->fullUrlWithQuery(['sort' => 'trending']) }}">Trending</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="container-sm pb-3">
-                <div class=" pt-3 info-list informasi-list">
+                <div class="pt-3 info-list informasi-list">
                     @foreach ($informasi as $item)
-                        <div class=" informasi-content">
+                        <div class="informasi-content">
                             <a class="text-center text-dark" href="{{ url('ae-informasi/detail/' . $item->slug) }}">
                                 <div class="info-box">
                                     <div class="img-box align-items-center">
-                                        <img src="{{ asset('storage/informasi/' . $item->image) }}"
-                                            alt="{{ $item->title }}" class="info-image mx-auto" loading="lazy">
+                                        <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}"
+                                            class="info-image mx-auto">
                                     </div>
-                                    <p class="info-title text-dark mt-2">{{ $item->title }}</p>
-                                    {{ $item->excerpt }}</p>
-                                    <p class="info-date text-dark">{{ date('d/m/Y', strtotime($item->created_at)) }}</p>
+                                    <p class="info-date text-dark mt-2">{{ $item->category->name }}</p>
+                                    <p class="info-title text-dark mt-2 d-block d-sm-none">
+                                        {{ Str::limit($item->title, 26) }}</p>
+                                    <p class="info-title text-dark mt-2 d-none d-md-none">
+                                        {{ Str::limit($item->title, 32) }}</p>
+                                    <p class="info-title text-dark mt-2 d-none text-break d-md-block">
+                                        {{ Str::limit($item->title, 20) }}</p>
+                                    <p class="info-date text-dark">
+                                        {{ \Carbon\Carbon::parse($item->created_at)->locale('id')->translatedFormat('d F Y') }}
+                                    </p>
                                 </div>
                             </a>
                         </div>
                     @endforeach
                 </div>
             </div>
+            @php
+                $currentPage = $informasi->currentPage();
+                $lastPage = $informasi->lastPage();
+            @endphp
+
+            <nav aria-label="Page navigation" class="mt-4">
+                <ul class="pagination justify-content-center">
+                    {{-- Previous Page Link --}}
+                    <li class="page-item {{ $currentPage == 1 ? 'disabled' : '' }}">
+                        <a class="page-link text-white btn-primary" href="{{ $informasi->url($currentPage - 1) }}"
+                            aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+
+                    {{-- Page Number Links --}}
+                    @for ($i = 1; $i <= $lastPage; $i++)
+                        <li class="page-item {{ $currentPage == $i ? 'active' : '' }}">
+                            <a class="page-link text-white btn-primary"
+                                href="{{ $informasi->url($i) }}">{{ $i }}</a>
+                        </li>
+                    @endfor
+
+                    {{-- Next Page Link --}}
+                    <li class="page-item {{ $currentPage == $lastPage ? 'disabled' : '' }}">
+                        <a class="page-link text-white btn-primary" href="{{ $informasi->url($currentPage + 1) }}"
+                            aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
         </section>
-        {{ $informasi->links() }}
     </div>
 @endsection
 
@@ -97,51 +165,10 @@
             object-fit: cover;
             border-radius: 15px;
         }
-    </style>
-@endpush
 
-@push('scripts')
-    <script>
-        var mybutton = document.getElementById("myBtn");
-
-        function topFunction() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
+        .dropdown-item.active {
+            background-color: #f8f9fa;
+            font-weight: bold;
         }
-
-        $(window).scroll(function() {
-            var scroll = $(window).scrollTop();
-            if (scroll > 20) {
-                mybutton.style.display = "block";
-                document.getElementById("header").classList.add('bg-light');
-            } else {
-                mybutton.style.display = "none";
-                document.getElementById("header").classList.remove('bg-light');
-            }
-        });
-    </script>
-    <script>
-        var moon = document.querySelector('.btn-moon');
-        var sun = document.querySelector('.btn-sun');
-
-        document.getElementById("darkSwitch").addEventListener("click", function() {
-            moon.classList.toggle('d-none');
-            sun.classList.toggle('d-none');
-        });
-    </script>
-    <script>
-        document.querySelector('#dropdownMenuButton').addEventListener('click', function() {
-            const icon = this.querySelector('i');
-            icon.classList.toggle('fa-chevron-down');
-            icon.classList.toggle('fa-chevron-up');
-        });
-    </script>
-    <script>
-        var user_button = document.querySelector('.bxs-user-circle');
-        var settings_account = document.querySelector('.settings_account');
-
-        user_button.addEventListener("click", function() {
-            settings_account.classList.toggle('d-none');
-        });
-    </script>
+    </style>
 @endpush

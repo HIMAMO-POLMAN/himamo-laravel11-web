@@ -41,7 +41,7 @@
                     <li>
                         <a class="dropdown-item" href="{{ route('profile.index') }}">
                             <i class="bx bx-user me-2"></i>
-                            <span class="align-middle">My Profile</span>
+                            <span class="align-middle">Pengaturan Profil</span>
                         </a>
                     </li>
                     <div class="dropdown-divider"></div>
@@ -54,7 +54,7 @@
                 <a class="dropdown-item text-danger" href="#"
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="bx bx-power-off me-2 "></i>
-                    <span class="align-middle">Log Out</span>
+                    <span class="align-middle">Keluar</span>
                 </a>
             </li>
         </ul>

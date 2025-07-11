@@ -1,8 +1,19 @@
-// Variables
 @use 'variables' as *;
 
-// Bootstrap
-@use 'bootstrap/scss/bootstrap' as *;
+$btn-border-width: 1;
 
-// Fonts (Move this below @use statements)
+@use 'bootstrap/scss/bootstrap' as bs;
+
+.btn-primary {
+    @include bs.button-variant(
+        $background: bs.$primary,
+        $border: bs.$gray-300,
+        $hover-background: darken(bs.$primary, 7.5%),
+        $hover-border: bs.$gray-400
+    );
+
+    border: 1px solid bs.$gray-300 !important;
+}
+
+
 @import url('https://fonts.bunny.net/css?family=Nunito');
