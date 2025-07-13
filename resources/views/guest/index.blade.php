@@ -100,7 +100,7 @@
         <section id="ae-pustaka" class=" ae-pustaka">
             <div class="parallax2">
                 <div class="container pb-3">
-                    <div class="container pb-5 px-5 pt-5">
+                    <div class="container pb-3 px-5 pt-5">
                         <div class="row">
                             <div class="col-md-12 text-center gs_reveal">
                                 <h2 class="text-white quote">AE <span class="judul">Pustaka</span></h2>
@@ -115,17 +115,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="container cont-2 px-5 pb-2">
-                        <div class="row">
-                            <div class="col-md-12 text-center gs_reveal">
-                                <h3 class="text-white quote">Jelajahi Koleksi Kami</h3>
-                            </div>
-                        </div>
-                        <div class="row justify-content-center mt-4 gs_reveal">
-                            <div class="col-md-4 text-center">
-                                <div class="info-button">
-                                    <a href="{{ url('/ae-pustaka') }}" class="btn btn-primary px-3 py-2">Lihat Pustaka
-                                        Lainnya</a>
+                    <div class="container cont-2 px-5 pb-4">
+                        <div class="">
+                            <div class=" text-center">
+                                <div class="info-button mx-auto">
+                                    <a href="{{ url('/ae-pustaka') }}" class="btn btn-primary px-3 py-2 mx-auto">Jelajahi Koleksi Kami</a>
                                 </div>
                             </div>
                         </div>

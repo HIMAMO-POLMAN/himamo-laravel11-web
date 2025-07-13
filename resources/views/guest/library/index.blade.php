@@ -81,7 +81,13 @@
     justify-content: center;
     align-items: center;
     margin-right: 20px;
-    overflow: hidden; /* Tambahan agar gambar tidak keluar dari frame */
+    /* overflow: hidden;  */
+    /* Tambahan agar gambar tidak keluar dari frame */
+}
+
+#ae-pustaka .book-cover img{
+    width: 120px;
+    height: 160px;
 }
 
 
@@ -302,12 +308,12 @@
                         <div class="book-card bg-light text-dark d-flex flex-column flex-md-row">
                             <div class="d-flex flex-row">
                                 <div class="book-cover">
-                                    <img src="{{ $item->cover ?? asset('assets/img/avatars/book.svg') }}"
+                                    <img class="max-w-[120px] max-h-[160px]" src="{{ $item->cover ?? asset('assets/img/avatars/book.svg') }}"
                                       alt="Cover">
                                 </div>
                                 <div class="book-info">
                                     <div class="book-title text-dark">
-                                        <a href="{{ url('/ae-pustaka/detail/' . $item->slug) }}">
+                                        <a class="text-dark" href="{{ url('/ae-pustaka/detail/' . $item->slug) }}">
                                             {{ $item->title }}
                                         </a>
                                     </div>
@@ -335,7 +341,7 @@
                 @endphp
 
                 <nav aria-label="Page navigation" class="mt-4">
-                    <ul class="pagination justify-content-center">
+                    <ul class="pagination justify-content-center mb-0 pb-4">
                         {{-- Previous Page Link --}}
                         <li class="page-item {{ $currentPage == 1 ? 'disabled' : '' }}">
                             <a class="page-link text-white btn-primary" href="{{ $library->url($currentPage - 1) }}"

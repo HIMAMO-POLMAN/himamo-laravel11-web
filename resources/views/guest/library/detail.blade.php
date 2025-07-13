@@ -37,52 +37,51 @@
             height: 40px;
         }
     </style>
-
+    
     <div class="wrap bg-light">
         <section id="ae-pustaka" class="about bg-light">
             <div class="container book-info text-black">
                 <div class="row">
-                    <div class="col-md-3 mt-5">
-                        <img src="{{ $library->cover ?? asset('img/default-cover.jpg') }}" alt="Cover Buku" class="book-cover">
+                    <div class="col-md-3 mt-5 text-center md:text-left">
+                        <img src="{{ $library->cover ?? asset('./assets-guest/img/book_cover.jpg') }}" alt="Cover Buku" class="book-cover">
                     </div>
                     <div class="col-md-9 mt-5">
                         <div class="text-start text-dark">
                             <h3 class="fw-bold">{{ $library->title }}</h3>
-
                             <div class="row mb-2">
-                                <div class="col-md-2 info-label"><strong>Penulis</strong></div>
-                                <div class="col-md-1 info-separator">:</div>
-                                <div class="col-md-7 info-value">{{ $library->penulis ?? '-' }}</div>
+                                <div class="col-3 col-md-3 info-label"><strong>Penulis</strong></div>
+                                <div class="col-1 col-md-1 info-separator">:</div>
+                                <div class="col-1 col-md-7 info-value">{{ $library->penulis ?? '-' }}</div>
                             </div>
                             <div class="row mb-2">
-                                <div class="col-md-2 info-label"><strong>Jenis Koleksi</strong></div>
-                                <div class="col-md-1 info-separator">:</div>
-                                <div class="col-md-7 info-value">{{ $library->collection->name ?? '-' }}</div>
+                                <div class="col-3 col-md-3 info-label"><strong>Jenis Koleksi</strong></div>
+                                <div class="col-1 col-md-1 info-separator">:</div>
+                                <div class="col-1 col-md-7 info-value">{{ $library->collection->name ?? '-' }}</div>
                             </div>
                             <div class="row mb-2">
-                                <div class="col-md-2 info-label"><strong>Penerbit</strong></div>
-                                <div class="col-md-1 info-separator">:</div>
-                                <div class="col-md-7 info-value">{{ $library->penerbit ?? '-' }}</div>
+                                <div class="col-3 col-md-3 info-label"><strong>Penerbit</strong></div>
+                                <div class="col-1 col-md-1 info-separator">:</div>
+                                <div class="col-1 col-md-7 info-value">{{ $library->penerbit ?? '-' }}</div>
                             </div>
                             <div class="row mb-2">
-                                <div class="col-md-2 info-label"><strong>Tahun Terbit</strong></div>
-                                <div class="col-md-1 info-separator">:</div>
-                                <div class="col-md-7 info-value">{{ $library->tahun_terbit ?? '-' }}</div>
+                                <div class="col-3 col-md-3 info-label"><strong>Tahun Terbit</strong></div>
+                                <div class="col-1 col-md-1 info-separator">:</div>
+                                <div class="col-1 col-md-7 info-value">{{ $library->tahun_terbit ?? '-' }}</div>
                             </div>
                             <div class="row mb-2">
-                                <div class="col-md-2 info-label"><strong>ISBN/ISSN</strong></div>
-                                <div class="col-md-1 info-separator">:</div>
-                                <div class="col-md-7 info-value">{{ $library->isbn ?? '-' }}</div>
+                                <div class="col-3 col-md-3 info-label"><strong>ISBN/ISSN</strong></div>
+                                <div class="col-1 col-md-1 info-separator">:</div>
+                                <div class="col-1 col-md-7 info-value">{{ $library->isbn ?? '-' }}</div>
                             </div>
                             <div class="row mb-2">
-                                <div class="col-md-2 info-label"><strong>Jumlah Hal</strong></div>
-                                <div class="col-md-1 info-separator">:</div>
-                                <div class="col-md-7 info-value">{{ $library->jumlah_halaman ?? '-' }}</div>
+                                <div class="col-3 col-md-3 info-label"><strong>Jumlah Hal</strong></div>
+                                <div class="col-1 col-md-1 info-separator">:</div>
+                                <div class="col-1 col-md-7 info-value">{{ $library->jumlah_halaman ?? '-' }}</div>
                             </div>
                             <div class="row mb-2">
-                                <div class="col-md-2 info-label"><strong>Bahasa</strong></div>
-                                <div class="col-md-1 info-separator">:</div>
-                                <div class="col-md-7 info-value">{{ $library->bahasa ?? '-' }}</div>
+                                <div class="col-3 col-md-3 info-label"><strong>Bahasa</strong></div>
+                                <div class="col-1 col-md-1 info-separator">:</div>
+                                <div class="col-1 col-md-7 info-value">{{ $library->bahasa ?? '-' }}</div>
                             </div>
                         </div>
 
@@ -95,11 +94,11 @@
                 </div>
 
                 <div class="row mt-4">
-                    <div class="col-12 ps-5 pe-5">
-                        <div class="shadow-sm p-3 mb-5 bg-white rounded">
+                    <div class="col-12 md:ps-5 Md:pe-5">
+                        <div class="shadow p-3 mb-5 rounded">
                             <div class="card-body text-start description-card">
-                                <h5 class="card-title fw-bold">Deskripsi Buku</h5>
-                                <p class="card-text">{{ $library->abstrak ?? 'Tidak ada deskripsi.' }}</p>
+                                <h5 class="card-title fw-bold text-dark mb-3">Deskripsi Buku</h5>
+                                <p class="card-text text-dark">{{ $library->abstrak ?? 'Tidak ada deskripsi.' }}</p>
                             </div>
                         </div>
                     </div>

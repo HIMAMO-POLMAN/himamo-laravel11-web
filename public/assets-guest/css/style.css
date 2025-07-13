@@ -1385,7 +1385,7 @@ html {
 
 #ae-informasi .info-image {
     width: 300px;
-    /* height: 300px; */
+    /* height: 300px;    */
     object-fit: contain; /* Menjaga gambar tetap utuh tanpa terpotong */
     /* border-radius: 25px; */
     transition: all 0.3s ease;
