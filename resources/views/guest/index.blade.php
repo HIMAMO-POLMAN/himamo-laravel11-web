@@ -1,6 +1,8 @@
 @extends('guest.layouts.app')
 @section('title', 'HIMAMO | POLMAN Bandung')
-@section('meta_description', 'HIMAMO merupakan himpunan pertama yang didirikan di kampus Politeknik Manufaktur Negeri Bandung.')
+@section('meta_description',
+    'HIMAMO merupakan himpunan pertama yang didirikan di kampus Politeknik Manufaktur Negeri
+    Bandung.')
 @section('content')
     <div class="wrap bg-light">
         <section id="home">
@@ -116,14 +118,56 @@
                         </div>
                     </div>
                     <div class="container cont-2 px-5 pb-4">
-                        <div class="">
-                            <div class=" text-center">
-                                <div class="info-button mx-auto">
-                                    <a href="{{ url('/ae-pustaka') }}" class="btn btn-primary px-3 py-2 mx-auto">Jelajahi Koleksi Kami</a>
+                        <div class="row">
+                            <div class="col-md-12 text-center gs_reveal">
+                                <h3 class="text-dark quote">Jelajahi Koleksi Kami</h3>
+                            </div>
+                        </div>
+                        <div class="book-cards-container">
+                            @foreach ($perpustakaan as $item)
+                                <div class="book-card bg-light text-dark d-flex flex-column flex-md-row">
+                                    <div class="d-flex flex-row">
+                                        <div class="book-cover">
+                                            <img class="max-w-[120px] max-h-[160px]"
+                                                src="{{ $item->cover ?? asset('assets/img/avatars/book.svg') }}"
+                                                alt="Cover">
+                                        </div>
+                                        <div class="book-info">
+                                            <div class="book-title text-dark">
+                                                <a class="text-dark" href="{{ url('/ae-pustaka/detail/' . $item->slug) }}">
+                                                    {{ $item->title }}
+                                                </a>
+                                            </div>
+                                            <div class="book-details text-dark">Penulis:
+                                                {{ $item->penulis ?? 'Penulis Tidak Diketahui' }}</div>
+                                            <div class="book-details text-dark">Jenis Koleksi:
+                                                {{ $item->collection->name ?? '-' }}
+                                            </div>
+                                            <div class="book-details text-dark">Jumlah Hal:
+                                                {{ $item->jumlah_halaman ?? '-' }}
+                                            </div>
+                                            <div class="book-details text-dark">Tahun Terbit:
+                                                {{ $item->tahun_terbit ?? '-' }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="align-self-end">
+                                        <a href="{{ url('ae-pustaka/detail/' . $item->slug) }}"
+                                            class="btn btn-primary read-button">Baca</a>
+                                    </div>
+                                </div>
+                            @endforeach
+                            <div class="row justify-content-center mt-4 gs_reveal">
+                                <div class="col-md-4 text-center">
+                                    <div class="info-button">
+                                        <a href="{{ url('/ae-pustaka') }}" class="btn btn-primary px-3 py-2">Lihat
+                                            Pustaka
+                                            Lainnya</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>  
+                    </div>
                 </div>
             </div>
         </section>
@@ -138,7 +182,8 @@
                                 loading="lazy">
                         </div>
                         <div class=" gs_reveal gs_reveal_fromRight about-text ">
-                            <h2 class="text-dark quote pt-3 text-center text-lg-start">Apa itu <span class="judul">Jurusan
+                            <h2 class="text-dark quote pt-3 text-center text-lg-start">Apa itu <span
+                                    class="judul">Jurusan
                                     Teknik Otomasi
                                     Manufaktur dan Mekatronika?</span></h2>
                             <p class="text-dark pt-2 ">

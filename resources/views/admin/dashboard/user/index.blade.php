@@ -91,11 +91,13 @@
                                                 class="text-danger">*</span></label>
                                         <select class="form-select @error('role') is-invalid @enderror" name="role"
                                             required id="role" aria-label="Default select example">
-                                            <option selected>Pilih Peran</option>
-                                            <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin
-                                            </option>
-                                            <option value="staff" {{ old('role') == 'staff' ? 'selected' : '' }}>
-                                                Staff</option>
+                                            @foreach ($roles as $role)
+                                                <option value="{{ $role }}"
+                                                    {{ old('role') == $role ? 'selected' : '' }}>
+                                                    {{ ucfirst($role) }}
+                                                </option>
+                                            @endforeach
+
                                         </select>
                                         @error('role')
                                             <div class="invalid-feedback">
@@ -108,9 +110,8 @@
                                     <div class="col mb-3">
                                         <label for="password" class="col-md-2 col-form-label">Kata Sandi <span
                                                 class="text-danger">*</span></label>
-                                        <input class="form-control @error('password') is-invalid @enderror"
-                                            name="password" required type="password" placeholder="******"
-                                            id="password" />
+                                        <input class="form-control @error('password') is-invalid @enderror" name="password"
+                                            required type="password" placeholder="******" id="password" />
                                         @error('password')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -173,8 +174,9 @@
                                         <span class="badge bg-label-danger me-1">Belum Verifikasi</span>
                                     @endif
                                 </td>
-                                <td>{{ $user->role }}</td>
-                                <td>{{ $user->created_at ? $user->created_at->locale('id')->translatedFormat('d F Y') : '-' }}</td>
+                                <td>{{ $user->getRoleNames()->first() ?? '-' }}</td>
+                                <td>{{ $user->created_at ? $user->created_at->locale('id')->translatedFormat('d F Y') : '-' }}
+                                </td>
                                 <td class="text-center">
                                     <div class="dropdown">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow"

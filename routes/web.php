@@ -2,17 +2,19 @@
 
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Guest\HomeController;
 use App\Http\Controllers\Dashboard\DashboardController;
-use App\Http\Controllers\Dashboard\InformationCategoriesController;
 use App\Http\Controllers\Dashboard\UserController;
+use App\Http\Controllers\Dashboard\RoleController;
+use App\Http\Controllers\Dashboard\PermissionController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\InformationController;
-use App\Http\Controllers\Guest\HomeController;
+use App\Http\Controllers\Dashboard\InformationCategoriesController;
+use App\Http\Controllers\Dashboard\LibrariesController;
+use App\Http\Controllers\Dashboard\LibraryCollectionController;
 use App\Http\Controllers\Guest\GuestInformationController;
 use App\Http\Controllers\Guest\GuestLibraryController;
 use App\Http\Controllers\Guest\ContactController;
-use App\Http\Controllers\Dashboard\LibrariesController;
-use App\Http\Controllers\Dashboard\LibraryCollectionController;
 use Spatie\Sitemap\SitemapGenerator;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -39,9 +41,20 @@ Route::middleware('auth-check')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::delete('/profile-delete', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+});
+
+Route::middleware(['auth-check', 'role:admin'])->group(function () {
     Route::resource('user', UserController::class);
+    Route::resource('role', RoleController::class);
+    Route::resource('permission', PermissionController::class);
+});
+
+Route::middleware(['auth-check', 'permission:information.view'])->group(function () {
     Route::resource('ae-information', InformationController::class);
-    Route::resource('ae-library',LibrariesController::class);
     Route::resource('information-categories', InformationCategoriesController::class);
-    Route::resource('library-collection',LibraryCollectionController::class);
+});
+
+Route::middleware(['auth-check', 'permission:library.view'])->group(function () {
+    Route::resource('ae-library', LibrariesController::class);
+    Route::resource('library-collection', LibraryCollectionController::class);
 });

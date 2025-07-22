@@ -62,8 +62,7 @@
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="peran" class="form-label">Peran</label>
-                            <input type="text" id="peran" class="form-control" value="{{ auth()->user()->role }}"
-                                readonly />
+                            <input type="text" id="peran" class="form-control" value="{{ auth()->user()->getRoleNames()->join(', ') }}" readonly />
                         </div>
                     </div>
                     <div class="demo-inline-spacing">

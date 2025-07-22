@@ -60,14 +60,15 @@
                     </div>
                     <div class="col-12 col-md-6 mb-3">
                         <label for="role" class="form-label">Peran</label>
-                        <select class="form-select @error('role') is-invalid @enderror" name="role" required
-                            id="role" aria-label="Default select example">
-                            <option selected>Pilih Peran</option>
-                            <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin
-                            </option>
-                            <option value="staff" {{ old('role') == 'staff' ? 'selected' : '' }}>
-                                Staff</option>
-                        </select>
+             <select class="form-select @error('role') is-invalid @enderror" name="role"
+                                            required id="role" aria-label="Default select example">
+                                            @foreach ($roles as $role)
+                                                <option value="{{ $role }}"
+                                                    {{ old('role', $user->getRoleNames()->first()) == $role ? 'selected' : '' }}>
+                                                    {{ ucfirst($role) }}</option>
+                                            @endforeach
+
+                                        </select>
                         @error('role')
                             <div class="invalid-feedback">
                                 {{ $message }}

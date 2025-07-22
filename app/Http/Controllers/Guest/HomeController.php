@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Guest;
 use App\Http\Controllers\Controller;
 
 use App\Models\Information;
+use App\Models\Libraries;
 
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class HomeController extends Controller
     {
         return view('guest.index', [
             "informasi" => Information::with(['user'])->orderBy('updated_at', 'asc')->paginate(3),
-
+"perpustakaan" => Libraries::with(['user'])->orderBy('updated_at', 'asc')->paginate(3),
         ]);
     }
 

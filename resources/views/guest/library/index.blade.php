@@ -72,23 +72,23 @@
 
         }
 
-#ae-pustaka .book-cover {
-    width: 120px;
-    height: 160px;
-    border-radius: 10px;
-    background-color: #e9ecef;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 20px;
-    /* overflow: hidden;  */
-    /* Tambahan agar gambar tidak keluar dari frame */
-}
+        #ae-pustaka .book-cover {
+            width: 120px;
+            height: 160px;
+            border-radius: 10px;
+            background-color: #e9ecef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            /* overflow: hidden;  */
+            /* Tambahan agar gambar tidak keluar dari frame */
+        }
 
-#ae-pustaka .book-cover img{
-    width: 120px;
-    height: 160px;
-}
+        #ae-pustaka .book-cover img {
+            width: 120px;
+            height: 160px;
+        }
 
 
         #ae-pustaka .book-info {
@@ -308,8 +308,8 @@
                         <div class="book-card bg-light text-dark d-flex flex-column flex-md-row">
                             <div class="d-flex flex-row">
                                 <div class="book-cover">
-                                    <img class="max-w-[120px] max-h-[160px]" src="{{ $item->cover ?? asset('assets/img/avatars/book.svg') }}"
-                                      alt="Cover">
+                                    <img class="max-w-[120px] max-h-[160px]"
+                                        src="{{ $item->cover ?? asset('assets/img/avatars/book.svg') }}" alt="Cover">
                                 </div>
                                 <div class="book-info">
                                     <div class="book-title text-dark">
