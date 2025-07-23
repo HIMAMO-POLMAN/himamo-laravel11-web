@@ -145,7 +145,7 @@
                             </div>
                         </div>
                         <div class="row my-5 g-0 contact-wrap">
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 ratio ratio-16x9">
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3259.6631210460832!2d107.61743677399706!3d-6.877468793121371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e6fd1653ca0f%3A0xac82e41858b63f34!2sPoliteknik%20Manufaktur%20Bandung!5e1!3m2!1sid!2sid!4v1753214453322!5m2!1sid!2sid" width="522" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                             <div class="col-lg-6 formisi">

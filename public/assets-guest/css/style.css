@@ -1371,6 +1371,7 @@ html {
     align-items: center; /* Vertikal center gambar */
     justify-content: center; /* Horizontal center gambar */
     overflow: hidden; /* Menyembunyikan bagian gambar yang meluap */
+    border-radius: 10px; /* Menambahkan border-radius untuk sudut yang halus */
 }
 
 @media (max-width: 990px) {

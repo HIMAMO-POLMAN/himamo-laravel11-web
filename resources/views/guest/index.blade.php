@@ -123,50 +123,42 @@
                                 <h3 class="text-dark quote">Jelajahi Koleksi Kami</h3>
                             </div>
                         </div>
-                        <div class="book-cards-container">
-                            @foreach ($perpustakaan as $item)
-                                <div class="book-card bg-light text-dark d-flex flex-column flex-md-row">
-                                    <div class="d-flex flex-row">
-                                        <div class="book-cover">
-                                            <img class="max-w-[120px] max-h-[160px]"
-                                                src="{{ $item->cover ?? asset('assets/img/avatars/book.svg') }}"
-                                                alt="Cover">
-                                        </div>
-                                        <div class="book-info">
-                                            <div class="book-title text-dark">
-                                                <a class="text-dark" href="{{ url('/ae-pustaka/detail/' . $item->slug) }}">
-                                                    {{ $item->title }}
-                                                </a>
-                                            </div>
-                                            <div class="book-details text-dark">Penulis:
-                                                {{ $item->penulis ?? 'Penulis Tidak Diketahui' }}</div>
-                                            <div class="book-details text-dark">Jenis Koleksi:
-                                                {{ $item->collection->name ?? '-' }}
-                                            </div>
-                                            <div class="book-details text-dark">Jumlah Hal:
-                                                {{ $item->jumlah_halaman ?? '-' }}
-                                            </div>
-                                            <div class="book-details text-dark">Tahun Terbit:
-                                                {{ $item->tahun_terbit ?? '-' }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="align-self-end">
-                                        <a href="{{ url('ae-pustaka/detail/' . $item->slug) }}"
-                                            class="btn btn-primary read-button">Baca</a>
-                                    </div>
-                                </div>
-                            @endforeach
-                            <div class="row justify-content-center mt-4 gs_reveal">
-                                <div class="col-md-4 text-center">
-                                    <div class="info-button">
-                                        <a href="{{ url('/ae-pustaka') }}" class="btn btn-primary px-3 py-2">Lihat
-                                            Pustaka
-                                            Lainnya</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="container py-4">
+  <div class="row gx-4 gy-4 book-cards-container">
+    @foreach ($perpustakaan as $item)
+      <div class="col-12 col-md-4">
+        <div class="card h-100 shadow-sm">
+          <img 
+            src="{{ $item->cover ?? asset('/assets/img/avatars/book.svg') }}" 
+            class="card-img-top" 
+            alt="Cover {{ $item->title }}" 
+            style="height: 200px; object-fit: cover;"
+          >
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ Str::limit($item->title, 30) }}</h5>
+            <p class="card-text text-muted mb-2">
+              {{ $item->penulis ?? 'Penulis Tidak Diketahui' }}
+            </p>
+            <a 
+              href="{{ url('ae-pustaka/detail/' . $item->slug) }}" 
+              class="btn btn-primary mt-auto"
+            >
+              Baca
+            </a>
+          </div>
+        </div>
+      </div>
+    @endforeach
+
+    {{-- tombol “Lihat Pustaka Lainnya” --}}
+    <div class="col-12 text-center mt-3">
+      <a href="{{ url('/ae-pustaka') }}" class="btn btn-primary px-4">
+        Lihat Pustaka Lainnya
+      </a>
+    </div>
+  </div>
+</div>
+
                     </div>
                 </div>
             </div>
