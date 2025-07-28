@@ -6,98 +6,107 @@
   <img src="https://img.shields.io/badge/status-in%20development-yellow"> <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue"></a>
 </p>
 
-# HIMAMO Website
+# Website HIMAMO
 
-**HIMAMO_Web** is the official web platform for the Student Association of Manufacturing Automation and Mechatronics Engineering (HIMAMO) at Politeknik Manufaktur Negeri Bandung. The platform is designed to provide organizational information, academic resources, and updates relevant to students and the public.
+**HIMAMO\_Web** adalah platform web resmi Himpunan Mahasiswa Teknik Manufaktur Otomasi dan Mekatronika (HIMAMO) Politeknik Manufaktur Negeri Bandung. Platform ini dirancang untuk menyajikan informasi organisasi, sumber daya akademik, serta pembaruan yang relevan bagi mahasiswa dan masyarakat umum.
 
-## Technologies Used
+## Teknologi yang Digunakan
 
-- **Laravel 11**: Backend PHP framework.
-  - Uses **Laravel Fortify** for authentication and security.
-- **Vite**: Frontend asset bundler for fast development.
-- **SCSS & Bootstrap**: UI styling and responsive layout.
-- **MySQL & phpMyAdmin**: Relational database system.
-- **PHP 8.3**: Server-side scripting language.
+* **Laravel 11**: Framework PHP untuk sisi backend.
 
-## Features
+  * Menggunakan **Laravel Fortify** untuk otentikasi dan keamanan.
+* **Vite**: Bundler frontend untuk pengembangan cepat.
+* **SCSS & Bootstrap**: Styling antarmuka dan layout responsif.
+* **MySQL & phpMyAdmin**: Sistem basis data relasional.
+* **PHP 8.3**: Bahasa pemrograman server-side.
 
-- **AE Informasi**  
-  Centralized information portal for HIMAMO activities, announcements, and organizational updates.
+## Fitur
 
-- **AE Pustaka**  
-  A digital library (in development) intended to host academic documents, learning materials, and student references.
+* **AE Informasi**
+  Portal informasi terpusat untuk kegiatan HIMAMO, pengumuman, dan pembaruan organisasi.
 
-## Installation & Setup
+* **AE Pustaka**
+  Perpustakaan digital (dalam pengembangan) yang ditujukan untuk menyimpan dokumen akademik, materi pembelajaran, dan referensi mahasiswa.
 
-1. **Clone the repository**
+* **Manajemen RBAC (Role-Based Access Control)**
+  Sistem manajemen hak akses berbasis peran, memungkinkan kontrol akses pengguna berdasarkan role (mis. admin, pengurus, anggota). Menggunakan package Spatie Laravel Permission.
+
+## Instalasi & Setup
+
+1. **Clone repositori**
+
    ```bash
    git clone https://github.com/HIMAMO-POLMAN/himamo-laravel11-web/
    cd himamo-web
    ```
 
-2. **Install dependencies**
+2. **Instalasi dependensi**
+
    ```bash
    composer install
    npm install
    ```
 
-3. **Environment configuration**
-   - Copy `.env.example` to `.env`
-   - Configure your database and other environment variables. For full configuration details, please contact the development team.
+3. **Konfigurasi environment**
+
+   * Salin `.env.example` menjadi `.env`
+   * Sesuaikan konfigurasi database dan variabel lainnya. Untuk detail lengkap, hubungi tim pengembang.
 
 4. **Generate application key**
+
    ```bash
    php artisan key:generate
    ```
 
-5. **Run database migration and seeders**
+5. **Migrasi dan seeding database**
+
    ```bash
    php artisan migrate --seed
-   # Or if the database already exists:
+   # Atau jika ingin refresh database:
    php artisan migrate:fresh --seed
    ```
 
-6. **Run development server**
+6. **Menjalankan server pengembangan**
+
    ```bash
    php artisan serve
    npm run dev
    ```
 
-## Usage
+## Penggunaan
 
-- Visit `http://localhost:8000` or `http://127.0.0.1:8000` in your web browser.
-- Log in with an authorized account to access protected content.
+* Buka `http://localhost:8000` atau `http://127.0.0.1:8000` di browser.
+* Login dengan akun yang memiliki izin akses untuk melihat konten tertentu.
 
-## Git/GitHub Branching Standards
+## Standar Branching Git/GitHub
 
-- `main`: Production-ready code
-- `develop`: Active development branch
-- `feature/<name>`: Feature-specific development
-- `bugfix/<name>`: Bug fixes
-- `release/<version>`: Pre-release version staging
+* `main`: Kode siap produksi
+* `develop`: Branch pengembangan aktif
+* `feature/<nama>`: Pengembangan fitur tertentu
+* `bugfix/<nama>`: Perbaikan bug
+* `release/<versi>`: Tahapan sebelum rilis
 
-## Project Status
+## Status Proyek
 
-This project is currently **in development** and subject to continuous updates and improvements.
+Proyek ini sedang **dalam tahap pengembangan** dan akan terus diperbarui secara berkala.
 
-## Contributions
+## Kontribusi
 
-Contributions are welcome. Feel free to fork the repository, create issues, or submit pull requests for enhancements and fixes.
+Kontribusi sangat terbuka. Silakan fork repositori ini, buat issue, atau ajukan pull request untuk perbaikan dan pengembangan fitur.
 
-## Development Team
+## Tim Pengembang
 
-- **Kominfo 2020**: Initial project setup and development.
-- **Divisi Informasi 2023**: Ongoing development and feature implementation.
+* **Kominfo 2020**: Setup awal dan pengembangan dasar.
+* **Divisi Informasi 2023**: Pengembangan berkelanjutan.
+* **MEDINFO 2024**: Pengembangan lanjutan dan penambahan fitur.
 
-## Contact
+## Kontak
 
-- **Email**: [informasihimamo@gmail.com](mailto:informasihimamo@gmail.com)
+* **Email**: [informasihimamo@gmail.com](mailto:informasihimamo@gmail.com)
 
-## License
+## Lisensi
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-
+Proyek ini dilisensikan di bawah MIT License. Lihat file [LICENSE](LICENSE) untuk informasi lengkap.
 
 
 ## Panduan Standar Branch `develop` HIMAMO_Web
