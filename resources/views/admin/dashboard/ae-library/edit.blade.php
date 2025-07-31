@@ -1,22 +1,13 @@
 @extends('admin.layouts.master')
-@section('title', 'Edit AE Pustaka')
+@section('title', 'Ubah AE Pustaka')
 @section('card', 'AE Pustaka')
-@section('keterangan', 'Edit Pustaka')
+@section('keterangan', 'Ubah Pustaka')
 @section('content')
 
-    @if (session()->has('success'))
-        <div class="alert alert-success" role="alert">
-            {{ session('success') }}
-        </div>
-    @endif
-    @if (session()->has('error'))
-        <div class="alert alert-danger" role="alert">
-            {{ session('error') }}
-        </div>
-    @endif
+@include('admin.partials.alert')
 
     <div class="d-flex card shadow p-3">
-        <h5 class="card-header">Edit Pustaka</h5>
+        <h5 class="card-header">Ubah Pustaka</h5>
         <div class="card-body">
             <form action="{{ route('ae-library.update', $pustaka->slug) }}" method="POST">
                 @csrf

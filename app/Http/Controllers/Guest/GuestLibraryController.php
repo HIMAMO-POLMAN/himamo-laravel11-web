@@ -23,7 +23,7 @@ class GuestLibraryController extends Controller
         $collectionId = $request->input('collection_id');
         $sort = $request->input('sort', 'terbaru');
         $query = Libraries::with(['collection:id,name'])
-->select('id', 'title', 'cover', 'collection_id', 'created_at', 'slug')
+            ->select('id', 'title', 'cover', 'collection_id', 'created_at', 'slug')
 
             ->when($search, function ($q) use ($search) {
                 $q->where('title', 'like', '%' . $search . '%');

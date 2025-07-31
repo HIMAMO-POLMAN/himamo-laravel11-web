@@ -4,14 +4,18 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
 class PermissionController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $permissions = Permission::paginate(10);
+        $search = $request->input('search');
+
+        $permissions = Permission::when($search, function ($query, $search) {
+            return $query->where('name', 'like', "%{$search}%");
+        })->paginate(10);
+
         return view('admin.dashboard.user.permission.index', compact('permissions'));
     }
 

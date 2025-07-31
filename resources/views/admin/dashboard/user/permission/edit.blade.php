@@ -1,24 +1,14 @@
 @extends('admin.layouts.master')
-@section('title', 'Edit Permission')
+@section('title', 'Ubah PePermission')
 @section('card', 'Permission')
 @section('keterangan', 'Ubah Permission')
 @section('content')
 
-    @if (session()->has('success'))
-        <div class="alert alert-success alert-dismissible" role="alert">
-            {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
-    @if (session()->has('error'))
-        <div class="alert alert-danger alert-dismissible" role="alert">
-            {{ session('error') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
+@include('admin.partials.alert')
 
-
-<div class="card p-4">
+    <div class="d-flex card shadow p-3">
+        <h5 class="card-header">Ubah Permission</h5>
+        <div class="card-body">
     <form action="{{ route('permission.update', $permission) }}" method="POST">
         @csrf @method('PUT')
 
@@ -35,4 +25,5 @@
         </div>
     </form>
 </div>
+    </div>
 @endsection

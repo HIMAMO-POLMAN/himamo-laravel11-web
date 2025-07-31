@@ -4,16 +4,7 @@
 @section('keterangan', 'Lihat Pustaka')
 @section('content')
 
-    @if (session()->has('success'))
-        <div class="alert alert-success" role="alert">
-            {{ session('success') }}
-        </div>
-    @endif
-    @if (session()->has('error'))
-        <div class="alert alert-danger" role="alert">
-            {{ session('error') }}
-        </div>
-    @endif
+@include('admin.partials.alert')
 
     <div class="d-flex card shadow p-3">
         <div class="row mb-3">
@@ -134,14 +125,14 @@
                                                     class="bx bx-show-alt me-1"></i> Lihat Pustaka</a>
                                             <a class="dropdown-item"
                                                 href="{{ route('ae-library.edit', $pustaka->slug) }}"><i
-                                                    class="bx bx-edit-alt me-1"></i> Edit</a>
+                                                    class="bx bx-edit-alt me-1"></i> Ubah</a>
                                             <form action="{{ route('ae-library.destroy', $pustaka->slug) }}"
                                                 method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="dropdown-item"><i
+                                                <button type="submit" class="dropdown-item" onclick="return confirm('Yakin ingin menghapus?')"><i
                                                         class="bx bx-trash me-1"></i>
-                                                    Delete</button>
+                                                    Hapus</button>
                                             </form>
                                         </div>
                                     </div>

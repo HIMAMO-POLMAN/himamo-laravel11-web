@@ -13,7 +13,7 @@
                                 </span>
                             </a>
                         </div>
-                        <h4 class="mb-2"><strong>Selamat datang Staff! 👋</strong></h4>
+                        <h4 class="mb-2"><strong>Selamat datang Staff! 🟩⬛</strong></h4>
                         <p class="mb-4">Silahkan masuk ke akun Anda dan selamat bertugas</p>
                         @if ($errors->any())
                             <div class="alert alert-danger alert-dismissible" role="alert">

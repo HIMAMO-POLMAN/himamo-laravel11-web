@@ -4,18 +4,7 @@
 @section('keterangan', 'Lihat Koleksi Pustaka')
 @section('content')
 
-    @if (session()->has('success'))
-        <div class="alert alert-success alert-dismissible" role="alert">
-            {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
-    @if (session()->has('error'))
-        <div class="alert alert-danger alert-dismissible" role="alert">
-            {{ session('error') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
+@include('admin.partials.alert')
 
     <div class="card shadow p-3 d-flex flex-column">
         <div class="row mb-3">
@@ -122,13 +111,13 @@
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item"
                                                 href="{{ route('library-collection.edit', $koleksi->slug) }}">
-                                                <i class="bx bx-edit-alt me-1"></i> Edit
+                                                <i class="bx bx-edit-alt me-1"></i> Ubah
                                             </a>
                                             <form action="{{ route('library-collection.destroy', $koleksi->slug) }}"
                                                 method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="dropdown-item text-danger">
+                                                <button type="submit" class="dropdown-item text-danger" onclick="return confirm('Yakin ingin menghapus?')">
                                                     <i class="bx bx-trash me-1 text-danger"></i> Hapus
                                                 </button>
                                             </form>

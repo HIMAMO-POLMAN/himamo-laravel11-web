@@ -4,18 +4,7 @@
 @section('keterangan', 'Buat Informasi')
 @section('content')
 
-    @if (session()->has('success'))
-        <div class="alert alert-success alert-dismissible" role="alert">
-            {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
-    @if (session()->has('error'))
-        <div class="alert alert-danger alert-dismissible" role="alert">
-            {{ session('error') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
+@include('admin.partials.alert')
 
     <div class="d-flex card shadow p-3">
         <h5 class="card-header">Buat Informasi</h5>

@@ -6,7 +6,7 @@
                    document.write(new Date().getFullYear());
                </script>
                , made with 💚 by
-               <a href="https://github.com/HIMAMO-Project/web-himamo" target="_blank" class="footer-link fw-bolder">Divisi
+               <a href="https://github.com/HIMAMO-POLMAN" target="_blank" class="footer-link fw-bolder">Divisi
                    Informasi</a>
            </div>
        </div>

@@ -450,7 +450,6 @@ html {
     margin-left: 12px;
 }
 
-
 .dropdown-item {
     white-space: normal;
 }
@@ -927,7 +926,7 @@ html {
 
 .parallax2 {
     /* The image used */
-    background-image: url("/assets-guest/img/paralak.webp");
+    background-image: url("/assets-guest/img/paralak-kata-mereka.webp");
 
     /* Set a specific height */
     min-height: auto;
@@ -1380,8 +1379,8 @@ html {
     }
 }
 
-#ae-informasi .img-box .info-image:hover{
-     transform: scale(1.2);
+#ae-informasi .img-box .info-image:hover {
+    transform: scale(1.2);
 }
 
 #ae-informasi .info-image {
@@ -1453,17 +1452,14 @@ html {
     margin-bottom: 20px;
 }
 
-
 #ae-informasi .dropdown-menu {
     min-width: auto;
     width: 100%;
 }
 
-.img-blog{
+.img-blog {
     max-height: 300px;
-    
 }
-
 
 /* Apa Kata Mereka */
 .user-img {
@@ -2117,3 +2113,228 @@ select:-webkit-autofill:focus {
 .breadcrumb-prodi a {
     color: black;
 }
+
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus {
+    background-color: #f1f1f1;
+    color: #212529 !important;
+}
+
+.dropdown-menu .dropdown-item.active,
+.dropdown-menu .dropdown-item:active {
+    background-color: #028784;
+    color: #fff !important;
+}
+
+.page-item.active .page-link {
+    background-color: #045b57;
+    color: #fff !important;
+    border-color: #045b57;
+}
+
+.page-link.btn-primary {
+    background-color: #028784;
+    color: #fff;
+    border-color: #028784;
+}
+
+.page-link:focus {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+#ae-pustaka {
+    min-height: 100vh;
+}
+
+@media (max-width: 992px) {
+    #ae-pustaka .subject-list {
+        gap: 20px;
+    }
+}
+
+#ae-pustaka .search-info {
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    color: #212529;
+    border-color: #028784 !important;
+    box-shadow: none;
+}
+
+#ae-pustaka .search-info .sort-by {
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 992px) {
+    #ae-pustaka .search-info .sort-by {
+        flex-direction: column;
+        align-items: baseline;
+    }
+}
+
+#ae-pustaka .search-info .sort-by-text {
+    margin-right: 10px;
+}
+
+#ae-pustaka .book-card {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+}
+
+#ae-pustaka .book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    #ae-pustaka .book-card > .flex-row,
+    #ae-pustaka .book-card > .align-self-end,
+    #ae-pustaka .book-card .read-button {
+        width: 100%;
+    }
+}
+
+#ae-pustaka .book-cover {
+    width: 120px;
+    height: 160px;
+    border-radius: 10px;
+    background-color: #e9ecef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+#ae-pustaka .book-cover img {
+    width: 120px;
+    height: 160px;
+}
+
+#ae-pustaka .book-info {
+    flex: 1;
+    color: #212529;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+}
+
+#ae-pustaka .book-title {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+#ae-pustaka .book-title a {
+    color: black;
+}
+
+#ae-pustaka .book-details {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #495057;
+    text-align: left;
+}
+
+#ae-pustaka .read-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+    align-self: flex-end;
+    width: 96px;
+}
+
+@media (max-width: 768px) {
+    #ae-pustaka .read-button {
+        margin-top: 30px;
+    }
+}
+
+#ae-pustaka .read-button:hover {
+    background-color: #0056b3;
+}
+
+#ae-pustaka .book-cards-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+@media (max-width: 992px) {
+    #ae-pustaka .book-cards-container {
+        grid-template-columns: auto;
+    }
+}
+
+#ae-pustaka .book-card {
+    background-color: white;
+    border: 1px solid #dee2e6;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    #ae-pustaka .book-card {
+        width: 100%;
+    }
+}
+
+.dropdown-menu {
+  min-width: auto;
+    width: 100%;
+}
+
+.dropdown-item {
+    white-space: normal;
+}
+
+.dropdown .dropdown-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    padding: 5px 10px;
+    border: 1px solid #dee2e6;
+}
+
+@media (max-width: 576px) {
+    .dropdown .dropdown-menu {
+        width: 100%;
+    }
+}
+
+
+#ae-pustaka .card {
+    transition: all 0.3s ease-in-out;
+}
+
+#ae-pustaka .card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease-in-out;
+}
+

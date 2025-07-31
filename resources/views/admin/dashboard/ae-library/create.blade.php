@@ -4,16 +4,7 @@
 @section('keterangan', 'Buat Pustaka')
 @section('content')
 
-    @if (session()->has('success'))
-        <div class="alert alert-success" role="alert">
-            {{ session('success') }}
-        </div>
-    @endif
-    @if (session()->has('error'))
-        <div class="alert alert-danger" role="alert">
-            {{ session('error') }}
-        </div>
-    @endif
+@include('admin.partials.alert')
 
     <div class="d-flex card shadow p-3">
         <h5 class="card-header">Buat Pustaka</h5>

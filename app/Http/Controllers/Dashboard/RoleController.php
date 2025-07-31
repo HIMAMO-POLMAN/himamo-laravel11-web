@@ -9,13 +9,19 @@ use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
-public function index()
-{
-    $roles = Role::with('permissions')->paginate(10);
-    $permissions = Permission::all();
-    return view('admin.dashboard.user.role.index', compact('roles', 'permissions'));
-}
+    public function index(Request $request)
+    {
+        $search = $request->input('search');
 
+        $roles = Role::with('permissions')
+            ->when($search, fn($query) =>
+                $query->where('name', 'like', '%' . $search . '%')
+            )
+            ->paginate(10);
+
+        $permissions = Permission::all();
+        return view('admin.dashboard.user.role.index', compact('roles', 'permissions'));
+    }
 
     public function store(Request $request)
     {

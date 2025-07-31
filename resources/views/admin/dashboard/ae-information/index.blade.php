@@ -4,18 +4,7 @@
 @section('keterangan', 'Lihat Informasi')
 @section('content')
 
-    @if (session()->has('success'))
-        <div class="alert alert-success alert-dismissible" role="alert">
-            {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
-    @if (session()->has('error'))
-        <div class="alert alert-danger alert-dismissible" role="alert">
-            {{ session('error') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
+@include('admin.partials.alert')
 
     <div class="d-flex card shadow p-3">
         <div class="row mb-3">
@@ -126,13 +115,13 @@
                                                     class="bx bx-show-alt me-1"></i> Lihat</a>
                                             <a class="dropdown-item"
                                                 href="{{ route('ae-information.edit', $ae_information->slug) }}"><i
-                                                    class="bx bx-edit-alt me-1"></i> Edit</a>
+                                                    class="bx bx-edit-alt me-1"></i> Ubah</a>
                                             <form action="{{ route('ae-information.destroy', $ae_information->slug) }}"
                                                 method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="dropdown-item text-danger"><i
-                                                        class="bx bx-trash me-1 text-danger"></i> Delete</button>
+                                                <button type="submit" class="dropdown-item text-danger" onclick="return confirm('Yakin ingin menghapus?')"><i
+                                                        class="bx bx-trash me-1 text-danger"></i> Hapus</button>
                                             </form>
                                         </div>
                                     </div>

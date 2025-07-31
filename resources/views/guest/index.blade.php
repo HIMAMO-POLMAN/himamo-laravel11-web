@@ -99,69 +99,91 @@
             </div>
         </section>
 
-        <section id="ae-pustaka" class=" ae-pustaka">
-            <div class="parallax2">
-                <div class="container pb-3">
-                    <div class="container pb-3 px-5 pt-5">
-                        <div class="row">
-                            <div class="col-md-12 text-center gs_reveal">
-                                <h2 class="text-white quote">AE <span class="judul">Pustaka</span></h2>
-                                <p class="text-white pt-2">
-                                    AE Pustaka adalah sumber informasi dan referensi terlengkap seputar Teknik
-                                    Otomasi
-                                    Manufaktur
-                                    dan Mekatronika. Temukan berbagai macam buku, jurnal, artikel, dan materi
-                                    pembelajaran lainnya
-                                    untuk mendukung pengembangan pengetahuan dan keterampilan Anda.
-                                </p>
-                            </div>
+        <section id="ae-pustaka" class="ae-pustaka">
+
+            <div class="container pb-3">
+                <div class="container pb-3 px-5 pt-5">
+                    <div class="row">
+                        <div class="col-md-12 text-center gs_reveal">
+                            <h2 class="text-dark quote">AE <span class="judul">Pustaka</span></h2>
+                            <p class="text-dark pt-2">
+                                AE Pustaka adalah sumber informasi dan referensi terlengkap seputar Teknik
+                                Otomasi
+                                Manufaktur
+                                dan Mekatronika. Temukan berbagai macam buku, jurnal, artikel, dan materi
+                                pembelajaran lainnya
+                                untuk mendukung pengembangan pengetahuan dan keterampilan Anda.
+                            </p>
                         </div>
                     </div>
-                    <div class="container cont-2 px-5 pb-4">
-                        <div class="row">
-                            <div class="col-md-12 text-center gs_reveal">
-                                <h3 class="text-dark quote">Jelajahi Koleksi Kami</h3>
+                </div>
+                <div class="container cont-2 px-5 pb-4">
+                    <div class="row">
+                        <div class="col-md-12 text-center gs_reveal">
+                            <h3 class="text-dark quote">Koleksi Terbaru Kami</h3>
+                        </div>
+                    </div>
+                    <div class="container py-4">
+                        <div class="row gx-4 gy-4 book-hover">
+                            @foreach ($perpustakaan as $item)
+                                <div class="col-12 col-md-4 gs_reveal">
+                                    <div class="card h-100 shadow-sm gs_reveal">
+                                        <img src="{{ $item->cover ?? asset('/assets/img/avatars/book.svg') }}"
+                                            class="card-img-top" alt="Cover {{ $item->title }}"
+                                            style="height: 200px; object-fit: cover;">
+                                        <div class="card-body d-flex flex-column">
+                                            <h5 class="card-title">{{ Str::limit($item->title, 50) }}</h5>
+                                            <p class="card-text text-muted mb-2">
+                                                {{ $item->penulis ?? 'Penulis Tidak Diketahui' }}
+                                            </p>
+                                             <p class="card-text text-muted mb-2">
+                                                Koleksi {{ $item->collection->name ?? 'Penulis Tidak Diketahui' }}
+                                            </p>
+                                            <a href="{{ url('ae-pustaka/detail/' . $item->slug) }}"
+                                                class="btn btn-primary mt-auto">
+                                                Baca
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                            <div class="col-12 text-center mt-4 gs_reveal">
+                                <a href="{{ url('/ae-pustaka') }}" class="btn btn-primary px-4">
+                                    Lihat Pustaka Lainnya
+                                </a>
                             </div>
                         </div>
-                        <div class="container py-4">
-  <div class="row gx-4 gy-4 book-cards-container">
-    @foreach ($perpustakaan as $item)
-      <div class="col-12 col-md-4">
-        <div class="card h-100 shadow-sm">
-          <img 
-            src="{{ $item->cover ?? asset('/assets/img/avatars/book.svg') }}" 
-            class="card-img-top" 
-            alt="Cover {{ $item->title }}" 
-            style="height: 200px; object-fit: cover;"
-          >
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">{{ Str::limit($item->title, 30) }}</h5>
-            <p class="card-text text-muted mb-2">
-              {{ $item->penulis ?? 'Penulis Tidak Diketahui' }}
-            </p>
-            <a 
-              href="{{ url('ae-pustaka/detail/' . $item->slug) }}" 
-              class="btn btn-primary mt-auto"
-            >
-              Baca
-            </a>
-          </div>
-        </div>
-      </div>
-    @endforeach
-
-    {{-- tombol “Lihat Pustaka Lainnya” --}}
-    <div class="col-12 text-center mt-3">
-      <a href="{{ url('/ae-pustaka') }}" class="btn btn-primary px-4">
-        Lihat Pustaka Lainnya
-      </a>
-    </div>
-  </div>
-</div>
-
                     </div>
                 </div>
             </div>
+        </section>
+
+        <section id="history" class="history">
+            <div class="parallax">
+                <div class="container pt-4 pb-5 px-5">
+                    <div class="row">
+                        <div class="col gs_reveal gs_reveal_fromLeft pt-4">
+                            <div class="row no-gutters slider-text text-md-start">
+                                <h1 class="quote"><span>(AE) </span>Automation<span> Engineering</span></h1>
+                            </div>
+                        </div>
+                        <div class="col-md-5 gs_reveal gs_reveal_fromRight">
+                            <h2 class="text-white quote text-md-end pt-5">Sejarah Jurusan <span class="judul">Teknik
+                                    Otomasi Manufaktur dan Mekatronika</span>
+                            </h2>
+                            <p class="text-white pt-2 text-md-end">
+                                Pada tahun 1995 dibuka Jurusan Teknik Otomasi Manufaktur dan Mekatronika (AE).
+                                Jurusan Ini menghasilkan ahli teknik yang kompeten dalam merancang dan menangani sistem
+                                perangkat otomatis.
+                                Para lulusannya dibekali dengan pengetahuan dan keterampilan dalam bidang mekanika,
+                                elektronika dan informatika.
+                                Keterampilan tersebut menjadi dasar untuk merancang, merangkai dan memelihara permesinan
+                                atau peralatan otomatis baik
+                                secara terpisah maupun secara terintegrasi dalam satu sistem manufaktur.</p>
+                        </div>
+                    </div>
+                </div>
         </section>
 
         <section id="about" class="about">
@@ -241,6 +263,29 @@
                                 </div>
                             </div>
                         </a>
+                    </div>
+
+                    <div class="row pt-3 subject-list gs_reveal">
+                        <a href="prodi-d4-trsan" class="col-lg col-12 col-md-12 mt-2 " style="text-decoration: none;">
+                            <div class=" text-center ">
+                                <div class="subject-box bg-light shadow-sm ">
+                                    <img src="{{ asset('assets-guest/img/trsan_subject.svg') }}" alt="Robotika"
+                                        class="subject-image" loading="lazy">
+                                    <p class="subject-name text-dark fw-bold">D4 - Teknologi Rekayasa <br>Sistem Aerial
+                                        Nirawak</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="/prodi-s2t-siber-fisik" class="col-12 col-lg col-md-12 mt-2"
+                            style="text-decoration: none;">
+                            <div class=" text-center">
+                                <div class="subject-box bg-light shadow-sm ">
+                                    <img src="{{ asset('assets-guest/img/s2tsiberfisik.svg') }}" alt="Robotika"
+                                        class="subject-image" loading="lazy">
+                                    <p class="subject-name text-dark fw-bold ">S2T - Sistem <br>Siber-Fisik</p>
+                                </div>
+                            </div>
+                        </a>
                         <a href="prodi-d2-trmo" class="col-lg col-12 col-md-12 mt-2 " style="text-decoration: none;">
                             <div class=" text-center ">
                                 <div class="subject-box bg-light shadow-sm ">
@@ -251,38 +296,12 @@
                             </div>
                         </a>
                     </div>
-                </div>
-                <div class="container cont-2 px-5">
-                    <div class="d-flex flex-lg-row flex-column-reverse">
-                        <div class="  gs_reveal gs_reveal_fromRight">
-                            <h2 class="text-dark quote text-center text-xl-start pt-5">Apa itu <span
-                                    class="judul">Himpunan
-                                    Otomasi Manufaktur
-                                    dan Mekatronika?</span></h2>
-                            <p class="text-dark pt-2 text-md-start">
 
-                                Himpunan mahasiswa jurusan (disingkat HMJ) adalah organisasi mahasiswa di tingkat
-                                jurusan di suatu perguruan tinggi.
-                                Keberadaan himpunan mahasiswa jurusan haruslah berdasarkan prinsip dari, oleh dan
-                                untuk mahasiswa. Himpunan mahasiswa
-                                jurusan merupakan media bagi anggotanya untuk mengembangkan pola pikir dan
-                                kepribadian yang berkaitan dengan disiplin
-                                ilmunya agar siap terjun ke masyarakat. HIMAMO (Himpunan Mahasiswa Teknik Otomasi
-                                Manufaktur dan Mekatronika) merupakan
-                                suatu wadah organisasi yang difasilitasi oleh Politeknik Manufaktur Negeri Bandung
-                                umumnya dan Jurusan Teknik Otomasi
-                                Manufaktur khususnya. Keberadaan HIMAMO sangatlah penting sebagai wadah bagi
-                                mahasiswa Jurusan Teknik Otomasi Manufaktur
-                                dan Mekatronika untuk melatih diri dalam hal berorganisasi.</p>
-                        </div>
-                        <div class=" col-lg-4 pb-lg-5 text-center">
-                            <img class="logoae gs_reveal gs_reveal_fromLeft pt-5" loading="lazy"
-                                src="{{ asset('assets-guest/img/img-himamo.webp') }}">
-                        </div>
-                    </div>
                 </div>
+
             </div>
         </section>
+
         <section id="history" class="history">
             <div class="parallax">
                 <div class="container pt-4 pb-5 px-5">
@@ -311,37 +330,36 @@
                     </div>
                 </div>
         </section>
-        <section id="division" class="division">
-            <div class="container gs_reveal gs_reveal_fromRight pt-5 pb-5 px-5">
-                <div class="d-flex flex-column flex-md-row row">
-                    <div class="col-lg-3 pt-5 text-center">
-                        <h2 class="text-dark quote text-md-start">Bidang <span class="judul">HIMAMO</span>
-                        </h2>
-                        <p class="text-dark text-md-start">
-                            Bidang Himamo dibagi menjadi 5 bidang dan Majelis Tinggi Himpunan
-                            yaitu sebagai berikut :</p>
+        <section id="leader" class="leader">
+            <div class="container cont-2 px-5">
+                <div class="d-flex flex-lg-row flex-column-reverse">
+                    <div class="  gs_reveal gs_reveal_fromRight">
+                        <h2 class="text-dark quote text-center text-xl-start pt-5">Apa itu <span class="judul">Himpunan
+                                Mahasiswa Teknik
+                                Otomasi Manufaktur
+                                dan Mekatronika?</span></h2>
+                        <p class="text-dark pt-2 text-md-start">
+                            Himpunan mahasiswa jurusan (disingkat HMJ) adalah organisasi mahasiswa di tingkat
+                            jurusan di suatu perguruan tinggi.
+                            Keberadaan himpunan mahasiswa jurusan haruslah berdasarkan prinsip dari, oleh dan
+                            untuk mahasiswa. Himpunan mahasiswa
+                            jurusan merupakan media bagi anggotanya untuk mengembangkan pola pikir dan
+                            kepribadian yang berkaitan dengan disiplin
+                            ilmunya agar siap terjun ke masyarakat. HIMAMO (Himpunan Mahasiswa Teknik Otomasi
+                            Manufaktur dan Mekatronika) merupakan
+                            suatu wadah organisasi yang difasilitasi oleh Politeknik Manufaktur Negeri Bandung
+                            umumnya dan Jurusan Teknik Otomasi
+                            Manufaktur khususnya. Keberadaan HIMAMO sangatlah penting sebagai wadah bagi
+                            mahasiswa Jurusan Teknik Otomasi Manufaktur
+                            dan Mekatronika untuk melatih diri dalam hal berorganisasi.</p>
                     </div>
-                    <div class="pt-3 col-lg-8">
-                        <div class="owl-carousel owl-one owl-theme">
-                            <div class="block block-1">
-                            </div>
-                            <div class="block block-2">
-                            </div>
-                            <div class="block block-3">
-                            </div>
-                            <div class="block block-4">
-                            </div>
-                            <div class="block block-5">
-                            </div>
-                            <div class="block block-6">
-                            </div>
-                        </div>
+                    <div class=" col-lg-4 pb-lg-5 text-center">
+                        <img class="logoae gs_reveal gs_reveal_fromLeft pt-5" loading="lazy"
+                            src="{{ asset('assets-guest/img/img-himamo.webp') }}">
                     </div>
                 </div>
             </div>
-        </section>
-        <section id="leader" class="leader">
-            <div class="container gs_reveal gs_reveal_fromLeft pt-4 pb-5 px-5">
+            <div class="container gs_reveal gs_reveal_fromLeft pt-5 pb-5 px-5">
                 <div class="d-flex flex-column-reverse flex-lg-row row">
                     <div class="col-lg-8 text-md-start">
                         <div class="featured-carousel owl-carousel">
@@ -568,8 +586,37 @@
                         <h2 class="text-dark quote text-md-end">Sejarah Kepemimpinan <span class="judul">HIMAMO</span>
                         </h2>
                         <p class="text-dark text-md-end">
-                            Sejarah Kepemimpinan Ketua Himpunan Mahasiswa Jurusan Teknik Otomasi Manufaktur dan
+                            Sejarah Kepemimpinan Ketua Himpunan Mahasiswa Teknik Otomasi Manufaktur dan
                             Mekatronika.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="division" class="division">
+            <div class="container gs_reveal gs_reveal_fromRight pt-4 pb-5 px-5">
+                <div class="d-flex flex-column flex-md-row row">
+                    <div class="col-lg-3 pt-5 text-center">
+                        <h2 class="text-dark quote text-md-start">Bidang <span class="judul">HIMAMO</span>
+                        </h2>
+                        <p class="text-dark text-md-start">
+                            Bidang Himamo dibagi menjadi 5 bidang dan Majelis Tinggi Himpunan
+                            yaitu sebagai berikut :</p>
+                    </div>
+                    <div class="pt-3 col-lg-8">
+                        <div class="owl-carousel owl-one owl-theme">
+                            <div class="block block-1">
+                            </div>
+                            <div class="block block-2">
+                            </div>
+                            <div class="block block-3">
+                            </div>
+                            <div class="block block-4">
+                            </div>
+                            <div class="block block-5">
+                            </div>
+                            <div class="block block-6">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

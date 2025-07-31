@@ -44,7 +44,7 @@ class GuestInformationController extends Controller
         }
 
         return view('guest.information.index', [
-            "informasi" => $query->paginate(9),
+            "informasi" => $query->paginate(8),
             'category' => InformationCategories::with('information')->get(),
             'populer' => Information::withCount('views')
                 ->orderBy('views_count', 'desc')

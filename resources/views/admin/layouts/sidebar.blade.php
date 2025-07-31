@@ -1,6 +1,6 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-        <a href="#" class="app-brand-link">
+        <a href="{{ route('dashboard') }}" class="app-brand-link">
             <span class="app-brand-logo demo">
                 <img src="{{ asset('assets/img/icons/logo_01.webp') }}" alt="Logo">
             </span>
@@ -23,101 +23,110 @@
             </a>
         </li>
 
-@if(auth()->user()->can('user.view') || auth()->user()->can('role.view') || auth()->user()->can('permission.view'))
-    <li class="menu-header small text-uppercase">
-        <span class="menu-header-text">Pengguna</span>
-    </li>
-
-    @can('user.view')
-        <li class="menu-item {{ Request::routeIs('user.*') ? 'active' : '' }}">
-            <a href="{{ route('user.index') }}" class="menu-link">
+        @if (auth()->user()->can('user.view') || auth()->user()->can('role.view') || auth()->user()->can('permission.view'))
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">Kontrol Akses</span>
+            </li>
+             <li
+                class="menu-item {{ Request::is('user*') || Request::routeIs('role*') || Request::routeIs('permission*') ? 'active open' : '' }}">
+            <a href="javascript:void(0)" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-user"></i>
                 <div>Pengguna</div>
             </a>
-        </li>
-    @endcan
+            <ul class="menu-sub">
+                @can('user.view')
+                    <li class="menu-item {{ Request::routeIs('user.*') ? 'active' : '' }}">
+                        <a href="{{ route('user.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-show"></i>
+                            <div>Lihat Pengguna</div>
+                        </a>
+                    </li>
+                @endcan
 
-    @can('role.view')
-        <li class="menu-item {{ Request::routeIs('role.*') ? 'active' : '' }}">
-            <a href="{{ route('role.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-id-card"></i>
-                <div>Role</div>
-            </a>
-        </li>
-    @endcan
+                @can('role.view')
+                    <li class="menu-item {{ Request::routeIs('role.*') ? 'active' : '' }}">
+                        <a href="{{ route('role.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-id-card"></i>
+                            <div>Role</div>
+                        </a>
+                    </li>
+                @endcan
 
-    @can('permission.view')
-        <li class="menu-item {{ Request::routeIs('permission.*') ? 'active' : '' }}">
-            <a href="{{ route('permission.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-lock"></i>
-                <div>Permission</div>
-            </a>
-        </li>
-    @endcan
-@endif
+                @can('permission.view')
+                    <li class="menu-item {{ Request::routeIs('permission.*') ? 'active' : '' }}">
+                        <a href="{{ route('permission.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-lock"></i>
+                            <div>Permission</div>
+                        </a>
+                    </li>
+                @endcan
+            </ul>
+            </li>
+        @endif
 
 
 
-@if(auth()->user()->can('information.view'))
-    <li class="menu-header small text-uppercase">
-        <span class="menu-header-text">Informasi & Pustaka</span>
-    </li>
-    <li class="menu-item {{ Request::is('ae-information*') || Request::routeIs('information-categories.index') ? 'active open' : '' }}">
-        <a href="javascript:void(0)" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-book-open"></i>
-            <div>AE Informasi</div>
-        </a>
-        <ul class="menu-sub">
-            <li class="menu-item {{ Request::routeIs('ae-information.index') ? 'active' : '' }}">
-                <a href="{{ route('ae-information.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-show"></i>
-                    <div>Lihat Data</div>
-                </a>
+        @if (auth()->user()->can('information.view'))
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">Informasi & Pustaka</span>
             </li>
-            <li class="menu-item {{ Request::routeIs('ae-information.create') ? 'active' : '' }}">
-                <a href="{{ route('ae-information.create') }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-plus"></i>
-                    <div>Tambah Data</div>
+            <li
+                class="menu-item {{ Request::is('ae-information*') || Request::routeIs('information-categories*') ? 'active open' : '' }}">
+                <a href="javascript:void(0)" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-book-open"></i>
+                    <div>AE Informasi</div>
                 </a>
+                <ul class="menu-sub">
+                    <li class="menu-item {{ Request::routeIs('ae-information.index') || Request::routeIs('ae-information.edit*')? 'active' : '' }}">
+                        <a href="{{ route('ae-information.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-show"></i>
+                            <div>Lihat Informasi</div>
+                        </a>
+                    </li>
+                    <li class="menu-item {{ Request::routeIs('ae-information.create') ? 'active' : '' }}">
+                        <a href="{{ route('ae-information.create') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-plus"></i>
+                            <div>Tambah Informasi</div>
+                        </a>
+                    </li>
+                    <li class="menu-item {{ Request::routeIs('information-categories*') ? 'active' : '' }}">
+                        <a href="{{ route('information-categories.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-bookmark"></i>
+                            <div>Kategori</div>
+                        </a>
+                    </li>
+                </ul>
             </li>
-            <li class="menu-item {{ Request::routeIs('information-categories.index') ? 'active' : '' }}">
-                <a href="{{ route('information-categories.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-bookmark"></i>
-                    <div>Kategori</div>
-                </a>
-            </li>
-        </ul>
-    </li>
-@endif
+        @endif
 
-@if(auth()->user()->can('library.view'))
-    <li class="menu-item {{ Request::is('ae-library*') ? 'active open' : '' }}">
-        <a href="javascript:void(0)" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-library"></i>
-            <div>AE Pustaka</div>
-        </a>
-        <ul class="menu-sub">
-            <li class="menu-item {{ Request::routeIs('ae-library.index') ? 'active' : '' }}">
-                <a href="{{ route('ae-library.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-show"></i>
-                    <div>Lihat Data</div>
+        @if (auth()->user()->can('library.view'))
+            <li class="menu-item {{ Request::is('ae-library*') || Request::routeIs('library-collection*') ? 'active open' : '' }}">
+                <a href="javascript:void(0)" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-library"></i>
+                    <div>AE Pustaka</div>
                 </a>
+                <ul class="menu-sub">
+                    <li class="menu-item {{ Request::routeIs('ae-library.index') || Request::routeIs('ae-library.edit')? 'active' : '' }}">
+                        <a href="{{ route('ae-library.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-show"></i>
+                            <div>Lihat Pustaka</div>
+                        </a>
+                    </li>
+                    <li class="menu-item {{ Request::routeIs('ae-library.create') ? 'active' : '' }}">
+                        <a href="{{ route('ae-library.create') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-plus"></i>
+                            <div>Tambah Pustaka</div>
+                        </a>
+                    </li>
+                    <li class="menu-item {{ Request::routeIs('library-collection*') ? 'active' : '' }}">
+                        <a href="{{ route('library-collection.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-tag"></i>
+                            <div>Koleksi</div>
+                        </a>
+                    </li>
+                </ul>
             </li>
-            <li class="menu-item {{ Request::routeIs('ae-library.create') ? 'active' : '' }}">
-                <a href="{{ route('ae-library.create') }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-plus"></i>
-                    <div>Tambah Data</div>
-                </a>
-            </li>
-            <li class="menu-item {{ Request::routeIs('library-collection.index') ? 'active' : '' }}">
-                <a href="{{ route('library-collection.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-tag"></i>
-                    <div>Koleksi</div>
-                </a>
-            </li>
-        </ul>
-    </li>
-@endif
+        @endif
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Bantuan</span>
         </li>

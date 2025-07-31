@@ -1,6 +1,8 @@
 @extends('guest.layouts.app')
 @section('title', 'AE Informasi | HIMAMO')
-@section('meta_description', 'Dapatkan informasi terbaru seputar jurusan Teknik Otomasi Manufaktur dan Mekatronika, termasuk berita terkini, acara mendatang, prestasi mahasiswa, lowongan pekerjaan, dan perkembangan teknologi di bidang ini.')
+@section('meta_description', 'Dapatkan informasi terbaru seputar jurusan Teknik Otomasi Manufaktur dan Mekatronika,
+    termasuk berita terkini, acara mendatang, prestasi mahasiswa, lowongan pekerjaan, dan perkembangan teknologi di bidang
+    ini.')
 @section('content')
     <div class="wrap bg-light d-flex flex-column min-vh-100">
         <div class="contain-ae-informasi">
@@ -16,6 +18,20 @@
         </div>
 
         <section id="ae-informasi" class="about bg-light content-ae-informasi flex-grow-1">
+            <div class="container pb-5 px-5 pt-5">
+                <div class="row d-flex flex-col flex-lg-row">
+                    <div class="col-md-12 text-center gs_reveal">
+                        <h2 class="text-dark quote">AE <span class="judul">Informasi</span></h2>
+                        <p class="text-dark pt-2">
+                            Dapatkan informasi terbaru seputar jurusan Teknik Otomasi Manufaktur dan
+                            Mekatronika, termasuk
+                            berita terkini, acara mendatang, prestasi mahasiswa, lowongan pekerjaan, dan
+                            perkembangan
+                            teknologi di bidang ini.
+                        </p>
+                    </div>
+                </div>
+            </div>
             <div class="justify-content-center search-bar">
                 <form class="d-flex justify-content-center" method="GET" action="{{ url()->current() }}">
                     <div class="input-group mb-3 input-search">
@@ -65,7 +81,7 @@
                                         Terbaru
                                 @endswitch
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="ms-2"
-                                    viewBox="0 0 64 64">
+                                    viewBox="0 0 64 64" fill="currentColor">
                                     <path
                                         d="M48.293 23.293L32 39.586 15.707 23.293l-1.414 1.561 17 17.146h1.414l17-17.146z">
                                     </path>
@@ -74,7 +90,7 @@
                             <ul class="dropdown-menu dropdown-menu-end bg-light border-0 shadow rounded mt-2"
                                 aria-labelledby="dropdownMenuButton">
                                 <li>
-                                    <h6 class="dropdown-header text-uppercase">URUTKAN</h6>
+                                    <h6 class="dropdown-header text-uppercase text-dark">URUTKAN</h6>
                                 </li>
                                 <li>
                                     <a class="dropdown-item text-dark {{ $currentSort === 'terbaru' ? 'active' : '' }}"
@@ -127,7 +143,6 @@
 
             <nav aria-label="Page navigation" class="mt-4">
                 <ul class="pagination justify-content-center">
-                    {{-- Previous Page Link --}}
                     <li class="page-item {{ $currentPage == 1 ? 'disabled' : '' }}">
                         <a class="page-link text-white btn-primary" href="{{ $informasi->url($currentPage - 1) }}"
                             aria-label="Previous">
@@ -135,15 +150,15 @@
                         </a>
                     </li>
 
-                    {{-- Page Number Links --}}
                     @for ($i = 1; $i <= $lastPage; $i++)
                         <li class="page-item {{ $currentPage == $i ? 'active' : '' }}">
-                            <a class="page-link text-white btn-primary"
-                                href="{{ $informasi->url($i) }}">{{ $i }}</a>
+                            <a class="page-link {{ $currentPage == $i ? '' : 'btn-primary text-white' }}"
+                                href="{{ $informasi->url($i) }}">
+                                {{ $i }}
+                            </a>
                         </li>
                     @endfor
 
-                    {{-- Next Page Link --}}
                     <li class="page-item {{ $currentPage == $lastPage ? 'disabled' : '' }}">
                         <a class="page-link text-white btn-primary" href="{{ $informasi->url($currentPage + 1) }}"
                             aria-label="Next">
