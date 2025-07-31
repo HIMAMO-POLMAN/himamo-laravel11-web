@@ -131,7 +131,7 @@
             <span class="menu-header-text">Bantuan</span>
         </li>
         <li class="menu-item">
-            <a href="https://github.com/HIMAMO-Project/web-himamo" target="_blank" class="menu-link">
+            <a href="https://drive.google.com/file/d/165go2KqCWyCx2Z6a9ZuGmGCEjeZ7sLum/view?usp=drive_link" target="_blank" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-file"></i>
                 <div data-i18n="Documentation">Dokumentasi</div>
             </a>
