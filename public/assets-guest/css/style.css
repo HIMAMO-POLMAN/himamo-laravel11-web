@@ -912,7 +912,7 @@ html {
 
 .parallax {
     /* The image used */
-    background-image: url("/assets-guest/img/about.webp");
+    background-image: url("/assets-guest/img/jurusan.webp");
 
     /* Set a specific height */
     min-height: auto;
@@ -941,6 +941,20 @@ html {
 .parallax3 {
     /* The image used */
     background-image: url("/assets-guest/img/paralak-1.webp");
+
+    /* Set a specific height */
+    min-height: auto;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parallax4 {
+    /* The image used */
+    background-image: url("/assets-guest/img/about.webp");
 
     /* Set a specific height */
     min-height: auto;

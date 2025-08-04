@@ -303,7 +303,7 @@
         </section>
 
         <section id="history" class="history">
-            <div class="parallax">
+            <div class="parallax4">
                 <div class="container pt-4 pb-5 px-5">
                     <div class="row">
                         <div class="col gs_reveal gs_reveal_fromLeft pt-4">
