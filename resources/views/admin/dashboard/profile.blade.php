@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
-@section('title', 'Profil')
-@section('card', 'Profil')
+@section('title', 'Profile')
+@section('card', 'Profile')
 @section('keterangan', 'Pengaturan Profil')
 @section('content')
 

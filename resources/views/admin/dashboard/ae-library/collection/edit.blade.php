@@ -21,7 +21,6 @@
         <h5 class="card-header">Ubah Koleksi Pustaka</h5>
         <div class="card-body">
             <form action="{{ route('library-collection.update', $koleksi->slug) }}" method="POST">
-
                 @csrf
                 @method('PUT')
                 <div class="row">

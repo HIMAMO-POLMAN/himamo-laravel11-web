@@ -1,6 +1,4 @@
 @extends('guest.layouts.app')
-@section('title', 'HIMAMO | POLMAN Bandung')
-@section('meta_description', 'HIMAMO merupakan himpunan pertama yang didirikan di kampus Politeknik Manufaktur Negeri Bandung.')
 @section('content')
     <div class="wrap bg-light">
         <section id="home">
@@ -8,10 +6,11 @@
                 <div class="carousel-inner gs_reveal">
                     <div class="carousel-item drk active">
                         <img src="{{ asset('assets-guest/img/img-carousel-1.webp') }}" class="d-block gbr img-fluid">
+
                         <div class="carousel-caption">
                             <div class="row no-gutters slider-text2 align-items-center justify-content-center">
                                 <h1 class="quote">WELCOME TO <span>HIMAMO</span></h1>
-                                <p class="quote">HIMPUNAN MAHASISWA TEKNIK OTOMASI MANUFAKTUR & MEKATRONIKA</span>
+                                <p class="quote">HIMPUNAN MAHASISWA OTOMASI MANUFAKTUR & MEKATRONIKA. </span>
                                 </p>
                             </div>
                         </div>
@@ -62,7 +61,7 @@
                 <div class="container cont-2">
                     <div class="row">
                         <div class="col-md-12 text-center gs_reveal">
-                            <h3 class="text-dark quote">Berita & Artikel Terbaru</h3>
+                            <h3 class="text-dark quote">Berita & Pengumuman Terbaru</h3>
                         </div>
                     </div>
                     <div class=" d-flex flex-column flex-lg-row justify-content-center landing-page-ae-informasi">
@@ -71,15 +70,11 @@
                                 <a class="text-center text-dark" href="{{ url('ae-informasi/detail/' . $item->slug) }}">
                                     <div class="info-box">
                                         <div class="img-box align-items-center">
-                                            <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title }}"
-                                                class="info-image mx-auto">
+                                            <img src="{{ asset('storage/informasi/' . $item->image) }}"
+                                                alt="{{ $item->title }}" class="info-image mx-auto">
                                         </div>
-                                        <p class="info-date text-dark mt-2">{{ $item->category->name }}</p>
-                                        <p class="info-title text-dark">{{ Str::limit($item->title, 40) }}</p>
-                                        <p class="info-date text-dark">
-                                            {{ \Carbon\Carbon::parse($item->created_at)->locale('id')->translatedFormat('d F Y') }}
-
-                                        </p>
+                                        <p class="info-title text-dark mt-2">{{ $item->title }}</p>
+                                        <p class="info-date text-dark">{{ date('d/m/Y', strtotime($item->created_at)) }}</p>
                                     </div>
                                 </a>
                             </div>
@@ -121,15 +116,25 @@
                                 <h3 class="text-white quote">Jelajahi Koleksi Kami</h3>
                             </div>
                         </div>
+                        {{-- <div class="d-flex flex-row">
+                            <div class="book-cover">COVER BUKU</div>
+                            <div class="book-info">
+                                <div class="book-title"><a class="text-dark" href="book-detail.html">Judul Buku</a></div>
+                                <div class="book-details text-dark">Penulis : Lorem Ipsum</div>
+                                <div class="book-details text-dark">Jenis Koleksi : Lorem Ipsum</div>
+                                <div class="book-details text-dark">Jumlah Hal : 1XX</div>
+                                <div class="book-details text-dark">Tahun Terbit : 20XX</div>
+                            </div>
+                        </div> --}}
                         <div class="row justify-content-center mt-4 gs_reveal">
                             <div class="col-md-4 text-center">
                                 <div class="info-button">
-                                    <a href="{{ url('/ae-pustaka') }}" class="btn btn-primary px-3 py-2">Lihat Pustaka
+                                    <a href="/library" class="btn btn-primary px-3 py-2">Lihat Pustaka
                                         Lainnya</a>
                                 </div>
                             </div>
                         </div>
-                    </div>  
+                    </div>
                 </div>
             </div>
         </section>
@@ -144,7 +149,8 @@
                                 loading="lazy">
                         </div>
                         <div class=" gs_reveal gs_reveal_fromRight about-text ">
-                            <h2 class="text-dark quote pt-3 text-center text-lg-start">Apa itu <span class="judul">Jurusan
+                            <h2 class="text-dark quote pt-3 text-center text-lg-start">Apa itu <span
+                                    class="judul">Jurusan
                                     Teknik Otomasi
                                     Manufaktur dan Mekatronika?</span></h2>
                             <p class="text-dark pt-2 ">

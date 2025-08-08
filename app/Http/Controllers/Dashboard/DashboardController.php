@@ -9,66 +9,43 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
-
 class DashboardController extends Controller
 {
     public function index()
     {
-        $bulanIni = now()->month;
-        $tahunIni = now()->year;
-
-        Carbon::setLocale('id');
         $totalInformasi = Information::count();
-        $informasiTerbaru = Information::withCount('views')->latest()->take(3)->get();
+        $informasiTerbaru = Information::latest()->take(3)->get();
         $totalPustaka = Libraries::count();
-        $pustakaTerbaru = Libraries::withCount('views')->latest()->take(3)->get();
+        $pustakaTerbaru = Libraries::latest()->take(3)->get();
         $totalPengguna = User::count();
-        $informasiPopuler = Information::withCount(['views as views_count' => function ($query) use ($bulanIni, $tahunIni) {
-            $query->whereMonth('created_at', $bulanIni)
-                ->whereYear('created_at', $tahunIni);
-        }])
+
+        $informasiPopuler = Information::withCount('views')
             ->orderByDesc('views_count')
             ->take(3)
             ->get();
 
-        Carbon::setLocale('id');
-
-        $grafikViewsInformasi = Information::withCount(['views as jumlah'])
+            $grafikViewsInformasi = Information::withCount(['views as jumlah'])
             ->get()
             ->groupBy(fn($item) => $item->created_at->format('m'))
-            ->map(fn($group) => [
-                'bulan' => Carbon::create(null, (int) $group->first()->created_at->format('m'), 1)->translatedFormat('F'),
-                'jumlah' => (int) $group->sum('jumlah')
-            ])
+            ->map(fn($group) => ['bulan' => $group->first()->created_at->format('F'), 'jumlah' => (int) $group->sum('jumlah')])
             ->values();
 
-$pustakaPopuler = Libraries::withCount(['views as views_count' => function ($query) use ($bulanIni, $tahunIni) {
-    $query->whereMonth('created_at', $bulanIni)
-          ->whereYear('created_at', $tahunIni);
-}])
-->orderByDesc('views_count')
-->take(3)
-->get();
 
-        $grafikViewsPustaka = Libraries::withCount('views')
-            ->get()
-            ->groupBy(fn($item) => $item->created_at->format('m'))
-            ->map(fn($group) => [
-                'bulan' => Carbon::create(null, (int) $group->first()->created_at->format('m'), 1)->translatedFormat('F'),
-                'jumlah' => (int) $group->sum('views_count')
-            ])
-            ->values();
+
+        $grafikPustaka = Libraries::selectRaw('MONTH(created_at) as bulan, COUNT(*) as jumlah')
+            ->groupBy('bulan')
+            ->orderBy('bulan')
+            ->get();
 
         return view('admin.dashboard.index', compact(
-            'totalPengguna',
             'totalInformasi',
             'informasiTerbaru',
-            'informasiPopuler',
             'totalPustaka',
             'pustakaTerbaru',
-            'pustakaPopuler',
+            'totalPengguna',
+            'informasiPopuler',
             'grafikViewsInformasi',
-            'grafikViewsPustaka'
+            'grafikPustaka'
         ));
     }
 }

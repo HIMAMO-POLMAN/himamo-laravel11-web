@@ -1,7 +1,36 @@
+{{-- <div class="bg-light" id="loading">
+    <img class="heartbeat" src="{{ asset('assets-guest/img/load.png') }}" alt="Loading">
+    <div id="bruh"></div>
+</div> --}}
+
 <header class="header" id="header">
     <div class="header_toggle">
-        <i class='bx bx-menu' id="header-toggle"></i>
+        <a href="">
+            <img src="{{ asset('assets/img/icons/img-himamo-nav.png') }}" alt="">
+        </a>
     </div>
+
+    <div class="dropdown">
+
+        <a href="#"><b>AE <span>▼</span></b></a>
+        <ul class="dropdown-menu">
+            <li><a href="{{ Route::currentRouteNamed('landing-page') ? '#ae-pustaka' : url('/#ae-pustaka') }}">Pustaka</a></li>
+            <li><a href="{{ Route::currentRouteNamed('landing-page') ? '#ae-informasi' : url('/#ae-informasi') }}">Informasi</a></li>
+        </ul>
+    </div>
+
+    <div class="dropdown">
+        <a href="#"><b>HIMAMO <span>▼</span></b></a>
+        <ul class="dropdown-menu">
+            <li><a href="{{ Route::currentRouteNamed('landing.page') ? '#about' : url('/#about') }}">Tentang</a></li>
+            <li><a href="{{ Route::currentRouteNamed('landing.page') ? '#history' : url('/#history') }}">Sejarah</a></li>
+            <li><a href="{{ Route::currentRouteNamed('landing.page') ? '#division' : url('/#division') }}">Divisi</a></li>
+            <li><a href="{{ Route::currentRouteNamed('landing.page') ? '#leader' : url('/#leader') }}">Kepemimpinan</a></li>
+            <li><a href="{{ url('/kontak') }}">Kontak</a></li>
+        </ul>
+    </div>
+
+
     <div class="row">
         <div class="col text-center">
             <a class="">
@@ -18,55 +47,3 @@
         </div>
     </div>
 </header>
-
-<div class="l-navbar" id="nav-bar">
-    <nav class="nav">
-        <div>
-            <a href="#" class="img_logo">
-                <img src="{{ asset('assets-guest/img/logo_01.webp') }}" alt="Logo">
-                <span class="nav_logo-name">
-                    <img src="{{ asset('assets-guest/img/logo_02.webp') }}" alt="Logo Text">
-                </span>
-            </a>
-            <div class="nav_list">
-                <a href="{{ Route::currentRouteNamed('landing-page') ? '#' : url('/') }}"
-                    class="nav_link @if (Route::currentRouteNamed('landing-page')) active @endif ">
-                    <i class='bx bx-home nav_icon'></i>
-                    <span class="nav_name">Beranda</span>
-                </a>
-                <a href="{{ Route::currentRouteNamed('landing-page') ? '#ae-informasi' : url('/#ae-informasi') }}"
-                    class="nav_link @if (Route::currentRouteNamed('information.*')) active @endif">
-                    <i class='bx bxs-info-square nav_icon'></i>
-                    <span class="nav_name">AE-Informasi</span>
-                </a>
-                <a href="{{ Route::currentRouteNamed('landing-page') ? '#ae-pustaka' : url('/#ae-pustaka') }}"
-                    class="nav_link">
-                    <i class='bx bxs-book nav_icon'></i>
-                    <span class="nav_name">AE-Pustaka</span>
-                </a>
-                <a href="{{ Route::currentRouteNamed('landing-page') ? '#about' : url('/#about') }}" class="nav_link">
-                    <i class='bx bx-info-circle nav_icon'></i>
-                    <span class="nav_name">Tentang</span>
-                </a>
-                <a href="{{ Route::currentRouteNamed('landing-page') ? '#history' : url('/#history') }}"
-                    class="nav_link">
-                    <i class='bx bx-time nav_icon'></i>
-                    <span class="nav_name">Sejarah</span>
-                </a>
-                <a href="{{ Route::currentRouteNamed('landing-page') ? '#division' : url('/#division') }}"
-                    class="nav_link">
-                    <i class='bx bxs-network-chart nav_icon'></i>
-                    <span class="nav_name">Struktur</span>
-                </a>
-                <a href="{{ Route::currentRouteNamed('landing-page') ? '#leader' : url('/#leader') }}" class="nav_link">
-                    <i class='bx bxs-user-account nav_icon'></i>
-                    <span class="nav_name">Kepemimpinan</span>
-                </a>
-                <a href="{{ route('contact') }}" class="nav_link">
-                    <i class='bx bxs-phone nav_icon'></i>
-                    <span class="nav_name">Kontak</span>
-                </a>
-            </div>
-        </div>
-    </nav>
-</div>

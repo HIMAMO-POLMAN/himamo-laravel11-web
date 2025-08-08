@@ -1,5 +1,4 @@
 @include('guest.layouts.header')
-
 <body onload="load()" id="body-pd">
     <div id="app">
 
@@ -38,5 +37,4 @@
     {{-- Additional Scripts --}}
     @stack('scripts')
 </body>
-
 </html>

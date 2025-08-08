@@ -49,8 +49,7 @@
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col mb-3">
-                                    <label for="name" class="form-label">Nama Kategori <span
-                                            class="text-danger">*</span></label>
+                                    <label for="name" class="form-label">Nama Kategori</label>
                                     <input type="text" id="name"
                                         class="form-control  @error('name') is-invalid @enderror" name="name"
                                         placeholder="Masukan Nama Kategori" />
@@ -66,7 +65,7 @@
                             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                                 Tutup
                             </button>
-                            <button type="submit" class="btn btn-primary">Kirim</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -94,9 +93,7 @@
                                 <td>{{ $index + $information_category->firstItem() }}</td>
                                 <td>{{ $kategori->name }}</td>
                                 <td>{{ $kategori->slug }}</td>
-                                <td>{{ $kategori->created_at ? \Carbon\Carbon::parse($kategori->created_at)->locale('id')->translatedFormat('d F Y') : '-' }}
-                                </td>
-
+                                <td>{{ $kategori->created_at ? $kategori->created_at->format('d M Y') : '-' }}</td>
                                 <td class="text-center">
                                     <div class="dropdown">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow"

@@ -56,35 +56,92 @@ p {
 
 .header {
     width: 100%;
-    height: var(--header-height);
+    height: var(--header-height); 
     position: fixed;
     top: 0;
     left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1rem;
+    display: flex; 
+    align-items: center; 
+    padding: 0 2rem;
     z-index: var(--z-fixed);
     transition: 0.5s;
 }
 
-.header_toggle {
-    color: var(--first-color);
-    font-size: 1.5rem;
-    cursor: pointer;
+.header > .header_toggle {
+    margin-right: auto; 
 }
 
-.header_img {
-    width: 30px;
-    height: 30px;
+.header > .dropdown,
+.header > .row {
+    margin-left: 20px; 
+}
+
+.header_toggle img {
+    width: 150px;
+}
+
+.dropdown {
+    font-family: Arial, sans-serif;
+    position: relative;
+}
+
+.dropdown > a {
+    background-color: transparent;
+    color: #028784;
+    font-size: 16px;
+    text-decoration: none;
     display: flex;
-    justify-content: center;
-    border-radius: 50%;
-    overflow: hidden;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: all 0.2s ease;
 }
 
-.header_img img {
-    width: 30px;
+.dropdown > a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
+    list-style: none;
+    padding: 0;
+    margin: 5px 0 0 0;
+    z-index: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    min-width: 150px;
+}
+
+.dropdown-menu li {
+    border-bottom: 1px solid #eee;
+}
+
+.dropdown-menu li:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu li a {
+    color: #028784;
+    padding: 12px 16px;
+    display: block;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.dropdown-menu li a:hover {
+    color: #ffffff;
+    background-color: #028784;
+    padding-left: 20px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
 }
 
 .l-navbar {
@@ -92,7 +149,7 @@ p {
     top: 0;
     left: -30%;
     width: var(--nav-width);
-    height: 150vh;
+    height: 100vh;
     background-color: var(--first-color);
     padding: 0.5rem 1rem 0 0;
     transition: 0.5s;
@@ -192,12 +249,10 @@ p {
 @media screen and (min-width: 990px) {
     body {
         margin: calc(var(--header-height) + 0rem) 0 0 0;
-        padding-left: calc(var(--nav-width) + 0rem);
     }
 
     .header {
         height: calc(var(--header-height) + 1rem);
-        padding: 0 2rem 0 calc(var(--nav-width) + 2rem);
     }
 
     .header_img {
@@ -274,7 +329,7 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-
+    cursor: pointer; 
     color: rgba(255, 255, 255, 0.767);
 }
 
@@ -443,16 +498,11 @@ html {
 }
 
 .dropdown .dropdown-toggle::after {
-    display: none; /* Menyembunyikan panah dropdown bawaan */
+    display: none; 
 }
 
 .dropdown .dropdown-toggle i {
     margin-left: 12px;
-}
-
-
-.dropdown-item {
-    white-space: normal;
 }
 
 @media (max-width: 576px) {
@@ -959,7 +1009,7 @@ html {
     background-attachment: fixed;
     background-position: top center; /* Pindahkan gambar ke atas */
     background-repeat: no-repeat;
-    background-size: 100% 300px; /* Lebar penuh, tinggi otomatis */
+    background-size: 100% auto; /* Lebar penuh, tinggi otomatis */
 }
 
 /* ----------------------fix when scrolling--------------------- */
@@ -1324,19 +1374,19 @@ html {
     background-color: #f0f0f0;
 }
 
-#ae-informasi a .link {
+#ae-informasi a .link{
     padding: 10px 5px;
     /* margin-top: 20px; */
     /* margin-left: 10px; */
     border-top: 1px solid slategray;
 }
 
-#body-pd .book-info {
+#body-pd .book-info{
     width: 70%;
 }
 
-@media (max-width: 1200px) {
-    #body-pd .book-info {
+@media (max-width: 1200px){
+    #body-pd .book-info{
         width: 100%;
     }
 }
@@ -1366,11 +1416,13 @@ html {
 }
 
 #ae-informasi .img-box {
-    min-height: 180px; /* Atur tinggi tetap untuk img-box */
+    height: 150px; /* Atur tinggi tetap untuk img-box */
     display: flex;
     align-items: center; /* Vertikal center gambar */
     justify-content: center; /* Horizontal center gambar */
     overflow: hidden; /* Menyembunyikan bagian gambar yang meluap */
+
+    border-radius: 10px;
 }
 
 @media (max-width: 990px) {
@@ -1379,16 +1431,11 @@ html {
     }
 }
 
-#ae-informasi .img-box .info-image:hover{
-     transform: scale(1.2);
-}
-
 #ae-informasi .info-image {
     width: 300px;
-    /* height: 300px; */
+    height: 300px;
     object-fit: contain; /* Menjaga gambar tetap utuh tanpa terpotong */
     /* border-radius: 25px; */
-    transition: all 0.3s ease;
 }
 
 @media (max-width: 990px) {
@@ -1413,7 +1460,6 @@ html {
 
 #ae-informasi .search-button:hover {
     border-color: transparent;
-    outline: none;
 }
 
 @media (max-width: 990px) {
@@ -1445,24 +1491,12 @@ html {
     color: #212529;
     margin: 0;
 
-    font-size: 20px;
+    font-size: 30px;
 }
 
 #ae-informasi .info-button {
     margin-bottom: 20px;
 }
-
-
-#ae-informasi .dropdown-menu {
-    min-width: auto;
-    width: 100%;
-}
-
-.img-blog{
-    max-height: 300px;
-    
-}
-
 
 /* Apa Kata Mereka */
 .user-img {
@@ -1636,17 +1670,6 @@ html {
     background-position: 100px;
 }
 
-.tiktok:hover {
-    background: #25f4ee;
-    background: radial-gradient(
-        circle at 30% 107%,
-        #25f4ee 0%,
-        #fe2c55 50%,
-        #000000 100%
-    );
-    background-position: 100px;
-}
-
 .yt:hover {
     background: #ff0000;
     background-position: 100px;
@@ -1654,11 +1677,6 @@ html {
 
 .email:hover {
     background: #ea4335;
-    background-position: 100px;
-}
-
-.linkedin:hover {
-    background: #0077b5;
     background-position: 100px;
 }
 
@@ -1973,7 +1991,6 @@ html {
 .btn-primary:hover {
     background: #005c5a !important;
     border: 1px solid transparent;
-    outline: none;
 }
 
 /*
@@ -2111,6 +2128,9 @@ select:-webkit-autofill:focus {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.link-prodi a {
 }
 
 .breadcrumb-prodi a {
