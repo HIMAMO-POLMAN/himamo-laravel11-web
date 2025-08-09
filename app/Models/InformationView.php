@@ -9,7 +9,6 @@ class InformationView extends Model
 {
     use HasFactory;
 
-     protected $table = 'information_views';
     protected $fillable = ['information_id', 'ip_address'];
 
     public function information()

@@ -13,9 +13,12 @@ use App\Http\Controllers\Dashboard\InformationCategoriesController;
 use App\Http\Controllers\Dashboard\LibrariesController;
 use App\Http\Controllers\Dashboard\LibraryCollectionController;
 use App\Http\Controllers\Guest\GuestInformationController;
-use App\Http\Controllers\Guest\GuestLibraryController;
 use App\Http\Controllers\Guest\ContactController;
+
 use Spatie\Sitemap\SitemapGenerator;
+
+
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/kontak', [ContactController::class, 'index'])->name('contact');
@@ -24,18 +27,17 @@ Route::get('/prodi-d4-trmo', [HomeController::class, 'd4mekatronika'])->name('pr
 Route::get('/prodi-d4-tro', [HomeController::class, 'd4otomasi'])->name('prodi-d4-tro');
 Route::get('/prodi-d4-trin', [HomeController::class, 'd4trin'])->name('prodi-d4-trin');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
+
 Route::get('/ae-informasi', [GuestInformationController::class, 'index'])->name('guest.information.index');
 Route::get('/ae-informasi/detail/{informasi:slug}', [GuestInformationController::class, 'show'])->name('guest.information.detail');
-Route::get('/ae-pustaka', [GuestLibraryController::class,'index'])->name('guest.library.index');
-Route::get('/ae-pustaka/detail/{libraries:slug}', [GuestLibraryController::class, 'show'])->name('guest.library.detail');
 
-// Route::get('/library', function () {
-//     return view('guest.library.index');
-// });
+Route::get('/library', function () {
+    return view('guest.library.index');
+});
 
-// Route::get('/library/details', function () {
-//     return view('guest.library.detail');
-// });
+Route::get('/library/details', function () {
+    return view('guest.library.detail');
+});
 
 Route::middleware('auth-check')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -58,3 +60,4 @@ Route::middleware(['auth-check', 'permission:library.view'])->group(function () 
     Route::resource('ae-library', LibrariesController::class);
     Route::resource('library-collection', LibraryCollectionController::class);
 });
+

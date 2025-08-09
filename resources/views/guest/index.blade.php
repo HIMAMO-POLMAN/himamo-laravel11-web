@@ -125,7 +125,7 @@
                     </div>
                     <div class="container py-4">
                         <div class="row gx-4 gy-4 book-hover">
-                            @foreach ($perpustakaan as $item)
+                            {{-- @foreach ($perpustakaan as $item)
                                 <div class="col-12 col-md-4 gs_reveal">
                                     <div class="card h-100 shadow-sm gs_reveal">
                                         <img src="{{ $item->cover ?? asset('/assets/img/avatars/book.svg') }}"
@@ -146,7 +146,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
+                            @endforeach --}}
 
                             <div class="col-12 text-center mt-4 gs_reveal">
                                 <a href="{{ url('/ae-pustaka') }}" class="btn btn-primary px-4">

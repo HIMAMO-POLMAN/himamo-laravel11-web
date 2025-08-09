@@ -15,7 +15,7 @@ class HomeController extends Controller
     {
         return view('guest.index', [
             "informasi" => Information::with(['user'])->orderBy('updated_at', 'asc')->paginate(3),
-"perpustakaan" => Libraries::with(['user'])->orderBy('updated_at', 'asc')->paginate(3),
+// "perpustakaan" => Libraries::with(['user'])->orderBy('updated_at', 'asc')->paginate(3),
         ]);
     }
 
