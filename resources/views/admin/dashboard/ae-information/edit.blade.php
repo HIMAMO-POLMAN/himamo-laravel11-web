@@ -1,24 +1,13 @@
 @extends('admin.layouts.master')
-@section('title', 'Edit AE Informasi')
+@section('title', 'Ubah AE Informasi')
 @section('card', 'AE Informasi')
-@section('keterangan', 'Buat Informasi')
+@section('keterangan', 'Ubah Informasi')
 @section('content')
 
-    @if (session()->has('success'))
-        <div class="alert alert-success alert-dismissible" role="alert">
-            {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
-    @if (session()->has('error'))
-        <div class="alert alert-danger alert-dismissible" role="alert">
-            {{ session('error') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
+@include('admin.partials.alert')
 
     <div class="d-flex card shadow p-3">
-        <h5 class="card-header">Edit Informasi</h5>
+        <h5 class="card-header">Ubah Informasi</h5>
         <div class="card-body">
             <form action="{{ route('ae-information.update', $informasi->slug) }}" method="POST"
                 enctype="multipart/form-data">
@@ -39,9 +28,8 @@
                 <div class="row">
                     <div class="col-12 col-md-6 mb-3">
                         <label for="category_id" class="form-label">Kategori Informasi</label>
-                        <select name="category_id"
-                            class="form-select  @error('category_id') is-invalid @enderror" id="category_id"
-                            aria-label="Default select example">
+                        <select name="category_id" class="form-select  @error('category_id') is-invalid @enderror"
+                            id="category_id" aria-label="Default select example">
                             <option selected>Pilih Kategori</option>
                             @foreach ($kategori_informasi as $kategori)
                                 <option value="{{ $kategori->id }}"
@@ -67,7 +55,7 @@
                         @enderror
                         @if ($informasi->image)
                             <div class="mt-2">
-                                <img src="{{ asset('storage/informasi/' . $informasi->image) }}" alt="Current Image"
+                                <img src="{{ asset('storage/' . $informasi->image) }}" alt="Current Image"
                                     style="width: 150px;">
                             </div>
                         @endif

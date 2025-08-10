@@ -5,29 +5,43 @@
 
 <header class="header" id="header">
     <div class="header_toggle">
-        <a href="">
-            <img src="{{ asset('assets/img/icons/img-himamo-nav.png') }}" alt="">
+        <a href="{{ route('home') }}">
+            <img src="{{ asset('assets-guest/img/himamo.webp') }}" alt="">
         </a>
     </div>
 
     <div class="dropdown">
-
-        <a href="#"><b>AE <span>▼</span></b></a>
+        <a href="#"><b>Tentang Kami <span> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                        class="ms-2" viewBox="0 0 64 64" fill="currentColor">
+                        <path d="M48.293 23.293L32 39.586 15.707 23.293l-1.414 1.561 17 17.146h1.414l17-17.146z">
+                        </path>
+                    </svg></span></b></a>
         <ul class="dropdown-menu">
-            <li><a href="{{ Route::currentRouteNamed('landing-page') ? '#ae-pustaka' : url('/#ae-pustaka') }}">Pustaka</a></li>
-            <li><a href="{{ Route::currentRouteNamed('landing-page') ? '#ae-informasi' : url('/#ae-informasi') }}">Informasi</a></li>
+            <li><a
+                    href="{{ Route::currentRouteNamed('landing-page') ? '#ae-pustaka' : url('/#ae-pustaka') }}">Profil</a>
+            </li>
+            <li><a
+                    href="{{ Route::currentRouteNamed('landing-page') ? '#ae-informasi' : url('/#ae-informasi') }}">Jurusan</a>
+            </li>
+            <li><a
+                    href="{{ Route::currentRouteNamed('landing-page') ? '#ae-informasi' : url('/#ae-informasi') }}">Kabinet</a>
+            </li>
         </ul>
     </div>
-
     <div class="dropdown">
-        <a href="#"><b>HIMAMO <span>▼</span></b></a>
-        <ul class="dropdown-menu">
-            <li><a href="{{ Route::currentRouteNamed('landing.page') ? '#about' : url('/#about') }}">Tentang</a></li>
-            <li><a href="{{ Route::currentRouteNamed('landing.page') ? '#history' : url('/#history') }}">Sejarah</a></li>
-            <li><a href="{{ Route::currentRouteNamed('landing.page') ? '#division' : url('/#division') }}">Divisi</a></li>
-            <li><a href="{{ Route::currentRouteNamed('landing.page') ? '#leader' : url('/#leader') }}">Kepemimpinan</a></li>
-            <li><a href="{{ url('/kontak') }}">Kontak</a></li>
-        </ul>
+        <a href="{{ route('guest.information.index') }}"><b>AE Informasi</b></a>
+    </div>
+    <div class="dropdown">
+        <a href="{{ route('guest.library.index') }}"><b>AE Pustaka</b></a>
+    </div>
+    {{-- <div class="dropdown">
+        <a href=""><b>HIMAMO Merch</b></a>
+    </div>
+    <div class="dropdown">
+        <a href="#"><b>Form Aspirasi</b></a>
+    </div> --}}
+    <div class="dropdown">
+        <a href="{{ route('contact') }}"><b>Hubungi Kami</b></a>
     </div>
 
 

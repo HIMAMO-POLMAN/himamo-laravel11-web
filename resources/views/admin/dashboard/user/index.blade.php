@@ -4,18 +4,7 @@
 @section('keterangan', 'Lihat Pengguna')
 @section('content')
 
-    @if (session()->has('success'))
-        <div class="alert alert-success alert-dismissible" role="alert">
-            {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
-    @if (session()->has('error'))
-        <div class="alert alert-danger alert-dismissible" role="alert">
-            {{ session('error') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
+@include('admin.partials.alert')
 
     <div class="d-flex card shadow p-3">
         <div class="row mb-3">
@@ -91,11 +80,13 @@
                                                 class="text-danger">*</span></label>
                                         <select class="form-select @error('role') is-invalid @enderror" name="role"
                                             required id="role" aria-label="Default select example">
-                                            <option selected>Pilih Peran</option>
-                                            <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin
-                                            </option>
-                                            <option value="staff" {{ old('role') == 'staff' ? 'selected' : '' }}>
-                                                Staff</option>
+                                            @foreach ($roles as $role)
+                                                <option value="{{ $role }}"
+                                                    {{ old('role') == $role ? 'selected' : '' }}>
+                                                    {{ ucfirst($role) }}
+                                                </option>
+                                            @endforeach
+
                                         </select>
                                         @error('role')
                                             <div class="invalid-feedback">
@@ -108,9 +99,8 @@
                                     <div class="col mb-3">
                                         <label for="password" class="col-md-2 col-form-label">Kata Sandi <span
                                                 class="text-danger">*</span></label>
-                                        <input class="form-control @error('password') is-invalid @enderror"
-                                            name="password" required type="password" placeholder="******"
-                                            id="password" />
+                                        <input class="form-control @error('password') is-invalid @enderror" name="password"
+                                            required type="password" placeholder="******" id="password" />
                                         @error('password')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -137,7 +127,7 @@
                                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                                     Tutup
                                 </button>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Kirim</button>
                             </div>
                         </form>
                     </div>
@@ -154,7 +144,7 @@
                             <th>Nama</th>
                             <th>Email</th>
                             <th>Verifikasi</th>
-                            <th>Role</th>
+                            <th>Peran</th>
                             <th>Dibuat</th>
                             <th class="text-center">Aksi</th>
                         </tr>
@@ -173,8 +163,9 @@
                                         <span class="badge bg-label-danger me-1">Belum Verifikasi</span>
                                     @endif
                                 </td>
-                                <td>{{ $user->role }}</td>
-                                <td>{{ $user->created_at ? $user->created_at->format('d M Y') : '-' }}</td>
+                                <td>{{ $user->getRoleNames()->first() ?? '-' }}</td>
+                                <td>{{ $user->created_at ? $user->created_at->locale('id')->translatedFormat('d F Y') : '-' }}
+                                </td>
                                 <td class="text-center">
                                     <div class="dropdown">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
@@ -189,7 +180,7 @@
                                             <form action="{{ route('user.destroy', $user->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="dropdown-item text-danger"><i
+                                                <button type="submit" class="dropdown-item text-danger" onclick="return confirm('Yakin ingin menghapus?')"><i
                                                         class="bx bx-trash me-1 text-danger"></i> Hapus</button>
                                             </form>
                                         </div>

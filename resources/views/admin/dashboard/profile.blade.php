@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
-@section('title', 'Profile')
-@section('card', 'Profile')
+@section('title', 'Profil')
+@section('card', 'Profil')
 @section('keterangan', 'Pengaturan Profil')
 @section('content')
 
@@ -62,8 +62,8 @@
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="peran" class="form-label">Peran</label>
-                            <input type="text" id="peran" class="form-control" value="{{ auth()->user()->role }}"
-                                readonly />
+                            <input type="text" id="peran" class="form-control"
+                                value="{{ auth()->user()->getRoleNames()->join(', ') }}" readonly />
                         </div>
                     </div>
                     <div class="demo-inline-spacing">
@@ -211,20 +211,27 @@
                     <div class="mb-3 col-12 mb-0">
                         <div class="alert alert-warning">
                             <h6 class="alert-heading fw-bold mb-1">Apakah Anda yakin ingin menghapus akun Anda?</h6>
-                            <p class="mb-0">Setelah Anda menghapus akun, tidak ada cara untuk mengembalikannya. Harap
-                                pastikan dengan yakin.</p>
+                            <p class="mb-0">
+                                Setelah Anda menghapus akun, tidak ada cara untuk mengembalikannya. Harap pastikan dengan
+                                yakin.
+                            </p>
                         </div>
                     </div>
                     <div class="form-check mb-3">
                         <input class="form-check-input" type="checkbox" name="accountActivation"
                             id="accountActivation" />
-                        <label class="form-check-label" for="accountActivation">Saya mengonfirmasi penonaktifan akun
-                            saya.</label>
+                        <label class="form-check-label" for="accountActivation">
+                            Saya mengonfirmasi penonaktifan akun saya.
+                        </label>
                     </div>
                     <button type="button" data-bs-toggle="modal" data-bs-target="#modalHapus"
-                        class="btn btn-danger deactivate-account">Nonaktifkan Akun</button>
+                        class="btn btn-danger deactivate-account" id="deactivateBtn" disabled>
+                        Nonaktifkan Akun
+                    </button>
                 </div>
             </div>
+
+            <!-- Modal Konfirmasi -->
             <div class="modal fade" id="modalHapus" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-scrollable" role="document">
                     <div class="modal-content">
@@ -258,3 +265,14 @@
         </div>
     </div>
 @endsection
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const checkbox = document.getElementById('accountActivation');
+        const deactivateBtn = document.getElementById('deactivateBtn');
+
+        checkbox.addEventListener('change', function() {
+            deactivateBtn.disabled = !this.checked;
+        });
+    });
+</script>

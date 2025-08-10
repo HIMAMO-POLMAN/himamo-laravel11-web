@@ -4,16 +4,7 @@
 @section('keterangan', 'Lihat Pustaka')
 @section('content')
 
-    @if (session()->has('success'))
-        <div class="alert alert-success" role="alert">
-            {{ session('success') }}
-        </div>
-    @endif
-    @if (session()->has('error'))
-        <div class="alert alert-danger" role="alert">
-            {{ session('error') }}
-        </div>
-    @endif
+@include('admin.partials.alert')
 
     <div class="d-flex card shadow p-3">
         <div class="row mb-3">
@@ -52,12 +43,12 @@
                             </a>
                         </li>
                         @foreach ($collections as $collection)
-                        <li>
-                            <a class="dropdown-item"
-                                href="{{ route('ae-library.index', ['koleksi' => $collection->slug , 'search' => request('search')]) }}">
-                                {{$collection->name}}
-                            </a>
-                        </li>
+                            <li>
+                                <a class="dropdown-item"
+                                    href="{{ route('ae-library.index', ['koleksi' => $collection->slug, 'search' => request('search')]) }}">
+                                    {{ $collection->name }}
+                                </a>
+                            </li>
                         @endforeach
                     </ul>
                 </div>
@@ -104,10 +95,11 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Cover</th>
-                            <th>Title</th>
+                            <th>Sampul</th>
+                            <th>Judul</th>
                             <th>Koleksi</th>
                             <th>Dibuat</th>
+                            <th>Dilihat</th>
                             <th class="text-center">Aksi</th>
                         </tr>
                     </thead>
@@ -117,9 +109,11 @@
                                 <td>{{ $index + $pustakas->firstItem() }}</td>
                                 <td class="p-2"><img src="{{ $pustaka->cover ?? asset('assets/img/avatars/book.svg') }}"
                                         style="max-width:160px; max-height:98px;" alt="Cover"></td>
-                                <td>{{ $pustaka->title }}</td>
-                                <td>{{ $pustaka->collections->name }}</td>
-                                <td>{{ $pustaka->created_at ? $pustaka->created_at->format('d M Y') : '-' }}</td>
+                                <td>{{ Str::limit($pustaka->title, 40) }}</td>
+                                <td>{{ $pustaka->collection->name }}</td>
+                                <td>{{ $pustaka->created_at ? $pustaka->created_at->locale('id')->translatedFormat('d F Y') : '-' }}
+                                </td>
+                                <td>{{ $pustaka->views_count ?? 0 }}</td>
                                 <td class="text-center">
                                     <div class="dropdown">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
@@ -131,14 +125,14 @@
                                                     class="bx bx-show-alt me-1"></i> Lihat Pustaka</a>
                                             <a class="dropdown-item"
                                                 href="{{ route('ae-library.edit', $pustaka->slug) }}"><i
-                                                    class="bx bx-edit-alt me-1"></i> Edit</a>
+                                                    class="bx bx-edit-alt me-1"></i> Ubah</a>
                                             <form action="{{ route('ae-library.destroy', $pustaka->slug) }}"
                                                 method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="dropdown-item"><i
+                                                <button type="submit" class="dropdown-item" onclick="return confirm('Yakin ingin menghapus?')"><i
                                                         class="bx bx-trash me-1"></i>
-                                                    Delete</button>
+                                                    Hapus</button>
                                             </form>
                                         </div>
                                     </div>

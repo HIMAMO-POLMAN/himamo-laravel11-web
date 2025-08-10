@@ -72,21 +72,3 @@
     </section>
 </div>
 @endsection
-@push('scripts')
-    <script>
-        var header = document.getElementById('header');
-        var mybutton = document.getElementById('myBtn');
-        function handleScroll() {
-            var scroll = window.scrollY;
-
-            if (scroll > 20) {
-                mybutton.style.display = "block";
-                header.classList.add('bg-light');
-            } else {
-                mybutton.style.display = "none";
-                header.classList.remove('bg-light');
-            }
-        }
-        window.addEventListener('scroll', handleScroll);
-    </script>
-@endpush

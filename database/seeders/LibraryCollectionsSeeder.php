@@ -17,22 +17,32 @@ class LibraryCollectionsSeeder extends Seeder
             [
                 "name" => "Teori",
                 "slug" => "teori",
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 "name" => "TRO",
                 "slug" => "tro",
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 "name" => "TRMO",
                 "slug" => "trmo",
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 "name" => "TRIN",
                 "slug" => "trin",
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 "name" => "TRSA",
                 "slug" => "trsa",
+                'created_at' => now(),
+                'updated_at' => now(),
             ]
         ];
 
