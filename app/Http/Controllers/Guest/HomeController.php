@@ -19,24 +19,40 @@ class HomeController extends Controller
         ]);
     }
 
-    public function d2mekatronika()
+
+    public function jurusan()
     {
-        return view('guest.prodi.prodi-d2-trmo');
+        return view('guest.about.jurusan.index');
+    }
+
+       public function kabinet()
+    {
+        return view('guest.about.kabinet.index');
     }
 
     public function d4mekatronika()
     {
-        return view('guest.prodi.prodi-d4-trmo');
+        return view('guest.about.jurusan.prodi-d4-trmo');
     }
 
     public function d4otomasi()
     {
-        return view('guest.prodi.prodi-d4-tro');
+        return view('guest.about.jurusan.prodi-d4-tro');
     }
 
     public function d4trin()
     {
-        return view('guest.prodi.prodi-d4-trin');
+        return view('guest.about.jurusan.prodi-d4-trin');
+    }
+
+    public function d4trsa()
+    {
+        return view('guest.about.jurusan.prodi-d4-trsa');
+    }
+
+     public function s2tsiberfisik()
+    {
+        return view('guest.about.jurusan.prodi-s2t-siber-fisik');
     }
 
 }

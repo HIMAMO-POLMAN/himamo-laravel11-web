@@ -6973,7 +6973,7 @@ label.btn {
 
 button:focus {
   outline: none;
-  box-shadow: none;
+    box-shadow: none;
 }
 
 .dropdown-toggle-split,

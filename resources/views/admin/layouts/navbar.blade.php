@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="flex-grow-1">
                                     <span class="fw-semibold d-block">{{ Auth::user()->name }}</span>
-                                    <span class="fw-semibold d-block">{{ Auth::user()->role }}</span>
+                                    <span class="fw-semibold d-block">{{ auth()->user()->getRoleNames()->join(', ') }}</span>
                                 </div>
                             </div>
                         </a>

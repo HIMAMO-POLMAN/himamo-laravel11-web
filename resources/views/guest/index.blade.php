@@ -286,19 +286,8 @@
                                 </div>
                             </div>
                         </a>
-                        <a href="prodi-d2-trmo" class="col-lg col-12 col-md-12 mt-2 " style="text-decoration: none;">
-                            <div class=" text-center ">
-                                <div class="subject-box bg-light shadow-sm ">
-                                    <img src="{{ asset('assets-guest/img/trmo-d2_subject.svg') }}" alt="Robotika"
-                                        class="subject-image" loading="lazy">
-                                    <p class="subject-name text-dark fw-bold">D2 Fast Track - Teknik <br> Mekatronika</p>
-                                </div>
-                            </div>
-                        </a>
                     </div>
-
                 </div>
-
             </div>
         </section>
 

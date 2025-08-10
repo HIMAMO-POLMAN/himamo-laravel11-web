@@ -19,23 +19,16 @@ use Spatie\Sitemap\SitemapGenerator;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/kontak', [ContactController::class, 'index'])->name('contact');
-Route::get('/prodi-d2-trmo', [HomeController::class, 'd2mekatronika'])->name('prodi-d2-trmo');
 Route::get('/prodi-d4-trmo', [HomeController::class, 'd4mekatronika'])->name('prodi-d4-trmo');
 Route::get('/prodi-d4-tro', [HomeController::class, 'd4otomasi'])->name('prodi-d4-tro');
 Route::get('/prodi-d4-trin', [HomeController::class, 'd4trin'])->name('prodi-d4-trin');
+Route::get('/prodi-d4-trsa', [HomeController::class, 'd4trsa'])->name('prodi-d4-trsa');
+Route::get('/prodi-s2t-siber-fisik', [HomeController::class, 's2tsiberfisik'])->name('prodi-s2t-siber-fisik');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/ae-informasi', [GuestInformationController::class, 'index'])->name('guest.information.index');
 Route::get('/ae-informasi/detail/{informasi:slug}', [GuestInformationController::class, 'show'])->name('guest.information.detail');
 Route::get('/ae-pustaka', [GuestLibraryController::class,'index'])->name('guest.library.index');
 Route::get('/ae-pustaka/detail/{libraries:slug}', [GuestLibraryController::class, 'show'])->name('guest.library.detail');
-
-// Route::get('/library', function () {
-//     return view('guest.library.index');
-// });
-
-// Route::get('/library/details', function () {
-//     return view('guest.library.detail');
-// });
 
 Route::middleware('auth-check')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
