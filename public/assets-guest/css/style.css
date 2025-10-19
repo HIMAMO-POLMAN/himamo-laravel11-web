@@ -86,15 +86,13 @@ p {
     width: 150px;
 }
 
-/* Styling dasar untuk navigasi */
 .navigation {
     display: flex;
-    gap: 10px; /* Memberi jarak antar menu utama */
+    gap: 30px; 
 }
 
-/* Kontainer dropdown utama */
 .dropdown {
-    position: relative; /* Penting untuk positioning dropdown-menu */
+    position: relative; 
     font-family: Arial, sans-serif;
 }
 
@@ -115,49 +113,40 @@ p {
     background-color: rgba(0, 0, 0, 0.05);
 }
 
-/* Menu dropdown (level 1 dan level 2) */
 .dropdown-menu {
-    /* Wajib: Sembunyikan menu secara default */
     display: none; 
-    
-    /* Styling Dasar Dropdown */
-    position: absolute; /* Penting untuk desktop agar menu keluar dari alur dokumen */
-    top: 100%; /* Posisikan di bawah item induk */
+    position: absolute;
+    top: 100%; 
     left: 0;
     z-index: 1000;
     list-style: none;
     padding: 0;
     margin: 0;
     background-color: #fff;
-    min-width: 200px; /* Lebar minimum untuk menu */
+    min-width: 200px; 
     box-shadow: 0 6px 12px rgba(0,0,0,0.175);
     border: 1px solid rgba(0,0,0,0.15);
 }
 
-/* Tampilkan menu dropdown saat induknya di-hover (Desktop/Tablet) */
 @media screen and (min-width: 768px) {
-    /* Pastikan .dropdown (menu level 1) tampil saat di-hover */
     .dropdown:hover > .dropdown-menu {
         display: block;
     }
-
-    /* Tampilkan Sub-menu (.dropdown-submenu level 2) saat di-hover */
     .dropdown-submenu:hover > .dropdown-menu {
         display: block;
-        /* Hapus properti 'gap: 50px;' karena tidak relevan untuk <ul>/menu */
     }
 }
 
-/* Item di dalam dropdown (Tidak diubah, sudah OK) */
 .dropdown-menu li a {
-    color: #333; /* Warna teks lebih mudah dibaca */
+    width: 100%;
+    color: #333; 
     padding: 12px 16px;
-    display: flex; /* Gunakan flexbox untuk alignment */
-    justify-content: space-between; /* Mendorong panah ke kanan */
+    display: flex; 
+    justify-content: space-between; 
     align-items: center;
     text-decoration: none;
     transition: all 0.2s ease;
-    white-space: nowrap; /* Agar teks tidak turun baris */
+    white-space: nowrap; 
 }
 
 .dropdown-menu li a:hover {
@@ -165,39 +154,27 @@ p {
     background-color: #028784;
 }
 
-/* === BAGIAN PENTING UNTUK SUB-MENU === (Tidak diubah, sudah OK) */
-
-/* Kontainer sub-menu */
 .dropdown-submenu {
-    position: relative; /* Penting untuk positioning sub-menu */
+    position: relative; 
 }
 
-/* Sub-menu (dropdown di dalam dropdown) */
 .dropdown-submenu .dropdown-menu {
     top: 0;
-    left: 100%; /* Posisikan di sebelah kanan item induk */
-    margin-top: -1px; /* Sedikit penyesuaian posisi */
+    left: 100%; 
+    margin-top: -1px; 
     margin-left: 5px;
     width: 360px;
-    /* Tambahkan default hide untuk desktop */
     display: none;
-    /* Tambahkan positioning mutlak untuk dropdown menu */
     position: absolute;
 }
 
-
-/* === PERBAIKAN MOBILE === */
 @media screen and (max-width: 767px) {
-    /* Perbaikan: Samakan kelas yang digunakan JS. JS menggunakan '.open', bukan '.open-sub' */
-    /* Show dropdown when parent has .open */
     .dropdown.open > .dropdown-menu {
         display: block;
     }
 
-    /* Tampilkan Sub-menu saat induknya memiliki kelas .open (yang disuntikkan oleh JS) */
     .dropdown-submenu.open > .dropdown-menu {
         display: block;
-        /* Untuk mobile, posisi sub-menu harus di bawah (stack) */
         position: relative;
         left: auto;
         margin-left: 0;
@@ -396,6 +373,7 @@ p {
     } 
 
     .navigation {
+        gap: 0; 
         flex-direction: column;
         position: absolute;
         top: var(--header-height); 
@@ -403,11 +381,8 @@ p {
         width: 100%;
         background-color: var(--black-color); 
         box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-
-        max-height: 0;
         overflow: hidden;
-        transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
-        opacity: 0;
+        transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;'
     }
 
     .menu-toggle:checked ~ .navigation {
@@ -428,7 +403,6 @@ p {
     .navigation .dropdown a {
         display: block;
         padding: 1rem;
-        text-decoration: none;
         color: var(--first-color); 
         font-weight: bold;
         transition: background-color 0.3s ease;

@@ -46,9 +46,9 @@
             <li class="dropdown-submenu">
                 <a href="#">Jurusan <span> > </span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Teknologi Rekayasa Otomasi (TRO)</a></li>
-                    <li><a href="#">Teknologi Rekayasa Mekatronika (TRMO)</a></li>
-                    <li><a href="#">Teknologi Rekayasa Informatika Industri (TRIN)</a></li>
+                    <li><a href="{{ route ('prodi-d4-tro') }}">Teknologi Rekayasa Otomasi (TRO)</a></li>
+                    <li><a href="{{ route ('prodi-d4-trmo') }}">Teknologi Rekayasa Mekatronika (TRMO)</a></li>
+                    <li><a href="{{ route ('prodi-d4-trin') }}">Teknologi Rekayasa Informatika Industri (TRIN)</a></li>
                     <li><a href="#">Teknologi Rekayasa Aerial Niarawak (TRSA)</a></li>
                 </ul>
             </li>

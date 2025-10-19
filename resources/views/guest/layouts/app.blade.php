@@ -24,16 +24,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js" defer></script>
 
     {{-- Navigasi JS --}}
-    <script src="{{ asset('assets-guest/js/main.js') }}" defer></script>
     <script src="{{ asset('assets-guest/js/dark-mode-switch.min.js') }}" defer></script>
     <script src="{{ asset('assets-guest/js/navbar.js') }}" defer></script>
 
-
     {{-- Owl Carousel --}}
     <script type='text/javascript' src="{{ asset('assets-guest/js/owl.carousel.min.js') }}"></script>
-
-    {{-- Bootstrap --}}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" defer></script>
 
     {{-- Additional Scripts --}}
     @stack('scripts')

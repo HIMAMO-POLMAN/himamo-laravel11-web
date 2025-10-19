@@ -3,7 +3,7 @@
 
     var MOBILE_BREAKPOINT = 767; 
     
-    var SUBMENU_SELECTOR = '.dropdown-submenu'; 
+    var SUBMENU_SELECTOR = 'dropdown-submenu'; 
 
 	function closeAllSubmenus() {
         if (window.innerWidth > MOBILE_BREAKPOINT) return; 
@@ -59,6 +59,7 @@
 			});
 		});
         
+
         document.querySelectorAll('.dropdown > a').forEach(function (link) {
             if (link.__dropdownInitialized) return;
             link.__dropdownInitialized = true;
