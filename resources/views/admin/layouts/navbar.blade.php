@@ -17,7 +17,7 @@
                         <img src="{{ asset('assets/img/avatars/img-avatar-pria.svg') }}" alt
                             class="w-px-40 h-auto rounded-circle" />
                     </div>
-                </a>
+                </a
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li>
                         <a class="dropdown-item" href="{{ route('profile.index') }}">

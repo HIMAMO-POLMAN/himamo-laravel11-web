@@ -16,10 +16,11 @@
     --nav-width: 68px;
     --first-color: #028784;
     --first-color-light: #b2d8d8;
-    --white-color: #f7f6fb00;
+    --white-color: #f7f6fb;
     --body-font: "Karla", sans-serif;
     --normal-font-size: 1rem;
     --z-fixed: 100;
+    --black-color: #393E46; 
 }
 
 *,
@@ -65,6 +66,7 @@ p {
     padding: 0 2rem;
     z-index: var(--z-fixed);
     transition: 0.5s;
+    justify-content: space-between;
 }
 
 .header > .header_toggle {
@@ -76,13 +78,24 @@ p {
     margin-left: 20px;
 }
 
+.header > .dark-mode-toggle {
+    order: 5;
+}
+
 .header_toggle img {
     width: 150px;
 }
 
+/* Styling dasar untuk navigasi */
+.navigation {
+    display: flex;
+    gap: 10px; /* Memberi jarak antar menu utama */
+}
+
+/* Kontainer dropdown utama */
 .dropdown {
+    position: relative; /* Penting untuk positioning dropdown-menu */
     font-family: Arial, sans-serif;
-    position: relative;
 }
 
 .dropdown > a {
@@ -99,49 +112,96 @@ p {
 }
 
 .dropdown > a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
+/* Menu dropdown (level 1 dan level 2) */
 .dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
+    /* Wajib: Sembunyikan menu secara default */
+    display: none; 
+    
+    /* Styling Dasar Dropdown */
+    position: absolute; /* Penting untuk desktop agar menu keluar dari alur dokumen */
+    top: 100%; /* Posisikan di bawah item induk */
     left: 0;
-    background-color: white;
-    box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
+    z-index: 1000;
     list-style: none;
     padding: 0;
-    margin: 5px 0 0 0;
-    z-index: 1;
-    border-radius: 8px;
-    overflow: hidden;
-    min-width: 150px;
+    margin: 0;
+    background-color: #fff;
+    min-width: 200px; /* Lebar minimum untuk menu */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+    border: 1px solid rgba(0,0,0,0.15);
 }
 
-.dropdown-menu li {
-    border-bottom: 1px solid #eee;
+/* Tampilkan menu dropdown saat induknya di-hover (Desktop/Tablet) */
+@media screen and (min-width: 768px) {
+    /* Pastikan .dropdown (menu level 1) tampil saat di-hover */
+    .dropdown:hover > .dropdown-menu {
+        display: block;
+    }
+
+    /* Tampilkan Sub-menu (.dropdown-submenu level 2) saat di-hover */
+    .dropdown-submenu:hover > .dropdown-menu {
+        display: block;
+        /* Hapus properti 'gap: 50px;' karena tidak relevan untuk <ul>/menu */
+    }
 }
 
-.dropdown-menu li:last-child {
-    border-bottom: none;
-}
-
+/* Item di dalam dropdown (Tidak diubah, sudah OK) */
 .dropdown-menu li a {
-    color: #028784;
+    color: #333; /* Warna teks lebih mudah dibaca */
     padding: 12px 16px;
-    display: block;
+    display: flex; /* Gunakan flexbox untuk alignment */
+    justify-content: space-between; /* Mendorong panah ke kanan */
+    align-items: center;
     text-decoration: none;
     transition: all 0.2s ease;
+    white-space: nowrap; /* Agar teks tidak turun baris */
 }
 
 .dropdown-menu li a:hover {
     color: #ffffff;
     background-color: #028784;
-    padding-left: 20px;
 }
 
-.dropdown:hover .dropdown-menu {
-    display: block;
+/* === BAGIAN PENTING UNTUK SUB-MENU === (Tidak diubah, sudah OK) */
+
+/* Kontainer sub-menu */
+.dropdown-submenu {
+    position: relative; /* Penting untuk positioning sub-menu */
+}
+
+/* Sub-menu (dropdown di dalam dropdown) */
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%; /* Posisikan di sebelah kanan item induk */
+    margin-top: -1px; /* Sedikit penyesuaian posisi */
+    margin-left: 5px;
+    width: 360px;
+    /* Tambahkan default hide untuk desktop */
+    display: none;
+    /* Tambahkan positioning mutlak untuk dropdown menu */
+    position: absolute;
+}
+
+
+/* === PERBAIKAN MOBILE === */
+@media screen and (max-width: 767px) {
+    /* Perbaikan: Samakan kelas yang digunakan JS. JS menggunakan '.open', bukan '.open-sub' */
+    /* Show dropdown when parent has .open */
+    .dropdown.open > .dropdown-menu {
+        display: block;
+    }
+
+    /* Tampilkan Sub-menu saat induknya memiliki kelas .open (yang disuntikkan oleh JS) */
+    .dropdown-submenu.open > .dropdown-menu {
+        display: block;
+        /* Untuk mobile, posisi sub-menu harus di bawah (stack) */
+        position: relative;
+        left: auto;
+        margin-left: 0;
+    }
 }
 
 .l-navbar {
@@ -246,6 +306,8 @@ p {
     width: 100vw;
 }
 
+/* ------------responsive layout---------------------*/
+
 @media screen and (min-width: 990px) {
     body {
         margin: calc(var(--header-height) + 0rem) 0 0 0;
@@ -297,6 +359,117 @@ p {
         opacity: 1;
         visibility: visible;
         transition: transform 0s;
+    }
+}
+
+.menu-toggle {
+    display: none;
+}
+
+.hamburger-icon {
+    display: none; 
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    margin-right: 10px;
+    margin-top: 5px; 
+}
+
+.hamburger-icon .bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--first-color); 
+    transition: all 0.3s ease-in-out;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+}
+
+/* --- Media Query untuk Tampilan Mobile --- */
+@media screen and (max-width: 767px) {
+    .hamburger-icon {
+        display: flex;
+    } 
+
+    .navigation {
+        flex-direction: column;
+        position: absolute;
+        top: var(--header-height); 
+        left: 0;
+        width: 100%;
+        background-color: var(--black-color); 
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
+        opacity: 0;
+    }
+
+    .menu-toggle:checked ~ .navigation {
+        max-height: 500px; 
+        opacity: 1;
+    }
+
+    .navigation .dropdown {
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid var(--first-color-light); 
+    }
+
+    .navigation .dropdown:last-child {
+        border-bottom: none; 
+    }
+
+    .navigation .dropdown a {
+        display: block;
+        padding: 1rem;
+        text-decoration: none;
+        color: var(--first-color); 
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .navigation .dropdown a:hover {
+        background-color: var(--first-color-light); 
+    }
+
+    .navigation .dropdown-menu {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        background-color: transparent;
+        padding: 0;
+        list-style: none;
+    }
+
+    .navigation .dropdown-menu li a {
+        padding: 0.75rem;
+        font-weight: normal;
+        color: var(--first-color);
+    }
+
+    .navigation .dropdown-menu li a:hover {
+        background-color: #e9e9e9;
+    }
+    .header .dark-mode-toggle {
+        margin-right: 10px;
+    }
+    
+    .menu-toggle:checked ~ .hamburger-icon .bar:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .menu-toggle:checked ~ .hamburger-icon .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .menu-toggle:checked ~ .hamburger-icon .bar:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -8px);
     }
 }
 
@@ -399,7 +572,7 @@ html {
 .carousel-caption {
     top: 50%;
     transform: translateY(-40%);
-    bottom: unset !important; /* Mematikan efek bottom dari SCSS */
+    bottom: unset !important;
 
     z-index: 9;
 }
@@ -432,7 +605,6 @@ html {
     color: transparent;
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
-    /* Will override color (regardless of order) */
     -webkit-text-stroke-width: 0.5px;
     -moz-text-stroke-width: 0.5px;
     -moz-text-stroke-color: #fff;
@@ -447,7 +619,6 @@ html {
     font-style: italic;
     color: transparent;
     -webkit-text-fill-color: transparent;
-    /* Will override color (regardless of order) */
     -webkit-text-stroke-width: 0.5px;
     -webkit-text-stroke-color: #fff;
 }
@@ -545,7 +716,6 @@ html {
 
 @media (max-width: 1200px) {
     .informasi-content {
-        /* width: 30px; */
     }
 }
 
