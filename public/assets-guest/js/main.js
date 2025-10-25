@@ -1,40 +1,45 @@
 document.addEventListener("DOMContentLoaded", function (event) {
 
+    const menuToggle = document.getElementById('menu-toggle');
+    const navigationMenu = document.querySelector('.navigation');
+
+    if (menuToggle && navigationMenu) {
+        menuToggle.addEventListener('change', function() {
+            if (this.checked) {
+                navigationMenu.classList.add('is-open'); 
+            } else {
+                navigationMenu.classList.remove('is-open'); 
+            }
+        });
+    }
+
     const showNavbar = (toggleId, navId, bodyId, headerId) => {
         const toggle = document.getElementById(toggleId),
             nav = document.getElementById(navId),
             bodypd = document.getElementById(bodyId),
-            headerpd = document.getElementById(headerId)
+            headerpd = document.getElementById(headerId);
 
-        // Validate that all variables exist
         if (toggle && nav && bodypd && headerpd) {
             toggle.addEventListener('click', () => {
-                // show navbar
-                nav.classList.toggle('show')
-                // change icon
-                toggle.classList.toggle('bx-x')
-                // add padding to body
-                bodypd.classList.toggle('body-pd')
-                // add padding to header
-                headerpd.classList.toggle('header-pd')
-            })
+                nav.classList.toggle('show');
+                toggle.classList.toggle('bx-x');
+                bodypd.classList.toggle('body-pd');
+                headerpd.classList.toggle('header-pd');
+            });
         }
-    }
+    };
 
-    showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
+    showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header');
 
-    /*===== LINK ACTIVE =====*/
-    const linkColor = document.querySelectorAll('.nav_link')
+    const linkColor = document.querySelectorAll('.nav_link');
 
     function colorLink() {
         if (linkColor) {
-            linkColor.forEach(l => l.classList.remove('active'))
-            this.classList.add('active')
+            linkColor.forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
         }
     }
-    linkColor.forEach(l => l.addEventListener('click', colorLink))
-
-    //gsap
+    linkColor.forEach(l => l.addEventListener('click', colorLink));
 
     gsap.registerPlugin(ScrollTrigger);
 
@@ -42,59 +47,40 @@ document.addEventListener("DOMContentLoaded", function (event) {
     var narrowScreen = window.matchMedia("(max-width: 799px)");
 
     gsap.utils.toArray(".gs_reveal").forEach(function (elem) {
-
         if (wideScreen.matches) {
-            hide(elem); // assure that the element is hidden when scrolled into view above 800px screen-width
+            hide(elem);
         } else {
-            unhide(elem); // assures that the element is visible when scrolled into view below 800px screen-width
+            unhide(elem);
         }
 
-
         ScrollTrigger.matchMedia({
-            // desktop
             "(min-width: 800px)": function () {
-                // setup animations and ScrollTriggers for screens 800px wide or greater (desktop) here...
-                // These ScrollTriggers will be reverted/killed when the media query doesn't match anymore.
-
                 ScrollTrigger.create({
                     trigger: elem,
                     onEnter: function () {
-                        animateFrom(elem)
+                        animateFrom(elem);
                     },
                     onEnterBack: function () {
-                        animateFrom(elem, -1)
+                        animateFrom(elem, -1);
                     },
                     onLeave: function () {
-                        hide(elem)
-                    } // assure that the element is hidden when scrolled into view
+                        hide(elem);
+                    }
                 });
-
             },
-
-            // mobile
             "(max-width: 799px)": function () {
-                // The ScrollTriggers created inside these functions are segregated and get
-                // reverted/killed when the media query doesn't match anymore.
-
                 ScrollTrigger.saveStyles(".gs_reveal_fromLeft, .gs_reveal_fromRight, .gs_reveal");
-
-                // return function() {
-                //   gsap.kill();
-                //   other cleanup code can go here.
-                // };
             },
-
-            // all
-            "all": function () {
-                // ScrollTriggers created here aren't associated with a particular media query,
-                // so they persist.
-            }
+            "all": function () {}
         });
     });
 });
 
+function getElementHeight(selector) {
+    const element = document.querySelector(selector);
+    return element ? element.clientHeight : 0;
+}
 
-// ambil icon sidebar
 var nav_home = document.querySelector('.nav_list a:nth-child(1)');
 var nav_aeinformasi = document.querySelector('.nav_list a:nth-child(2)');
 var nav_aepustaka = document.querySelector('.nav_list a:nth-child(3)');
@@ -103,19 +89,15 @@ var nav_history = document.querySelector('.nav_list a:nth-child(5)');
 var nav_divisi = document.querySelector('.nav_list a:nth-child(6)');
 var nav_leader = document.querySelector('.nav_list a:nth-child(7)');
 
-// ambil height dari setiaps section
-var home_value = (document.querySelector('section#home .carousel').clientHeight) - 100;
-var about_value = document.querySelector('section#about .container').clientHeight;
-var history_value = document.querySelector('section#history .container').clientHeight;
-var division_value = document.querySelector('section#division .container').clientHeight;
-var leader_value = document.querySelector('section#leader .container').clientHeight;
-var aepustaka_value = document.querySelector('section#ae-pustaka .container').clientHeight;
-var aeinformasi_value = document.querySelector('section#ae-informasi .container').clientHeight;
+var home_value = (getElementHeight('section#home .carousel')) - 100;
+var about_value = getElementHeight('section#about .container');
+var history_value = getElementHeight('section#history .container');
+var division_value = getElementHeight('section#division .container');
+var leader_value = getElementHeight('section#leader .container');
+var aepustaka_value = getElementHeight('section#ae-pustaka .container');
+var aeinformasi_value = getElementHeight('section#ae-informasi .container');
 
-
-
-// TOMBOL KE ATAS
-mybutton = document.getElementById("myBtn");
+var mybutton = document.getElementById("myBtn");
 
 function topFunction() {
     document.body.scrollTop = 0;
@@ -134,22 +116,9 @@ $(document).ready(function () {
         dots: false,
         responsiveClass: true,
         responsive: {
-            0: {
-                items: 1,
-                center: true,
-                stagePadding: 10,
-                singleItem: true,
-            },
-            600: {
-                items: 1,
-                center: true,
-                stagePadding: 10,
-            },
-            1000: {
-                items: 2,
-                rtl: false,
-                stagePadding: 0,
-            }
+            0: { items: 1, center: true, stagePadding: 10, singleItem: true },
+            600: { items: 1, center: true, stagePadding: 10 },
+            1000: { items: 2, rtl: false, stagePadding: 0 }
         }
     });
 
@@ -163,25 +132,9 @@ $(document).ready(function () {
         navText: ["<i class='bx bxs-chevron-left-circle'></i>", "<i class='bx bxs-chevron-right-circle'></i>"],
         nav: true,
         responsive: {
-            0: {
-                items: 1,
-                center: true,
-                stagePadding: 10,
-                margin: 30,
-                singleItem: true,
-
-            },
-            600: {
-                items: 1,
-                center: true,
-                stagePadding: 5,
-            },
-            1000: {
-                items: 2,
-                rtl: true,
-                stagePadding: 0,
-                margin: 30,
-            }
+            0: { items: 1, center: true, stagePadding: 10, margin: 30, singleItem: true },
+            600: { items: 1, center: true, stagePadding: 5 },
+            1000: { items: 2, rtl: true, stagePadding: 0, margin: 30 }
         }
     });
 
@@ -196,108 +149,94 @@ $(document).ready(function () {
         nav: false,
         dots: true,
         responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 1
-            },
-            1000: {
-                items: 3
-            }
+            0: { items: 1 },
+            600: { items: 1 },
+            1000: { items: 3 }
         }
     });
 
-
-    // SCROLLING
     $(window).scroll(function () {
         var scroll = $(window).scrollTop();
+        const header = document.getElementById("header");
+
         if (scroll > 20) {
-            mybutton.style.display = "block";
-            document.getElementById("header").classList.add('bg-light');
+            if (mybutton) mybutton.style.display = "block";
+            if (header) header.classList.add('bg-light');
         } else {
-            mybutton.style.display = "none";
-            document.getElementById("header").classList.remove('bg-light');
-            nav_home.classList.add("active");
-            nav_about.classList.remove("active");
-            nav_history.classList.remove("active");
-            nav_divisi.classList.remove("active");
-            nav_leader.classList.remove("active");
-            nav_aepustaka.classList.remove('active');
-            nav_aeinformasi.classList.remove('active');
+            if (mybutton) mybutton.style.display = "none";
+            if (header) header.classList.remove('bg-light');
         }
-        if (scroll > home_value && scroll < (home_value + aeinformasi_value)) {
-            nav_about.classList.remove('active');
-            nav_home.classList.remove('active');
-            nav_history.classList.remove('active');
-            nav_divisi.classList.remove('active');
-            nav_leader.classList.remove('active');
-            nav_aepustaka.classList.remove('active');
-            nav_aeinformasi.classList.add('active');
-        } else if (scroll > (home_value + aeinformasi_value) &&
-            scroll < (home_value + aeinformasi_value + aepustaka_value)) {
-            nav_history.classList.remove('active');
-            nav_about.classList.remove('active');
-            nav_home.classList.remove('active');
-            nav_divisi.classList.remove('active');
-            nav_leader.classList.remove('active');
-            nav_aepustaka.classList.add('active');
-            nav_aeinformasi.classList.remove('active');
-        } else if (scroll > (home_value + aeinformasi_value + aepustaka_value) &&
-            scroll < (home_value + aeinformasi_value + aepustaka_value + about_value )) {
-            nav_history.classList.remove('active');
-            nav_about.classList.add('active');
-            nav_home.classList.remove('active');
-            nav_divisi.classList.remove('active');
-            nav_leader.classList.remove('active');
 
-            nav_aepustaka.classList.remove('active');
-            nav_aeinformasi.classList.remove('active');
-        } else if (scroll > (home_value + aeinformasi_value + aepustaka_value + about_value ) &&
-            scroll < (home_value + aeinformasi_value + aepustaka_value + about_value + history_value)) {
-            nav_history.classList.add('active');
-            nav_about.classList.remove('active');
-            nav_home.classList.remove('active');
-            nav_divisi.classList.remove('active');
-            nav_leader.classList.remove('active');
-            nav_aepustaka.classList.remove('active');
-            nav_aeinformasi.classList.remove('active');
+        if (document.querySelector('section#home')) {
+            if (scroll <= 20) {
+                if (nav_home) nav_home.classList.add("active");
+                if (nav_about) nav_about.classList.remove("active");
+                if (nav_history) nav_history.classList.remove("active");
+                if (nav_divisi) nav_divisi.classList.remove("active");
+                if (nav_leader) nav_leader.classList.remove("active");
+                if (nav_aepustaka) nav_aepustaka.classList.remove('active');
+                if (nav_aeinformasi) nav_aeinformasi.classList.remove('active');
+            } else if (scroll > home_value && scroll < (home_value + aeinformasi_value)) {
+                if (nav_about) nav_about.classList.remove('active');
+                if (nav_home) nav_home.classList.remove('active');
+                if (nav_history) nav_history.classList.remove('active');
+                if (nav_divisi) nav_divisi.classList.remove('active');
+                if (nav_leader) nav_leader.classList.remove('active');
+                if (nav_aepustaka) nav_aepustaka.classList.remove('active');
+                if (nav_aeinformasi) nav_aeinformasi.classList.add('active');
+            } else if (scroll > (home_value + aeinformasi_value) && scroll < (home_value + aeinformasi_value + aepustaka_value)) {
+                if (nav_history) nav_history.classList.remove('active');
+                if (nav_about) nav_about.classList.remove('active');
+                if (nav_home) nav_home.classList.remove('active');
+                if (nav_divisi) nav_divisi.classList.remove('active');
+                if (nav_leader) nav_leader.classList.remove('active');
+                if (nav_aepustaka) nav_aepustaka.classList.add('active');
+                if (nav_aeinformasi) nav_aeinformasi.classList.remove('active');
+            } else if (scroll > (home_value + aeinformasi_value + aepustaka_value) && scroll < (home_value + aeinformasi_value + aepustaka_value + about_value)) {
+                if (nav_history) nav_history.classList.remove('active');
+                if (nav_about) nav_about.classList.add('active');
+                if (nav_home) nav_home.classList.remove('active');
+                if (nav_divisi) nav_divisi.classList.remove('active');
+                if (nav_leader) nav_leader.classList.remove('active');
+                if (nav_aepustaka) nav_aepustaka.classList.remove('active');
+                if (nav_aeinformasi) nav_aeinformasi.classList.remove('active');
+            } else if (scroll > (home_value + aeinformasi_value + aepustaka_value + about_value) && scroll < (home_value + aeinformasi_value + aepustaka_value + about_value + history_value)) {
+                if (nav_history) nav_history.classList.add('active');
+                if (nav_about) nav_about.classList.remove('active');
+                if (nav_home) nav_home.classList.remove('active');
+                if (nav_divisi) nav_divisi.classList.remove('active');
+                if (nav_leader) nav_leader.classList.remove('active');
+                if (nav_aepustaka) nav_aepustaka.classList.remove('active');
+                if (nav_aeinformasi) nav_aeinformasi.classList.remove('active');
+            } else if (scroll > (home_value + aeinformasi_value + aepustaka_value + about_value + history_value) && scroll < (home_value + aeinformasi_value + aepustaka_value + about_value + history_value + division_value)) {
+                if (nav_history) nav_history.classList.remove('active');
+                if (nav_about) nav_about.classList.remove('active');
+                if (nav_home) nav_home.classList.remove('active');
+                if (nav_divisi) nav_divisi.classList.add('active');
+                if (nav_leader) nav_leader.classList.remove('active');
+                if (nav_aepustaka) nav_aepustaka.classList.remove('active');
+                if (nav_aeinformasi) nav_aeinformasi.classList.remove('active');
+            } else if (scroll > (home_value + aeinformasi_value + aepustaka_value + about_value + history_value + division_value) && scroll < (home_value + aeinformasi_value + aepustaka_value + about_value + history_value + division_value + leader_value)) {
+                if (nav_history) nav_history.classList.remove('active');
+                if (nav_about) nav_about.classList.remove('active');
+                if (nav_home) nav_home.classList.remove('active');
+                if (nav_divisi) nav_divisi.classList.remove('active');
+                if (nav_leader) nav_leader.classList.add('active');
+                if (nav_aepustaka) nav_aepustaka.classList.remove('active');
+                if (nav_aeinformasi) nav_aeinformasi.classList.remove('active');
+            } else if (scroll > (home_value + aeinformasi_value + aepustaka_value + about_value + history_value + division_value + leader_value)) {
+                if (nav_history) nav_history.classList.remove('active');
+                if (nav_about) nav_about.classList.remove('active');
+                if (nav_home) nav_home.classList.remove('active');
+                if (nav_divisi) nav_divisi.classList.remove('active');
+                if (nav_leader) nav_leader.classList.remove('active');
+                if (nav_aepustaka) nav_aepustaka.classList.remove('active');
+                if (nav_aeinformasi) nav_aeinformasi.classList.remove('active');
+            }
         }
-    else if (scroll > (home_value + aeinformasi_value + aepustaka_value + about_value + history_value) &&
-        scroll < (home_value + aeinformasi_value + aepustaka_value + about_value + history_value + division_value)) {
-        nav_history.classList.remove('active');
-        nav_about.classList.remove('active');
-        nav_home.classList.remove('active');
-        nav_divisi.classList.add('active');
-        nav_leader.classList.remove('active');
-
-        nav_aepustaka.classList.remove('active');
-        nav_aeinformasi.classList.remove('active');
-    }
-    else if (scroll > (home_value + aeinformasi_value + aepustaka_value + about_value + history_value + division_value) &&
-        scroll < (home_value + aeinformasi_value + aepustaka_value + about_value + history_value + division_value + leader_value)) {
-        nav_history.classList.remove('active');
-        nav_about.classList.remove('active');
-        nav_home.classList.remove('active');
-        nav_divisi.classList.remove('active');
-        nav_leader.classList.add('active');
-        nav_aepustaka.classList.remove('active');
-        nav_aeinformasi.classList.remove('active');
-    }
-         else if (scroll > (home_value + aeinformasi_value + aepustaka_value + about_value + history_value + division_value + leader_value)) {
-            nav_history.classList.remove('active');
-            nav_about.classList.remove('active');
-            nav_home.classList.remove('active');
-            nav_divisi.classList.remove('active');
-            nav_leader.classList.remove('active');
-
-            nav_aepustaka.classList.remove('active');
-            nav_aeinformasi.classList.remove('active');
-        }
-    })
+    });
 });
 
-// COUNTER UP FUNCTION
 const counters = document.querySelectorAll('.value');
 const speed = 1000;
 
@@ -305,7 +244,6 @@ counters.forEach(counter => {
     const animate = () => {
         const value = +counter.getAttribute('count');
         const data = +counter.innerText;
-
         const time = value / speed;
         if (data < value) {
             counter.innerText = Math.ceil(data + time);
@@ -313,26 +251,24 @@ counters.forEach(counter => {
         } else {
             counter.innerText = value;
         }
-
-    }
-
+    };
     animate();
 });
 
-
-
-// PRELOADER
 var preloader = document.getElementById("loading");
 
 function load() {
-    setTimeout(function(){
-        document.getElementById("loading").style.display = 'none';
-    },1500);
+    setTimeout(function () {
+        var loadingElement = document.getElementById("loading");
+        if (loadingElement) {
+            loadingElement.style.display = 'none';
+        }
+        document.body.style.overflow = 'auto';
+    }, 1500);
 }
 
 function animateFrom(elem, direction) {
     direction = direction | 1;
-
     var x = 0,
         y = direction * 100;
     if (elem.classList.contains("gs_reveal_fromLeft")) {
@@ -342,11 +278,7 @@ function animateFrom(elem, direction) {
         x = 100;
         y = 0;
     }
-    gsap.fromTo(elem, {
-        x: x,
-        y: y,
-        autoAlpha: 0
-    }, {
+    gsap.fromTo(elem, { x: x, y: y, autoAlpha: 0 }, {
         duration: 1.5,
         x: 0,
         y: 0,
@@ -357,13 +289,9 @@ function animateFrom(elem, direction) {
 }
 
 function hide(elem) {
-    gsap.set(elem, {
-        autoAlpha: 0
-    });
+    gsap.set(elem, { autoAlpha: 0 });
 }
 
 function unhide(elem) {
-    gsap.set(elem, {
-        autoAlpha: 1
-    });
+    gsap.set(elem, { autoAlpha: 1 });
 }
