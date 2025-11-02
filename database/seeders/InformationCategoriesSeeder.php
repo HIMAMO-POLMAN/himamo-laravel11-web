@@ -43,6 +43,6 @@ class InformationCategoriesSeeder extends Seeder
             ]
         ];
 
-        DB::table('information_categories')->insert($data);
+        DB::table('information_categories')->upsert($data, ['name'], ['slug', 'updated_at']);
     }
 }

@@ -46,6 +46,6 @@ class LibraryCollectionsSeeder extends Seeder
             ]
         ];
 
-        DB::table('library_collections')->insert($data);
+        DB::table('library_collections')->upsert($data, ['slug'], ['name', 'updated_at']);
     }
 }

@@ -55,4 +55,9 @@ class HomeController extends Controller
         return view('guest.about.jurusan.prodi-s2t-siber-fisik');
     }
 
+    public function melajuBersama()
+    {
+        return view('guest.kabinet.melaju-bersama');
+    }
+
 }
