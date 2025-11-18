@@ -22,7 +22,7 @@ class HomeController extends Controller
 
     public function jurusan()
     {
-        return view('guest.about.jurusan.index');
+        return view('guest.about.jurusan.overview');
     }
 
        public function kabinet()
