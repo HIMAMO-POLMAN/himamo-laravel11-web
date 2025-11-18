@@ -60,4 +60,9 @@ class HomeController extends Controller
         return view('guest.kabinet.melaju-bersama');
     }
 
+    public function about()
+    {
+        return view('guest.about.profile');
+    }
+
 }
