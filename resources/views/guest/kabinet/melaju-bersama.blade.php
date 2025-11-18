@@ -24,66 +24,18 @@
     .kabinet-melaju-bersama-page .list-unstyled {
         font-family: 'Open Sans', sans-serif;
     }
-
-    /* Card Hover Effect */
-    .card-hover {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card-hover:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-    }
-
-    /* Bidang Card Color Accents */
-    .bidang-card .card-title {
-        border-left: 4px solid;
-        padding-left: 10px;
-    }
-    .bidang-1 .card-title { border-color: #00796b; } /* Teal */
-    .bidang-2 .card-title { border-color: #43a047; } /* Green */
-    .bidang-3 .card-title { border-color: #00897b; } /* Dark Cyan */
-    .bidang-4 .card-title { border-color: #66bb6a; } /* Light Green */
-    .bidang-5 .card-title { border-color: #2e7d32; } /* Darker Green */
-
-    /* Hero Scroll Indicator */
-    .hero-section {
-        position: relative;
-    }
-    .scroll-down-indicator {
-        position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 3rem;
-        color: white;
-        animation: bounce 2s infinite;
-    }
-    @keyframes bounce {
-        0%, 20%, 50%, 80%, 100% {
-            transform: translateX(-50%) translateY(0);
-        }
-        40% {
-            transform: translateX(-50%) translateY(-20px);
-        }
-        60% {
-            transform: translateX(-50%) translateY(-10px);
-        }
-    }
 </style>
 
 <div class="kabinet-melaju-bersama-page">
-    <div class="container-fluid hero-section">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-12 text-center py-5" style="background-image: linear-gradient(to right, #004d40, #00796b);">
                 <h1 class="text-white display-4">Kabinet Melaju Bersama 2025/2026</h1>
             </div>
         </div>
-        <div class="scroll-down-indicator">
-            <i class='bx bx-chevron-down'></i>
-        </div>
     </div>
 
-    <div class="container py-5 gs_reveal">
+    <div class="container py-5">
         <div class="row">
             <div class="col-md-8 offset-md-2 text-center">
                 <h2>Penjelasan Umum Kabinet</h2>
@@ -92,10 +44,10 @@
         </div>
     </div>
 
-    <div class="container py-5 gs_reveal" style="background-color: #f0f8f0;">
+    <div class="container py-5" style="background-color: #f0f8f0;">
         <div class="row">
             <div class="col-md-6 mb-4">
-                <div class="card h-100 card-hover">
+                <div class="card h-100">
                     <div class="card-body text-center">
                         <i class='bx bx-bullseye' style='font-size: 3rem; color: #00796b;'></i>
                         <h3 class="card-title mt-2">Visi</h3>
@@ -104,7 +56,7 @@
                 </div>
             </div>
             <div class="col-md-6 mb-4">
-                <div class="card h-100 card-hover">
+                <div class="card h-100">
                     <div class="card-body text-center">
                         <i class='bx bx-list-check' style='font-size: 3rem; color: #00796b;'></i>
                         <h3 class="card-title mt-2">Misi</h3>
@@ -116,7 +68,7 @@
         </div>
     </div>
 
-    <div class="container py-5 gs_reveal">
+    <div class="container py-5">
         <div class="row">
             <div class="col-12 text-center">
                 <h3>Makna Logo/Slogan</h3>
@@ -140,12 +92,12 @@
         <div class="row">
             <div class="col-12">
                 <h3 class="text-center mb-4">Struktur Organigram</h3>
-                <div class="text-center mb-4 gs_reveal">
+                <div class="text-center mb-4">
                     <img src="{{ asset('assets-guest/img/kabinet/struktur-organigram-melaju-bersama.png') }}" alt="Struktur Organigram" class="img-fluid" style="max-width: 800px; margin: auto;">
                 </div>
-                <div class="row text-center gs_reveal">
+                <div class="row text-center">
                     <div class="col-md-4 mb-3">
-                        <div class="card h-100 card-hover">
+                        <div class="card h-100">
                             <div class="card-body">
                                 <h4 class="card-title">Fungsional</h4>
                                 <p class="lead mb-0">25 orang</p>
@@ -153,7 +105,7 @@
                         </div>
                     </div>
                     <div class="col-md-4 mb-3">
-                        <div class="card h-100 card-hover">
+                        <div class="card h-100">
                             <div class="card-body">
                                 <h4 class="card-title">Staff Ahli</h4>
                                 <p class="lead mb-0">214 orang</p>
@@ -161,7 +113,7 @@
                         </div>
                     </div>
                     <div class="col-md-4 mb-3">
-                        <div class="card h-100 card-hover">
+                        <div class="card h-100">
                             <div class="card-body">
                                 <h4 class="card-title">Staff Muda</h4>
                                 <p class="lead mb-0">289 orang</p>
@@ -177,9 +129,9 @@
         <div class="row">
             <div class="col-12">
                 <h3 class="text-center mb-4">Penjelasan Bidang</h3>
-                <div class="row bidang-cards-container">
+                <div class="row">
                     <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card shadow-sm h-100 card-hover bidang-card bidang-1">
+                        <div class="card shadow-sm h-100">
                             <div class="card-body">
                                 <h4 class="card-title">Bidang 1: KPSDM</h4>
                                 <p class="card-text">Bertanggung jawab dalam membina, membentuk, dan mengembangkan sumber daya mahasiswa di himpunan, melalui kaderisasi dan program peningkatan kompetensi.</p>
@@ -187,7 +139,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card shadow-sm h-100 card-hover bidang-card bidang-2">
+                        <div class="card shadow-sm h-100">
                             <div class="card-body">
                                 <h4 class="card-title">Bidang 2: Tata Kelola Internal</h4>
                                 <p class="card-text">Mengatur dan mengelola kegiatan internal himpunan, menjaga keharmonisan hubungan antar anggota, serta menaungi divisi Hubungan Dalam dan Sarana Prasarana.</p>
@@ -195,7 +147,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card shadow-sm h-100 card-hover bidang-card bidang-3">
+                        <div class="card shadow-sm h-100">
                             <div class="card-body">
                                 <h4 class="card-title">Bidang 3: Tata Kelola Eksternal</h4>
                                 <p class="card-text">Mengoptimalkan hubungan dengan pihak eksternal dan meningkatkan kontribusi sosial melalui Divisi Relasi Organisasi dan Pengabdian Masyarakat.</p>
@@ -203,7 +155,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card shadow-sm h-100 card-hover bidang-card bidang-4">
+                        <div class="card shadow-sm h-100">
                             <div class="card-body">
                                 <h4 class="card-title">Bidang 4: Media Informasi Kreatif</h4>
                                 <p class="card-text">Mengelola arus informasi organisasi dan mendorong inovasi ekonomi kreatif melalui Divisi Media & Informasi dan Ekonomi Kreatif.</p>
@@ -211,7 +163,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card shadow-sm h-100 card-hover bidang-card bidang-5">
+                        <div class="card shadow-sm h-100">
                             <div class="card-body">
                                 <h4 class="card-title">Bidang 5: Pengelola Program Kerja</h4>
                                 <p class="card-text">Bertanggung jawab atas perencanaan, pengelolaan, dan evaluasi program kerja HIMAMO melalui divisi Kajian Strategis dan Time Liner.</p>
@@ -225,25 +177,3 @@
 </div>
 
 @endsection
-
-@push('scripts')
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    // GSAP is already registered in the main layout, so we can just use it.
-    
-    // Stagger animation for the Bidang cards
-    gsap.from(".bidang-card", {
-        scrollTrigger: {
-            trigger: ".bidang-cards-container",
-            start: "top 80%", // when the top of the trigger hits 80% of the viewport height
-            toggleActions: "play none none none"
-        },
-        duration: 0.5,
-        y: 50,
-        opacity: 0,
-        stagger: 0.2,
-        ease: "power1.out"
-    });
-});
-</script>
-@endpush
