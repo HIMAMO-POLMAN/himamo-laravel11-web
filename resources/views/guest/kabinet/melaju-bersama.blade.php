@@ -10,6 +10,7 @@
     .kabinet-melaju-bersama-page {
         font-family: 'Open Sans', sans-serif;
         background-color: #f8f9fa;
+        transition: background-color 0.3s ease;
     }
     .kabinet-melaju-bersama-page h1,
     .kabinet-melaju-bersama-page h2,
@@ -49,10 +50,33 @@
     .card-hover:hover {
         transform: translateY(-5px);
         box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .section-title {
         font-weight: 700;
         color: #004d40;
+    }
+
+    /* Dark Mode Styles */
+    [data-theme="dark"] .kabinet-melaju-bersama-page {
+        background-color: #191d24;
+        color: #eee;
+    }
+    [data-theme="dark"] .section-title {
+        color: #00a78e;
+    }
+    [data-theme="dark"] .container[style*="background-color: #ffffff;"] {
+        background-color: #2d333b !important;
+    }
+    [data-theme="dark"] .card {
+        background-color: #393e46;
+        color: #eee;
+    }
+    [data-theme="dark"] .list-unstyled {
+        color: #eee;
+    }
+    [data-theme="dark"] .lead {
+        color: #d1d1d1;
     }
 </style>
 
