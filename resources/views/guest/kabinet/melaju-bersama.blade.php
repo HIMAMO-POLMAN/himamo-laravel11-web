@@ -51,7 +51,7 @@
                     <div class="card-body text-center">
                         <i class='bx bx-bullseye' style='font-size: 3rem; color: #00796b;'></i>
                         <h3 class="card-title mt-2">Visi</h3>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+                        <p class="card-text">Menjadikan Himamo sebagai wadah yang progresif, inklusif. dan kompeten dalam pengembangan Individu menciptakan lingkungan organisasi yang sehat dan suportif. serta membangun sistem kerja yang berkelanjutan untuk meningkatkan eksistensi Himamo baik didalam maupun diluar Polman</p>
                     </div>
                 </div>
             </div>
@@ -60,8 +60,12 @@
                     <div class="card-body text-center">
                         <i class='bx bx-list-check' style='font-size: 3rem; color: #00796b;'></i>
                         <h3 class="card-title mt-2">Misi</h3>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex. Proin vitae magna sit amet enim tincidunt finibus.</p>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+                        <ol class="card-text text-start">
+                            <li>Membuat Himamo menjadi lahan berkembang bagi setiap individu</li>
+                            <li>Membangun Rasa Rasa Bangga dalam Berhimpun melalui Lingkungan yang Sehat dan Supportif</li>
+                            <li>Menyempurnakan Sistem. Birokrasi, dan Transparansi dalan Jan Himamo</li>
+                            <li>Meningkatkan Eksister isi Himamo di Internal dan Eksternal Polman.</li>
+                        </ol>
                     </div>
                 </div>
             </div>
