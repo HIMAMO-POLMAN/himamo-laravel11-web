@@ -142,21 +142,28 @@ p {
          max-height: none; 
     }
     .navigation {
-        display: flex !important;
-        flex-direction: row;
-        position: static;
-        width: auto;
-        background-color: transparent;
-        box-shadow: none;
-        overflow: visible;
-        max-height: none;
-        opacity: 1;
-        transition: none;
-        gap: 15px; 
-        margin-left: 1rem; 
-        /* z-index: auto; */
-        visibility: visible;
-    }
+    /* --- KODE ASLI KAMU (Dipertahankan) --- */
+    display: flex !important;
+    flex-direction: row;
+    width: auto;
+    background-color: transparent;
+    box-shadow: none;
+    overflow: visible;
+    max-height: none;
+    opacity: 1;
+    gap: 15px; 
+    margin-left: 1rem; 
+    visibility: visible;
+    /* ------------------------------------- */
+
+    /* YANG PERLU DIUBAH DARI KODE KAMU: */
+    /* position: static;  <-- Hapus atau abaikan ini karena Parent-nya sudah Fixed */
+    /* transition: none;  <-- Hapus ini agar perubahan warna teks halus */
+    transition: all 0.3s ease; 
+    
+    /* Tambahan agar vertikal rapi */
+    align-items: center; 
+}
 
 
     .navigation .dropdown-menu { 
@@ -2771,3 +2778,50 @@ select:-webkit-autofill:focus {
     transition: all 0.3s ease-in-out;
 }
 
+/* =========================================
+   TAMBAHAN FITUR: NAVBAR SCROLL & MOBILE
+   (Paste di paling bawah style.css)
+   ========================================= */
+
+/* --- 1. KONDISI DEFAULT (TRANSPARAN DI ATAS) --- */
+/* Memaksa teks & icon jadi PUTIH saat header transparan (belum discroll) */
+.header:not(.bg-light) .dropdown > a, 
+.header:not(.bg-light) .nav_link,
+.header:not(.bg-light) .nav_icon,
+.header:not(.bg-light) .dropdown > a b {
+    color: #ffffff !important; 
+}
+
+/* Memastikan icon SVG juga putih */
+.header:not(.bg-light) .dropdown > a svg {
+    fill: #ffffff !important;
+}
+
+/* --- 2. KONDISI SAAT DISCROLL (Header jadi Putih) --- */
+/* Class .bg-light ini dipicu oleh JavaScript saat scroll > 50px */
+.header.bg-light {
+    background-color: #ffffff !important; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Bayangan halus */
+}
+
+/* Mengembalikan warna teks jadi HIJAU HIMAMO saat background putih */
+.header.bg-light .dropdown > a,
+.header.bg-light .nav_link,
+.header.bg-light .dropdown > a b {
+    color: #028784 !important; 
+}
+
+.header.bg-light .dropdown > a svg {
+    fill: #028784 !important;
+}
+
+/* --- 3. ANIMASI PANAH DROPDOWN (MOBILE) --- */
+/* Memutar panah saat menu dibuka (class .open ditambahkan JS) */
+.dropdown-submenu > a span {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.dropdown-submenu.open > a span {
+    transform: rotate(90deg);
+}

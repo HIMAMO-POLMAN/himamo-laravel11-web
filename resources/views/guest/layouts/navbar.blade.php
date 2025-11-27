@@ -13,7 +13,7 @@
         <nav class="navigation">
             <div class="dropdown">
                 <a href="#"><b>Tentang Kami <span> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                            class="ms-2" viewBox="0 0 64 64" `fill="currentColor">
+                                            class="ms-2" viewBox="0 0 64 64" fill="currentColor">
                                         <path d="M48.293 23.293L32 39.586 15.707 23.293l-1.414 1.561 17 17.146h1.414l17-17.146z">
                                         </path>
                                     </svg></span></b></a>
@@ -68,6 +68,44 @@
             </label>
         </div>
     </div>
-
-
 </header>
+
+{{-- SCRIPT OTOMATIS (Tanpa Edit HTML) --}}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    
+    // 1. LOGIKA SCROLL (Header jadi Putih, Teks Hijau)
+    const header = document.querySelector('.header'); 
+
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            header.classList.add('bg-light');
+        } else {
+            header.classList.remove('bg-light');
+        }
+    });
+
+    // 2. LOGIKA MOBILE DROPDOWN (Jurusan & Kabinet)
+    // Script ini otomatis mencari elemen <a> di dalam class .dropdown-submenu
+    // Jadi kamu TIDAK PERLU menambahkan class manual di HTML.
+    const submenuLinks = document.querySelectorAll('.dropdown-submenu > a');
+
+    submenuLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            // Hanya jalan di tampilan Mobile (lebar layar < 768px)
+            if (window.innerWidth < 768) {
+                e.preventDefault(); // Mencegah link pindah halaman/refresh
+                
+                // Cari elemen bapaknya (li class="dropdown-submenu")
+                const parentLi = this.parentElement;
+                
+                // Toggle class 'open' (Buka/Tutup menu)
+                if(parentLi) {
+                    parentLi.classList.toggle('open');
+                }
+            }
+        });
+    });
+
+});
+</script>
