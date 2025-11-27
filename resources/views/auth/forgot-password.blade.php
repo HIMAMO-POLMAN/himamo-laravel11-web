@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="app-brand justify-content-center">
-                            <a href="{{ route('home')}}" class="app-brand-link gap-2">
+                            <a href="{{ route('home') }}" class="app-brand-link gap-2">
                                 <span class="app-brand-logo demo">
                                     <img height="50" src="{{ asset('assets/img/icons/img-himamo.webp') }}" alt="Logo">
                                 </span>
@@ -43,7 +43,7 @@
                             <button class="btn btn-primary d-grid w-100">Kirim Tautan Reset</button>
                         </form>
                         <div class="text-center">
-                            <a href="{{route('login')}}" class="d-flex align-items-center justify-content-center">
+                            <a href="{{ route('login') }}" class="d-flex align-items-center justify-content-center">
                                 <i class="bx bx-chevron-left scaleX-n1-rtl bx-sm"></i>
                                 Kembali ke login
                             </a>

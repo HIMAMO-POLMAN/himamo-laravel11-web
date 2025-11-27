@@ -4,18 +4,7 @@
 @section('keterangan', 'Lihat Kategori')
 @section('content')
 
-    @if (session()->has('success'))
-        <div class="alert alert-success alert-dismissible" role="alert">
-            {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
-    @if (session()->has('error'))
-        <div class="alert alert-danger alert-dismissible" role="alert">
-            {{ session('error') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
+@include('admin.partials.alert')
 
     <div class="card shadow p-3 d-flex flex-column">
         <div class="row mb-3">
@@ -49,7 +38,8 @@
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col mb-3">
-                                    <label for="name" class="form-label">Nama Kategori</label>
+                                    <label for="name" class="form-label">Nama Kategori <span
+                                            class="text-danger">*</span></label>
                                     <input type="text" id="name"
                                         class="form-control  @error('name') is-invalid @enderror" name="name"
                                         placeholder="Masukan Nama Kategori" />
@@ -65,7 +55,7 @@
                             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                                 Tutup
                             </button>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Kirim</button>
                         </div>
                     </form>
                 </div>
@@ -93,7 +83,9 @@
                                 <td>{{ $index + $information_category->firstItem() }}</td>
                                 <td>{{ $kategori->name }}</td>
                                 <td>{{ $kategori->slug }}</td>
-                                <td>{{ $kategori->created_at ? $kategori->created_at->format('d M Y') : '-' }}</td>
+                                <td>{{ $kategori->created_at ? \Carbon\Carbon::parse($kategori->created_at)->locale('id')->translatedFormat('d F Y') : '-' }}
+                                </td>
+
                                 <td class="text-center">
                                     <div class="dropdown">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
@@ -109,7 +101,7 @@
                                                 method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="dropdown-item text-danger"><i
+                                                <button type="submit" class="dropdown-item text-danger" onclick="return confirm('Yakin ingin menghapus?')"><i
                                                         class="bx bx-trash me-1 text-danger"></i> Hapus</button>
                                             </form>
                                         </div>

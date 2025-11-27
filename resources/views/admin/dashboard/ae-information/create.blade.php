@@ -4,22 +4,12 @@
 @section('keterangan', 'Buat Informasi')
 @section('content')
 
-    @if (session()->has('success'))
-        <div class="alert alert-success alert-dismissible" role="alert">
-            {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
-    @if (session()->has('error'))
-        <div class="alert alert-danger alert-dismissible" role="alert">
-            {{ session('error') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
+@include('admin.partials.alert')
 
     <div class="d-flex card shadow p-3">
         <h5 class="card-header">Buat Informasi</h5>
-        <form action="{{ route('ae-information.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('ae-information.store') }}" method="POST" enctype="multipart/form-data"
+            accept-charset="UTF-8">
             @csrf
             @method('POST')
             <div class="card-body">
@@ -39,8 +29,7 @@
                     <div class="col-12 col-md-6 mb-3">
                         <label for="category_id" class="form-label">Kategori Informasi <span
                                 class="text-danger">*</span></label>
-                        <select name="category_id"
-                            class="form-select  @error('category_id') is-invalid @enderror"
+                        <select name="category_id" class="form-select  @error('category_id') is-invalid @enderror"
                             id="category_id" aria-label="Default select example">
                             <option value="" selected="selected" hidden="hidden">Pilih Kategori</option>
                             @foreach ($kategori_informasi as $kategori)
@@ -81,9 +70,9 @@
                     <a href="{{ route('ae-information.index') }}" class="btn btn-outline-secondary">
                         Kembali
                     </a>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Kirim</button>
                 </div>
             </div>
         </form>
     </div>
-    @endsection
+@endsection

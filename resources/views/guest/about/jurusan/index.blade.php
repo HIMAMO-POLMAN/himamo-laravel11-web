@@ -41,25 +41,25 @@
                             <div class="row pt-1 pb-4 subject-list ">
                                 <div class="col-12 col-md-6 mt-4 col-lg text-center">
                                 <a href="prodi-d4-trmo">
-                                    <div class="subject-box bg-light shadow-sm">
+                                    <div class="subject-box text-dark">
                                         <img src="{{ asset('assets-guest/img/trmo_subject.svg') }}" alt="Robotika" class="subject-image" >
-                                            <p class="subject-name text-dark fw-bold">D4 Prodi<br>Teknik Rekayasa Mekatronika</p>
+                                            <p class="subject-name">D4 Prodi<br>Teknik Rekayasa Mekatronika</p>
                                     </div>
                                     </a>
                                 </div>
                                 <div class="col-12 col-md-6 mt-4 col-lg text-center">
                                 <a href="prodi-d4-tro">
-                                    <div class="subject-box bg-light shadow-sm">
+                                    <div class="subject-box text-dark">
                                         <img src="{{ asset('assets-guest/img/tro_subject.svg') }}" alt="Robotika" class="subject-image" >
-                                            <p class="subject-name text-dark fw-bold">D4 Prodi<br>Teknologi Rekayasa Otomasi</p>
+                                            <p class="subject-name">D4 Prodi<br>Teknologi Rekayasa Otomasi</p>
                                     </div>
                                     </a>
                                 </div>
                                 <div class="col-12 col-md-6 mt-4 col-lg text-center">
                                 <a href="prodi-d4-trin">
-                                    <div class="subject-box bg-light shadow-sm">
+                                    <div class="subject-box text-dark">
                                         <img src="{{ asset('assets-guest/img/trin_subject.svg') }}" alt="Robotika" class="subject-image" >
-                                        <p class="subject-name text-dark fw-bold">D4 Prodi<br>Teknologi Rekayasa Informatika Industri</p>
+                                        <p class="subject-name">D4 Prodi<br>Teknologi Rekayasa Informatika Industri</p>
                                     </div>
                                     </a>
                                 </div>
@@ -72,21 +72,3 @@
     </section>
 </div>
 @endsection
-@push('scripts')
-    <script>
-        var header = document.getElementById('header');
-        var mybutton = document.getElementById('myBtn');
-        function handleScroll() {
-            var scroll = window.scrollY;
-
-            if (scroll > 20) {
-                mybutton.style.display = "block";
-                header.classList.add('bg-light');
-            } else {
-                mybutton.style.display = "none";
-                header.classList.remove('bg-light');
-            }
-        }
-        window.addEventListener('scroll', handleScroll);
-    </script>
-@endpush

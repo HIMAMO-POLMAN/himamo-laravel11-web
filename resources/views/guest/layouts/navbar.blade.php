@@ -4,74 +4,70 @@
 </div> --}}
 
 <header class="header" id="header">
-    <div class="header_toggle">
-        <i class='bx bx-menu' id="header-toggle"></i>
-    </div>
-    <div class="row">
-        <div class="col text-center">
-            <a class="">
-                <span class="buttondark">
-                    <label class="switch" for="darkSwitch">
-                        <input type="checkbox" id="darkSwitch">
-                        <div class="darktogel">
-                            <i class='btn-moon bxs-moon bx nav_icon'></i>
-                            <i class='btn-sun bxs-sun d-none bx nav_icon'></i>
-                        </div>
-                    </label>
-                </span>
-            </a>
-        </div>
-    </div>
-</header>
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <div class="header_container">
+        <a href="{{ route('home') }}">
+            <img src="{{ asset('assets-guest/img/himamo.webp') }}" alt="">
+        </a>
 
-<div class="l-navbar" id="nav-bar">
-    <nav class="nav">
-        <div>
-            <a href="#" class="img_logo">
-                <img src="{{ asset('assets-guest/img/logo_01.webp') }}" alt="Logo">
-                <span class="nav_logo-name">
-                    <img src="{{ asset('assets-guest/img/logo_02.webp') }}" alt="Logo Text">
-                </span>
-            </a>
-            <div class="nav_list">
-                <a href="{{ Route::currentRouteNamed('landing-page') ? '#' : url('/') }}"
-                    class="nav_link @if (Route::currentRouteNamed('landing-page')) active @endif ">
-                    <i class='bx bx-home nav_icon'></i>
-                    <span class="nav_name">Home</span>
-                </a>
-                <a href="{{ Route::currentRouteNamed('landing-page') ? '#ae-informasi' : url('/#ae-informasi') }}"
-                    class="nav_link @if (Route::currentRouteNamed('information.*')) active @endif">
-                    <i class='bx bxs-info-square nav_icon'></i>
-                    <span class="nav_name">AE-Informasi</span>
-                </a>
-                <a href="{{ Route::currentRouteNamed('landing-page') ? '#ae-pustaka' : url('/#ae-pustaka') }}"
-                    class="nav_link">
-                    <i class='bx bxs-book nav_icon'></i>
-                    <span class="nav_name">AE-Pustaka</span>
-                </a>
-                <a href="{{ Route::currentRouteNamed('landing-page') ? '#about' : url('/#about') }}" class="nav_link">
-                    <i class='bx bx-info-circle nav_icon'></i>
-                    <span class="nav_name">About</span>
-                </a>
-                <a href="{{ Route::currentRouteNamed('landing-page') ? '#history' : url('/#history') }}"
-                    class="nav_link">
-                    <i class='bx bx-time nav_icon'></i>
-                    <span class="nav_name">History</span>
-                </a>
-                <a href="{{ Route::currentRouteNamed('landing-page') ? '#division' : url('/#division') }}"
-                    class="nav_link">
-                    <i class='bx bxs-network-chart nav_icon'></i>
-                    <span class="nav_name">Division</span>
-                </a>
-                <a href="{{ Route::currentRouteNamed('landing-page') ? '#leader' : url('/#leader') }}" class="nav_link">
-                    <i class='bx bxs-user-account nav_icon'></i>
-                    <span class="nav_name">Leadership</span>
-                </a>
-                <a href="{{ route('contact') }}" class="nav_link">
-                    <i class='bx bxs-phone nav_icon'></i>
-                    <span class="nav_name">Contact</span>
+        <nav class="navigation">
+            <div class="dropdown">
+                <a href="#"><b>Tentang Kami <span> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            class="ms-2" viewBox="0 0 64 64" `fill="currentColor">
+                                        <path d="M48.293 23.293L32 39.586 15.707 23.293l-1.414 1.561 17 17.146h1.414l17-17.146z">
+                                        </path>
+                                    </svg></span></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ Route::currentRouteNamed('landing-page') ? '#ae-pustaka' : url('/#ae-pustaka') }}">Profil</a>
+                    </li>
+
+                    <li class="dropdown-submenu">
+                        <a href="#">Jurusan <span> > </span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ route ('prodi-d4-tro') }}">Teknologi Rekayasa Otomasi (TRO)</a></li>
+                            <li><a href="{{ route ('prodi-d4-trmo') }}">Teknologi Rekayasa Mekatronika (TRMO)</a></li>
+                            <li><a href="{{ route ('prodi-d4-trin') }}">Teknologi Rekayasa Informatika Industri (TRIN)</a></li>
+                            <li><a href="#">Teknologi Rekayasa Aerial Niarawak (TRSA)</a></li>
+                        </ul>
+                    </li>
+
+                    {{-- Dropdown untuk Kabinet --}}
+                    <li class="dropdown-submenu">
+                        <a href="#">Kabinet <span> > </span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ route('kabinet.melaju-bersama') }}">Melaju Bersama 2025/2026</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="dropdown">
+                <a href="{{ route('guest.information.index') }}"><b>AE Informasi</b></a>
+            </div>
+            <div class="dropdown">
+                <a href="{{ route('contact') }}"><b>Hubungi Kami</b></a>
+            </div>
+        </nav>
+        <div class="header_controls">
+            <div class="dark-mode-toggle">
+                <a class="">
+                    <span class="buttondark">
+                        <label class="switch" for="darkSwitch">
+                            <input type="checkbox" id="darkSwitch">
+                            <div class="darktogel">
+                                <i class='btn-moon bxs-moon bx nav_icon'></i>
+                                <i class='btn-sun bxs-sun d-none bx nav_icon'></i>
+                            </div>
+                        </label>
+                    </span>
                 </a>
             </div>
+            <label for="menu-toggle" class="hamburger-icon">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </label>
         </div>
-    </nav>
-</div>
+    </div>
+
+
+</header>
