@@ -718,11 +718,7 @@ html {
     left: 0;
     right: 0;
     background: black;
-<<<<<<< HEAD
     opacity: 0.5;
-=======
-    opacity: 0.8;
->>>>>>> origin/pre-develop-dava
 }
 
 .drk:after {
@@ -734,11 +730,7 @@ html {
     left: 0;
     right: 0;
     background: black;
-<<<<<<< HEAD
     opacity: 0.5;
-=======
-    opacity: 0.8;
->>>>>>> origin/pre-develop-dava
     z-index: 1;
 }
 
