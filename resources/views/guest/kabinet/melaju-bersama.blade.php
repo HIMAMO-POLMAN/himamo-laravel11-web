@@ -9,7 +9,7 @@
 
 <style>
     :root {
-        --himamo-green: #009688; /* Hijau khas HIMAMO */
+        --himamo-green: #009688;
         --himamo-dark-green: #00796b;
     }
 
@@ -25,7 +25,7 @@
     .kabinet-melaju-bersama-page h4 {
         font-family: 'Poppins', sans-serif;
         font-weight: 700;
-        color: #004d40; /* Hijau Gelap HIMAMO */
+        color: #004d40;
     }
 
     /* Hero Section */
@@ -122,9 +122,9 @@
         line-height: 1.7;
     }
 
-    /* DARK MODE SUPPORT */
+    /* DARK MODE SUPPORT (Fixed & Improved) */
     [data-theme="dark"] .kabinet-melaju-bersama-page {
-        background-color: #0f172a;
+        background-color: #191d24; /* Hitam khas HIMAMO */
         color: #cbd5e1;
     }
 
@@ -135,10 +135,16 @@
         color: #f8fafc;
     }
 
+    [data-theme="dark"] .clean-card {
+        background: #2a2e35 !important;
+        border-color: #334155;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
     [data-theme="dark"] .clean-card:hover {
-        background: #1e293b;
+        background: #2a2e35 !important;
         border-color: var(--himamo-green);
-        box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.5);
     }
 
     [data-theme="dark"] .section-title::after {
@@ -146,12 +152,12 @@
     }
 
     [data-theme="dark"] .organigram-frame {
-        background: #1e293b;
+        background: #2a2e35;
         border-color: #334155;
     }
 
     [data-theme="dark"] .badge-clean {
-        background: #1e293b;
+        background: #2a2e35;
         border-color: #334155;
         color: #f8fafc;
     }
@@ -174,8 +180,8 @@
     }
 
     [data-theme="dark"] .bg-white.shadow-sm.rounded-5 {
-        background-color: #1e293b !important;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.3) !important;
+        background-color: #2a2e35 !important;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.5) !important;
         border: 1px solid #334155;
     }
 </style>
@@ -285,7 +291,7 @@
     </div>
 
     {{-- 6. Penjelasan Bidang --}}
-    <div class="container pt-5 pb-5 mb-0"> {{-- Diubah margin-bottomnya ke 0 --}}
+    <div class="container pt-5 pb-5 mb-0">
         <div class="text-center mb-5">
             <h2 class="section-title">Penjelasan Bidang</h2>
         </div>
