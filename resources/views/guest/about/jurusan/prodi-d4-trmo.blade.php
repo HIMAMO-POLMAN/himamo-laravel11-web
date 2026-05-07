@@ -77,12 +77,21 @@
                             </div>
                             <div class="row pt-1 pb-4 subject-list ">
                                 <div class="col-12 col-md-6 mt-4 col-lg text-center">
+<<<<<<< HEAD
                                     <a href="prodi-d2-trmo">
                                         <div class="subject-box bg-light shadow-sm">
                                             <img src="{{ asset('assets-guest/img/trmo-d2_subject.svg') }}" alt="Robotika"
                                                 class="subject-image">
                                             <p class="subject-name text-dark fw-bold">D2 Jalur Cepat<br>Teknik Rekayasa
                                                 Mekatronika</p>
+=======
+                                    <a href="prodi-d4-trsa">
+                                        <div class="subject-box bg-light shadow-sm">
+                                            <img src="{{ asset('assets-guest/img/trsan_subject.svg') }}" alt="Robotika"
+                                                class="subject-image">
+                                            <p class="subject-name text-dark fw-bold">D4 Prodi<br>Teknologi Rekayasa Sistem Aerial Nirawak
+                                            </p>
+>>>>>>> origin/pre-develop-dava
                                         </div>
                                     </a>
                                 </div>

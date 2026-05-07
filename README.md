@@ -10,9 +10,12 @@
 
 **HIMAMO\_Web** adalah platform web resmi Himpunan Mahasiswa Teknik Manufaktur Otomasi dan Mekatronika (HIMAMO) Politeknik Manufaktur Negeri Bandung. Platform ini dirancang untuk menyajikan informasi organisasi, sumber daya akademik, serta pembaruan yang relevan bagi mahasiswa dan masyarakat umum.
 
+<<<<<<< HEAD
 **Development Branch by Rendi** Ini merupakan branch development yang di bangun oleh Rendi sebagai anggota dari subdivisi website HIMAMO 
 
 
+=======
+>>>>>>> origin/pre-develop-dava
 ## Teknologi yang Digunakan
 
 * **Laravel 11**: Framework PHP untuk sisi backend.
