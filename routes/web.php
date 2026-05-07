@@ -2,44 +2,54 @@
 
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Guest\HomeController;
 use App\Http\Controllers\Dashboard\DashboardController;
-use App\Http\Controllers\Dashboard\InformationCategoriesController;
 use App\Http\Controllers\Dashboard\UserController;
+use App\Http\Controllers\Dashboard\RoleController;
+use App\Http\Controllers\Dashboard\PermissionController;
 use App\Http\Controllers\Dashboard\ProfileController;
 use App\Http\Controllers\Dashboard\InformationController;
-use App\Http\Controllers\Guest\HomeController;
-use App\Http\Controllers\Guest\GuestInformationController;
-use App\Http\Controllers\Guest\ContactController;
+use App\Http\Controllers\Dashboard\InformationCategoriesController;
 use App\Http\Controllers\Dashboard\LibrariesController;
 use App\Http\Controllers\Dashboard\LibraryCollectionController;
+use App\Http\Controllers\Guest\GuestInformationController;
+use App\Http\Controllers\Guest\GuestLibraryController;
+use App\Http\Controllers\Guest\ContactController;
+use Spatie\Sitemap\SitemapGenerator;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/kontak', [ContactController::class, 'index'])->name('contact');
-Route::get('/prodi-d2-trmo', [HomeController::class, 'd2mekatronika'])->name('prodi-d2-trmo');
 Route::get('/prodi-d4-trmo', [HomeController::class, 'd4mekatronika'])->name('prodi-d4-trmo');
 Route::get('/prodi-d4-tro', [HomeController::class, 'd4otomasi'])->name('prodi-d4-tro');
 Route::get('/prodi-d4-trin', [HomeController::class, 'd4trin'])->name('prodi-d4-trin');
+Route::get('/prodi-d4-trsa', [HomeController::class, 'd4trsa'])->name('prodi-d4-trsa');
+Route::get('/prodi-s2t-siber-fisik', [HomeController::class, 's2tsiberfisik'])->name('prodi-s2t-siber-fisik');
+Route::get('/kabinet/melaju-bersama-2025-2026', [HomeController::class, 'melajuBersama'])->name('kabinet.melaju-bersama');
+Route::get('/kabinet/adyaksana-2026-2027', [HomeController::class, 'adyaksana'])->name('kabinet.adyaksana');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
-
 Route::get('/ae-informasi', [GuestInformationController::class, 'index'])->name('guest.information.index');
 Route::get('/ae-informasi/detail/{informasi:slug}', [GuestInformationController::class, 'show'])->name('guest.information.detail');
-
-Route::get('/library', function () {
-    return view('guest.library.index');
-});
-
-Route::get('/library/details', function () {
-    return view('guest.library.detail');
-});
+Route::get('/ae-pustaka', [GuestLibraryController::class,'index'])->name('guest.library.index');
+Route::get('/ae-pustaka/detail/{libraries:slug}', [GuestLibraryController::class, 'show'])->name('guest.library.detail');
 
 Route::middleware('auth-check')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::delete('/profile-delete', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
-    Route::resource('user', UserController::class);
-    Route::resource('ae-information', InformationController::class);
-    Route::resource('ae-library',LibrariesController::class);
-    Route::resource('information-categories', InformationCategoriesController::class);
-    Route::resource('library-collection',LibraryCollectionController::class);
 });
 
+Route::middleware(['auth-check', 'role:admin'])->group(function () {
+    Route::resource('user', UserController::class);
+    Route::resource('role', RoleController::class);
+    Route::resource('permission', PermissionController::class);
+});
+
+Route::middleware(['auth-check', 'permission:information.view'])->group(function () {
+    Route::resource('ae-information', InformationController::class);
+    Route::resource('information-categories', InformationCategoriesController::class);
+});
+
+Route::middleware(['auth-check', 'permission:library.view'])->group(function () {
+    Route::resource('ae-library', LibrariesController::class);
+    Route::resource('library-collection', LibraryCollectionController::class);
+});

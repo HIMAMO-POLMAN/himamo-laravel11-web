@@ -75,21 +75,17 @@
         $(document).ready(function() {
             $('#summernote').summernote({
                 height: 200,
-                toolbar: [
-                    ['style', ['bold', 'italic', 'underline', 'clear']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['fontname', ['fontname']],
-                    ['fontsize', ['fontsize']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['height', ['height']],
-                    ['table', ['table']],
-                    @if (!Request::is('ae-pustaka*'))
-                        ['insert', ['link', 'picture', 'video']],
-                    @endif
-                    ['view', ['fullscreen', 'codeview', 'help']],
-
-                ]
+               toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['fontsize', 'color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                @if (!Request::is('ae-pustaka*'))
+                    ['insert', ['link', 'picture']],
+                @else
+                    ['insert', ['link']],
+                @endif
+                ['view', ['fullscreen', 'codeview']]
+            ]
             });
         });
     </script>

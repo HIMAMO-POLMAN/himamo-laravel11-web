@@ -17,10 +17,10 @@
                         <img src="{{ asset('assets/img/avatars/img-avatar-pria.svg') }}" alt
                             class="w-px-40 h-auto rounded-circle" />
                     </div>
-                </a>
+                </a
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{ route('profile.index') }}">
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar avatar-online">
@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="flex-grow-1">
                                     <span class="fw-semibold d-block">{{ Auth::user()->name }}</span>
-                                    <span class="fw-semibold d-block">{{ Auth::user()->role }}</span>
+                                    <span class="fw-semibold d-block">{{ auth()->user()->getRoleNames()->join(', ') }}</span>
                                 </div>
                             </div>
                         </a>
@@ -41,7 +41,7 @@
                     <li>
                         <a class="dropdown-item" href="{{ route('profile.index') }}">
                             <i class="bx bx-user me-2"></i>
-                            <span class="align-middle">My Profile</span>
+                            <span class="align-middle">Pengaturan Profil</span>
                         </a>
                     </li>
                     <div class="dropdown-divider"></div>
@@ -54,7 +54,7 @@
                 <a class="dropdown-item text-danger" href="#"
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="bx bx-power-off me-2 "></i>
-                    <span class="align-middle">Log Out</span>
+                    <span class="align-middle">Keluar</span>
                 </a>
             </li>
         </ul>
