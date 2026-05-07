@@ -5,243 +5,272 @@
 {{-- Google Fonts --}}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-    :root {
-        --himamo-primary: #00796b;
-        --himamo-dark: #004d40;
-        --himamo-accent: #ffc107;
-        --himamo-text: #333;
+    .kabinet-melaju-bersama-page {
+        font-family: 'Outfit', sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
     }
 
-    .kabinet-container {
-        font-family: 'Inter', sans-serif;
-        background-color: #fcfcfc;
-        color: var(--himamo-text);
-        line-height: 1.6;
-    }
-
-    h1, h2, h3, h4, .font-poppins {
+    .kabinet-melaju-bersama-page h1,
+    .kabinet-melaju-bersama-page h2,
+    .kabinet-melaju-bersama-page h3,
+    .kabinet-melaju-bersama-page h4 {
         font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        color: #004d40;
     }
 
     /* Hero Section */
-    .hero-banner {
-        background: linear-gradient(rgba(0, 77, 64, 0.9), rgba(0, 77, 64, 0.9)), url("{{ asset('assets-guest/img/img-carousel-1.webp') }}");
+    .hero-section {
+        position: relative;
+        background-image: url("{{ asset('assets-guest/img/img-carousel-1.webp') }}");
+        background-attachment: fixed;
         background-size: cover;
         background-position: center;
-        padding: 100px 0;
-        text-align: center;
         color: white;
     }
 
-    .hero-banner h1 {
-        font-size: 3.5rem;
-        font-weight: 800;
-        margin-bottom: 10px;
+    .hero-section .overlay {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(135deg, rgba(0, 77, 64, 0.8) 0%, rgba(0, 121, 107, 0.7) 100%);
+        z-index: 1;
     }
 
-    /* Visi Misi Layout (Following Reference 7) */
-    .visi-misi-section {
-        background: #fff;
-        padding: 80px 0;
+    .hero-section .container {
+        position: relative;
+        z-index: 2;
     }
 
-    .visi-box {
-        background: #6a1b9a; /* Warna ungu sesuai referensi, bisa diganti ke hijau himamo jika mau */
-        color: white;
-        padding: 40px;
+    /* Premium Cards */
+    .premium-card {
+        background: #ffffff;
+        border: none;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
         height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
     }
 
-    .misi-list {
-        padding: 40px;
+    .premium-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0,77,64,0.1);
     }
 
-    /* Makna Logo Layout (Following Reference 2 & 8) */
-    .logo-meaning-section {
-        background: #f9f9f9;
-        padding: 80px 0;
-    }
-
-    .logo-container {
-        background: white;
-        padding: 50px;
-        border-radius: 10px;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-    }
-
-    .logo-img {
-        max-width: 100%;
-        height: auto;
-    }
-
-    .meaning-content h4 {
-        color: #000;
-        font-weight: 700;
-        margin-bottom: 20px;
-        border-bottom: 2px solid #eee;
+    .section-title {
+        font-weight: 800;
+        color: #004d40;
+        position: relative;
+        display: inline-block;
         padding-bottom: 10px;
     }
 
-    /* Organigram Layout (Following Reference 9) */
-    .organigram-section {
-        padding: 80px 0;
-        background: white;
+    .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0; left: 50%;
+        transform: translateX(-50%);
+        width: 60px; height: 4px;
+        background: #ffc107;
+        border-radius: 10px;
     }
 
-    .bidang-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-        margin-top: 50px;
+    .icon-circle {
+        width: 80px; height: 80px;
+        background: rgba(0, 121, 107, 0.1);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        margin: 0 auto 20px;
+        color: #00796b;
+        font-size: 2.5rem;
     }
 
-    .bidang-item h5 {
-        font-weight: 700;
-        color: #000;
-        margin-bottom: 15px;
-        font-size: 1.1rem;
-    }
-
-    .bidang-item p {
-        font-size: 0.95rem;
-        color: #555;
-    }
-
-    .highlight-text {
-        color: var(--himamo-primary);
-        font-weight: 600;
-    }
-
-    @media (max-width: 992px) {
-        .bidang-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-
-    @media (max-width: 768px) {
-        .bidang-grid {
-            grid-template-columns: 1fr;
-        }
-        .hero-banner h1 { font-size: 2.5rem; }
+    .bidang-badge {
+        position: absolute;
+        top: 15px; right: 20px;
+        font-size: 2.5rem;
+        font-weight: 900;
+        opacity: 0.05;
+        color: #004d40;
     }
 </style>
 
-<div class="kabinet-container">
-    {{-- Header / Hero --}}
-    <section class="hero-banner">
-        <div class="container">
-            <p class="mb-2 fw-bold text-uppercase tracking-widest" style="letter-spacing: 3px; color: var(--himamo-accent);">Kepengurusan 2025-2026</p>
-            <h1>Kabinet Melaju Bersama</h1>
-            <p class="lead opacity-75">"Satukan Langkah, Ciptakan Sejarah"</p>
+<div class="kabinet-melaju-bersama-page">
+    {{-- Hero Section (Sesuai Layout Asli) --}}
+    <div class="hero-section">
+        <div class="overlay"></div>
+        <div class="container py-5 text-center">
+            <div class="py-5">
+                <h1 class="display-3 fw-bold mb-3">Kabinet Melaju Bersama</h1>
+                <p class="lead fs-3 opacity-90">"Satukan Langkah, Ciptakan Sejarah"</p>
+            </div>
         </div>
-    </section>
+    </div>
 
-    {{-- Visi & Misi (Reference 7 Style) --}}
-    <section class="visi-misi-section">
-        <div class="container">
-            <h2 class="mb-5 fw-bold">* Visi & Misi</h2>
-            <div class="row g-0 border shadow-sm">
-                <div class="col-lg-4">
-                    <div class="visi-box" style="background: var(--himamo-dark);">
-                        <h4 class="mb-3 fw-bold">Visi</h4>
-                        <p class="mb-0 fs-5">Menjadikan Himamo sebagai wadah yang progresif, inklusif, dan kompeten dalam pengembangan individu serta membangun sistem kerja yang berkelanjutan.</p>
+    {{-- Penjelasan Umum (Sesuai Layout Asli) --}}
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-8 offset-md-2 text-center">
+                <h2 class="section-title mb-4">Filosofi Perjalanan</h2>
+                <p class="lead mt-3 text-secondary">"Melaju Bersama" bukan sekadar nama, tetapi representasi visi besar sebuah perjalanan kolektif dalam himpunan ini. Filosofi ini lahir dari keyakinan bahwa perubahan yang berarti tidak dibangun oleh satu langkah individu, tetapi oleh banyak langkah kecil yang bergerak seirama dalam satu tujuan besar. Kabinet ini hadir untuk merangkul keberagaman, menyatukan potensi, dan mengajak seluruh anggota untuk melaju menuju masa depan yang lebih baik.</p>
+            </div>
+        </div>
+    </div>
+
+    {{-- Visi & Misi (Sesuai Layout Asli) --}}
+    <div class="container py-5">
+        <div class="row g-4">
+            <div class="col-md-6 mb-4">
+                <div class="card premium-card p-4">
+                    <div class="card-body text-center">
+                        <div class="icon-circle">
+                            <i class='bx bx-bullseye'></i>
+                        </div>
+                        <h3 class="card-title mb-3">Visi</h3>
+                        <p class="card-text fs-5 text-secondary">Menjadikan Himamo sebagai wadah yang progresif, inklusif, dan kompeten dalam pengembangan individu menciptakan lingkungan organisasi yang sehat dan suportif.</p>
                     </div>
                 </div>
-                <div class="col-lg-8">
-                    <div class="misi-list">
-                        <div class="row">
-                            <div class="col-md-6 mb-4">
-                                <p><i class='bx bx-check text-success'></i> Menjadikan Himamo lahan berkembang bagi setiap individu.</p>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card premium-card p-4">
+                    <div class="card-body">
+                        <div class="icon-circle">
+                            <i class='bx bx-list-check'></i>
+                        </div>
+                        <h3 class="card-title text-center mb-3">Misi</h3>
+                        <ul class="list-unstyled fs-6 text-secondary">
+                            <li class="mb-2"><i class='bx bx-check-double text-success me-2'></i> Lahan berkembang bagi setiap individu.</li>
+                            <li class="mb-2"><i class='bx bx-check-double text-success me-2'></i> Rasa bangga melalui lingkungan sehat.</li>
+                            <li class="mb-2"><i class='bx bx-check-double text-success me-2'></i> Menyempurnakan sistem & transparansi.</li>
+                            <li class="mb-2"><i class='bx bx-check-double text-success me-2'></i> Meningkatkan eksistensi Himamo.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Makna Logo (Sesuai Layout Asli) --}}
+    <div class="container py-5 bg-white rounded-5 shadow-sm my-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="section-title mb-5">Makna Identitas</h2>
+            </div>
+        </div>
+        <div class="row mt-4 d-flex align-items-center">
+            <div class="col-md-5 text-center mb-4 mb-md-0">
+                <img src="{{ asset('assets-guest/img/kabinet/logo-kabinet-melaju-bersama.png') }}" alt="Logo" class="img-fluid" style="max-width: 280px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));">
+            </div>
+            <div class="col-md-7">
+                <div class="ps-md-4">
+                    <ul class="list-unstyled fs-5">
+                        <li class="mb-4">
+                            <span class="badge bg-warning text-dark mb-2">5 Petir</span><br>
+                            <span class="text-secondary">Simbol 5 bidang yang melaju bersama mendukung semangat Mammoth.</span>
+                        </li>
+                        <li class="mb-4">
+                            <span class="badge bg-warning text-dark mb-2">Sudut 95°</span><br>
+                            <span class="text-secondary">Representasi tahun berdirinya HIMAMO (1995).</span>
+                        </li>
+                        <li>
+                            <span class="badge bg-warning text-dark mb-2">Arah Panah</span><br>
+                            <span class="text-secondary">Simbol peningkatan dan kemajuan bagi organisasi.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- Organigram (Sesuai Layout Asli) --}}
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="section-title mb-5">Struktur Organigram</h2>
+                <div class="mb-5 p-3 bg-white rounded-4 shadow-sm">
+                    <img src="{{ asset('assets-guest/img/kabinet/struktur-organigram-melaju-bersama.png') }}" alt="Organigram" class="img-fluid rounded shadow-sm">
+                </div>
+                <div class="row text-center g-4">
+                    <div class="col-md-4">
+                        <div class="card premium-card p-3">
+                            <div class="card-body">
+                                <i class='bx bx-user-check fs-1 text-teal'></i>
+                                <h4 class="mt-2">Fungsional</h4>
+                                <p class="fs-4 fw-bold text-success">25 Orang</p>
                             </div>
-                            <div class="col-md-6 mb-4">
-                                <p><i class='bx bx-check text-success'></i> Membangun rasa bangga melalui lingkungan yang sehat.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card premium-card p-3">
+                            <div class="card-body">
+                                <i class='bx bx-user-pin fs-1 text-teal'></i>
+                                <h4 class="mt-2">Staff Ahli</h4>
+                                <p class="fs-4 fw-bold text-success">214 Orang</p>
                             </div>
-                            <div class="col-md-6 mb-4">
-                                <p><i class='bx bx-check text-success'></i> Menyempurnakan sistem, birokrasi, dan transparansi.</p>
-                            </div>
-                            <div class="col-md-6 mb-4">
-                                <p><i class='bx bx-check text-success'></i> Meningkatkan eksistensi di internal dan eksternal Polman.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card premium-card p-3">
+                            <div class="card-body">
+                                <i class='bx bx-user-plus fs-1 text-teal'></i>
+                                <h4 class="mt-2">Staff Muda</h4>
+                                <p class="fs-4 fw-bold text-success">289 Orang</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    {{-- Makna Logo (Reference 2 Style) --}}
-    <section class="logo-meaning-section">
-        <div class="container">
-            <h2 class="mb-5 fw-bold">* Makna Logo</h2>
-            <div class="logo-container">
-                <div class="row align-items-center">
-                    <div class="col-lg-5 text-center mb-5 mb-lg-0">
-                        <img src="{{ asset('assets-guest/img/kabinet/logo-kabinet-melaju-bersama.png') }}" alt="Logo Kabinet" class="logo-img">
-                    </div>
-                    <div class="col-lg-7 px-lg-5">
-                        <div class="meaning-content">
-                            <h4 class="text-uppercase">Bentuk</h4>
-                            <ul class="list-unstyled mb-5">
-                                <li class="mb-3"><strong>5 Petir:</strong> Merepresentasikan 5 bidang pada Himamo yang melaju bersama.</li>
-                                <li class="mb-3"><strong>Sudut 95°:</strong> Berasal dari tahun berdirinya HIMAMO, yaitu 1995.</li>
-                                <li><strong>Arah:</strong> Ke atas kanan merepresentasikan peningkatan dan kemajuan.</li>
-                            </ul>
-
-                            <h4 class="text-uppercase">Warna</h4>
-                            <ul class="list-unstyled">
-                                <li class="mb-3"><span class="highlight-text">Hijau Teal:</span> Melambangkan pertumbuhan, harmoni, dan profesionalitas.</li>
-                                <li><span class="highlight-text">Kuning Emas:</span> Melambangkan kejayaan, optimisme, dan semangat yang menyala.</li>
-                            </ul>
-                        </div>
-                    </div>
+    {{-- Penjelasan Bidang (Sesuai Layout Asli) --}}
+    <div class="container py-5 mb-5">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="section-title">Penjelasan Bidang</h2>
+            </div>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="card premium-card p-4 overflow-hidden position-relative">
+                    <span class="bidang-badge">01</span>
+                    <h4>Bidang 1: KPSDM</h4>
+                    <p class="text-secondary mt-3">Membina, membentuk, dan mengembangkan sumber daya mahasiswa di himpunan melalui kaderisasi.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card premium-card p-4 overflow-hidden position-relative">
+                    <span class="bidang-badge">02</span>
+                    <h4>Bidang 2: Internal</h4>
+                    <p class="text-secondary mt-3">Mengelola kegiatan internal, menjaga keharmonisan, serta menaungi Sarana Prasarana.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card premium-card p-4 overflow-hidden position-relative">
+                    <span class="bidang-badge">03</span>
+                    <h4>Bidang 3: Eksternal</h4>
+                    <p class="text-secondary mt-3">Mengoptimalkan hubungan dengan pihak eksternal dan kontribusi pengabdian masyarakat.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 offset-lg-2">
+                <div class="card premium-card p-4 overflow-hidden position-relative">
+                    <span class="bidang-badge">04</span>
+                    <h4>Bidang 4: Medinfo</h4>
+                    <p class="text-secondary mt-3">Mengelola arus informasi kreatif dan mendorong inovasi ekonomi kreatif.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card premium-card p-4 overflow-hidden position-relative">
+                    <span class="bidang-badge">05</span>
+                    <h4>Bidang 5: PPK</h4>
+                    <p class="text-secondary mt-3">Perencanaan, pengelolaan, dan evaluasi program kerja melalui kajian strategis.</p>
                 </div>
             </div>
         </div>
-    </section>
-
-    {{-- Struktur Organigram (Reference 9 Style) --}}
-    <section class="organigram-section">
-        <div class="container">
-            <h2 class="mb-5 fw-bold">* Struktur Organisasi</h2>
-            <div class="text-center mb-5">
-                <p class="fw-bold mb-3" style="color: #666;">Organogram</p>
-                <img src="{{ asset('assets-guest/img/kabinet/struktur-organigram-melaju-bersama.png') }}" alt="Organigram" class="img-fluid border p-2 shadow-sm rounded">
-            </div>
-
-            <div class="bidang-grid">
-                <div class="bidang-item">
-                    <h5>Bidang 1: KPSDM</h5>
-                    <p><span class="highlight-text">#MelajuBerdaya</span> Membina, membentuk, dan mengembangkan sumber daya mahasiswa di himpunan melalui kaderisasi dan program peningkatan kompetensi.</p>
-                </div>
-                <div class="bidang-item">
-                    <h5>Bidang 2: Tata Kelola Internal</h5>
-                    <p><span class="highlight-text">#HarmoniInternal</span> Mengatur dan mengelola kegiatan internal himpunan serta menjaga keharmonisan hubungan antar anggota.</p>
-                </div>
-                <div class="bidang-item">
-                    <h5>Bidang 3: Tata Kelola Eksternal</h5>
-                    <p><span class="highlight-text">#RelasiKoneksi</span> Mengoptimalkan hubungan dengan pihak eksternal dan meningkatkan kontribusi sosial pengabdian masyarakat.</p>
-                </div>
-                <div class="bidang-item">
-                    <h5>Bidang 4: Medinfo Kreatif</h5>
-                    <p><span class="highlight-text">#ArusInovasi</span> Mengelola arus informasi organisasi dan mendorong inovasi ekonomi kreatif di lingkungan himpunan.</p>
-                </div>
-                <div class="bidang-item">
-                    <h5>Bidang 5: PPK</h5>
-                    <p><span class="highlight-text">#EvaluasiStrategis</span> Bertanggung jawab atas perencanaan, pengelolaan, dan evaluasi seluruh program kerja HIMAMO.</p>
-                </div>
-                <div class="bidang-item">
-                    <h5>Kesekretariatan & Keuangan</h5>
-                    <p><span class="highlight-text">#TertibAdministrasi</span> Mengelola sistem administrasi persuratan dan manajemen keuangan yang transparan dan akuntabel.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
 </div>
 
 @endsection
