@@ -143,45 +143,32 @@
         color: white !important;
     }
 
-    /* DARK MODE (Ultra-Clean Fix) */
+    /* DARK MODE (Sync with Prodi/Profile) */
     [data-theme="dark"] .kabinet-melaju-bersama-page {
-        background-color: #12151a;
-        color: #94a3b8;
-    }
-
-    [data-theme="dark"] .kabinet-melaju-bersama-page h1,
-    [data-theme="dark"] .kabinet-melaju-bersama-page h2,
-    [data-theme="dark"] .kabinet-melaju-bersama-page h3,
-    [data-theme="dark"] .kabinet-melaju-bersama-page h4 {
-        color: #f8fafc;
+        background-color: #191d24 !important;
+        color: #e2e8f0;
     }
 
     [data-theme="dark"] .premium-clean-card {
-        background: rgba(30, 41, 59, 0.7) !important;
-        border-color: rgba(51, 65, 85, 0.5);
-        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        background: #393e46 !important;
+        border-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.4);
     }
 
     [data-theme="dark"] .premium-clean-card:hover {
-        background: #1e293b !important;
+        background: #4a505a !important;
         border-color: var(--himamo-green);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
     }
 
     [data-theme="dark"] .organigram-frame,
     [data-theme="dark"] .stat-badge {
-        background: #1e293b !important;
-        border-color: #334155;
-    }
-
-    [data-theme="dark"] .icon-container {
-        background: rgba(0, 150, 136, 0.1);
-        color: var(--himamo-green);
+        background: #393e46 !important;
+        border-color: rgba(255, 255, 255, 0.1);
     }
 
     [data-theme="dark"] .bg-white.shadow-sm.rounded-5 {
-        background-color: #1e293b !important;
-        border: 1px solid #334155;
+        background-color: #393e46 !important;
+        border: 1px solid rgba(255, 255, 255, 0.1);
     }
 </style>
 
