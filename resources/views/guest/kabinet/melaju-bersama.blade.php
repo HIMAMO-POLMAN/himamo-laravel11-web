@@ -10,73 +10,61 @@
     .kabinet-melaju-bersama-page {
         font-family: 'Open Sans', sans-serif;
         background-color: #f8f9fa;
-        transition: background-color 0.3s ease;
+        color: #333;
     }
     .kabinet-melaju-bersama-page h1,
     .kabinet-melaju-bersama-page h2,
     .kabinet-melaju-bersama-page h3,
-    .kabinet-melaju-bersama-page h4,
-    .kabinet-melaju-bersama-page h5,
-    .kabinet-melaju-bersama-page h6,
-    .kabinet-melaju-bersama-page .card-title {
+    .kabinet-melaju-bersama-page h4 {
         font-family: 'Poppins', sans-serif;
-        font-weight: 600;
-    }
-    .kabinet-melaju-bersama-page .lead,
-    .kabinet-melaju-bersama-page .card-text,
-    .kabinet-melaju-bersama-page .list-unstyled {
-        font-family: 'Open Sans', sans-serif;
+        font-weight: 700;
+        color: #004d40;
     }
     .hero-section {
         position: relative;
         background-image: url("{{ asset('assets-guest/img/img-carousel-1.webp') }}");
         background-size: cover;
         background-position: center;
+        min-height: 400px;
+        display: flex;
+        align-items: center;
         color: white;
     }
     .hero-section .overlay {
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0, 77, 64, 0.7);
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(rgba(0, 77, 64, 0.8), rgba(0, 121, 107, 0.7));
         z-index: 1;
     }
     .hero-section .container {
         position: relative;
         z-index: 2;
     }
-    .card-hover:hover {
+    .premium-card {
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        transition: all 0.3s ease;
+        border: none;
+    }
+    .premium-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 15px 40px rgba(0,121,107,0.1);
     }
     .section-title {
-        font-weight: 700;
-        color: #004d40;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+        padding-bottom: 10px;
     }
-
-    /* Dark Mode Styles */
-    [data-theme="dark"] .kabinet-melaju-bersama-page {
-        background-color: #191d24;
-        color: #eee;
-    }
-    [data-theme="dark"] .section-title {
-        color: #00a78e;
-    }
-    [data-theme="dark"] .container[style*="background-color: #ffffff;"] {
-        background-color: #2d333b !important;
-    }
-    [data-theme="dark"] .card {
-        background-color: #393e46;
-        color: #eee;
-    }
-    [data-theme="dark"] .list-unstyled {
-        color: #eee;
-    }
-    [data-theme="dark"] .lead {
-        color: #d1d1d1;
+    .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0; left: 50%;
+        transform: translateX(-50%);
+        width: 50px; height: 3px;
+        background: #ffc107;
     }
 </style>
 
@@ -101,7 +89,7 @@
     <div class="container py-5" style="background-color: #ffffff;">
         <div class="row">
             <div class="col-md-6 mb-4">
-                <div class="card h-100 shadow-lg border-0 card-hover">
+                <div class="card premium-card">
                     <div class="card-body text-center p-5">
                         <div class="mb-4">
                             <i class='bx bx-bullseye' style='font-size: 4rem; color: #00796b;'></i>
@@ -112,7 +100,7 @@
                 </div>
             </div>
             <div class="col-md-6 mb-4">
-                <div class="card h-100 shadow-lg border-0 card-hover">
+                <div class="card premium-card">
                     <div class="card-body text-center p-5">
                         <div class="mb-4">
                             <i class='bx bx-list-check' style='font-size: 4rem; color: #00796b;'></i>
@@ -159,7 +147,7 @@
                 </div>
                 <div class="row text-center">
                     <div class="col-md-4 mb-3">
-                        <div class="card h-100 border-0 shadow-sm">
+                        <div class="card premium-card">
                             <div class="card-body">
                                 <i class='bx bx-user-check' style="font-size: 3rem; color: #00796b;"></i>
                                 <h4 class="card-title mt-2">Fungsional</h4>
@@ -168,7 +156,7 @@
                         </div>
                     </div>
                     <div class="col-md-4 mb-3">
-                        <div class="card h-100 border-0 shadow-sm">
+                        <div class="card premium-card">
                             <div class="card-body">
                                 <i class='bx bx-user-pin' style="font-size: 3rem; color: #00796b;"></i>
                                 <h4 class="card-title mt-2">Staff Ahli</h4>
@@ -177,7 +165,7 @@
                         </div>
                     </div>
                     <div class="col-md-4 mb-3">
-                        <div class="card h-100 border-0 shadow-sm">
+                        <div class="card premium-card">
                             <div class="card-body">
                                 <i class='bx bx-user-plus' style="font-size: 3rem; color: #00796b;"></i>
                                 <h4 class="card-title mt-2">Staff Muda</h4>
@@ -196,7 +184,7 @@
                 <h2 class="text-center mb-5 section-title">Penjelasan Bidang</h2>
                 <div class="row">
                     <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card shadow-sm h-100 card-hover border-top-0 border-end-0 border-bottom-0 border-5 border-success">
+                <div class="card premium-card">
                             <div class="card-body">
                                 <h4 class="card-title">Bidang 1: KPSDM</h4>
                                 <p class="card-text">Bertanggung jawab dalam membina, membentuk, dan mengembangkan sumber daya mahasiswa di himpunan, melalui kaderisasi dan program peningkatan kompetensi.</p>
@@ -204,7 +192,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card shadow-sm h-100 card-hover border-top-0 border-end-0 border-bottom-0 border-5 border-success">
+                <div class="card premium-card">
                             <div class="card-body">
                                 <h4 class="card-title">Bidang 2: Tata Kelola Internal</h4>
                                 <p class="card-text">Mengatur dan mengelola kegiatan internal himpunan, menjaga keharmonisan hubungan antar anggota, serta menaungi divisi Hubungan Dalam dan Sarana Prasarana.</p>
@@ -212,7 +200,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card shadow-sm h-100 card-hover border-top-0 border-end-0 border-bottom-0 border-5 border-success">
+                <div class="card premium-card">
                             <div class="card-body">
                                 <h4 class="card-title">Bidang 3: Tata Kelola Eksternal</h4>
                                 <p class="card-text">Mengoptimalkan hubungan dengan pihak eksternal dan meningkatkan kontribusi sosial melalui Divisi Relasi Organisasi dan Pengabdian Masyarakat.</p>
@@ -220,7 +208,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card shadow-sm h-100 card-hover border-top-0 border-end-0 border-bottom-0 border-5 border-success">
+                <div class="card premium-card">
                             <div class="card-body">
                                 <h4 class="card-title">Bidang 4: Media Informasi Kreatif</h4>
                                 <p class="card-text">Mengelola arus informasi organisasi dan mendorong inovasi ekonomi kreatif melalui Divisi Media & Informasi dan Ekonomi Kreatif.</p>
@@ -228,7 +216,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="card shadow-sm h-100 card-hover border-top-0 border-end-0 border-bottom-0 border-5 border-success">
+                <div class="card premium-card">
                             <div class="card-body">
                                 <h4 class="card-title">Bidang 5: Pengelola Program Kerja</h4>
                                 <p class="card-text">Bertanggung jawab atas perencanaan, pengelolaan, dan evaluasi program kerja HIMAMO melalui divisi Kajian Strategis dan Time Liner.</p>
