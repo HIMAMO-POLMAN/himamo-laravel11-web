@@ -117,16 +117,6 @@
         font-size: 1.8rem;
     }
 
-    .bidang-num-clean {
-        font-weight: 800;
-        color: var(--himamo-green);
-        opacity: 0.15;
-        font-size: 2.5rem;
-        position: absolute;
-        right: 25px;
-        top: 15px;
-    }
-
     .text-muted-custom {
         color: #64748b;
         line-height: 1.7;
@@ -181,11 +171,6 @@
 
     [data-theme="dark"] .text-muted-custom {
         color: #94a3b8;
-    }
-
-    [data-theme="dark"] .bidang-num-clean {
-        color: var(--himamo-green);
-        opacity: 0.2;
     }
 
     [data-theme="dark"] .bg-white.shadow-sm.rounded-5 {
@@ -317,7 +302,6 @@
             @foreach($bidang as $b)
             <div class="col-lg-4 col-md-6">
                 <div class="clean-card p-4 position-relative overflow-hidden">
-                    <span class="bidang-num-clean">{{ $b['num'] }}</span>
                     <h4 class="mb-3">Bidang {{ $b['num'] }}: {{ $b['title'] }}</h4>
                     <p class="text-muted-custom mb-0">{{ $b['desc'] }}</p>
                 </div>
