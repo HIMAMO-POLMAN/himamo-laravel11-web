@@ -25,7 +25,7 @@
     .kabinet-melaju-bersama-page h4 {
         font-family: 'Poppins', sans-serif;
         font-weight: 700;
-        color: #0f172a;
+        color: #004d40; /* Hijau Gelap HIMAMO */
     }
 
     /* Hero Section */
@@ -145,9 +145,10 @@
         color: #f8fafc;
     }
 
-    [data-theme="dark"] .clean-card {
+    [data-theme="dark"] .clean-card:hover {
         background: #1e293b;
-        border-color: #334155;
+        border-color: var(--himamo-green);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.3);
     }
 
     [data-theme="dark"] .section-title::after {
