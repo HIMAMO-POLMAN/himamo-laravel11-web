@@ -184,6 +184,10 @@
         color: #38bdf8 !important;
     }
 
+    [data-theme="dark"] .badge-clean span {
+        color: #94a3b8 !important;
+    }
+
     [data-theme="dark"] .bidang-num-clean {
         color: #38bdf8;
         opacity: 0.2;
