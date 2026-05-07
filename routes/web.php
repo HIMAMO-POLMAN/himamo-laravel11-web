@@ -25,6 +25,7 @@ Route::get('/prodi-d4-trin', [HomeController::class, 'd4trin'])->name('prodi-d4-
 Route::get('/prodi-d4-trsa', [HomeController::class, 'd4trsa'])->name('prodi-d4-trsa');
 Route::get('/prodi-s2t-siber-fisik', [HomeController::class, 's2tsiberfisik'])->name('prodi-s2t-siber-fisik');
 Route::get('/kabinet/melaju-bersama-2025-2026', [HomeController::class, 'melajuBersama'])->name('kabinet.melaju-bersama');
+Route::get('/kabinet/adyaksana-2026-2027', [HomeController::class, 'adyaksana'])->name('kabinet.adyaksana');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/ae-informasi', [GuestInformationController::class, 'index'])->name('guest.information.index');
 Route::get('/ae-informasi/detail/{informasi:slug}', [GuestInformationController::class, 'show'])->name('guest.information.detail');

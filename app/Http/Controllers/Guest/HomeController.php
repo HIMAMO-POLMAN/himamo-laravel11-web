@@ -60,6 +60,11 @@ class HomeController extends Controller
         return view('guest.kabinet.melaju-bersama');
     }
 
+    public function adyaksana()
+    {
+        return view('guest.kabinet.adyaksana');
+    }
+
     public function about()
     {
         return view('guest.about.profile');

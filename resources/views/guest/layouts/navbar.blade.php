@@ -36,6 +36,7 @@
                         <a href="#">Kabinet <span> > </span></a>
                         <ul class="dropdown-menu">
                             <li><a href="{{ route('kabinet.melaju-bersama') }}">Melaju Bersama 2025/2026</a></li>
+                            <li><a href="{{ route('kabinet.adyaksana') }}">Adyaksana 2026/2027</a></li>
                         </ul>
                     </li>
                 </ul>
