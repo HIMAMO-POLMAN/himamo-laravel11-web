@@ -118,19 +118,15 @@
                             </div>
                             <div class="row pt-1 pb-4 subject-list ">
                                 <div class="col-12 col-md-6 mt-4 col-lg text-center">
-<<<<<<< HEAD
-                                    <a href="prodi-d2-trmo">
-                                        <div class="subject-box bg-light shadow-sm">
-                                            <img src="{{ asset('assets-guest/img/trmo-d2_subject.svg') }}" alt="Robotika"
-                                                class="subject-image">
-                                            <p class="subject-name text-dark fw-bold">D2 Jalur Cepat<br>Teknik Mekatronika
-=======
                                     <a href="prodi-s2t-siber-fisik">
                                         <div class="subject-box bg-light shadow-sm">
                                             <img src="{{ asset('assets-guest/img/s2tsiberfisik.svg') }}" alt="Robotika"
                                                 class="subject-image">
                                             <p class="subject-name text-dark fw-bold">Program Magister S2 Terapan<br>Sistem Siber-Fisik
->>>>>>> origin/pre-develop-dava
+                                            </p>
+                                        </div>
+                                    </a>
+                                </div>
                                             </p>
                                         </div>
                                     </a>

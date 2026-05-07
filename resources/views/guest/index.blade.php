@@ -266,11 +266,7 @@
                     </div>
 
                     <div class="row pt-3 subject-list gs_reveal">
-<<<<<<< HEAD
-                        <a href="prodi-d4-trsan" class="col-lg col-12 col-md-12 mt-2 " style="text-decoration: none;">
-=======
                         <a href="prodi-d4-trsa" class="col-lg col-12 col-md-12 mt-2 " style="text-decoration: none;">
->>>>>>> origin/pre-develop-dava
                             <div class=" text-center ">
                                 <div class="subject-box bg-light shadow-sm ">
                                     <img src="{{ asset('assets-guest/img/trsan_subject.svg') }}" alt="Robotika"
