@@ -200,7 +200,6 @@
         <div class="overlay"></div>
         <div class="container">
             <h1 class="display-4 fw-bold mb-3">Kabinet Melaju Bersama</h1>
-            <p class="lead fs-4 opacity-80">"Satukan Langkah, Ciptakan Sejarah"</p>
         </div>
     </div>
 
