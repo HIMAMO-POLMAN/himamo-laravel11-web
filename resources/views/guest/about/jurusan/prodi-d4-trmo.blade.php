@@ -75,37 +75,31 @@
                                     <h3 class="text-dark fw-bold">Lihat lainnya</h3>
                                 </div>
                             </div>
-                            <div class="row pt-1 pb-4 subject-list ">
-                                <div class="col-12 col-md-6 mt-4 col-lg text-center">
-                                    <a href="prodi-d4-trsa">
+                            <div class="row pt-1 pb-4 subject-list">
+                                <div class="col-12 col-md-6 col-lg-4 mt-4 text-center">
+                                    <a href="prodi-d4-trsa" style="text-decoration: none;">
                                         <div class="subject-box bg-light shadow-sm">
-                                            <img src="{{ asset('assets-guest/img/trsan_subject.svg') }}" alt="Robotika"
+                                            <img src="{{ asset('assets-guest/img/trsan_subject.svg') }}" alt="TRSA"
                                                 class="subject-image">
-                                            <p class="subject-name text-dark fw-bold">D4 Prodi<br>Teknologi Rekayasa Sistem Aerial Nirawak
-                                            </p>
+                                            <p class="subject-name text-dark fw-bold">D4 Prodi<br>Teknologi Rekayasa Sistem Aerial Nirawak</p>
                                         </div>
                                     </a>
                                 </div>
+                                <div class="col-12 col-md-6 col-lg-4 mt-4 text-center">
+                                    <a href="prodi-d4-tro" style="text-decoration: none;">
+                                        <div class="subject-box bg-light shadow-sm">
+                                            <img src="{{ asset('assets-guest/img/tro_subject.svg') }}" alt="TRO"
+                                                class="subject-image">
+                                            <p class="subject-name text-dark fw-bold">D4 Prodi<br>Teknologi Rekayasa Otomasi</p>
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-12 col-md-6 mt-4 col-lg text-center">
-                                    <a href="prodi-d4-tro">
+                                <div class="col-12 col-md-6 col-lg-4 mt-4 text-center">
+                                    <a href="prodi-d4-trin" style="text-decoration: none;">
                                         <div class="subject-box bg-light shadow-sm">
-                                            <img src="{{ asset('assets-guest/img/tro_subject.svg') }}" alt="Robotika"
+                                            <img src="{{ asset('assets-guest/img/trin_subject.svg') }}" alt="TRIN"
                                                 class="subject-image">
-                                            <p class="subject-name text-dark fw-bold">D4 Prodi<br>Teknologi Rekayasa Otomasi
-                                            </p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-12 col-md-6 mt-4 col-lg text-center">
-                                    <a href="prodi-d4-trin">
-                                        <div class="subject-box bg-light shadow-sm">
-                                            <img src="{{ asset('assets-guest/img/trin_subject.svg') }}" alt="Robotika"
-                                                class="subject-image">
-                                            <p class="subject-name text-dark fw-bold">D4 Prodi<br>Teknologi Rekayasa
-                                                Informatika Industri</p>
+                                            <p class="subject-name text-dark fw-bold">D4 Prodi<br>Teknologi Rekayasa Informatika Industri</p>
                                         </div>
                                     </a>
                                 </div>

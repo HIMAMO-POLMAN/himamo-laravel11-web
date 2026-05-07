@@ -20,7 +20,7 @@
                                 <h3 class="card-title fw-bold mb-4">D4 Teknologi Rekayasa Otomasi</h3>
                                 <h5 class="card-text fw-bold">Program Studi Teknologi Rekayasa Otomasi</h5>
                                 <p>Program Studi Teknologi Rekayasa Otomasi (TRO) memiliki fungsi strategis untuk ikut
-                                    berperan dalam pengembangan teknologi otomasi pada industri, dimana revolusi industri
+                                    berperan dalam pengembangan teknologi otomasi pada industri, dimana revoluti industri
                                     4.0 merupakan sebuah perubahan cara hidup manusia dan proses kerja secara fundamental.
                                     Dengan otomasi dapat mengintegrasikan beberapa disiplin ilmu meliputi bidang kontrol,
                                     manufaktur, teknologi informasi, dan manajemen.</p>
@@ -116,38 +116,31 @@
                                     <h3 class="text-dark fw-bold">Lihat lainnya</h3>
                                 </div>
                             </div>
-                            <div class="row pt-1 pb-4 subject-list ">
-                                <div class="col-12 col-md-6 mt-4 col-lg text-center">
-                                    <a href="prodi-s2t-siber-fisik">
+                            <div class="row pt-1 pb-4 subject-list">
+                                <div class="col-12 col-md-6 col-lg-4 mt-4 text-center">
+                                    <a href="prodi-s2t-siber-fisik" style="text-decoration: none;">
                                         <div class="subject-box bg-light shadow-sm">
-                                            <img src="{{ asset('assets-guest/img/s2tsiberfisik.svg') }}" alt="Robotika"
+                                            <img src="{{ asset('assets-guest/img/s2tsiberfisik.svg') }}" alt="S2"
                                                 class="subject-image">
-                                            <p class="subject-name text-dark fw-bold">Program Magister S2 Terapan<br>Sistem Siber-Fisik
-                                            </p>
+                                            <p class="subject-name text-dark fw-bold">Program Magister S2 Terapan<br>Sistem Siber-Fisik</p>
                                         </div>
                                     </a>
                                 </div>
-                                            </p>
+                                <div class="col-12 col-md-6 col-lg-4 mt-4 text-center">
+                                    <a href="prodi-d4-trmo" style="text-decoration: none;">
+                                        <div class="subject-box bg-light shadow-sm">
+                                            <img src="{{ asset('assets-guest/img/trmo_subject.svg') }}" alt="TRMO"
+                                                class="subject-image">
+                                            <p class="subject-name text-dark fw-bold">D4 Prodi<br>Teknik Rekayasa Mekatronika</p>
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-12 col-md-6 mt-4 col-lg text-center">
-                                    <a href="prodi-d4-trmo">
+                                <div class="col-12 col-md-6 col-lg-4 mt-4 text-center">
+                                    <a href="prodi-d4-trin" style="text-decoration: none;">
                                         <div class="subject-box bg-light shadow-sm">
-                                            <img src="{{ asset('assets-guest/img/trmo_subject.svg') }}" alt="Robotika"
+                                            <img src="{{ asset('assets-guest/img/trin_subject.svg') }}" alt="TRIN"
                                                 class="subject-image">
-                                            <p class="subject-name text-dark fw-bold">D4 Prodi<br>Teknik Rekayasa
-                                                Mekatronika</p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-12 col-md-6 mt-4 col-lg text-center">
-                                    <a href="prodi-d4-trin">
-                                        <div class="subject-box bg-light shadow-sm">
-                                            <img src="{{ asset('assets-guest/img/trin_subject.svg') }}" alt="Robotika"
-                                                class="subject-image">
-                                            <p class="subject-name text-dark fw-bold">D4 Prodi<br>Teknologi Rekayasa
-                                                Informatika Industri</p>
+                                            <p class="subject-name text-dark fw-bold">D4 Prodi<br>Teknologi Rekayasa Informatika Industri</p>
                                         </div>
                                     </a>
                                 </div>

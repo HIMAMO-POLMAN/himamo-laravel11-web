@@ -1,7 +1,6 @@
 @extends('guest.layouts.app')
 @section('title', 'D4 Teknologi Rekayasa Informatika Industri | POLMAN Bandung')
-@section('meta_description', 'Program D4 Teknologi Rekayasa Informatika Industri POLMAN Bandung membekali mahasiswa
-    dengan keterampilan dalam sistem ERP, MES, dan kecerdasan buatan untuk mendukung industri 4.0.')
+@section('meta_description', 'Program D4 Teknologi Rekayasa Informatika Industri POLMAN Bandung membekali mahasiswa dengan keterampilan dalam sistem ERP, MES, dan kecerdasan buatan untuk mendukung industri 4.0.')
 @section('content')
     <div class="wrap bg-light">
         <section id="ae-pustaka" class="about bg-light">
@@ -103,38 +102,31 @@
                                     <h3 class="text-dark fw-bold">Lihat lainnya</h3>
                                 </div>
                             </div>
-                            <div class="row pt-1 pb-4 subject-list ">
-                                <div class="col-12 col-md-6 mt-4 col-lg text-center">
-                                    <a href="prodi-s2t-siber-fisik">
+                            <div class="row pt-1 pb-4 subject-list">
+                                <div class="col-12 col-md-6 col-lg-4 mt-4 text-center">
+                                    <a href="prodi-s2t-siber-fisik" style="text-decoration: none;">
                                         <div class="subject-box bg-light shadow-sm">
-                                            <img src="{{ asset('assets-guest/img/s2tsiberfisik.svg') }}" alt="Robotika"
+                                            <img src="{{ asset('assets-guest/img/s2tsiberfisik.svg') }}" alt="S2"
                                                 class="subject-image">
-                                            <p class="subject-name text-dark fw-bold">Program Magister S2 Terapan<br>Sistem Siber-Fisik
-                                            </p>
+                                            <p class="subject-name text-dark fw-bold">Program Magister S2 Terapan<br>Sistem Siber-Fisik</p>
                                         </div>
                                     </a>
                                 </div>
-                                            </p>
+                                <div class="col-12 col-md-6 col-lg-4 mt-4 text-center">
+                                    <a href="prodi-d4-tro" style="text-decoration: none;">
+                                        <div class="subject-box bg-light shadow-sm">
+                                            <img src="{{ asset('assets-guest/img/tro_subject.svg') }}" alt="TRO"
+                                                class="subject-image">
+                                            <p class="subject-name text-dark fw-bold">D4 Prodi<br>Teknologi Rekayasa Otomasi</p>
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-12 col-md-6 mt-4 col-lg text-center">
-                                    <a href="prodi-d4-tro">
+                                <div class="col-12 col-md-6 col-lg-4 mt-4 text-center">
+                                    <a href="prodi-d4-trmo" style="text-decoration: none;">
                                         <div class="subject-box bg-light shadow-sm">
-                                            <img src="{{ asset('assets-guest/img/tro_subject.svg') }}" alt="Robotika"
+                                            <img src="{{ asset('assets-guest/img/trmo_subject.svg') }}" alt="TRMO"
                                                 class="subject-image">
-                                            <p class="subject-name text-dark fw-bold">D4 Prodi<br>Teknologi Rekayasa Otomasi
-                                            </p>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-12 col-md-6 mt-4 col-lg text-center">
-                                    <a href="prodi-d4-trmo">
-                                        <div class="subject-box bg-light shadow-sm">
-                                            <img src="{{ asset('assets-guest/img/trmo_subject.svg') }}" alt="Robotika"
-                                                class="subject-image">
-                                            <p class="subject-name text-dark fw-bold">D4 Prodi<br>Teknologi Rekayasa
-                                                Mekatronika</p>
+                                            <p class="subject-name text-dark fw-bold">D4 Prodi<br>Teknik Rekayasa Mekatronika</p>
                                         </div>
                                     </a>
                                 </div>
