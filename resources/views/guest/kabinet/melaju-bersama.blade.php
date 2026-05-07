@@ -80,7 +80,7 @@
 
     /* Organigram Specific */
     .organigram-frame {
-        max-width: 750px; /* Diperkecil sesuai request */
+        max-width: 750px;
         margin: 0 auto;
         padding: 15px;
         background: white;
@@ -210,12 +210,12 @@
         </div>
     </div>
 
-    {{-- 2. Filosofi --}}
+    {{-- 2. Filosofi (Penjelasan Umum Kabinet) --}}
     <div class="container py-5 mt-5">
         <div class="row justify-content-center">
-            <div class="col-lg-8 text-center">
-                <h2 class="section-title">Filosofi Perjalanan</h2>
-                <p class="fs-5 text-muted-custom">"Melaju Bersama" bukan sekadar nama, tetapi representasi visi besar sebuah perjalanan kolektif dalam himpunan ini. Filosofi ini lahir dari keyakinan bahwa perubahan yang berarti tidak dibangun oleh satu langkah individu, tetapi oleh banyak langkah kecil yang bergerak seirama dalam satu tujuan besar. Kabinet ini hadir untuk merangkul keberagaman, menyatukan potensi, dan mengajak seluruh anggota untuk melaju menuju masa depan yang lebih baik.</p>
+            <div class="col-lg-10 text-center">
+                <h2 class="section-title">Penjelasan Umum Kabinet</h2>
+                <p class="fs-5 text-muted-custom">"Melaju Bersama" bukan sekadar nama, tetapi representasi visi besar sebuah perjalanan kolektif dalam himpunan ini. Filosofi ini lahir dari keyakinan bahwa perubahan yang berarti tidak dibangun oleh satu langkah individu, tetapi oleh banyak langkah kecil yang bergerak seirama dalam satu tujuan besar dengan satu faham dan satu pemikiran. Kabinet ini hadir untuk merangkul keberagaman, menyatukan potensi, dan mengajak seluruh anggota himpunan untuk tidak hanya menjadi penonton perubahan, tetapi menjadi bagian dari mereka yang menciptakan sejarah dan membawanya melaju menuju masa depan yang lebih baik.</p>
             </div>
         </div>
     </div>
@@ -229,7 +229,7 @@
                         <i class='bx bx-target-lock'></i>
                     </div>
                     <h3 class="text-center mb-4">Visi</h3>
-                    <p class="text-muted-custom text-center fs-5">Menjadikan Himamo sebagai wadah yang progresif, inklusif, dan kompeten dalam pengembangan individu menciptakan lingkungan organisasi yang sehat dan suportif.</p>
+                    <p class="text-muted-custom text-center fs-5">Menjadikan Himamo sebagai wadah yang progresif, inklusif, dan kompeten dalam pengembangan Individu menciptakan lingkungan organisasi yang sehat dan suportif, serta membangun sistem kerja yang berkelanjutan untuk meningkatkan eksistensi Himamo baik didalam maupun diluar Polman</p>
                 </div>
             </div>
             <div class="col-md-6">
@@ -239,17 +239,17 @@
                     </div>
                     <h3 class="text-center mb-4">Misi</h3>
                     <ul class="list-unstyled text-muted-custom fs-6">
-                        <li class="mb-3 d-flex align-items-center"><i class='bx bx-chevron-right text-info me-2'></i> Lahan berkembang bagi setiap individu.</li>
-                        <li class="mb-3 d-flex align-items-center"><i class='bx bx-chevron-right text-info me-2'></i> Rasa bangga melalui lingkungan sehat.</li>
-                        <li class="mb-3 d-flex align-items-center"><i class='bx bx-chevron-right text-info me-2'></i> Menyempurnakan sistem & transparansi.</li>
-                        <li class="d-flex align-items-center"><i class='bx bx-chevron-right text-info me-2'></i> Meningkatkan eksistensi Himamo.</li>
+                        <li class="mb-3 d-flex align-items-start"><i class='bx bx-chevron-right text-info me-2 mt-1'></i> 1. Membuat Himamo menjadi lahan berkembang bagi setiap individu</li>
+                        <li class="mb-3 d-flex align-items-start"><i class='bx bx-chevron-right text-info me-2 mt-1'></i> 2. Membangun Rasa Rasa Bangga dalam Berhimpun melalui Lingkungan yang Sehat dan Supportif</li>
+                        <li class="mb-3 d-flex align-items-start"><i class='bx bx-chevron-right text-info me-2 mt-1'></i> 3. Menyempurnakan Sistem, Birokrasi, dan Transparansi dalam Jan Himamo</li>
+                        <li class="d-flex align-items-start"><i class='bx bx-chevron-right text-info me-2 mt-1'></i> 4. Meningkatkan Eksistensi Himamo di Internal dan Eksternal Polman.</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 
-    {{-- 4. Makna Identitas --}}
+    {{-- 4. Makna Logo/Slogan --}}
     <div class="container py-5 my-5">
         <div class="clean-card p-5">
             <div class="row align-items-center">
@@ -257,18 +257,18 @@
                     <img src="{{ asset('assets-guest/img/kabinet/logo-kabinet-melaju-bersama.png') }}" alt="Logo Kabinet" class="img-fluid" style="max-width: 250px;">
                 </div>
                 <div class="col-md-7 border-start ps-md-5">
-                    <h3 class="mb-4">Makna Identitas</h3>
+                    <h3 class="mb-4">Makna Logo/Slogan</h3>
                     <div class="mb-4">
-                        <h5 class="fw-bold text-info mb-1">5 Petir</h5>
-                        <p class="text-muted-custom">Representasi 5 bidang yang melaju bersama mendukung semangat Mammoth.</p>
+                        <h5 class="fw-bold text-info mb-1">5 Petir:</h5>
+                        <p class="text-muted-custom">Merepresentasikan 5 bidang pada Himamo. Ditempatkan di belakang kepala mammoth sebagai simbol bahwa lima bidang ini, atau kabinet ini, akan melaju Bersama.</p>
                     </div>
                     <div class="mb-4">
-                        <h5 class="fw-bold text-info mb-1">Sudut 95°</h5>
-                        <p class="text-muted-custom">Tanda penghormatan pada tahun kelahiran HIMAMO (1995).</p>
+                        <h5 class="fw-bold text-info mb-1">Sudut 95°:</h5>
+                        <p class="text-muted-custom">Sudut 95° berasal dari tahun berdirinya HIMAMO, yaitu 1995.</p>
                     </div>
                     <div>
-                        <h5 class="fw-bold text-info mb-1">Arah Panah</h5>
-                        <p class="text-muted-custom">Simbolisme pergerakan progresif ke arah kemajuan organisasi.</p>
+                        <h5 class="fw-bold text-info mb-1">Arah:</h5>
+                        <p class="text-muted-custom">Arah ke atas kanan merepresentasikan bahwa kabinet ini akan membawa peningkatan dan kemajuan bagi Himamo.</p>
                     </div>
                 </div>
             </div>
@@ -313,11 +313,31 @@
         <div class="row g-4 justify-content-center">
             @php
                 $bidang = [
-                    ['num' => '01', 'title' => 'KPSDM', 'desc' => 'Membina, membentuk, dan mengembangkan sumber daya mahasiswa di himpunan melalui kaderisasi.'],
-                    ['num' => '02', 'title' => 'Internal', 'desc' => 'Mengelola kegiatan internal, menjaga keharmonisan, serta menaungi Sarana Prasarana.'],
-                    ['num' => '03', 'title' => 'Eksternal', 'desc' => 'Mengoptimalkan hubungan dengan pihak eksternal dan kontribusi pengabdian masyarakat.'],
-                    ['num' => '04', 'title' => 'Medinfo', 'desc' => 'Mengelola arus informasi kreatif dan mendorong inovasi ekonomi kreatif.'],
-                    ['num' => '05', 'title' => 'PPK', 'desc' => 'Perencanaan, pengelolaan, dan evaluasi program kerja melalui kajian strategis.']
+                    [
+                        'num' => '1', 
+                        'title' => 'KPSDM', 
+                        'desc' => 'Bertanggung jawab dalam membina, membentuk, dan mengembangkan sumber daya mahasiswa di himpunan, melalui kaderisasi dan program peningkatan kompetensi.'
+                    ],
+                    [
+                        'num' => '2', 
+                        'title' => 'Tata Kelola Internal', 
+                        'desc' => 'Mengatur dan mengelola kegiatan internal himpunan, menjaga keharmonisan hubungan antar anggota, serta menaungi divisi Hubungan Dalam dan Sarana Prasarana.'
+                    ],
+                    [
+                        'num' => '3', 
+                        'title' => 'Tata Kelola Eksternal', 
+                        'desc' => 'Mengoptimalkan hubungan dengan pihak eksternal dan meningkatkan kontribusi sosial melalui Divisi Relasi Organisasi dan Pengabdian Masyarakat.'
+                    ],
+                    [
+                        'num' => '4', 
+                        'title' => 'Media Informasi Kreatif', 
+                        'desc' => 'Mengelola arus informasi organisasi dan mendorong inovasi ekonomi kreatif melalui Divisi Media & Informasi dan Ekonomi Kreatif.'
+                    ],
+                    [
+                        'num' => '5', 
+                        'title' => 'Pengelola Program Kerja', 
+                        'desc' => 'Bertanggung jawab atas perencanaan, pengelolaan, dan evaluasi program kerja HIMAMO melalui divisi Kajian Strategis dan Time Liner.'
+                    ]
                 ];
             @endphp
             @foreach($bidang as $b)
