@@ -8,6 +8,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+    :root {
+        --himamo-green: #009688; /* Hijau khas HIMAMO */
+        --himamo-dark-green: #00796b;
+    }
+
     .kabinet-melaju-bersama-page {
         font-family: 'Inter', sans-serif;
         background-color: #fcfcfc;
@@ -37,7 +42,7 @@
     .hero-section .overlay {
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
-        background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.6));
+        background: linear-gradient(rgba(0, 77, 64, 0.8), rgba(0, 121, 107, 0.7));
         z-index: 1;
     }
 
@@ -59,7 +64,7 @@
     .clean-card:hover {
         transform: translateY(-8px);
         box-shadow: 0 15px 35px rgba(0,0,0,0.06);
-        border-color: #e2e8f0;
+        border-color: var(--himamo-green);
     }
 
     .section-title {
@@ -73,7 +78,7 @@
         content: "";
         display: block;
         width: 50px; height: 4px;
-        background: #0ea5e9;
+        background: var(--himamo-green);
         margin: 15px auto 0;
         border-radius: 10px;
     }
@@ -102,23 +107,19 @@
         transition: all 0.3s ease;
     }
 
-    .badge-clean:hover {
-        background: #f1f5f9;
-    }
-
     .icon-wrap {
         width: 60px; height: 60px;
-        background: #f1f5f9;
+        background: rgba(0, 150, 136, 0.1);
         border-radius: 14px;
         display: flex; align-items: center; justify-content: center;
         margin: 0 auto 15px;
-        color: #0ea5e9;
+        color: var(--himamo-green);
         font-size: 1.8rem;
     }
 
     .bidang-num-clean {
         font-weight: 800;
-        color: #0ea5e9;
+        color: var(--himamo-green);
         opacity: 0.15;
         font-size: 2.5rem;
         position: absolute;
@@ -147,17 +148,10 @@
     [data-theme="dark"] .clean-card {
         background: #1e293b;
         border-color: #334155;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    }
-
-    [data-theme="dark"] .clean-card:hover {
-        background: #1e293b;
-        border-color: #0ea5e9;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.3);
     }
 
     [data-theme="dark"] .section-title::after {
-        background: #38bdf8;
+        background: var(--himamo-green);
     }
 
     [data-theme="dark"] .organigram-frame {
@@ -171,25 +165,25 @@
         color: #f8fafc;
     }
 
-    [data-theme="dark"] .icon-wrap {
-        background: rgba(14, 165, 233, 0.1);
-        color: #38bdf8;
-    }
-
-    [data-theme="dark"] .text-muted-custom {
-        color: #94a3b8;
-    }
-
     [data-theme="dark"] .badge-clean h4 {
-        color: #38bdf8 !important;
+        color: var(--himamo-green) !important;
     }
 
     [data-theme="dark"] .badge-clean span {
         color: #94a3b8 !important;
     }
 
+    [data-theme="dark"] .icon-wrap {
+        background: rgba(0, 150, 136, 0.15);
+        color: var(--himamo-green);
+    }
+
+    [data-theme="dark"] .text-muted-custom {
+        color: #94a3b8;
+    }
+
     [data-theme="dark"] .bidang-num-clean {
-        color: #38bdf8;
+        color: var(--himamo-green);
         opacity: 0.2;
     }
 
@@ -210,7 +204,7 @@
         </div>
     </div>
 
-    {{-- 2. Filosofi (Penjelasan Umum Kabinet) --}}
+    {{-- 2. Filosofi --}}
     <div class="container py-5 mt-5">
         <div class="row justify-content-center">
             <div class="col-lg-10 text-center">
@@ -239,10 +233,10 @@
                     </div>
                     <h3 class="text-center mb-4">Misi</h3>
                     <ul class="list-unstyled text-muted-custom fs-6">
-                        <li class="mb-3 d-flex align-items-start"><i class='bx bx-chevron-right text-info me-2 mt-1'></i> 1. Membuat Himamo menjadi lahan berkembang bagi setiap individu</li>
-                        <li class="mb-3 d-flex align-items-start"><i class='bx bx-chevron-right text-info me-2 mt-1'></i> 2. Membangun Rasa Rasa Bangga dalam Berhimpun melalui Lingkungan yang Sehat dan Supportif</li>
-                        <li class="mb-3 d-flex align-items-start"><i class='bx bx-chevron-right text-info me-2 mt-1'></i> 3. Menyempurnakan Sistem, Birokrasi, dan Transparansi dalam Jan Himamo</li>
-                        <li class="d-flex align-items-start"><i class='bx bx-chevron-right text-info me-2 mt-1'></i> 4. Meningkatkan Eksistensi Himamo di Internal dan Eksternal Polman.</li>
+                        <li class="mb-3 d-flex align-items-start"><i class='bx bx-chevron-right text-success me-2 mt-1'></i> 1. Membuat Himamo menjadi lahan berkembang bagi setiap individu</li>
+                        <li class="mb-3 d-flex align-items-start"><i class='bx bx-chevron-right text-success me-2 mt-1'></i> 2. Membangun Rasa Rasa Bangga dalam Berhimpun melalui Lingkungan yang Sehat dan Supportif</li>
+                        <li class="mb-3 d-flex align-items-start"><i class='bx bx-chevron-right text-success me-2 mt-1'></i> 3. Menyempurnakan Sistem, Birokrasi, dan Transparansi dalam Jan Himamo</li>
+                        <li class="d-flex align-items-start"><i class='bx bx-chevron-right text-success me-2 mt-1'></i> 4. Meningkatkan Eksistensi Himamo di Internal dan Eksternal Polman.</li>
                     </ul>
                 </div>
             </div>
@@ -259,15 +253,15 @@
                 <div class="col-md-7 border-start ps-md-5">
                     <h3 class="mb-4">Makna Logo/Slogan</h3>
                     <div class="mb-4">
-                        <h5 class="fw-bold text-info mb-1">5 Petir:</h5>
+                        <h5 class="fw-bold mb-1" style="color: var(--himamo-green);">5 Petir:</h5>
                         <p class="text-muted-custom">Merepresentasikan 5 bidang pada Himamo. Ditempatkan di belakang kepala mammoth sebagai simbol bahwa lima bidang ini, atau kabinet ini, akan melaju Bersama.</p>
                     </div>
                     <div class="mb-4">
-                        <h5 class="fw-bold text-info mb-1">Sudut 95°:</h5>
+                        <h5 class="fw-bold mb-1" style="color: var(--himamo-green);">Sudut 95°:</h5>
                         <p class="text-muted-custom">Sudut 95° berasal dari tahun berdirinya HIMAMO, yaitu 1995.</p>
                     </div>
                     <div>
-                        <h5 class="fw-bold text-info mb-1">Arah:</h5>
+                        <h5 class="fw-bold mb-1" style="color: var(--himamo-green);">Arah:</h5>
                         <p class="text-muted-custom">Arah ke atas kanan merepresentasikan bahwa kabinet ini akan membawa peningkatan dan kemajuan bagi Himamo.</p>
                     </div>
                 </div>
@@ -286,19 +280,19 @@
         <div class="row g-4 justify-content-center text-center px-4">
             <div class="col-md-4">
                 <div class="badge-clean">
-                    <h4 class="mb-1 text-primary">25</h4>
+                    <h4 class="mb-1" style="color: var(--himamo-green);">25</h4>
                     <span class="text-muted small fw-bold uppercase">Fungsional</span>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="badge-clean">
-                    <h4 class="mb-1 text-primary">214</h4>
+                    <h4 class="mb-1" style="color: var(--himamo-green);">214</h4>
                     <span class="text-muted small fw-bold uppercase">Staff Ahli</span>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="badge-clean">
-                    <h4 class="mb-1 text-primary">289</h4>
+                    <h4 class="mb-1" style="color: var(--himamo-green);">289</h4>
                     <span class="text-muted small fw-bold uppercase">Staff Muda</span>
                 </div>
             </div>
@@ -306,38 +300,18 @@
     </div>
 
     {{-- 6. Penjelasan Bidang --}}
-    <div class="container py-5 my-5">
+    <div class="container pt-5 pb-5 mb-0"> {{-- Diubah margin-bottomnya ke 0 --}}
         <div class="text-center mb-5">
             <h2 class="section-title">Penjelasan Bidang</h2>
         </div>
         <div class="row g-4 justify-content-center">
             @php
                 $bidang = [
-                    [
-                        'num' => '1', 
-                        'title' => 'KPSDM', 
-                        'desc' => 'Bertanggung jawab dalam membina, membentuk, dan mengembangkan sumber daya mahasiswa di himpunan, melalui kaderisasi dan program peningkatan kompetensi.'
-                    ],
-                    [
-                        'num' => '2', 
-                        'title' => 'Tata Kelola Internal', 
-                        'desc' => 'Mengatur dan mengelola kegiatan internal himpunan, menjaga keharmonisan hubungan antar anggota, serta menaungi divisi Hubungan Dalam dan Sarana Prasarana.'
-                    ],
-                    [
-                        'num' => '3', 
-                        'title' => 'Tata Kelola Eksternal', 
-                        'desc' => 'Mengoptimalkan hubungan dengan pihak eksternal dan meningkatkan kontribusi sosial melalui Divisi Relasi Organisasi dan Pengabdian Masyarakat.'
-                    ],
-                    [
-                        'num' => '4', 
-                        'title' => 'Media Informasi Kreatif', 
-                        'desc' => 'Mengelola arus informasi organisasi dan mendorong inovasi ekonomi kreatif melalui Divisi Media & Informasi dan Ekonomi Kreatif.'
-                    ],
-                    [
-                        'num' => '5', 
-                        'title' => 'Pengelola Program Kerja', 
-                        'desc' => 'Bertanggung jawab atas perencanaan, pengelolaan, dan evaluasi program kerja HIMAMO melalui divisi Kajian Strategis dan Time Liner.'
-                    ]
+                    ['num' => '1', 'title' => 'KPSDM', 'desc' => 'Bertanggung jawab dalam membina, membentuk, dan mengembangkan sumber daya mahasiswa di himpunan, melalui kaderisasi dan program peningkatan kompetensi.'],
+                    ['num' => '2', 'title' => 'Tata Kelola Internal', 'desc' => 'Mengatur dan mengelola kegiatan internal himpunan, menjaga keharmonisan hubungan antar anggota, serta menaungi divisi Hubungan Dalam dan Sarana Prasarana.'],
+                    ['num' => '3', 'title' => 'Tata Kelola Eksternal', 'desc' => 'Mengoptimalkan hubungan dengan pihak eksternal dan meningkatkan kontribusi sosial melalui Divisi Relasi Organisasi dan Pengabdian Masyarakat.'],
+                    ['num' => '4', 'title' => 'Media Informasi Kreatif', 'desc' => 'Mengelola arus informasi organisasi dan mendorong inovasi ekonomi kreatif melalui Divisi Media & Informasi dan Ekonomi Kreatif.'],
+                    ['num' => '5', 'title' => 'Pengelola Program Kerja', 'desc' => 'Bertanggung jawab atas perencanaan, pengelolaan, dan evaluasi program kerja HIMAMO melalui divisi Kajian Strategis dan Time Liner.']
                 ];
             @endphp
             @foreach($bidang as $b)
