@@ -5,16 +5,16 @@ namespace App\Http\Controllers\Guest;
 use App\Http\Controllers\Controller;
 
 use App\Models\Information;
-
+use App\Models\Leader;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
 
-    public function index(){
+      public function index(){
         return view('guest.index',[
             "informasi" => Information::with(['user'])->orderBy('updated_at', 'asc')->paginate(4),
-
+            "leaders" => Leader::active()->orderByDesc('period_start')->get(),
         ]);
     }
 
