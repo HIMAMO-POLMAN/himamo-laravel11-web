@@ -156,8 +156,11 @@ $(document).ready(function () {
         }
     });
 
+    // Check if there are multiple items before enabling loop
+    var featuredItems = $('.featured-carousel .item').length;
+
     $('.featured-carousel').owlCarousel({
-        loop: true,
+        loop: featuredItems > 1,  // Only loop if more than 1 item
         touchDrag: true,
         autoplay: false,
         autoplaySpeed: 5000,

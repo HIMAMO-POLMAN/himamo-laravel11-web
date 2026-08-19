@@ -1,6 +1,5 @@
 <?php
 
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\InformationCategoriesController;
@@ -12,6 +11,7 @@ use App\Http\Controllers\Guest\GuestInformationController;
 use App\Http\Controllers\Guest\ContactController;
 use App\Http\Controllers\Dashboard\LibrariesController;
 use App\Http\Controllers\Dashboard\LibraryCollectionController;
+use App\Http\Controllers\Dashboard\LeaderController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/kontak', [ContactController::class, 'index'])->name('contact');
@@ -43,3 +43,10 @@ Route::middleware('auth-check')->group(function () {
     Route::resource('library-collection',LibraryCollectionController::class);
 });
 
+
+Route::prefix('ae-leader')->name('ae-leader.')->group(function () {
+    Route::get('/', [LeaderController::class, 'index'])->name('index');
+    Route::post('/', [LeaderController::class, 'store'])->name('store');
+    Route::post('/update', [LeaderController::class, 'update'])->name('update');
+    Route::delete('/{leader}', [LeaderController::class, 'destroy'])->name('destroy');
+});

@@ -149,8 +149,7 @@
                                 loading="lazy">
                         </div>
                         <div class=" gs_reveal gs_reveal_fromRight about-text ">
-                            <h2 class="text-dark quote pt-3 text-center text-lg-start">Apa itu <span
-                                    class="judul">Jurusan
+                            <h2 class="text-dark quote pt-3 text-center text-lg-start">Apa itu <span class="judul">Jurusan
                                     Teknik Otomasi
                                     Manufaktur dan Mekatronika?</span></h2>
                             <p class="text-dark pt-2 ">
@@ -320,223 +319,27 @@
                 <div class="d-flex flex-column-reverse flex-lg-row row">
                     <div class="col-lg-8 text-md-start">
                         <div class="featured-carousel owl-carousel">
-                            <div class="item">
-                                <div class="work">
-                                    <a class="text-light">
-                                        <div class="img d-flex align-items-end justify-content-center"
-                                            style="background-image: url('{{ asset('assets-guest/img/img-leader-2025-2026.webp') }}');">
-                                            <div class="text w-100">
-                                                <span class="cat">KETUA HIMPUNAN</span>
-                                                <h3>Alwan Pramudia</h3>
-                                                <span>Masa jabatan : 2025 s/d 2026</span>
-                                                <span>NIM : 223442076 </span>
+                            @foreach ($leaders as $leader)
+                                <div class="item">
+                                    <div class="work {{ $loop->last ? 'pb-4' : '' }}">
+                                        <a @if ($leader->linkedin) href="{{ $leader->linkedin }}" target="_blank" @endif
+                                            class="text-light">
+                                            <div class="img d-flex align-items-end justify-content-center"
+                                                style="background-image: url('{{ $leader->image_url }}');">
+                                                <div class="text w-100">
+                                                    <span class="cat">{{ $leader->position }}</span>
+                                                    <h3>{{ $leader->name }}</h3>
+                                                    <span>Masa jabatan : {{ $leader->period_start }} s/d
+                                                        {{ $leader->period_end }}</span>
+                                                    @if ($leader->nim)
+                                                        <span>NIM : {{ $leader->nim }}</span>
+                                                    @endif
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="work">
-                                    <a href="https://www.linkedin.com/in/rifqiaqil-mufahir-erwansyah-68a011248/"
-                                        target= "_blank" class="text-light">
-                                        <div class="img d-flex align-items-end justify-content-center"
-                                            style="background-image: url('{{ asset('assets-guest/img/img-leader-2024-2025.webp') }}');">
-                                            <div class="text w-100">
-                                                <span class="cat">KETUA HIMPUNAN</span>
-                                                <h3>Rifqiaqil Mufahir E</h3>
-                                                <span>Masa jabatan : 2024 s/d 2025</span>
-                                                <span>NIM : 222442020 </span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="work">
-                                    <a href="https://www.linkedin.com/in/farhan-ali-madani-466b2321a/" target= "_blank"
-                                        class="text-light">
-                                        <div class="img d-flex align-items-end justify-content-center"
-                                            style="background-image: url('{{ asset('assets-guest/img/img-leader-pria.webp') }}');">
-                                            <div class="text w-100">
-                                                <span class="cat">KETUA HIMPUNAN</span>
-                                                <h3>Farhan Ali Madani</h3>
-                                                <span>Masa jabatan : 2023 s/d 2024</span>
-                                                <span>NIM : 221441030 </span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="work">
-                                    <a href="https://www.linkedin.com/in/yugi-prasetara-850097250/" target= "_blank"
-                                        class="text-light">
-                                        <div class="img d-flex align-items-end justify-content-center"
-                                            style="background-image: url('{{ asset('assets-guest/img/img-leader-pria.webp') }}');">
-                                            <div class="text w-100">
-                                                <span class="cat">KETUA HIMPUNAN</span>
-                                                <h3>Yugi Prasetara</h3>
-                                                <span>Masa jabatan : 2022 s/d 2023</span>
-                                                <span>NIM : 220441023 </span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="work">
-                                    <a href="https://www.linkedin.com/in/heryardiyanto/" target= "_blank"
-                                        class="text-light">
-                                        <div class="img d-flex align-items-end justify-content-center"
-                                            style="background-image: url('{{ asset('assets-guest/img/img-leader-2021-2022.webp') }}');">
-                                            <div class="text w-100">
-                                                <span class="cat">KETUA HIMPUNAN</span>
-                                                <h3>Hery Ardiyanto</h3>
-                                                <span>Masa jabatan : 2021 s/d 2022</span>
-                                                <span>NIM : 219441010</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="work">
-                                    <a href="https://www.linkedin.com/in/sendi-dika-prasenda-b64170203/" target= "_blank"
-                                        class="text-light">
-                                        <div class="img d-flex align-items-end justify-content-center"
-                                            style="background-image: url('{{ asset('assets-guest/img/img-leader-2020-2021.webp') }}');">
-                                            <div class="text w-100">
-                                                <span class="cat">KETUA HIMPUNAN</span>
-                                                <h3>Sendi Dika Prasenda</h3>
-                                                <span>Masa jabatan : 2020 s/d 2021</span>
-                                                <span>NIM : 218441046</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="work">
-                                    <a href="https://www.linkedin.com/in/riyadh-tsaniyadi-3aa676198/" target= "_blank"
-                                        class="text-light">
-                                        <div class="img d-flex align-items-end justify-content-center"
-                                            style="background-image: url('{{ asset('assets-guest/img/img-leader-2019-2020.webp') }}');">
-                                            <div class="text w-100">
-                                                <span class="cat">KETUA HIMPUNAN</span>
-                                                <h3>Riyadh Tsaniyadi D</h3>
-                                                <span>Masa jabatan : 2019 s/d 2020</span>
-                                                <span>NIM : 217341068</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="work">
-                                    <a href="https://www.linkedin.com/in/sulthan-muhammad-firdaus-6a822a208/"
-                                        target= "_blank" class="text-light">
-                                        <div class="img d-flex align-items-end justify-content-center"
-                                            style="background-image: url('{{ asset('assets-guest/img/img-leader-2018-2019.webp') }}');">
-                                            <div class="text w-100">
-                                                <span class="cat">KETUA HIMPUNAN</span>
-                                                <h3>Sulthan M . F</h3>
-                                                <span>Masa jabatan : 2018 s/d 2019</span>
-                                                <span>NIM : 216341069</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="work pb-4">
-                                    <a href="https://www.linkedin.com/in/eko-rahayu-tali-jiwa/" target= "_blank"
-                                        class="text-light">
-                                        <div class="img d-flex align-items-end justify-content-center"
-                                            style="background-image: url('{{ asset('assets-guest/img/img-leader-2017-2018.webp') }}');">
-                                            <div class="text w-100">
-                                                <span class="cat">KETUA HIMPUNAN</span>
-                                                <h3>Eko Rahayu Tali jiwa</h3>
-                                                <span>Masa jabatan : 2017 s/d 2018</span>
-                                                <span>NIM : 215341004</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="work">
-                                    <a href="https://www.linkedin.com/in/saptian-hadi-175275129/" target= "_blank"
-                                        class="text-light">
-                                        <div class="img d-flex align-items-end justify-content-center"
-                                            style="background-image: url('{{ asset('assets-guest/img/img-leader-2016-2017.webp') }}');">
-                                            <div class="text w-100">
-                                                <span class="cat">KETUA HIMPUNAN</span>
-                                                <h3>Saptianhadi</h3>
-                                                <span>Masa jabatan : 2016 s/d 2017</span>
-                                                <span>NIM : 214341047</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="work">
-                                    <div class="img d-flex align-items-end justify-content-center"
-                                        style="background-image: url('{{ asset('assets-guest/img/img-leader-pria.webp') }}');">
-                                        <div class="text w-100">
-                                            <span class="cat">KETUA HIMPUNAN</span>
-                                            <h3>Jefri Maulana</h3>
-                                            <span>Masa jabatan : 2015 s/d 2016</span>
-                                            <span>NIM : 210345003</span>
-                                        </div>
+                                        </a>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="item">
-                                <div class="work">
-                                    <div class="img d-flex align-items-end justify-content-center"
-                                        style="background-image: url('{{ asset('assets-guest/img/img-leader-2014-2015.webp') }}');">
-                                        <div class="text w-100">
-                                            <span class="cat">KETUA HIMPUNAN</span>
-                                            <h3>Mohamed Iqbal</h3>
-                                            <span>Masa jabatan : 2014 s/d 2015</span>
-                                            <span>NIM : 212341042</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="work">
-                                    <a href="https://www.linkedin.com/in/ngrhadimas/" target= "_blank"
-                                        class="text-light">
-                                        <div class="img d-flex align-items-end justify-content-center"
-                                            style="background-image: url('{{ asset('assets-guest/img/img-leader-2013-2014.webp') }}');">
-                                            <div class="text w-100">
-                                                <span class="cat">KETUA HIMPUNAN</span>
-                                                <h3>Dimas Nugraha</h3>
-                                                <span>Masa jabatan : 2013 s/d 2014</span>
-                                                <span>NIM : 211341007</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="work pb-4">
-                                    <a href="https://www.linkedin.com/in/adnan-maulana-07060486/" target= "_blank"
-                                        class="text-light">
-                                        <div class="img d-flex align-items-end justify-content-center"
-                                            style="background-image: url('{{ asset('assets-guest/img/img-leader-pria.webp') }}');">
-                                            <div class="text w-100">
-                                                <span class="cat">KETUA HIMPUNAN</span>
-                                                <h3>Adnan Maulana</h3>
-                                                <span>Masa jabatan : 2012 s/d 2013</span>
-                                                <span>NIM : 210345003</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="teks col pt-5 text-center">
