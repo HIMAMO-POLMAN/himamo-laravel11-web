@@ -19,7 +19,10 @@ Route::get('/prodi-d2-trmo', [HomeController::class, 'd2mekatronika'])->name('pr
 Route::get('/prodi-d4-trmo', [HomeController::class, 'd4mekatronika'])->name('prodi-d4-trmo');
 Route::get('/prodi-d4-tro', [HomeController::class, 'd4otomasi'])->name('prodi-d4-tro');
 Route::get('/prodi-d4-trin', [HomeController::class, 'd4trin'])->name('prodi-d4-trin');
+Route::get('/prodi/{slug}', [HomeController::class, 'show'])->name('prodi.show');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
+
+Route::view('/dalam-pengembangan', 'guest.development')->name('development.notice');
 
 Route::get('/ae-informasi', [GuestInformationController::class, 'index'])->name('guest.information.index');
 Route::get('/ae-informasi/detail/{informasi:slug}', [GuestInformationController::class, 'show'])->name('guest.information.detail');

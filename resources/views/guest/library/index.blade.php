@@ -1,496 +1,177 @@
 @extends('guest.layouts.app')
+
 @section('content')
+<main class="bg-zinc-50 dark:bg-slate-950 min-h-screen pt-32 pb-24 transition-colors duration-300">
+    <div class="max-w-6xl mx-auto px-6 lg:px-12">
 
-    <style>
-        /* Center the search bar horizontally */
-        .search-bar {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        /* Style for the search input */
-        .search-input {
-            border-radius: 10px 0 0 10px;
-            /* Rounded corners on the left */
-            padding: 10px;
-        }
-
-        /* Style for the search button */
-        .search-button {
-            border-radius: 0 10px 10px 0;
-            /* Rounded corners on the right */
-            padding: 10px;
-            border-left: 0;
-            /* Removes border on the left side */
-        }
-
-        .input-group {
-            width: 100%;
-        }
-
-        .input-group .form-control,
-        .input-group .btn {
-            border: 1px solid #ced4da;
-            /* Ensure consistent border style */
-        }
-
-        .input-group .btn {
-            background-color: #f8f9fa;
-            /* Light background for the button */
-        }
-
-        .input-group .form-control:focus,
-        .input-group .btn:focus {
-            box-shadow: none;
-            /* Removes default focus shadow */
-            outline: none;
-            /* Removes default focus outline */
-        }
-
-        /* Search Info and Dropdown */
-        #ae-pustaka {
-            min-height: 100vh;
-        }
-
-        @media (max-width:992px) {
-            #ae-pustaka .subject-list {
-                gap: 20px;
-            }
-        }
-
-        #ae-pustaka .search-info {
-            padding: 10px 20px;
-            border-radius: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            color: #212529;
-        }
-
-        #ae-pustaka .search-info .sort-by {
-            display: flex;
-            align-items: center;
-        }
-
-        @media (max-width: 992px) {
-            #ae-pustaka .search-info .sort-by {
-                flex-direction: column;
-                align-items: baseline;
-            }
-        }
-
-        #ae-pustaka .search-info .sort-by-text {
-            margin-right: 10px;
-            font-weight: bold;
-        }
-
-
-        .dropdown .dropdown-toggle {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            background-color: white;
-            color: black;
-            border-radius: 5px;
-            padding: 5px 10px;
-            border: 1px solid #dee2e6;
-        }
-
-        .dropdown .dropdown-toggle::after {
-            display: none;
-            /* Menyembunyikan panah dropdown bawaan */
-        }
-
-        .dropdown .dropdown-toggle i {
-            margin-left: 12px;
-        }
-
-        @media (max-width:576px) {
-            .dropdown .dropdown-menu {
-                width: 100%;
-            }
-        }
-
-        /* Book Card */
-        #ae-pustaka .book-card {
-            background-color: rgba(255, 255, 255, 0.8);
-
-            border-radius: 10px;
-            padding: 20px;
-            display: flex;
-            /* Change to flexbox layout */
-            flex-direction: row;
-            /* Arrange items horizontally */
-            justify-content: space-between;
-            align-items: center;
-            height: auto;
-            /* Adjust height to fit content */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            margin-bottom: 20px;
-        }
-
-        #ae-pustaka .book-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        @media (max-width:768px) {
-
-            #ae-pustaka .book-card>.flex-row,
-            #ae-pustaka .book-card>.align-self-end,
-            #ae-pustaka .book-card .read-button {
-                width: 100%
-            }
-
-        }
-
-        /* Book Cover */
-        #ae-pustaka .book-cover {
-            background-color: #e9ecef;
-            width: 120px;
-            /* Set fixed width for cover */
-            height: 160px;
-            /* Set fixed height for cover */
-            border-radius: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 20px;
-            /* Add space between cover and book info */
-            color: #6c757d;
-            font-weight: bold;
-            flex-shrink: 0;
-            /* Prevent image from shrinking */
-        }
-
-        /* Book Info */
-        #ae-pustaka .book-info {
-            flex: 1;
-            /* Allow the book info to take the remaining space */
-            color: #212529;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            text-align: left;
-            /* Ensure text is left-aligned */
-        }
-
-        #ae-pustaka .book-title {
-            font-weight: bold;
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        #ae-pustaka .book-title a {
-            color: black;
-        }
-
-        #ae-pustaka .book-details {
-            font-size: 14px;
-            margin-bottom: 5px;
-            color: #495057;
-            text-align: left;
-            /* Ensure details are left-aligned */
-        }
-
-        /* Read Button */
-        #ae-pustaka .read-button {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
-            text-align: center;
-            display: inline-block;
-            transition: background-color 0.3s ease;
-            align-self: flex-end;
-            width: 96px;
-            /* Align the button to the right */
-        }
-
-        @media (max-width:768px) {
-            #ae-pustaka .read-button {
-                margin-top: 30px
-            }
-        }
-
-        #ae-pustaka .read-button:hover {
-            background-color: #0056b3;
-        }
-
-        /* Container for the book cards */
-        #ae-pustaka .book-cards-container {
-            display: grid;
-            grid-template-columns: auto auto;
-            flex-wrap: wrap;
-            /* Allows items to wrap to the next row */
-            gap: 20px;
-            /* Adds space between the cards */
-            /* justify-content: space-between; */
-            /* Ensures cards are spaced evenly */
-        }
-
-        @media(max-width:992px) {
-            #ae-pustaka .book-cards-container {
-                grid-template-columns: auto;
-            }
-        }
-
-        /* Each book card */
-        #ae-pustaka .book-card {
-            background-color: white;
-            border: 1px solid #dee2e6;
-            padding: 20px;
-            /* Makes each card take 50% width with some space for the gap */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            /* Centers items vertically */
-        }
-
-        /* Adjustments for small screens */
-        @media (max-width: 768px) {
-            #ae-pustaka .book-card {
-                width: 100%;
-                /* Makes cards full width on small screens */
-            }
-        }
-    </style>
-    <a onclick="topFunction()">
-        <div id="myBtn" class="scroll-up text-center butonUP">
-            <span>
-                <i class='text-white pt-2 bx bx-up-arrow-alt'></i>
-            </span>
+        {{-- HEADER & SEARCH --}}
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+            <div class="flex-1">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white font-mono tracking-tight">
+                    AE <span class="text-teal-500">PUSTAKA</span>
+                </h1>
+                <p class="text-slate-500 dark:text-slate-400 mt-3 max-w-lg text-base">
+                    Eksplorasi koleksi modul praktikum, buku referensi, dan publikasi jurnal dari berbagai disiplin ilmu otomasi.
+                </p>
+            </div>
+            <div class="w-full md:w-80 relative group shrink-0">
+                {{-- <i class="bx bx-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl group-focus-within:text-teal-500 transition-colors"></i> --}}
+                <input type="text" placeholder="Cari pustaka..." class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 rounded-xl pl-12 pr-4 py-3 text-slate-700 dark:text-white placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 shadow-sm transition-all">
+            </div>
         </div>
-    </a>
 
-    <!-- Container Main start -->
-    <div class="wrap bg-light">
-        <div class="contain-ae-informasi">
-            <div class="container pt-4 pb-5">
-                <div class="row">
-                    <div class="col pt-4">
-                        <div class="row slider-text text-center">
-                            <h1 class="pt-5 quote"><span>AE</span> Pustaka</h1>
+        {{-- FILTER SECTION --}}
+        <div class="mb-12">
+            <h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-widest mb-4 font-mono">Kategori</h3>
+            <div class="flex flex-wrap gap-3">
+                {{-- Active Filter --}}
+                <button class="flex items-center gap-2 px-4 py-2.5 bg-teal-500 text-slate-900 font-semibold rounded-xl hover:bg-teal-400 transition-all shadow-md shadow-teal-500/30 hover:-translate-y-0.5 text-sm">
+                    <i class='bx bx-check text-lg'></i>
+                    <span>Semua Koleksi</span>
+                    <span class="ml-1 text-xs font-bold opacity-75">(18)</span>
+                </button>
+
+                {{-- Filter Buttons --}}
+                <button class="flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 font-semibold rounded-xl hover:border-cyan-500/50 hover:text-cyan-600 dark:hover:text-cyan-400 transition-all text-sm">
+                    <span class="w-2.5 h-2.5 rounded-full bg-cyan-500"></span>
+                    Seni & Lainnya (4)
+                </button>
+
+                <button class="flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 font-semibold rounded-xl hover:border-amber-500/50 hover:text-amber-600 dark:hover:text-amber-400 transition-all text-sm">
+                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                    Lifestyle (2)
+                </button>
+
+                <button class="flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 font-semibold rounded-xl hover:border-rose-500/50 hover:text-rose-600 dark:hover:text-rose-400 transition-all text-sm">
+                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+                    Novela Online (6)
+                </button>
+
+                <button class="flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 font-semibold rounded-xl hover:border-emerald-500/50 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all text-sm">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                    Bisnis (6)
+                </button>
+            </div>
+        </div>
+
+        {{-- BOOK COLLECTIONS --}}
+        <div class="space-y-4 mb-16">
+
+            {{-- Business Collection --}}
+            <a href="{{ route('library.show') }}" class="group bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-white/5 shadow-sm hover:shadow-md hover:border-teal-500/30 transition-all duration-300 block">
+                <div class="flex items-start gap-6 min-w-0">
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="w-3 h-3 rounded-full bg-teal-500 flex-shrink-0"></span>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-teal-500 transition-colors">Bisnis & Entrepreneurship</h3>
+                        </div>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mb-2 font-mono">38 Koleksi Buku</p>
+                        <p class="text-base text-slate-600 dark:text-slate-300 line-clamp-2">
+                            Panduan lengkap strategi bisnis, keuangan personal, dan pengembangan usaha di era digital modern.
+                        </p>
+                    </div>
+
+                    {{-- Overlapping Books --}}
+                    <div class="shrink-0 flex items-center justify-end -space-x-3 md:-space-x-5 w-24 md:w-28">
+                        <div class="w-9 h-13 md:w-11 md:h-16 rounded-md overflow-hidden shadow-lg border border-slate-200 dark:border-white/10 transform group-hover:scale-105 transition-transform bg-gradient-to-br from-blue-400 via-purple-500 to-pink-600 relative shrink-0">
+                            <img src="{{ asset('assets-guest/img/img-carousel-1.webp') }}" class="w-full h-full object-cover opacity-70" alt="Cover">
                         </div>
                     </div>
                 </div>
+            </a>
+
+            {{-- Art & Others Collection --}}
+            <a href="{{ route('library.show') }}" class="group bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-white/5 shadow-sm hover:shadow-md hover:border-cyan-500/30 transition-all duration-300 block">
+                <div class="flex items-start gap-6 min-w-0">
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="w-3 h-3 rounded-full bg-cyan-500 flex-shrink-0"></span>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-cyan-500 transition-colors">Seni & Lainnya</h3>
+                        </div>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mb-2 font-mono">38 Koleksi Buku</p>
+                        <p class="text-base text-slate-600 dark:text-slate-300 line-clamp-2">
+                            Eksplorasi seni digital, desain grafis, fotografi, dan berbagai medium kreatif lainnya.
+                        </p>
+                    </div>
+
+                    <div class="shrink-0 flex items-center justify-end -space-x-3 md:-space-x-5 w-24 md:w-28">
+                        <div class="w-8 h-12 md:w-10 md:h-14 rounded-md overflow-hidden shadow-md border border-slate-200 dark:border-white/10 transform -rotate-12 scale-90 opacity-50 bg-gradient-to-br from-slate-400 to-slate-600 shrink-0"></div>
+                        <div class="w-8 h-12 md:w-10 md:h-14 rounded-md overflow-hidden shadow-md border border-slate-200 dark:border-white/10 transform -rotate-6 scale-95 opacity-70 bg-gradient-to-br from-slate-500 to-slate-700 shrink-0"></div>
+                        <div class="w-9 h-13 md:w-11 md:h-16 rounded-md overflow-hidden shadow-lg border border-slate-200 dark:border-white/10 transform group-hover:scale-105 transition-transform bg-gradient-to-br from-blue-400 via-purple-500 to-pink-600 relative shrink-0">
+                            <img src="{{ asset('assets-guest/img/img-carousel-1.webp') }}" class="w-full h-full object-cover opacity-70" alt="Cover">
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            {{-- Lifestyle Collection --}}
+            <a href="{{ route('library.show') }}" class="group bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-white/5 shadow-sm hover:shadow-md hover:border-amber-500/30 transition-all duration-300 block">
+                <div class="flex items-start gap-6 min-w-0">
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="w-3 h-3 rounded-full bg-amber-500 flex-shrink-0"></span>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-amber-500 transition-colors">Lifestyle & Self-Development</h3>
+                        </div>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mb-2 font-mono">17 Koleksi Buku</p>
+                        <p class="text-base text-slate-600 dark:text-slate-300 line-clamp-2">
+                            Panduan habit building, produktivitas, kesehatan mental, dan perjalanan personal development.
+                        </p>
+                    </div>
+
+                    <div class="shrink-0 flex items-center justify-end -space-x-3 md:-space-x-5 w-24 md:w-28">
+                        <div class="w-8 h-12 md:w-10 md:h-14 rounded-md overflow-hidden shadow-md border border-slate-200 dark:border-white/10 transform -rotate-12 scale-90 opacity-50 bg-gradient-to-br from-slate-400 to-slate-600 shrink-0"></div>
+                        <div class="w-8 h-12 md:w-10 md:h-14 rounded-md overflow-hidden shadow-md border border-slate-200 dark:border-white/10 transform -rotate-6 scale-95 opacity-70 bg-gradient-to-br from-slate-500 to-slate-700 shrink-0"></div>
+                        <div class="w-9 h-13 md:w-11 md:h-16 rounded-md overflow-hidden shadow-lg border border-slate-200 dark:border-white/10 transform group-hover:scale-105 transition-transform bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-600 relative shrink-0">
+                            <div class="absolute inset-0 flex items-center justify-center text-white text-[8px] md:text-[9px] font-bold p-1 text-center leading-tight">ATOMIC</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            {{-- Online Novel Collection --}}
+            <a href="{{ route('library.show') }}" class="group bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-white/5 shadow-sm hover:shadow-md hover:border-rose-500/30 transition-all duration-300 block">
+                <div class="flex items-start gap-6 min-w-0">
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="w-3 h-3 rounded-full bg-rose-500 flex-shrink-0"></span>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-rose-500 transition-colors">Novela & Fiksi Online</h3>
+                        </div>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mb-2 font-mono">12 Koleksi Buku</p>
+                        <p class="text-base text-slate-600 dark:text-slate-300 line-clamp-2">
+                            Koleksi cerita fiksi, romance, fantasy, dan adventure dari penulis lokal dan internasional.
+                        </p>
+                    </div>
+
+                    <div class="shrink-0 flex items-center justify-end -space-x-3 md:-space-x-5 w-24 md:w-28">
+                        <div class="w-8 h-12 md:w-10 md:h-14 rounded-md overflow-hidden shadow-md border border-slate-200 dark:border-white/10 transform -rotate-12 scale-90 opacity-50 bg-gradient-to-br from-slate-400 to-slate-600 shrink-0"></div>
+                        <div class="w-8 h-12 md:w-10 md:h-14 rounded-md overflow-hidden shadow-md border border-slate-200 dark:border-white/10 transform -rotate-6 scale-95 opacity-70 bg-gradient-to-br from-slate-500 to-slate-700 shrink-0"></div>
+                        <div class="w-9 h-13 md:w-11 md:h-16 rounded-md overflow-hidden shadow-lg border border-slate-200 dark:border-white/10 transform group-hover:scale-105 transition-transform bg-gradient-to-br from-rose-400 via-orange-400 to-amber-500 relative shrink-0">
+                            <div class="absolute inset-0 flex items-center justify-center text-white text-[6px] md:text-[7px] font-bold p-1 text-center leading-tight">AS LONG</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+
+        {{-- FEATURED COLLECTIONS --}}
+        <div class="pt-12 border-t border-slate-200 dark:border-white/5">
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-8 font-mono">Penambahan Terbaru</h3>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+                @for ($i = 0; $i < 5; $i++)
+                <a href="{{ route('library.show') }}" class="group flex flex-col">
+                    <div class="aspect-[3/4] rounded-xl overflow-hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-sm group-hover:shadow-lg group-hover:border-teal-500/50 transition-all duration-300 relative mb-3 flex items-center justify-center">
+                        <div class="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/10 transition-colors z-10"></div>
+                        <img src="{{ asset('assets-guest/img/img-carousel-1.webp') }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Cover Modul">
+                    </div>
+                    <h4 class="text-sm font-bold text-slate-900 dark:text-white leading-snug group-hover:text-teal-500 line-clamp-2 transition-colors">Praktik Digital & Mikrokontroler</h4>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 line-clamp-1 font-mono">Koleksi TRO</p>
+                </a>
+                @endfor
             </div>
         </div>
+
     </div>
-
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <section id="ae-pustaka" class="about">
-        <div class=" justify-content-center search-bar">
-            <div class="d-flex justify-content-center">
-                <div class="input-group mb-3 input-search">
-                    <input type="text" class="form-control bg-light text-dark search-input" placeholder="Search"
-                        aria-label="Search">
-                    <button class="btn btn-primary search-button" type="button" id="button-addon2">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M19 19L14.65 14.65M17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 4.58172 4.58172 1 9 1C13.4183 1 17 4.58172 17 9Z"
-                                stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- dropdown -->
-        <div class="container">
-            <div class="row pt-5">
-                <div class="col-12">
-                    <div class="search-info">
-                        <div class="text-dark search-text">Ditemukan 1XX pencarian Anda melalui kata kunci: (Nama
-                            Subjek/Pencarian)
-                        </div>
-                        <div class="sort-by d-flex flex-column flex-lg-row align-items-left align-items-lg-center">
-                            <div class="sort-by-text text-dark mb-2">Pilih berdasarkan :</div>
-                            <div class="dropdown">
-                                <button class="btn dropdown-toggle bg-light text-dark" type="button"
-                                    id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Paling Relevan <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" id="down" width="20" height="20" x="0" y="0" version="1.1" viewBox="0 0 64 64" class="ms-4">
-                                        <path d="M48.293 23.293L32 39.586 15.707 23.293l-1.414 1.561 17 17.146h1.414l17-17.146z"></path>
-                                      </svg>
-                                </button>
-                                <ul class="dropdown-menu bg-light" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item text-dark border-bottom border-gray-600 border-2 " href="#">
-                                        <li>Paling Relevan</li>
-                                    </a>
-                                    <a class="dropdown-item text-dark border-bottom border-gray-600 border-2" href="#">
-                                        <li>Terbaru</li>
-                                    </a>
-                                    <a class="dropdown-item text-dark border-bottom border-gray-600 border-2" href="#">
-                                        <li>Sering Dibaca</li>
-                                    </a>
-                                    <a class="dropdown-item text-dark border-bottom border-gray-600 border-2" href="#">
-                                        <li>Tahun terbit (terbaru)</li>
-                                    </a>
-                                    <a class="dropdown-item text-dark" href="#">
-                                        <li>Tahun terbit (terlama)</li>
-                                    </a>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Books Section -->
-            <!-- Loop through books and create cards dynamically -->
-            <div class="book-cards-container">
-                <div class="book-card bg-light text-dark d-flex flex-column flex-md-row">
-                    <div class="d-flex flex-row">
-                        <div class="book-cover">COVER BUKU</div>
-                        <div class="book-info">
-                            <div class="book-title"><a class="text-dark" href="book-detail.html">Judul Buku</a></div>
-                            <div class="book-details text-dark">Penulis : Lorem Ipsum</div>
-                            <div class="book-details text-dark">Jenis Koleksi : Lorem Ipsum</div>
-                            <div class="book-details text-dark">Jumlah Hal : 1XX</div>
-                            <div class="book-details text-dark">Tahun Terbit : 20XX</div>
-                        </div>
-                    </div>
-                    <div class="align-self-end">
-                        <a href="/library/details" class="btn btn-primary read-button">Baca</a>
-                    </div>
-                </div>
-                <div class="book-card bg-light text-dark d-flex flex-column flex-md-row">
-                    <div class="d-flex flex-row">
-                        <div class="book-cover">COVER BUKU</div>
-                        <div class="book-info">
-                            <div class="book-title"><a class="text-dark" href="book-detail.html">Judul Buku</a></div>
-                            <div class="book-details text-dark">Penulis : Lorem Ipsum</div>
-                            <div class="book-details text-dark">Jenis Koleksi : Lorem Ipsum</div>
-                            <div class="book-details text-dark">Jumlah Hal : 1XX</div>
-                            <div class="book-details text-dark">Tahun Terbit : 20XX</div>
-                        </div>
-                    </div>
-                    <div class="align-self-end">
-                        <a href="/library/details" class="btn btn-primary read-button">Baca</a>
-                    </div>
-                </div>
-                <div class="book-card bg-light text-dark d-flex flex-column flex-md-row">
-                    <div class="d-flex flex-row">
-                        <div class="book-cover">COVER BUKU</div>
-                        <div class="book-info">
-                            <div class="book-title"><a class="text-dark" href="book-detail.html">Judul Buku</a></div>
-                            <div class="book-details text-dark">Penulis : Lorem Ipsum</div>
-                            <div class="book-details text-dark">Jenis Koleksi : Lorem Ipsum</div>
-                            <div class="book-details text-dark">Jumlah Hal : 1XX</div>
-                            <div class="book-details text-dark">Tahun Terbit : 20XX</div>
-                        </div>
-                    </div>
-                    <div class="align-self-end">
-                        <a href="/library/details" class="btn btn-primary read-button">Baca</a>
-                    </div>
-                </div>
-                <div class="book-card bg-light text-dark d-flex flex-column flex-md-row">
-                    <div class="d-flex flex-row">
-                        <div class="book-cover">COVER BUKU</div>
-                        <div class="book-info">
-                            <div class="book-title"><a class="text-dark" href="book-detail.html">Judul Buku</a></div>
-                            <div class="book-details text-dark">Penulis : Lorem Ipsum</div>
-                            <div class="book-details text-dark">Jenis Koleksi : Lorem Ipsum</div>
-                            <div class="book-details text-dark">Jumlah Hal : 1XX</div>
-                            <div class="book-details text-dark">Tahun Terbit : 20XX</div>
-                        </div>
-                    </div>
-                    <div class="align-self-end">
-                        <a href="/library/details" class="btn btn-primary read-button">Baca</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        </div>
-
-    </section>
+</main>
 @endsection
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
-
-    </div>
-    <!--Container Main end-->
-    <!--jquery-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-        integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!--gsap-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
-    <!-- js gue -->
-    <script type='text/javascript' src='js/main.js'></script>
-    <script src="js/dark-mode-switch.min.js"></script>
-    <!--owlcarousel-->
-    <script type='text/javascript' src='js/owl.carousel.min.js'></script>
-    <!-- bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
-    <script></script>
-    <script>
-        //switch 2 mode
-        var moon = document.querySelector('.btn-moon');
-        var sun = document.querySelector('.btn-sun');
-
-        document.getElementById("darkSwitch").addEventListener("click", function() {
-            moon.classList.toggle('d-none');
-            sun.classList.toggle('d-none');
-        });
-    </script>
-    <script>
-        // account settings
-        var user_button = document.querySelector('.bxs-user-circle');
-        var settings_account = document.querySelector('.settings_account');
-
-        user_button.addEventListener("click", function() {
-            settings_account.classList.toggle('d-none');
-        })
-    </script>
-    <script>
-        document.querySelector('#dropdownMenuButton').addEventListener('click', function() {
-            const icon = this.querySelector('i');
-            icon.classList.toggle('fa-chevron-down');
-            icon.classList.toggle('fa-chevron-up');
-        });
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const dropdownButton = document.getElementById('dropdownMenuButton');
-            const dropdownMenu = dropdownButton
-            .nextElementSibling; // Mengambil elemen <ul> yang merupakan menu dropdown
-
-            // Menangani klik pada tombol dropdown
-            dropdownButton.addEventListener('click', function(event) {
-                event.stopPropagation(); // Mencegah event bubbling
-                dropdownButton.classList.toggle('show');
-                dropdownMenu.classList.toggle('show'); // Tambahkan atau hapus kelas 'show'
-            });
-
-            // Menangani klik di luar dropdown untuk menutupnya
-            document.addEventListener('click', function() {
-                if (dropdownMenu.classList.contains('show')) {
-                    dropdownMenu.classList.remove('show'); // Hapus kelas 'show' jika ada
-                }
-            });
-        });
-    </script>
-    <script>
-        $(window).scroll(function() {
-            var scroll = $(window).scrollTop();
-            if (scroll > 20) {
-                document.getElementById("header").classList.add('bg-light');
-            } else {
-                document.getElementById("header").classList.remove('bg-light');
-            }
-        });
-    </script>
-    {{-- </body>
-
-</html> --}}

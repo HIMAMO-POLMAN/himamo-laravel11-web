@@ -1,40 +1,38 @@
-@include('guest.layouts.header')
-<body onload="load()" id="body-pd">
-    <div id="app">
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        @include('guest.layouts.navbar')
-        <a onclick="topFunction()">
-            <div id="myBtn" class="scroll-up text-center butonUP">
-                <span>
-                    <i class='text-white pt-2 bx bx-up-arrow-alt'></i>
-                </span>
-            </div>
-        </a>
-        @include('guest.layouts.footer')
+    <title>{{ config('app.name', 'HIMAMO') }} | Himpunan Mahasiswa Otomasi Manufaktur & Mekatronika</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+<body class="bg-zinc-50 dark:bg-slate-950 text-slate-800 dark:text-slate-300 font-sans transition-colors duration-300 antialiased selection:bg-teal-500/30">
+
+    @include('guest.layouts.partials.navbar')
+
+    <div class="min-h-screen">
+        @yield('content')
     </div>
 
-    {{-- Scripts --}}
+    @include('guest.layouts.partials.footer')
 
-    {{-- jQuery --}}
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
-
-    {{-- GSAP --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js" defer></script>
-
-    {{-- Custom JS --}}
-    <script src="{{ asset('assets-guest/js/main.js') }}" defer></script>
-    <script src="{{ asset('assets-guest/js/dark-mode-switch.min.js') }}" defer></script>
-
-
-    {{-- Owl Carousel --}}
-    <script type='text/javascript' src="{{ asset('assets-guest/js/owl.carousel.min.js') }}"></script>
-
-    {{-- Bootstrap --}}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" defer></script>
-
-    {{-- Additional Scripts --}}
     @stack('scripts')
 </body>
 </html>
