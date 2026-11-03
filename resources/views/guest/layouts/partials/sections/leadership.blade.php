@@ -19,31 +19,43 @@
         <div class="flex overflow-x-auto scrollbar-none snap-x snap-mandatory gap-6 pb-6">
 
             @forelse ($leaders as $leader)
-                <div
-                    class="w-[280px] md:w-[320px] flex-shrink-0 snap-start bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/5 p-6 rounded-2xl relative overflow-hidden group shadow-sm">
-                    <div class="w-full h-48 bg-slate-100 dark:bg-slate-950 rounded-xl overflow-hidden mb-4 relative">
-                        {{-- Ilustrasi Pengganti Jika Gambar Kosong/Mati --}}
-                        <div
-                            class="absolute inset-0 flex items-center justify-center text-slate-300 dark:text-slate-800">
-                            <i class='bx bx-user-circle text-7xl'></i>
+                @php($cardClasses = "w-[280px] md:w-[320px] flex-shrink-0 snap-start bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/5 p-6 rounded-2xl relative isolate overflow-visible group shadow-sm transition-transform duration-300 ease-out hover:scale-105 hover:z-20 hover:shadow-[0_0_24px_rgba(127,255,212,0.35)] before:absolute before:-inset-2 before:-z-10 before:rounded-2xl before:bg-[#7fffd4] before:opacity-0 before:blur-xl before:transition-opacity before:duration-300 before:content-[''] group-hover:before:opacity-80")
+                @if ($leader->linkedin)
+                    <a href="{{ $leader->linkedin }}" target="_blank" rel="noopener noreferrer"
+                        aria-label="Lihat profil LinkedIn {{ $leader->name }}"
+                        class="{{ $cardClasses }} focus-visible:scale-105 focus-visible:z-20">
+                @else
+                    <div class="{{ $cardClasses }}">
+                @endif
+                    <div class="relative z-10">
+                        <div class="w-full h-48 bg-slate-100 dark:bg-slate-950 rounded-xl overflow-hidden mb-4 relative">
+                            {{-- Ilustrasi Pengganti Jika Gambar Kosong/Mati --}}
+                            <div
+                                class="absolute inset-0 flex items-center justify-center text-slate-300 dark:text-slate-800">
+                                <i class='bx bx-user-circle text-7xl'></i>
+                            </div>
+                            <img src="{{ $leader->image_url }}" alt="{{ $leader->name }}"
+                                class="w-full h-full object-cover relative z-10" onerror="this.style.opacity='0'">
                         </div>
-                        <img src="{{ $leader->image_url }}" alt="{{ $leader->name }}"
-                            class="w-full h-full object-cover relative z-10" onerror="this.style.opacity='0'">
-                    </div>
-                    <span class="text-[10px] font-bold text-teal-500 tracking-widest uppercase block mb-1">
-                        {{ $leader->position }}
-                    </span>
-                    <h3 class="text-lg font-bold text-slate-900 dark:text-white font-mono line-clamp-1">
-                        {{ $leader->name }}</h3>
+                        <span class="text-[10px] font-bold text-teal-500 tracking-widest uppercase block mb-1">
+                            {{ $leader->position }}
+                        </span>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white font-mono line-clamp-1">
+                            {{ $leader->name }}</h3>
 
-                    <div
-                        class="mt-4 pt-4 border-t border-slate-100 dark:border-white/5 space-y-1 text-xs text-slate-500 dark:text-slate-400 font-mono">
-                        <p>Periode: {{ $leader->period_start }} s/d {{ $leader->period_end }}</p>
-                        @if ($leader->nim)
-                            <p>NIM: {{ $leader->nim }}</p>
-                        @endif
+                        <div
+                            class="mt-4 pt-4 border-t border-slate-100 dark:border-white/5 space-y-1 text-xs text-slate-500 dark:text-slate-400 font-mono">
+                            <p>Periode: {{ $leader->period_start }} s/d {{ $leader->period_end }}</p>
+                            @if ($leader->nim)
+                                <p>NIM: {{ $leader->nim }}</p>
+                            @endif
+                        </div>
                     </div>
-                </div>
+                @if ($leader->linkedin)
+                    </a>
+                @else
+                    </div>
+                @endif
             @empty
                 <div class="w-full rounded-2xl border border-dashed border-slate-300 dark:border-white/10 bg-white/70 dark:bg-slate-900/50 px-6 py-12 text-center">
                     <i class='bx bx-info-circle text-4xl text-teal-500'></i>

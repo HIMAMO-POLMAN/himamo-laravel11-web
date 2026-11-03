@@ -48,6 +48,11 @@
                     </div>
                 </div>
             </div>
+
+            <a href="{{ route('merchandise.index') }}"
+                class="rounded-xl bg-teal-500 px-4 py-2.5 font-bold text-slate-950 transition-colors hover:bg-teal-400">
+                Merchandise
+            </a>
         </nav>
 
         <div class="flex items-center gap-4">
@@ -74,6 +79,10 @@
             Hub</a>
         <a href="#prodi-gateway" class="font-medium text-slate-700 dark:text-slate-300 hover:text-teal-500">Program
             Studi</a>
+        <a href="{{ route('merchandise.index') }}"
+            class="inline-flex items-center justify-center rounded-xl bg-teal-500 px-4 py-3 font-bold text-slate-950 transition-colors hover:bg-teal-400">
+            Merchandise
+        </a>
 
         <div class="pt-4 border-t border-slate-100 dark:border-white/5 flex flex-col gap-4">
             <span class="text-xs font-bold text-slate-400 uppercase tracking-widest font-mono">Tentang Kami</span>

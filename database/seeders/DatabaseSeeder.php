@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
             InformationCategoriesSeeder::class,
             LibraryCollectionsSeeder::class,
             LibrariesSeeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            LeaderSeeder::class,
 
         ]);
     }

@@ -28,6 +28,10 @@ class Leader extends Model
     public function getImageUrlAttribute(): string
     {
         if ($this->image) {
+            if (str_starts_with($this->image, 'assets-guest/')) {
+                return asset($this->image);
+            }
+
             return asset('storage/' . $this->image);
         }
 

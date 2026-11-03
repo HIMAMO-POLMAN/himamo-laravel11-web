@@ -14,6 +14,7 @@ use App\Http\Controllers\Dashboard\LibraryCollectionController;
 use App\Http\Controllers\Dashboard\LeaderController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::view('/merchandise', 'katalog.merchandise')->name('merchandise.index');
 Route::get('/kontak', [ContactController::class, 'index'])->name('contact');
 Route::get('/prodi-d2-trmo', [HomeController::class, 'd2mekatronika'])->name('prodi-d2-trmo');
 Route::get('/prodi-d4-trmo', [HomeController::class, 'd4mekatronika'])->name('prodi-d4-trmo');
