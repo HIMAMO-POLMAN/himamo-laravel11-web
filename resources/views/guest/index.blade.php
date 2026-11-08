@@ -99,6 +99,8 @@
             </div>
         </section>
 
+        @include('guest.components.kalender')
+
         <section id="ae-pustaka" class="ae-pustaka">
 
             <div class="container pb-3">

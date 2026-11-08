@@ -1,0 +1,224 @@
+
+/* =================================
+   KALENDER KEGIATAN HIMAMO
+================================= */
+
+.kalender-section {
+    padding: 70px 0;
+    background-color: #f8faf9;
+    color: #202b27;
+}
+
+/* Judul */
+
+.kalender-section .kalender-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.kalender-section .kalender-header h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.kalender-section .kalender-header p {
+    color: #6b7771;
+    font-size: 15px;
+    margin-bottom: 0;
+}
+
+/* Navigasi Bulan */
+
+.kalender-section .kalender-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.kalender-section .kalender-month h3 {
+    font-size: 23px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.kalender-section .kalender-navigation-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.kalender-section .kalender-navigation-button button {
+    min-width: 40px;
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid #dce4df;
+    border-radius: 8px;
+    background-color: white;
+    color: #263b30;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.kalender-section .kalender-navigation-button button:hover {
+    background-color: #16834c;
+    border-color: #16834c;
+    color: white;
+}
+
+/* Pembungkus Kalender */
+
+.kalender-section .kalender-wrapper {
+    overflow: hidden;
+    background-color: white;
+    border: 1px solid #e2e9e4;
+    border-radius: 12px;
+}
+
+/* Nama Hari */
+
+.kalender-section .kalender-hari {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    background-color: #f0f5f1;
+    border-bottom: 1px solid #e2e9e4;
+}
+
+.kalender-section .kalender-hari div {
+    padding: 15px 5px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: #40564a;
+}
+
+/* Area Tanggal */
+
+.kalender-section .kalender-tanggal {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+/* Kotak Tanggal */
+
+.kalender-section .kalender-cell {
+    min-height: 120px;
+    padding: 10px;
+    border-right: 1px solid #edf1ee;
+    border-bottom: 1px solid #edf1ee;
+    background-color: white;
+}
+
+.kalender-section .kalender-cell:nth-child(7n) {
+    border-right: none;
+}
+
+/* Nomor Tanggal */
+
+.kalender-section .tanggal-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    margin-bottom: 7px;
+    border-radius: 50%;
+    font-size: 13px;
+    color: #34443a;
+}
+
+/* Tanggal di luar bulan aktif */
+
+.kalender-section .kalender-cell.luar-bulan {
+    background-color: #fafcfb;
+}
+
+.kalender-section .kalender-cell.luar-bulan .tanggal-number {
+    color: #b5beb8;
+}
+
+/* Tanggal Hari Ini */
+
+.kalender-section .tanggal-number.hari-ini {
+    background-color: #16834c;
+    color: white;
+    font-weight: 700;
+}
+
+/* Kegiatan */
+
+.kalender-section .kegiatan-item {
+    display: block;
+    margin-bottom: 4px;
+    padding: 5px 7px;
+    border-radius: 5px;
+    background-color: #e1f1e6;
+    color: #21633c;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Kegiatan yang sedang berlangsung */
+
+.kalender-section .kegiatan-item.berlangsung {
+    background-color: #dce8fa;
+    color: #24528a;
+}
+
+/* Kegiatan yang sudah selesai */
+
+.kalender-section .kegiatan-item.selesai {
+    background-color: #eeeeee;
+    color: #666666;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .kalender-section {
+        padding: 45px 0;
+    }
+
+    .kalender-section .kalender-header h2 {
+        font-size: 26px;
+    }
+
+    .kalender-section .kalender-navigation {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .kalender-section .kalender-month h3 {
+        font-size: 21px;
+    }
+
+    .kalender-section .kalender-wrapper {
+        overflow-x: auto;
+    }
+
+    .kalender-section .kalender-hari,
+    .kalender-section .kalender-tanggal {
+        min-width: 700px;
+    }
+
+    .kalender-section .kalender-cell {
+        min-height: 100px;
+        padding: 6px;
+    }
+
+    .kalender-section .kalender-hari div {
+        padding: 12px 4px;
+    }
+
+    .kalender-section .kegiatan-item {
+        font-size: 10px;
+    }
+}
