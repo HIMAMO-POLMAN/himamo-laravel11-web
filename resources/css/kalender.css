@@ -666,3 +666,156 @@
 }
 
 
+/* =================================
+   TIMELINE GANTT CHART
+================================= */
+
+.kalender-section .timeline-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.kalender-section .timeline-navigation h3 {
+    margin: 0;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.kalender-section .timeline-navigation-button {
+    display: flex;
+    gap: 8px;
+}
+
+.kalender-section .timeline-navigation-button button {
+    min-width: 40px;
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid #dce4df;
+    border-radius: 8px;
+    background: white;
+    color: #263b30;
+    cursor: pointer;
+}
+
+.kalender-section .timeline-navigation-button button:hover {
+    background: #16834c;
+    color: white;
+}
+
+.kalender-section .timeline-kegiatan {
+    overflow-x: auto;
+    background: white;
+    border: 1px solid #e2e9e4;
+    border-radius: 10px;
+}
+
+.kalender-section .timeline-grid {
+    display: grid;
+    min-width: max-content;
+}
+
+.kalender-section .timeline-header-judul {
+    position: sticky;
+    left: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background: #f0f5f1;
+    border-right: 1px solid #e2e9e4;
+    border-bottom: 1px solid #e2e9e4;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.kalender-section .timeline-header-tanggal {
+    padding: 12px 2px;
+    text-align: center;
+    background: #f0f5f1;
+    border-bottom: 1px solid #e2e9e4;
+    border-right: 1px solid #e2e9e4;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.kalender-section .timeline-row {
+    min-height: 65px;
+    border-bottom: 1px solid #edf1ee;
+}
+
+.kalender-section .timeline-row-judul {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background: white;
+    border-right: 1px solid #e2e9e4;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.kalender-section .timeline-track {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(
+        var(--jumlah-hari, 30),
+        minmax(28px, 1fr)
+    );
+    min-height: 65px;
+    grid-row: 1;
+}
+
+.kalender-section .timeline-track-cell {
+    border-right: 1px solid #edf1ee;
+}
+
+.kalender-section .timeline-bar {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    height: 27px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    padding: 0 7px;
+    border-radius: 5px;
+    background: #e1f1e6;
+    color: #21633c;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.kalender-section .timeline-bar.berlangsung {
+    background: #dce8fa;
+    color: #24528a;
+}
+
+.kalender-section .timeline-bar.selesai {
+    background: #eeeeee;
+    color: #666666;
+}
+
+.kalender-section .timeline-bar:hover {
+    filter: brightness(0.95);
+}
+
+@media (max-width: 768px) {
+    .kalender-section .timeline-navigation {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+
+

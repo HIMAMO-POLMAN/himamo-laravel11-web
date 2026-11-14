@@ -61,6 +61,9 @@ function initKalender() {
 
     let bulanAktif = hariIni.getMonth();
     let tahunAktif = hariIni.getFullYear();
+    // Bulan aktif untuk Timeline
+    let bulanTimeline = hariIni.getMonth();
+    let tahunTimeline = hariIni.getFullYear();
 
     const namaBulanIndonesia = [
         'Januari', 'Februari', 'Maret',
@@ -278,86 +281,177 @@ function initKalender() {
     // 9. MENAMPILKAN TIMELINE
     // =====================================
 
+   
     function tampilkanTimeline() {
 
         const kegiatan = ambilKegiatanTerfilter();
 
+        const namaBulanTimeline = document.getElementById(
+            'namaBulanTimeline'
+        );
+
         timelineKegiatanHTML.innerHTML = '';
 
-        if (kegiatan.length === 0) {
+        const jumlahHari = new Date(
+            tahunTimeline,
+            bulanTimeline + 1,
+            0
+        ).getDate();
 
-            timelineKegiatanHTML.innerHTML = `
-                <div class="kegiatan-kosong">
-                    Tidak ada kegiatan yang ditemukan.
-                </div>
-            `;
+        const awalBulan = new Date(
+            tahunTimeline,
+            bulanTimeline,
+            1
+        );
+
+        const akhirBulan = new Date(
+            tahunTimeline,
+            bulanTimeline,
+            jumlahHari
+        );
+
+        namaBulanTimeline.textContent =
+            `${namaBulanIndonesia[bulanTimeline]} ${tahunTimeline}`;
+
+        // Header tanggal
+        const header = document.createElement('div');
+        header.classList.add('timeline-grid');
+
+        header.style.gridTemplateColumns =
+            `180px repeat(${jumlahHari}, minmax(28px, 1fr))`;
+
+        const kolomJudul = document.createElement('div');
+        kolomJudul.classList.add('timeline-header-judul');
+        kolomJudul.textContent = 'Kegiatan';
+
+        header.appendChild(kolomJudul);
+
+        for (let i = 1; i <= jumlahHari; i++) {
+
+            const kolom = document.createElement('div');
+            kolom.classList.add('timeline-header-tanggal');
+            kolom.textContent = i;
+
+            header.appendChild(kolom);
+        }
+
+        timelineKegiatanHTML.appendChild(header);
+
+        // Filter kegiatan yang bersinggungan dengan bulan aktif
+        const kegiatanBulan = kegiatan.filter(function (item) {
+
+            const mulai = new Date(item.tanggal_mulai + 'T00:00:00');
+            const selesai = new Date(
+                ambilTanggalSelesai(item) + 'T00:00:00'
+            );
+
+            return mulai <= akhirBulan && selesai >= awalBulan;
+
+        });
+
+        if (kegiatanBulan.length === 0) {
+
+            const kosong = document.createElement('div');
+            kosong.classList.add('kegiatan-kosong');
+            kosong.textContent =
+                'Tidak ada kegiatan pada bulan ini.';
+
+            timelineKegiatanHTML.appendChild(kosong);
 
             return;
         }
 
-        kegiatan.forEach(function (item) {
+        // Membuat baris setiap kegiatan
+        kegiatanBulan.forEach(function (item) {
 
-            const timelineItem = document.createElement('div');
+            const baris = document.createElement('div');
+            baris.classList.add('timeline-grid', 'timeline-row');
 
-            timelineItem.classList.add('timeline-item');
-            timelineItem.dataset.id = item.id;
-            timelineItem.style.cursor = 'pointer';
+            baris.style.gridTemplateColumns =
+                `180px repeat(${jumlahHari}, minmax(28px, 1fr))`;
 
-            const tanggalMulai = formatTanggalIndonesia(
-                item.tanggal_mulai
+            // Nama kegiatan
+            const judul = document.createElement('div');
+            judul.classList.add('timeline-row-judul');
+            judul.textContent = item.judul;
+            judul.title = item.judul;
+
+            baris.appendChild(judul);
+
+            // Area tanggal
+            const area = document.createElement('div');
+            area.classList.add('timeline-track');
+
+            area.style.gridTemplateColumns =
+                `repeat(${jumlahHari}, minmax(28px, 1fr))`;
+
+            area.style.gridColumn = `2 / ${jumlahHari + 2}`;
+
+            // Garis pembatas setiap tanggal
+            for (let i = 1; i <= jumlahHari; i++) {
+
+                const garis = document.createElement('div');
+                garis.classList.add('timeline-track-cell');
+
+                area.appendChild(garis);
+            }
+
+            // Menghitung posisi batang kegiatan
+            const mulai = new Date(item.tanggal_mulai + 'T00:00:00');
+
+            const selesai = new Date(
+                ambilTanggalSelesai(item) + 'T00:00:00'
             );
 
-            const tanggalSelesai = formatTanggalIndonesia(
-                ambilTanggalSelesai(item)
-            );
+            const tanggalMulai = mulai < awalBulan
+                ? 1
+                : mulai.getDate();
+
+            const tanggalSelesai = selesai > akhirBulan
+                ? jumlahHari
+                : selesai.getDate();
+
+            const posisiKiri =
+                ((tanggalMulai - 1) / jumlahHari) * 100;
+
+            const lebar =
+                ((tanggalSelesai - tanggalMulai + 1) / jumlahHari) * 100;
+
+            // Batang kegiatan
+            const batang = document.createElement('div');
+            batang.classList.add('timeline-bar');
+
+            batang.style.left = `${posisiKiri}%`;
+            batang.style.width = `${lebar}%`;
+
+            batang.textContent = item.judul;
+            batang.title =
+                `${item.judul}: ${formatTanggalIndonesia(item.tanggal_mulai)} - ${formatTanggalIndonesia(ambilTanggalSelesai(item))}`;
+
+            batang.dataset.id = item.id;
 
             const status = tentukanStatus(item);
 
-            timelineItem.innerHTML = `
-                <div class="timeline-tanggal">
-                    ${tanggalMulai}
-                </div>
+            if (status === 'Berlangsung') {
+                batang.classList.add('berlangsung');
+            } else if (status === 'Selesai') {
+                batang.classList.add('selesai');
+            }
 
-                <div class="timeline-isi">
+            area.appendChild(batang);
 
-                    <span class="kegiatan-kategori">
-                        ${item.kategori || 'Belum dikategorikan'}
-                    </span>
+            baris.appendChild(area);
 
-                    <span class="kegiatan-status ${status.toLowerCase().replace(' ', '-')}">
-                        ${status}
-                    </span>
+            // ID untuk membuka modal detail
+            baris.dataset.id = item.id;
+            baris.style.cursor = 'pointer';
 
-                    <h3></h3>
-
-                    <p class="timeline-deskripsi"></p>
-
-                    <div class="timeline-detail">
-                        <span>
-                            Durasi: ${tanggalMulai}
-                            ${tanggalMulai !== tanggalSelesai
-                                ? ' - ' + tanggalSelesai
-                                : ''}
-                        </span>
-
-                        <span class="timeline-lokasi"></span>
-                    </div>
-
-                </div>
-            `;
-
-            timelineItem.querySelector('h3').textContent = item.judul;
-
-            timelineItem.querySelector('.timeline-deskripsi').textContent =
-                item.deskripsi || 'Tidak ada deskripsi kegiatan.';
-
-            timelineItem.querySelector('.timeline-lokasi').textContent =
-                item.lokasi ? '📍 ' + item.lokasi : '';
-
-            timelineKegiatanHTML.appendChild(timelineItem);
+            timelineKegiatanHTML.appendChild(baris);
 
         });
+
     }
+
 
     // =====================================
     // 10. MENAMPILKAN KALENDER
@@ -615,6 +709,59 @@ function initKalender() {
 
         });
     }
+
+
+    // =====================================
+    // NAVIGASI BULAN TIMELINE
+    // =====================================
+
+    const timelineSebelumnya = document.getElementById(
+        'timelineBulanSebelumnya'
+    );
+
+    const timelineBerikutnya = document.getElementById(
+        'timelineBulanBerikutnya'
+    );
+
+    const timelineHariIni = document.getElementById(
+        'timelineBulanSekarang'
+    );
+
+    timelineSebelumnya.addEventListener('click', function () {
+
+        bulanTimeline--;
+
+        if (bulanTimeline < 0) {
+            bulanTimeline = 11;
+            tahunTimeline--;
+        }
+
+        tampilkanTimeline();
+
+    });
+
+    timelineBerikutnya.addEventListener('click', function () {
+
+        bulanTimeline++;
+
+        if (bulanTimeline > 11) {
+            bulanTimeline = 0;
+            tahunTimeline++;
+        }
+
+        tampilkanTimeline();
+
+    });
+
+    timelineHariIni.addEventListener('click', function () {
+
+        bulanTimeline = hariIni.getMonth();
+        tahunTimeline = hariIni.getFullYear();
+
+        tampilkanTimeline();
+
+    });
+
 
     // =====================================
     // 12. EVENT FILTER DAN PENCARIAN

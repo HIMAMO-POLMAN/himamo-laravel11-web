@@ -63,16 +63,38 @@
 
         </div>
 
-        {{-- Tampilan Timeline --}}
+        
         <div id="tampilanTimeline"
             class="tampilan-content"
             hidden>
+
+            {{-- Navigasi Bulan Timeline --}}
+            <div class="timeline-navigation">
+
+                <h3 id="namaBulanTimeline">November 2026</h3>
+
+                <div class="timeline-navigation-button">
+                    <button type="button" id="timelineBulanSebelumnya">
+                        &lt;
+                    </button>
+
+                    <button type="button" id="timelineBulanSekarang">
+                        Hari Ini
+                    </button>
+
+                    <button type="button" id="timelineBulanBerikutnya">
+                        &gt;
+                    </button>
+                </div>
+
+            </div>
 
             <div id="timelineKegiatan" class="timeline-kegiatan">
                 {{-- Diisi JavaScript --}}
             </div>
 
         </div>
+
 
         {{-- Tampilan Kalender --}}
         <div id="tampilanKalender"
