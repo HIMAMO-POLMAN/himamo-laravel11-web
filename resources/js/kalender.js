@@ -637,15 +637,15 @@ function initKalender() {
     });
 
     // Klik kartu pada Timeline
+    
     timelineKegiatanHTML.addEventListener('click', function (event) {
+        const batang = event.target.closest('.timeline-bar');
 
-        const kartu = event.target.closest('.timeline-item');
-
-        if (kartu) {
-            bukaDetailKegiatan(kartu.dataset.id);
+        if (batang) {
+            bukaDetailKegiatan(batang.dataset.id);
         }
-
     });
+
 
     // Tombol tutup dan overlay
     tombolTutupModal?.addEventListener('click', tutupDetailKegiatan);
