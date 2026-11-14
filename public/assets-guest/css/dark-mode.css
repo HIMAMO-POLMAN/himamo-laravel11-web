@@ -71,3 +71,228 @@
 [data-theme="dark"] .swal2-html-container {
   color: white !important;
 }
+
+/* =========================================
+   DARK MODE - KALENDER KEGIATAN HIMAMO
+========================================= */
+
+/* Background utama */
+[data-theme="dark"] .kalender-section {
+    background-color: #191d24 !important;
+    color: #eeeeee !important;
+}
+
+/* Judul dan deskripsi */
+[data-theme="dark"] .kalender-section .kalender-header h2,
+[data-theme="dark"] .kalender-section .kalender-month h3,
+[data-theme="dark"] .kalender-section .timeline-navigation h3 {
+    color: #eeeeee !important;
+}
+
+[data-theme="dark"] .kalender-section .kalender-header p {
+    color: #b8c0ca !important;
+}
+
+/* Tombol navigasi bulan dan timeline */
+[data-theme="dark"] .kalender-section .kalender-navigation-button button,
+[data-theme="dark"] .kalender-section .timeline-navigation-button button {
+    background-color: #393e46 !important;
+    color: #eeeeee !important;
+    border-color: #555d69 !important;
+}
+
+[data-theme="dark"] .kalender-section .kalender-navigation-button button:hover,
+[data-theme="dark"] .kalender-section .timeline-navigation-button button:hover {
+    background-color: #458483 !important;
+    color: white !important;
+}
+
+/* Kalender bulanan */
+[data-theme="dark"] .kalender-section .kalender-wrapper {
+    background-color: #252b35 !important;
+    border-color: #454d59 !important;
+}
+
+[data-theme="dark"] .kalender-section .kalender-hari {
+    background-color: #303945 !important;
+    border-color: #454d59 !important;
+}
+
+[data-theme="dark"] .kalender-section .kalender-hari div {
+    color: #8fc4c0 !important;
+}
+
+[data-theme="dark"] .kalender-section .kalender-cell {
+    background-color: #252b35 !important;
+    border-color: #454d59 !important;
+}
+
+[data-theme="dark"] .kalender-section .kalender-cell.luar-bulan {
+    background-color: #202630 !important;
+}
+
+[data-theme="dark"] .kalender-section .kalender-cell.ada-kegiatan {
+    background-color: #2d3940 !important;
+}
+
+[data-theme="dark"] .kalender-section .tanggal-number {
+    color: #eeeeee !important;
+}
+
+[data-theme="dark"] .kalender-section .kalender-cell.luar-bulan .tanggal-number {
+    color: #78818d !important;
+}
+
+/* Navigasi Daftar, Timeline, Kalender */
+[data-theme="dark"] .kalender-section .tampilan-navigation {
+    background-color: #303945 !important;
+}
+
+[data-theme="dark"] .kalender-section .tampilan-button {
+    color: #a9c9c5 !important;
+}
+
+[data-theme="dark"] .kalender-section .tampilan-button.aktif {
+    background-color: #458483 !important;
+    color: white !important;
+}
+
+/* Filter kategori dan pencarian */
+[data-theme="dark"] .kalender-section .kegiatan-filter label {
+    color: #8fc4c0 !important;
+}
+
+[data-theme="dark"] .kalender-section .kegiatan-filter input,
+[data-theme="dark"] .kalender-section .kegiatan-filter select {
+    background-color: #303945 !important;
+    color: #eeeeee !important;
+    border-color: #555d69 !important;
+}
+
+/* Custom dropdown kategori */
+[data-theme="dark"] .kalender-section .custom-dropdown-button {
+    background-color: #303945 !important;
+    color: #eeeeee !important;
+    border-color: #555d69 !important;
+}
+
+[data-theme="dark"] .kalender-section .custom-dropdown-menu {
+    background-color: #252b35 !important;
+    border-color: #555d69 !important;
+}
+
+[data-theme="dark"] .kalender-section .kategori-option {
+    background-color: #252b35 !important;
+    color: #eeeeee !important;
+}
+
+[data-theme="dark"] .kalender-section .kategori-option:hover,
+[data-theme="dark"] .kalender-section .kategori-option.terpilih {
+    background-color: #458483 !important;
+    color: white !important;
+}
+
+/* Daftar kegiatan */
+[data-theme="dark"] .kalender-section .kegiatan-card,
+[data-theme="dark"] .kalender-section .kegiatan-kosong {
+    background-color: #252b35 !important;
+    border-color: #454d59 !important;
+}
+
+[data-theme="dark"] .kalender-section .kegiatan-card h3 {
+    color: #eeeeee !important;
+}
+
+[data-theme="dark"] .kalender-section .kegiatan-card p {
+    color: #b8c0ca !important;
+}
+
+[data-theme="dark"] .kalender-section .kegiatan-informasi {
+    color: #a9c9c5 !important;
+}
+
+[data-theme="dark"] .kalender-section .kegiatan-kosong {
+    color: #b8c0ca !important;
+}
+
+/* Timeline biasa */
+[data-theme="dark"] .kalender-section .timeline-item::before {
+    background-color: #505b68 !important;
+}
+
+[data-theme="dark"] .kalender-section .timeline-item::after {
+    background-color: #252b35 !important;
+}
+
+[data-theme="dark"] .kalender-section .timeline-tanggal {
+    color: #8fc4c0 !important;
+}
+
+[data-theme="dark"] .kalender-section .timeline-isi {
+    background-color: #252b35 !important;
+    border-color: #454d59 !important;
+}
+
+[data-theme="dark"] .kalender-section .timeline-isi h3 {
+    color: #8fc4c0 !important;
+}
+
+[data-theme="dark"] .kalender-section .timeline-isi p {
+    color: #b8c0ca !important;
+}
+
+[data-theme="dark"] .kalender-section .timeline-detail {
+    color: #a9c9c5 !important;
+}
+
+/* Timeline Gantt */
+[data-theme="dark"] .kalender-section .timeline-kegiatan {
+    background-color: #252b35 !important;
+    border-color: #454d59 !important;
+}
+
+[data-theme="dark"] .kalender-section .timeline-header-judul,
+[data-theme="dark"] .kalender-section .timeline-header-tanggal {
+    background-color: #303945 !important;
+    color: #eeeeee !important;
+    border-color: #454d59 !important;
+}
+
+[data-theme="dark"] .kalender-section .timeline-row {
+    border-color: #454d59 !important;
+}
+
+[data-theme="dark"] .kalender-section .timeline-row-judul {
+    background-color: #252b35 !important;
+    color: #eeeeee !important;
+    border-color: #454d59 !important;
+}
+
+[data-theme="dark"] .kalender-section .timeline-track-cell {
+    border-color: #454d59 !important;
+}
+
+/* Modal detail kegiatan */
+[data-theme="dark"] .kalender-section .modal-kegiatan-content {
+    background-color: #252b35 !important;
+    color: #eeeeee !important;
+}
+
+[data-theme="dark"] .kalender-section .modal-kegiatan-header {
+    border-color: #454d59 !important;
+}
+
+[data-theme="dark"] .kalender-section .modal-kegiatan-header h3,
+[data-theme="dark"] .kalender-section .modal-kegiatan-body h2,
+[data-theme="dark"] .kalender-section .modal-detail-item strong {
+    color: #8fc4c0 !important;
+}
+
+[data-theme="dark"] .kalender-section .modal-kegiatan-header button {
+    background-color: #393e46 !important;
+    color: #eeeeee !important;
+}
+
+[data-theme="dark"] .kalender-section .modal-detail-item p {
+    color: #eeeeee !important;
+}
