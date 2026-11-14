@@ -115,48 +115,55 @@ function initKalender() {
             nomorTanggal.classList.add('tanggal-number');
             nomorTanggal.textContent = tanggal.getDate();
 
+            
             // Menandai hari ini
             if (formatTanggal(tanggal) === formatTanggal(hariIni)) {
                 nomorTanggal.classList.add('hari-ini');
             }
 
+            cell.dataset.date = formatTanggal(tanggal);
+            cell.appendChild(nomorTanggal);
+
+            // Mencari kegiatan pada tanggal kalender
+            const kegiatanTanggal = cariKegiatan(formatTanggal(tanggal));
+
+            // Jika tanggal memiliki kegiatan
             if (kegiatanTanggal.length > 0) {
-            cell.classList.add('ada-kegiatan');
+                cell.classList.add('ada-kegiatan');
 
-            const daftarJudul = document.createElement('div');
-            daftarJudul.classList.add('kegiatan-list');
+                const daftarJudul = document.createElement('div');
+                daftarJudul.classList.add('kegiatan-list');
 
-            kegiatanTanggal.forEach(function (kegiatan) {
-                const item = document.createElement('div');
-                item.classList.add('kegiatan-item');
+                kegiatanTanggal.forEach(function (kegiatan) {
+                    const item = document.createElement('div');
+                    item.classList.add('kegiatan-item');
 
-                item.textContent = kegiatan.judul;
-                item.title = kegiatan.judul;
+                    item.textContent = kegiatan.judul;
+                    item.title = kegiatan.judul;
 
-                // Menentukan status kegiatan
-                const tanggalHariIni = formatTanggal(hariIni);
+                    // Menentukan status kegiatan berdasarkan hari ini
+                    const tanggalHariIni = formatTanggal(hariIni);
+                    const tanggalMulai = kegiatan.tanggal_mulai;
+                    const tanggalSelesai =
+                        kegiatan.tanggal_selesai || tanggalMulai;
 
-                if (tanggalHariIni > kegiatan.tanggal_selesai ||
-                    tanggalHariIni < kegiatan.tanggal_mulai) {
-                // Status akan ditentukan berdasarkan tanggal kalender
-                }
+                    if (
+                        tanggalHariIni >= tanggalMulai &&
+                        tanggalHariIni <= tanggalSelesai
+                    ) {
+                        item.classList.add('berlangsung');
+                    } else if (tanggalHariIni > tanggalSelesai) {
+                        item.classList.add('selesai');
+                    }
 
-                if (
-                    tanggalHariIni >= kegiatan.tanggal_mulai &&
-                    tanggalHariIni <= kegiatan.tanggal_selesai
-                ) {
-                    item.classList.add('berlangsung');
-                } else if (tanggalHariIni > kegiatan.tanggal_selesai) {
-                    item.classList.add('selesai');
-                }
+                    daftarJudul.appendChild(item);
+                });
 
-                daftarJudul.appendChild(item);
-            });
+                cell.appendChild(daftarJudul);
+            }
 
-            cell.appendChild(daftarJudul);
-        }
+            kalenderTanggal.appendChild(cell);
 
-        kalenderTanggal.appendChild(cell);
         }
     }
 
