@@ -133,6 +133,23 @@ function initKalender() {
                 item.textContent = kegiatan.judul;
                 item.title = kegiatan.judul;
 
+                // Menentukan status kegiatan
+                const tanggalHariIni = formatTanggal(hariIni);
+
+                if (tanggalHariIni > kegiatan.tanggal_selesai ||
+                    tanggalHariIni < kegiatan.tanggal_mulai) {
+                // Status akan ditentukan berdasarkan tanggal kalender
+                }
+
+                if (
+                    tanggalHariIni >= kegiatan.tanggal_mulai &&
+                    tanggalHariIni <= kegiatan.tanggal_selesai
+                ) {
+                    item.classList.add('berlangsung');
+                } else if (tanggalHariIni > kegiatan.tanggal_selesai) {
+                    item.classList.add('selesai');
+                }
+
                 daftarJudul.appendChild(item);
             });
 
