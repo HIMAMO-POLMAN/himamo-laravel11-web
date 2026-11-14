@@ -1,11 +1,27 @@
 
 // =====================================
-// KALENDER KEGIATAN HIMAMO
+// KEGIATAN HIMAMO
+// DAFTAR, TIMELINE, DAN KALENDER
 // =====================================
 
 function initKalender() {
 
-    // Mengambil elemen HTML
+    // =====================================
+    // 1. MENGAMBIL ELEMEN HTML
+    // =====================================
+
+    const tombolTampilan = document.querySelectorAll('.tampilan-button');
+
+    const tampilanDaftar = document.getElementById('tampilanDaftar');
+    const tampilanTimeline = document.getElementById('tampilanTimeline');
+    const tampilanKalender = document.getElementById('tampilanKalender');
+
+    const daftarKegiatanHTML = document.getElementById('daftarKegiatan');
+    const timelineKegiatanHTML = document.getElementById('timelineKegiatan');
+
+    const filterKategori = document.getElementById('filterKategori');
+    const inputPencarian = document.getElementById('cariKegiatan');
+
     const namaBulan = document.getElementById('namaBulan');
     const kalenderTanggal = document.getElementById('kalenderTanggal');
 
@@ -13,26 +29,34 @@ function initKalender() {
     const tombolBerikutnya = document.getElementById('bulanBerikutnya');
     const tombolHariIni = document.getElementById('bulanSekarang');
 
-    // Berhenti jika halaman tidak memiliki kalender
+    // Periksa elemen utama
     if (
-    !namaBulan ||
-    !kalenderTanggal ||
-    !tombolSebelumnya ||
-    !tombolBerikutnya ||
-    !tombolHariIni
-) {
-    console.error('Elemen kalender yang tidak ditemukan:');
+        !tampilanDaftar ||
+        !tampilanTimeline ||
+        !tampilanKalender ||
+        !daftarKegiatanHTML ||
+        !timelineKegiatanHTML ||
+        !filterKategori ||
+        !inputPencarian ||
+        !namaBulan ||
+        !kalenderTanggal
+    ) {
+        console.error('Elemen kegiatan tidak ditemukan.');
+        return;
+    }
 
-    if (!namaBulan) console.error('namaBulan');
-    if (!kalenderTanggal) console.error('kalenderTanggal');
-    if (!tombolSebelumnya) console.error('bulanSebelumnya');
-    if (!tombolBerikutnya) console.error('bulanBerikutnya');
-    if (!tombolHariIni) console.error('bulanSekarang');
+    // =====================================
+    // 2. MENGAMBIL DATA DARI LARAVEL
+    // =====================================
 
-    return;
-}
+    const daftarKegiatan = window.kegiatanHimamo || [];
 
-    // Tanggal saat ini
+    console.log('Data kegiatan HIMAMO:', daftarKegiatan);
+
+    // =====================================
+    // 3. VARIABEL KALENDER
+    // =====================================
+
     const hariIni = new Date();
 
     let bulanAktif = hariIni.getMonth();
@@ -45,8 +69,17 @@ function initKalender() {
         'Oktober', 'November', 'Desember'
     ];
 
-    // Format tanggal YYYY-MM-DD
+    const namaHari = [
+        'Minggu', 'Senin', 'Selasa',
+        'Rabu', 'Kamis', 'Jumat', 'Sabtu'
+    ];
+
+    // =====================================
+    // 4. FUNGSI FORMAT TANGGAL
+    // =====================================
+
     function formatTanggal(tanggal) {
+
         const tahun = tanggal.getFullYear();
         const bulan = String(tanggal.getMonth() + 1).padStart(2, '0');
         const hari = String(tanggal.getDate()).padStart(2, '0');
@@ -54,22 +87,291 @@ function initKalender() {
         return `${tahun}-${bulan}-${hari}`;
     }
 
-    // Mengambil data kegiatan dari Laravel
-    const daftarKegiatan = window.kegiatanHimamo || [];
+    function formatTanggalIndonesia(tanggal) {
 
-    // Mencari kegiatan berdasarkan tanggal
-    function cariKegiatan(tanggal) {
-        return daftarKegiatan.filter(function (kegiatan) {
-            const tanggalMulai = kegiatan.tanggal_mulai;
-            const tanggalSelesai =
-                kegiatan.tanggal_selesai || tanggalMulai;
+        const tanggalObjek = new Date(tanggal + 'T00:00:00');
 
-            return tanggal >= tanggalMulai &&
-                   tanggal <= tanggalSelesai;
+        return tanggalObjek.toLocaleDateString('id-ID', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
         });
     }
 
-    // Membuat kalender
+    function ambilTanggalSelesai(kegiatan) {
+        return kegiatan.tanggal_selesai || kegiatan.tanggal_mulai;
+    }
+
+    // =====================================
+    // 5. FILTER KATEGORI DAN PENCARIAN
+    // =====================================
+
+    function ambilKegiatanTerfilter() {
+
+        const kategoriDipilih = filterKategori.value;
+        const kataKunci = inputPencarian.value.toLowerCase().trim();
+
+        return daftarKegiatan.filter(function (kegiatan) {
+
+            const kategoriSesuai =
+                kategoriDipilih === 'semua' ||
+                kegiatan.kategori === kategoriDipilih;
+
+            const judul = kegiatan.judul || '';
+            const deskripsi = kegiatan.deskripsi || '';
+            const lokasi = kegiatan.lokasi || '';
+
+            const pencarianSesuai =
+                judul.toLowerCase().includes(kataKunci) ||
+                deskripsi.toLowerCase().includes(kataKunci) ||
+                lokasi.toLowerCase().includes(kataKunci);
+
+            return kategoriSesuai && pencarianSesuai;
+
+        }).sort(function (a, b) {
+
+            return a.tanggal_mulai.localeCompare(b.tanggal_mulai);
+
+        });
+    }
+
+    // =====================================
+    // 6. MENENTUKAN STATUS KEGIATAN
+    // =====================================
+
+    function tentukanStatus(kegiatan) {
+
+        const tanggalSekarang = formatTanggal(hariIni);
+        const tanggalMulai = kegiatan.tanggal_mulai;
+        const tanggalSelesai = ambilTanggalSelesai(kegiatan);
+
+        if (tanggalSekarang < tanggalMulai) {
+            return 'Akan Datang';
+        }
+
+        if (tanggalSekarang > tanggalSelesai) {
+            return 'Selesai';
+        }
+
+        return 'Berlangsung';
+    }
+
+    // =====================================
+    // 7. MENGGANTI TAMPILAN
+    // =====================================
+
+    function gantiTampilan(tampilan) {
+
+        tampilanDaftar.hidden = tampilan !== 'daftar';
+        tampilanTimeline.hidden = tampilan !== 'timeline';
+        tampilanKalender.hidden = tampilan !== 'kalender';
+
+        tombolTampilan.forEach(function (tombol) {
+
+            tombol.classList.toggle(
+                'aktif',
+                tombol.dataset.tampilan === tampilan
+            );
+
+        });
+
+        if (tampilan === 'kalender') {
+            tampilkanKalender();
+        }
+    }
+
+    tombolTampilan.forEach(function (tombol) {
+
+        tombol.addEventListener('click', function () {
+
+            gantiTampilan(tombol.dataset.tampilan);
+
+        });
+
+    });
+
+    // =====================================
+    // 8. MENAMPILKAN DAFTAR KEGIATAN
+    // =====================================
+
+    function tampilkanDaftar() {
+
+        const kegiatan = ambilKegiatanTerfilter();
+
+        daftarKegiatanHTML.innerHTML = '';
+
+        if (kegiatan.length === 0) {
+
+            daftarKegiatanHTML.innerHTML = `
+                <div class="kegiatan-kosong">
+                    Tidak ada kegiatan yang ditemukan.
+                </div>
+            `;
+
+            return;
+        }
+
+        kegiatan.forEach(function (item) {
+
+            const kartu = document.createElement('div');
+            kartu.classList.add('kegiatan-card');
+
+            const kategori = item.kategori || 'Belum dikategorikan';
+
+            const tanggalMulai = formatTanggalIndonesia(
+                item.tanggal_mulai
+            );
+
+            const tanggalSelesai = formatTanggalIndonesia(
+                ambilTanggalSelesai(item)
+            );
+
+            const status = tentukanStatus(item);
+
+            kartu.innerHTML = `
+                <div class="kegiatan-card-header">
+
+                    <span class="kegiatan-kategori">
+                        ${kategori}
+                    </span>
+
+                    <span class="kegiatan-status ${status.toLowerCase().replace(' ', '-')}">
+                        ${status}
+                    </span>
+
+                </div>
+
+                <h3></h3>
+
+                <p class="kegiatan-deskripsi"></p>
+
+                <div class="kegiatan-informasi">
+
+                    <span>
+                        📅 ${tanggalMulai}
+                        ${tanggalMulai !== tanggalSelesai
+                            ? ' - ' + tanggalSelesai
+                            : ''}
+                    </span>
+
+                    <span class="kegiatan-lokasi"></span>
+
+                </div>
+            `;
+
+            // Mengisi teks dengan aman
+            kartu.querySelector('h3').textContent = item.judul;
+            kartu.querySelector('.kegiatan-deskripsi').textContent =
+                item.deskripsi || 'Tidak ada deskripsi kegiatan.';
+
+            kartu.querySelector('.kegiatan-lokasi').textContent =
+                item.lokasi ? '📍 ' + item.lokasi : '';
+
+            daftarKegiatanHTML.appendChild(kartu);
+
+        });
+    }
+
+    // =====================================
+    // 9. MENAMPILKAN TIMELINE
+    // =====================================
+
+    function tampilkanTimeline() {
+
+        const kegiatan = ambilKegiatanTerfilter();
+
+        timelineKegiatanHTML.innerHTML = '';
+
+        if (kegiatan.length === 0) {
+
+            timelineKegiatanHTML.innerHTML = `
+                <div class="kegiatan-kosong">
+                    Tidak ada kegiatan yang ditemukan.
+                </div>
+            `;
+
+            return;
+        }
+
+        kegiatan.forEach(function (item) {
+
+            const timelineItem = document.createElement('div');
+
+            timelineItem.classList.add('timeline-item');
+
+            const tanggalMulai = formatTanggalIndonesia(
+                item.tanggal_mulai
+            );
+
+            const tanggalSelesai = formatTanggalIndonesia(
+                ambilTanggalSelesai(item)
+            );
+
+            const status = tentukanStatus(item);
+
+            timelineItem.innerHTML = `
+                <div class="timeline-tanggal">
+                    ${tanggalMulai}
+                </div>
+
+                <div class="timeline-isi">
+
+                    <span class="kegiatan-kategori">
+                        ${item.kategori || 'Belum dikategorikan'}
+                    </span>
+
+                    <span class="kegiatan-status ${status.toLowerCase().replace(' ', '-')}">
+                        ${status}
+                    </span>
+
+                    <h3></h3>
+
+                    <p class="timeline-deskripsi"></p>
+
+                    <div class="timeline-detail">
+                        <span>
+                            Durasi: ${tanggalMulai}
+                            ${tanggalMulai !== tanggalSelesai
+                                ? ' - ' + tanggalSelesai
+                                : ''}
+                        </span>
+
+                        <span class="timeline-lokasi"></span>
+                    </div>
+
+                </div>
+            `;
+
+            timelineItem.querySelector('h3').textContent = item.judul;
+
+            timelineItem.querySelector('.timeline-deskripsi').textContent =
+                item.deskripsi || 'Tidak ada deskripsi kegiatan.';
+
+            timelineItem.querySelector('.timeline-lokasi').textContent =
+                item.lokasi ? '📍 ' + item.lokasi : '';
+
+            timelineKegiatanHTML.appendChild(timelineItem);
+
+        });
+    }
+
+    // =====================================
+    // 10. MENAMPILKAN KALENDER
+    // =====================================
+
+    function cariKegiatan(tanggal) {
+
+        return ambilKegiatanTerfilter().filter(function (kegiatan) {
+
+            const tanggalMulai = kegiatan.tanggal_mulai;
+            const tanggalSelesai = ambilTanggalSelesai(kegiatan);
+
+            return tanggal >= tanggalMulai &&
+                tanggal <= tanggalSelesai;
+
+        });
+    }
+
     function tampilkanKalender() {
 
         namaBulan.textContent =
@@ -85,7 +387,6 @@ function initKalender() {
             0
         ).getDate();
 
-        // Senin = 0, Minggu = 6
         const posisiHariPertama =
             (tanggalPertama.getDay() + 6) % 7;
 
@@ -98,7 +399,6 @@ function initKalender() {
             1 - posisiHariPertama
         );
 
-        // Membuat kotak tanggal
         for (let i = 0; i < jumlahKotak; i++) {
 
             const tanggal = new Date(tanggalAwal);
@@ -115,8 +415,6 @@ function initKalender() {
             nomorTanggal.classList.add('tanggal-number');
             nomorTanggal.textContent = tanggal.getDate();
 
-            
-            // Menandai hari ini
             if (formatTanggal(tanggal) === formatTanggal(hariIni)) {
                 nomorTanggal.classList.add('hari-ini');
             }
@@ -124,39 +422,35 @@ function initKalender() {
             cell.dataset.date = formatTanggal(tanggal);
             cell.appendChild(nomorTanggal);
 
-            // Mencari kegiatan pada tanggal kalender
-            const kegiatanTanggal = cariKegiatan(formatTanggal(tanggal));
+            const kegiatanTanggal = cariKegiatan(
+                formatTanggal(tanggal)
+            );
 
-            // Jika tanggal memiliki kegiatan
             if (kegiatanTanggal.length > 0) {
+
                 cell.classList.add('ada-kegiatan');
 
                 const daftarJudul = document.createElement('div');
                 daftarJudul.classList.add('kegiatan-list');
 
                 kegiatanTanggal.forEach(function (kegiatan) {
+
                     const item = document.createElement('div');
                     item.classList.add('kegiatan-item');
 
                     item.textContent = kegiatan.judul;
                     item.title = kegiatan.judul;
 
-                    // Menentukan status kegiatan berdasarkan hari ini
-                    const tanggalHariIni = formatTanggal(hariIni);
-                    const tanggalMulai = kegiatan.tanggal_mulai;
-                    const tanggalSelesai =
-                        kegiatan.tanggal_selesai || tanggalMulai;
+                    const status = tentukanStatus(kegiatan);
 
-                    if (
-                        tanggalHariIni >= tanggalMulai &&
-                        tanggalHariIni <= tanggalSelesai
-                    ) {
+                    if (status === 'Berlangsung') {
                         item.classList.add('berlangsung');
-                    } else if (tanggalHariIni > tanggalSelesai) {
+                    } else if (status === 'Selesai') {
                         item.classList.add('selesai');
                     }
 
                     daftarJudul.appendChild(item);
+
                 });
 
                 cell.appendChild(daftarJudul);
@@ -167,48 +461,96 @@ function initKalender() {
         }
     }
 
-    // Tombol bulan sebelumnya
-    tombolSebelumnya.addEventListener('click', function () {
+    // =====================================
+    // 11. NAVIGASI BULAN
+    // =====================================
 
-        bulanAktif--;
+    if (tombolSebelumnya) {
 
-        if (bulanAktif < 0) {
-            bulanAktif = 11;
-            tahunAktif--;
-        }
+        tombolSebelumnya.addEventListener('click', function () {
 
+            bulanAktif--;
+
+            if (bulanAktif < 0) {
+                bulanAktif = 11;
+                tahunAktif--;
+            }
+
+            tampilkanKalender();
+
+        });
+    }
+
+    if (tombolBerikutnya) {
+
+        tombolBerikutnya.addEventListener('click', function () {
+
+            bulanAktif++;
+
+            if (bulanAktif > 11) {
+                bulanAktif = 0;
+                tahunAktif++;
+            }
+
+            tampilkanKalender();
+
+        });
+    }
+
+    if (tombolHariIni) {
+
+        tombolHariIni.addEventListener('click', function () {
+
+            bulanAktif = hariIni.getMonth();
+            tahunAktif = hariIni.getFullYear();
+
+            tampilkanKalender();
+
+        });
+    }
+
+    // =====================================
+    // 12. EVENT FILTER DAN PENCARIAN
+    // =====================================
+
+    filterKategori.addEventListener('change', function () {
+
+        tampilkanDaftar();
+        tampilkanTimeline();
         tampilkanKalender();
+
     });
 
-    // Tombol bulan berikutnya
-    tombolBerikutnya.addEventListener('click', function () {
+    inputPencarian.addEventListener('input', function () {
 
-        bulanAktif++;
-
-        if (bulanAktif > 11) {
-            bulanAktif = 0;
-            tahunAktif++;
-        }
-
+        tampilkanDaftar();
+        tampilkanTimeline();
         tampilkanKalender();
+
     });
 
-    // Tombol hari ini
-    tombolHariIni.addEventListener('click', function () {
+    // =====================================
+    // 13. TAMPILAN AWAL
+    // =====================================
 
-        bulanAktif = hariIni.getMonth();
-        tahunAktif = hariIni.getFullYear();
-
-        tampilkanKalender();
-    });
-
-    // Tampilkan kalender pertama kali
+    tampilkanDaftar();
+    tampilkanTimeline();
     tampilkanKalender();
+
+    gantiTampilan('daftar');
+
 }
 
-// Jalankan setelah HTML selesai dibaca browser
+// =====================================
+// JALANKAN SETELAH HTML SELESAI DIBACA
+// =====================================
+
 if (document.readyState === 'loading') {
+
     document.addEventListener('DOMContentLoaded', initKalender);
+
 } else {
+
     initKalender();
+
 }

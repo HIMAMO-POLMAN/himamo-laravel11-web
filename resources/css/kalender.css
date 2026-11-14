@@ -250,3 +250,311 @@
         font-size: 10px;
     }
 }
+
+
+/* =================================
+   NAVIGASI TAMPILAN KEGIATAN
+================================= */
+
+.kalender-section .tampilan-navigation {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    padding: 5px;
+    background: #edf3ef;
+    border-radius: 10px;
+    width: fit-content;
+}
+
+.kalender-section .tampilan-button {
+    padding: 10px 22px;
+    border: none;
+    border-radius: 7px;
+    background: transparent;
+    color: #53645a;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.kalender-section .tampilan-button.aktif {
+    background: #16834c;
+    color: white;
+}
+
+/* =================================
+   FILTER KEGIATAN
+================================= */
+
+.kalender-section .kegiatan-filter {
+    display: flex;
+    align-items: end;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.kalender-section .filter-kategori,
+.kalender-section .filter-pencarian {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.kalender-section .kegiatan-filter label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #40564a;
+}
+
+.kalender-section .kegiatan-filter select,
+.kalender-section .kegiatan-filter input {
+    min-width: 200px;
+    height: 42px;
+    padding: 0 12px;
+    border: 1px solid #dce4df;
+    border-radius: 8px;
+    background: white;
+    color: #263b30;
+    outline: none;
+}
+
+.kalender-section .kegiatan-filter select:focus,
+.kalender-section .kegiatan-filter input:focus {
+    border-color: #16834c;
+}
+
+/* =================================
+   KONTEN TAMPILAN
+================================= */
+
+.kalender-section .tampilan-content[hidden] {
+    display: none !important;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .kalender-section .tampilan-navigation {
+        width: 100%;
+    }
+
+    .kalender-section .tampilan-button {
+        flex: 1;
+        padding: 10px 8px;
+        font-size: 13px;
+    }
+
+    .kalender-section .kegiatan-filter {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .kalender-section .filter-kategori,
+    .kalender-section .filter-pencarian {
+        width: 100%;
+    }
+
+    .kalender-section .kegiatan-filter select,
+    .kalender-section .kegiatan-filter input {
+        width: 100%;
+    }
+}
+
+
+/* =================================
+   DAFTAR KEGIATAN
+================================= */
+
+.kalender-section .daftar-kegiatan {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.kalender-section .kegiatan-card {
+    padding: 20px;
+    background: white;
+    border: 1px solid #e2e9e4;
+    border-radius: 12px;
+    transition: 0.2s;
+}
+
+.kalender-section .kegiatan-card:hover {
+    border-color: #16834c;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.kalender-section .kegiatan-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.kalender-section .kegiatan-kategori {
+    display: inline-block;
+    padding: 5px 10px;
+    background: #e1f1e6;
+    color: #21633c;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.kalender-section .kegiatan-status {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    background: #fff2d8;
+    color: #946200;
+}
+
+.kalender-section .kegiatan-status.berlangsung {
+    background: #dce8fa;
+    color: #24528a;
+}
+
+.kalender-section .kegiatan-status.selesai {
+    background: #eeeeee;
+    color: #666666;
+}
+
+.kalender-section .kegiatan-card h3 {
+    margin: 0 0 8px;
+    font-size: 19px;
+    color: #263b30;
+}
+
+.kalender-section .kegiatan-card p {
+    margin-bottom: 12px;
+    color: #6b7771;
+    font-size: 14px;
+}
+
+.kalender-section .kegiatan-informasi {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    color: #53645a;
+    font-size: 13px;
+}
+
+/* =================================
+   KEGIATAN KOSONG
+================================= */
+
+.kalender-section .kegiatan-kosong {
+    padding: 35px 20px;
+    text-align: center;
+    background: white;
+    border: 1px dashed #cbd8cf;
+    border-radius: 10px;
+    color: #6b7771;
+}
+
+
+/* =================================
+   TIMELINE KEGIATAN
+================================= */
+
+.kalender-section .timeline-kegiatan {
+    position: relative;
+    padding-left: 25px;
+}
+
+.kalender-section .timeline-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 150px minmax(0, 1fr);
+    gap: 20px;
+    padding-bottom: 30px;
+}
+
+/* Garis vertikal timeline */
+
+.kalender-section .timeline-item::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    bottom: -2px;
+    left: -19px;
+    width: 2px;
+    background: #dce8df;
+}
+
+/* Titik timeline */
+
+.kalender-section .timeline-item::after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: -24px;
+    width: 12px;
+    height: 12px;
+    border: 3px solid #16834c;
+    background: white;
+    border-radius: 50%;
+}
+
+.kalender-section .timeline-item:last-child::before {
+    display: none;
+}
+
+.kalender-section .timeline-tanggal {
+    color: #53645a;
+    font-size: 13px;
+    font-weight: 600;
+    padding-top: 5px;
+}
+
+.kalender-section .timeline-isi {
+    padding: 18px;
+    background: white;
+    border: 1px solid #e2e9e4;
+    border-radius: 10px;
+}
+
+.kalender-section .timeline-isi h3 {
+    margin: 12px 0 8px;
+    font-size: 18px;
+    color: #263b30;
+}
+
+.kalender-section .timeline-isi p {
+    margin-bottom: 12px;
+    color: #6b7771;
+    font-size: 14px;
+}
+
+.kalender-section .timeline-detail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    color: #53645a;
+    font-size: 12px;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+
+    .kalender-section .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .kalender-section .timeline-tanggal {
+        padding-left: 0;
+    }
+
+    .kalender-section .timeline-isi {
+        padding: 15px;
+    }
+
+}
+
+
