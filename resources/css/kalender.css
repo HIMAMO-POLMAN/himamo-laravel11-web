@@ -180,6 +180,34 @@
     color: #666666;
 }
 
+
+/* Daftar Kegiatan dalam Tanggal */
+.kalender-section .kegiatan-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    overflow: hidden;
+}
+
+/* Efek ketika tanggal memiliki kegiatan */
+.kalender-section .kalender-cell.ada-kegiatan {
+    background-color: #fcfffd;
+}
+
+/* Pastikan judul kegiatan tidak keluar dari kotak */
+.kalender-section .kegiatan-item {
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Efek saat kursor diarahkan ke kegiatan */
+.kalender-section .kegiatan-item:hover {
+    filter: brightness(0.95);
+}
+
+
 /* Responsive */
 
 @media (max-width: 768px) {
