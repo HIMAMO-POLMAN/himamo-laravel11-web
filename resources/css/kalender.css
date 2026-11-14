@@ -558,3 +558,111 @@
 }
 
 
+/* =================================
+   MODAL DETAIL KEGIATAN
+================================= */
+
+.kalender-section .modal-kegiatan[hidden] {
+    display: none !important;
+}
+
+.kalender-section .modal-kegiatan {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.kalender-section .modal-kegiatan-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.kalender-section .modal-kegiatan-content {
+    position: relative;
+    width: 100%;
+    max-width: 550px;
+    max-height: 85vh;
+    overflow-y: auto;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    animation: modalMuncul 0.2s ease;
+}
+
+@keyframes modalMuncul {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.kalender-section .modal-kegiatan-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 22px;
+    border-bottom: 1px solid #e2e9e4;
+}
+
+.kalender-section .modal-kegiatan-header h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.kalender-section .modal-kegiatan-header button {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background: #f0f5f1;
+    color: #263b30;
+    font-size: 23px;
+    cursor: pointer;
+}
+
+.kalender-section .modal-kegiatan-body {
+    padding: 22px;
+}
+
+.kalender-section .modal-kegiatan-label {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.kalender-section .modal-kegiatan-body h2 {
+    margin-bottom: 22px;
+    font-size: 23px;
+    color: #263b30;
+}
+
+.kalender-section .modal-detail-item {
+    margin-bottom: 17px;
+}
+
+.kalender-section .modal-detail-item strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 13px;
+    color: #40564a;
+}
+
+.kalender-section .modal-detail-item p {
+    margin: 0;
+    color: #6b7771;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+

@@ -215,6 +215,8 @@ function initKalender() {
 
             const kartu = document.createElement('div');
             kartu.classList.add('kegiatan-card');
+            kartu.dataset.id = item.id;
+            kartu.style.cursor = 'pointer';
 
             const kategori = item.kategori || 'Belum dikategorikan';
 
@@ -298,6 +300,8 @@ function initKalender() {
             const timelineItem = document.createElement('div');
 
             timelineItem.classList.add('timeline-item');
+            timelineItem.dataset.id = item.id;
+            timelineItem.style.cursor = 'pointer';
 
             const tanggalMulai = formatTanggalIndonesia(
                 item.tanggal_mulai
@@ -460,6 +464,109 @@ function initKalender() {
 
         }
     }
+
+
+    // =====================================
+    // MODAL DETAIL KEGIATAN
+    // =====================================
+
+    const modalDetail = document.getElementById('modalDetailKegiatan');
+
+    const tombolTutupModal = document.getElementById('tutupModalKegiatan');
+
+    const overlayModal = modalDetail?.querySelector(
+        '.modal-kegiatan-overlay'
+    );
+
+    function bukaDetailKegiatan(id) {
+
+        const kegiatan = daftarKegiatan.find(function (item) {
+            return String(item.id) === String(id);
+        });
+
+        if (!kegiatan || !modalDetail) {
+            return;
+        }
+
+        const tanggalMulai = formatTanggalIndonesia(
+            kegiatan.tanggal_mulai
+        );
+
+        const tanggalSelesai = formatTanggalIndonesia(
+            ambilTanggalSelesai(kegiatan)
+        );
+
+        const status = tentukanStatus(kegiatan);
+
+        document.getElementById('detailKategori').textContent =
+            kegiatan.kategori || 'Belum dikategorikan';
+
+        document.getElementById('detailStatus').textContent = status;
+
+        document.getElementById('detailJudul').textContent =
+            kegiatan.judul;
+
+        document.getElementById('detailTanggal').textContent =
+            tanggalMulai === tanggalSelesai
+                ? tanggalMulai
+                : `${tanggalMulai} - ${tanggalSelesai}`;
+
+        document.getElementById('detailLokasi').textContent =
+            kegiatan.lokasi || 'Belum ditentukan';
+
+        document.getElementById('detailDeskripsi').textContent =
+            kegiatan.deskripsi || 'Tidak ada deskripsi kegiatan.';
+
+        modalDetail.hidden = false;
+        document.body.style.overflow = 'hidden';
+    }
+
+    function tutupDetailKegiatan() {
+
+        if (!modalDetail) {
+            return;
+        }
+
+        modalDetail.hidden = true;
+        document.body.style.overflow = '';
+    }
+
+    // Klik kartu pada Daftar
+    daftarKegiatanHTML.addEventListener('click', function (event) {
+
+        const kartu = event.target.closest('.kegiatan-card');
+
+        if (kartu) {
+            bukaDetailKegiatan(kartu.dataset.id);
+        }
+
+    });
+
+    // Klik kartu pada Timeline
+    timelineKegiatanHTML.addEventListener('click', function (event) {
+
+        const kartu = event.target.closest('.timeline-item');
+
+        if (kartu) {
+            bukaDetailKegiatan(kartu.dataset.id);
+        }
+
+    });
+
+    // Tombol tutup dan overlay
+    tombolTutupModal?.addEventListener('click', tutupDetailKegiatan);
+
+    overlayModal?.addEventListener('click', tutupDetailKegiatan);
+
+    // Tutup dengan tombol Escape
+    document.addEventListener('keydown', function (event) {
+
+        if (event.key === 'Escape') {
+            tutupDetailKegiatan();
+        }
+
+    });
+
 
     // =====================================
     // 11. NAVIGASI BULAN

@@ -1,7 +1,3 @@
-
-<section id="kalender-kegiatan" class="kalender-section">
-
-
 <section id="kalender-kegiatan" class="kalender-section">
 
     <div class="container">
@@ -130,6 +126,52 @@
         </div>
 
     </div>
+
+    {{-- Modal Detail Kegiatan --}}
+    <div id="modalDetailKegiatan" class="modal-kegiatan" hidden>
+
+        <div class="modal-kegiatan-overlay"></div>
+
+        <div class="modal-kegiatan-content">
+
+            <div class="modal-kegiatan-header">
+                <h3>Detail Kegiatan</h3>
+
+                <button type="button" id="tutupModalKegiatan"
+                    aria-label="Tutup">
+                    &times;
+                </button>
+            </div>
+
+            <div class="modal-kegiatan-body">
+
+                <div class="modal-kegiatan-label">
+                    <span id="detailKategori"></span>
+                    <span id="detailStatus"></span>
+                </div>
+
+                <h2 id="detailJudul"></h2>
+
+                <div class="modal-detail-item">
+                    <strong>Tanggal Kegiatan</strong>
+                    <p id="detailTanggal"></p>
+                </div>
+
+                <div class="modal-detail-item">
+                    <strong>Lokasi</strong>
+                    <p id="detailLokasi"></p>
+                </div>
+
+                <div class="modal-detail-item">
+                    <strong>Deskripsi</strong>
+                    <p id="detailDeskripsi"></p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
 </section>
 
 <script>
