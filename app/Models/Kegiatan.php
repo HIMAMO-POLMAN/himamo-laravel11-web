@@ -8,6 +8,7 @@ class Kegiatan extends Model
 {
     protected $fillable = [
         'judul',
+        'kategori',
         'deskripsi',
         'tanggal_mulai',
         'tanggal_selesai',
