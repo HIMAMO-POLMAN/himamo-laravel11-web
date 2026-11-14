@@ -6,18 +6,36 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Information;
 use App\Models\Libraries;
+use App\Models\Kegiatan;
 
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index()
-    {
-        return view('guest.index', [
-            "informasi" => Information::with(['user'])->orderBy('updated_at', 'asc')->paginate(3),
-"perpustakaan" => Libraries::with(['user'])->orderBy('updated_at', 'asc')->paginate(3),
-        ]);
-    }
+    
+public function index()
+{
+    // Mengambil data kegiatan untuk kalender
+    $kegiatan = Kegiatan::orderBy('tanggal_mulai', 'asc')->get();
+
+    // Mengambil data informasi
+    $informasi = Information::with(['user'])
+        ->orderBy('updated_at', 'asc')
+        ->paginate(3);
+
+    // Mengambil data perpustakaan
+    $perpustakaan = Libraries::with(['user'])
+        ->orderBy('updated_at', 'asc')
+        ->paginate(3);
+
+    // Mengirim semua data ke halaman utama
+    return view('guest.index', compact(
+        'kegiatan',
+        'informasi',
+        'perpustakaan'
+    ));
+}
+
 
 
     public function jurusan()

@@ -56,3 +56,20 @@
 
     </div>
 </section>
+
+<script>
+    window.kegiatanHimamo = {{ Js::from(
+        $kegiatan->map(function ($item) {
+            return [
+                'id' => $item->id,
+                'judul' => $item->judul,
+                'deskripsi' => $item->deskripsi,
+                'tanggal_mulai' => $item->tanggal_mulai->format('Y-m-d'),
+                'tanggal_selesai' => $item->tanggal_selesai
+                    ? $item->tanggal_selesai->format('Y-m-d')
+                    : null,
+                'lokasi' => $item->lokasi,
+            ];
+        })->values()
+    ) }};
+</script>

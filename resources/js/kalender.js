@@ -54,6 +54,21 @@ function initKalender() {
         return `${tahun}-${bulan}-${hari}`;
     }
 
+    // Mengambil data kegiatan dari Laravel
+    const daftarKegiatan = window.kegiatanHimamo || [];
+
+    // Mencari kegiatan berdasarkan tanggal
+    function cariKegiatan(tanggal) {
+        return daftarKegiatan.filter(function (kegiatan) {
+            const tanggalMulai = kegiatan.tanggal_mulai;
+            const tanggalSelesai =
+                kegiatan.tanggal_selesai || tanggalMulai;
+
+            return tanggal >= tanggalMulai &&
+                   tanggal <= tanggalSelesai;
+        });
+    }
+
     // Membuat kalender
     function tampilkanKalender() {
 
@@ -105,10 +120,26 @@ function initKalender() {
                 nomorTanggal.classList.add('hari-ini');
             }
 
-            cell.dataset.date = formatTanggal(tanggal);
-            cell.appendChild(nomorTanggal);
+            if (kegiatanTanggal.length > 0) {
+            cell.classList.add('ada-kegiatan');
 
-            kalenderTanggal.appendChild(cell);
+            const daftarJudul = document.createElement('div');
+            daftarJudul.classList.add('kegiatan-list');
+
+            kegiatanTanggal.forEach(function (kegiatan) {
+                const item = document.createElement('div');
+                item.classList.add('kegiatan-item');
+
+                item.textContent = kegiatan.judul;
+                item.title = kegiatan.judul;
+
+                daftarJudul.appendChild(item);
+            });
+
+            cell.appendChild(daftarJudul);
+        }
+
+        kalenderTanggal.appendChild(cell);
         }
     }
 
