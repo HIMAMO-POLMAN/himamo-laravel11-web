@@ -65,8 +65,8 @@
 }
 
 .kalender-section .kalender-navigation-button button:hover {
-    background-color: #16834c;
-    border-color: #16834c;
+    background-color: #458483;
+    border-color: #458483;
     color: white;
 }
 
@@ -93,7 +93,7 @@
     text-align: center;
     font-size: 13px;
     font-weight: 700;
-    color: #40564a;
+    color: #458483;
 }
 
 /* Area Tanggal */
@@ -128,7 +128,7 @@
     margin-bottom: 7px;
     border-radius: 50%;
     font-size: 13px;
-    color: #34443a;
+    color: #458483;
 }
 
 /* Tanggal di luar bulan aktif */
@@ -144,7 +144,7 @@
 /* Tanggal Hari Ini */
 
 .kalender-section .tanggal-number.hari-ini {
-    background-color: #16834c;
+    background-color: #458483;
     color: white;
     font-weight: 700;
 }
@@ -157,7 +157,7 @@
     padding: 5px 7px;
     border-radius: 5px;
     background-color: #e1f1e6;
-    color: #21633c;
+    color: #458483;
     font-size: 11px;
     font-weight: 600;
     line-height: 1.4;
@@ -271,14 +271,14 @@
     border: none;
     border-radius: 7px;
     background: transparent;
-    color: #53645a;
+    color: #458483;
     font-weight: 600;
     cursor: pointer;
     transition: 0.2s;
 }
 
 .kalender-section .tampilan-button.aktif {
-    background: #16834c;
+    background: #458483;
     color: white;
 }
 
@@ -304,7 +304,7 @@
 .kalender-section .kegiatan-filter label {
     font-size: 13px;
     font-weight: 600;
-    color: #40564a;
+    color: #458483;
 }
 
 .kalender-section .kegiatan-filter select,
@@ -315,13 +315,13 @@
     border: 1px solid #dce4df;
     border-radius: 8px;
     background: white;
-    color: #263b30;
+    color: #458483;
     outline: none;
 }
 
 .kalender-section .kegiatan-filter select:focus,
 .kalender-section .kegiatan-filter input:focus {
-    border-color: #16834c;
+    border-color: #458483;
 }
 
 /* =================================
@@ -381,7 +381,7 @@
 }
 
 .kalender-section .kegiatan-card:hover {
-    border-color: #16834c;
+    border-color: #458483;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
@@ -397,7 +397,7 @@
     display: inline-block;
     padding: 5px 10px;
     background: #e1f1e6;
-    color: #21633c;
+    color: #458483;
     border-radius: 6px;
     font-size: 12px;
     font-weight: 700;
@@ -439,7 +439,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
-    color: #53645a;
+    color: #458483;
     font-size: 13px;
 }
 
@@ -495,7 +495,7 @@
     left: -24px;
     width: 12px;
     height: 12px;
-    border: 3px solid #16834c;
+    border: 3px solid #458483;
     background: white;
     border-radius: 50%;
 }
@@ -505,7 +505,7 @@
 }
 
 .kalender-section .timeline-tanggal {
-    color: #53645a;
+    color: #458483;
     font-size: 13px;
     font-weight: 600;
     padding-top: 5px;
@@ -521,7 +521,7 @@
 .kalender-section .timeline-isi h3 {
     margin: 12px 0 8px;
     font-size: 18px;
-    color: #263b30;
+    color: #458483;
 }
 
 .kalender-section .timeline-isi p {
@@ -534,7 +534,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
-    color: #53645a;
+    color: #458483;
     font-size: 12px;
 }
 
@@ -625,7 +625,7 @@
     border: none;
     border-radius: 50%;
     background: #f0f5f1;
-    color: #263b30;
+    color: #458483;
     font-size: 23px;
     cursor: pointer;
 }
@@ -644,7 +644,7 @@
 .kalender-section .modal-kegiatan-body h2 {
     margin-bottom: 22px;
     font-size: 23px;
-    color: #263b30;
+    color: #458483;
 }
 
 .kalender-section .modal-detail-item {
@@ -655,12 +655,12 @@
     display: block;
     margin-bottom: 5px;
     font-size: 13px;
-    color: #40564a;
+    color: #458483;
 }
 
 .kalender-section .modal-detail-item p {
     margin: 0;
-    color: #6b7771;
+    color: #192121;
     font-size: 14px;
     line-height: 1.6;
 }
@@ -696,12 +696,12 @@
     border: 1px solid #dce4df;
     border-radius: 8px;
     background: white;
-    color: #263b30;
+    color: #458483;
     cursor: pointer;
 }
 
 .kalender-section .timeline-navigation-button button:hover {
-    background: #16834c;
+    background: #458483;
     color: white;
 }
 
@@ -787,7 +787,7 @@
     padding: 0 7px;
     border-radius: 5px;
     background: #e1f1e6;
-    color: #21633c;
+    color: #458483;
     font-size: 11px;
     font-weight: 600;
     white-space: nowrap;
@@ -817,5 +817,114 @@
     }
 }
 
+
+/* ==========================
+   CUSTOM DROPDOWN KATEGORI
+========================== */
+
+.custom-dropdown-kategori {
+    position: relative;
+    width: 225px;
+    height: 42px;
+}
+
+/* Select asli disembunyikan secara visual */
+.select-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.custom-dropdown-button {
+    width: 100%;
+    height: 42px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: white;
+    color: #458483;
+
+    border: 1px solid #d8d8d8;
+    border-radius: 9px;
+
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.custom-dropdown-button:hover {
+    border-color: #458483;
+}
+
+.dropdown-arrow {
+    font-size: 15px;
+    transition: transform 0.2s;
+}
+
+.custom-dropdown-button[aria-expanded="true"] .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* Menu pilihan */
+.custom-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    width: 100%;
+
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+
+    max-height: 260px;
+    overflow-y: auto;
+
+    z-index: 1000;
+}
+
+.custom-dropdown-menu[hidden] {
+    display: none;
+}
+
+/* Setiap pilihan */
+.kategori-option {
+    width: 100%;
+    padding: 10px 16px;
+
+    display: block;
+    text-align: left;
+
+    border: none;
+    background: white;
+    color: #458483;
+
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+/* Warna saat hover */
+.kategori-option:hover {
+    background: #458483;
+    color: white;
+}
+
+/* Pilihan yang sedang aktif */
+.kategori-option.terpilih {
+    background: #458483;
+    color: white;
+    font-weight: 600;
+}
+
+/* Hover pada pilihan aktif */
+.kategori-option.terpilih:hover {
+    background: #386f6e;
+}
 
 

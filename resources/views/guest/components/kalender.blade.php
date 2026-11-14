@@ -32,18 +32,39 @@
             <div class="filter-kategori">
                 <label for="filterKategori">Kategori</label>
 
-                <select id="filterKategori">
-                    <option value="semua">Semua</option>
-                    <option value="MTH">MTH</option>
-                    <option value="Kaderisasi">Kaderisasi</option>
-                    <option value="PSDM">PSDM</option>
-                    <option value="SARPRAS">SARPRAS</option>
-                    <option value="HUBDAL">HUBDAL</option>
-                    <option value="PENGMAS">PENGMAS</option>
-                    <option value="RELOG">RELOG</option>
-                    <option value="MEDINFO">MEDINFO</option>
-                    <option value="EKRAF">EKRAF</option>
-                </select>
+                
+                <div class="custom-dropdown-kategori">
+
+                    <!-- Select asli tetap dipertahankan untuk fungsi filter JavaScript -->
+                    <select id="filterKategori" class="select-hidden">
+                        <option value="semua">Semua</option>
+                        <option value="MTH">MTH</option>
+                        <option value="Kaderisasi">Kaderisasi</option>
+                        <option value="PSDM">PSDM</option>
+                        <option value="SARPRAS">SARPRAS</option>
+                        <option value="HUBDAL">HUBDAL</option>
+                        <option value="PENGMAS">PENGMAS</option>
+                        <option value="RELOG">RELOG</option>
+                        <option value="MEDINFO">MEDINFO</option>
+                        <option value="EKRAF">EKRAF</option>
+                    </select>
+
+                    <!-- Tombol dropdown -->
+                    <button type="button"
+                        class="custom-dropdown-button"
+                        id="tombolKategori"
+                        aria-expanded="false">
+                        <span id="teksKategori">Semua</span>
+                        <span class="dropdown-arrow">⌄</span>
+                    </button>
+
+                    <!-- Daftar pilihan -->
+                    <div class="custom-dropdown-menu" id="menuKategori" hidden>
+                        <!-- Diisi oleh JavaScript -->
+                    </div>
+
+                </div>
+
             </div>
 
             <div class="filter-pencarian">

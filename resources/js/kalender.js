@@ -783,6 +783,83 @@ function initKalender() {
 
     });
 
+
+    // CUSTOM DROPDOWN KATEGORI
+
+    const selectKategoriCustom = document.getElementById('filterKategori');
+    const tombolKategori = document.getElementById('tombolKategori');
+    const teksKategori = document.getElementById('teksKategori');
+    const menuKategori = document.getElementById('menuKategori');
+
+    function buatPilihanKategori() {
+        menuKategori.innerHTML = '';
+
+        Array.from(selectKategoriCustom.options).forEach(function (option) {
+            const tombol = document.createElement('button');
+
+            tombol.type = 'button';
+            tombol.classList.add('kategori-option');
+            tombol.textContent = option.textContent;
+            tombol.dataset.value = option.value;
+
+            if (option.value === selectKategoriCustom.value) {
+                tombol.classList.add('terpilih');
+            }
+
+            tombol.addEventListener('click', function () {
+                pilihKategori(option.value, option.textContent);
+            });
+
+            menuKategori.appendChild(tombol);
+        });
+    }
+
+    function pilihKategori(value, teks) {
+        selectKategoriCustom.value = value;
+        teksKategori.textContent = teks;
+
+        // Perbarui tampilan pilihan aktif
+        menuKategori.querySelectorAll('.kategori-option').forEach(function (item) {
+            item.classList.toggle(
+                'terpilih',
+                item.dataset.value === value
+            );
+        });
+
+        // Jalankan filter kategori yang sudah ada
+        selectKategoriCustom.dispatchEvent(
+            new Event('change', { bubbles: true })
+        );
+
+        menuKategori.hidden = true;
+        tombolKategori.setAttribute('aria-expanded', 'false');
+    }
+
+    tombolKategori.addEventListener('click', function () {
+        const sedangTerbuka = !menuKategori.hidden;
+
+        menuKategori.hidden = sedangTerbuka;
+
+        tombolKategori.setAttribute(
+            'aria-expanded',
+            String(!sedangTerbuka)
+        );
+    });
+
+    // Tutup dropdown ketika klik di luar
+    document.addEventListener('click', function (event) {
+        if (!event.target.closest('.custom-dropdown-kategori')) {
+            menuKategori.hidden = true;
+            tombolKategori.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    // Inisialisasi pilihan
+    buatPilihanKategori();
+    teksKategori.textContent =
+        selectKategoriCustom.options[selectKategoriCustom.selectedIndex].textContent;
+
+
     // =====================================
     // 13. TAMPILAN AWAL
     // =====================================
