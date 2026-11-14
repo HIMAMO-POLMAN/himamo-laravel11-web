@@ -99,7 +99,7 @@
             </div>
         </section>
 
-        @include('guest.components.kalender')
+        
 
         <section id="ae-pustaka" class="ae-pustaka">
 
@@ -321,6 +321,9 @@
                     </div>
                 </div>
         </section>
+
+
+
         <section id="leader" class="leader">
             <div class="container cont-2 px-5">
                 <div class="d-flex flex-lg-row flex-column-reverse">
@@ -754,6 +757,9 @@
                 </div>
             </div>
         </section>
+
+        @include('guest.components.kalender')
+
         <section id="video">
             <div class="container pt-5 pb-5 px-5">
                 <div class="row justify-content-center mb-4 gs_reveal">
