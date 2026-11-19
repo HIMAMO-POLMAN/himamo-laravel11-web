@@ -126,6 +126,41 @@
                     </li>
                 </ul>
             </li>
+
+        <!-- MENU JADWAL KEGIATAN -->
+        @can('kegiatan.view')
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">Jadwal Kegiatan</span>
+            </li>
+
+            <li class="menu-item {{ Request::is('ae-kegiatan*') ? 'active open' : '' }}">
+                <a href="javascript:void(0)" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-calendar-event"></i>
+                    <div>Jadwal Kegiatan</div>
+                </a>
+
+                <ul class="menu-sub">
+
+                    {{-- Lihat Kegiatan --}}
+                    <li class="menu-item {{ Request::routeIs('ae-kegiatan.index') ? 'active' : '' }}">
+                        <a href="{{ route('ae-kegiatan.index') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-show"></i>
+                            <div>Lihat Kegiatan</div>
+                        </a>
+                    </li>
+
+                    {{-- Kategori --}}
+                    <li class="menu-item {{ Request::routeIs('ae-kegiatan.kategori') ? 'active' : '' }}">
+                        <a href="{{ route('ae-kegiatan.kategori') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-category"></i>
+                            <div>Kategori</div>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+        @endcan
+
         @endif
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Bantuan</span>
