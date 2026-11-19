@@ -10,7 +10,7 @@ class RolePermissionSeeder extends Seeder
 {
     public function run(): void
     {
-        $roles = ['admin', 'ekraf', 'pubdok'];
+        $roles = ['admin', 'ekraf', 'pubdok','BPM'];
 
         $permissions = [
             'user.view',
