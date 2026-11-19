@@ -15,6 +15,8 @@ use App\Http\Controllers\Dashboard\LibraryCollectionController;
 use App\Http\Controllers\Guest\GuestInformationController;
 use App\Http\Controllers\Guest\GuestLibraryController;
 use App\Http\Controllers\Guest\ContactController;
+#use App\Http\Controllers\Guest\CalendarController;
+use App\Http\Controllers\Dashboard\KegiatanController;
 use Spatie\Sitemap\SitemapGenerator;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -29,6 +31,36 @@ Route::get('/ae-informasi', [GuestInformationController::class, 'index'])->name(
 Route::get('/ae-informasi/detail/{informasi:slug}', [GuestInformationController::class, 'show'])->name('guest.information.detail');
 Route::get('/ae-pustaka', [GuestLibraryController::class,'index'])->name('guest.library.index');
 Route::get('/ae-pustaka/detail/{libraries:slug}', [GuestLibraryController::class, 'show'])->name('guest.library.detail');
+
+// Manajemen Jadwal Kegiatan
+Route::middleware(['auth-check', 'permission:kegiatan.view'])->group(function () {
+
+    Route::get('/ae-kegiatan/kategori', [KegiatanController::class, 'kategori'])
+        ->name('ae-kegiatan.kategori');
+
+    Route::get('/ae-kegiatan', [KegiatanController::class, 'index'])
+        ->name('ae-kegiatan.index');
+
+    Route::get('/ae-kegiatan/create', [KegiatanController::class, 'create'])
+        ->middleware('permission:kegiatan.create')
+        ->name('ae-kegiatan.create');
+
+    Route::post('/ae-kegiatan', [KegiatanController::class, 'store'])
+        ->middleware('permission:kegiatan.create')
+        ->name('ae-kegiatan.store');
+
+    Route::get('/ae-kegiatan/{ae_kegiatan}/edit', [KegiatanController::class, 'edit'])
+        ->middleware('permission:kegiatan.update')
+        ->name('ae-kegiatan.edit');
+
+    Route::put('/ae-kegiatan/{ae_kegiatan}', [KegiatanController::class, 'update'])
+        ->middleware('permission:kegiatan.update')
+        ->name('ae-kegiatan.update');
+
+    Route::delete('/ae-kegiatan/{ae_kegiatan}', [KegiatanController::class, 'destroy'])
+        ->middleware('permission:kegiatan.delete')
+        ->name('ae-kegiatan.destroy');
+});
 
 Route::middleware('auth-check')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -51,3 +83,7 @@ Route::middleware(['auth-check', 'permission:library.view'])->group(function () 
     Route::resource('ae-library', LibrariesController::class);
     Route::resource('library-collection', LibraryCollectionController::class);
 });
+
+// Penambahan route kalender
+#Route::get('/kalender-kegiatan', [CalendarController::class, 'index'])
+#    ->name('guest.calendar.index');

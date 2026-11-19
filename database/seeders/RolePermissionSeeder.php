@@ -37,6 +37,11 @@ class RolePermissionSeeder extends Seeder
             'library.create',
             'library.update',
             'library.delete',
+
+            'kegiatan.view',
+            'kegiatan.create',
+            'kegiatan.update',
+            'kegiatan.delete',
         ];
 
         foreach ($permissions as $permission) {
