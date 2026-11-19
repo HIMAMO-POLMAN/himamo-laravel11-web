@@ -370,14 +370,33 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+
+    /* Area scroll daftar */
+    max-height: 900px;
+    overflow-y: auto;
+
+    padding-right: 8px;
+    box-sizing: border-box;
 }
 
+/* Ukuran kartu dibuat konsisten */
 .kalender-section .kegiatan-card {
     padding: 20px;
     background: white;
     border: 1px solid #e2e9e4;
     border-radius: 12px;
     transition: 0.2s;
+
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+/* Batasi deskripsi agar tidak memenuhi kartu */
+.kalender-section .kegiatan-card .kegiatan-deskripsi {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .kalender-section .kegiatan-card:hover {
@@ -462,8 +481,27 @@
 ================================= */
 
 .kalender-section .timeline-kegiatan {
-    position: relative;
-    padding-left: 25px;
+    max-height: 700px;
+
+    /* Scroll horizontal dan vertikal */
+    overflow: auto;
+
+    background: white;
+    border: 1px solid #e2e9e4;
+    border-radius: 10px;
+}
+
+/* Header tanggal tetap terlihat saat scroll ke bawah */
+.kalender-section .timeline-grid:first-child {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+
+/* Tinggi baris timeline tetap konsisten */
+.kalender-section .timeline-row {
+    min-height: 65px;
+    height: 65px;
 }
 
 .kalender-section .timeline-item {
@@ -928,3 +966,24 @@
 }
 
 
+/* =================================
+   SCROLLBAR DAFTAR DAN TIMELINE
+================================= */
+
+.kalender-section .daftar-kegiatan::-webkit-scrollbar,
+.kalender-section .timeline-kegiatan::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.kalender-section .daftar-kegiatan::-webkit-scrollbar-thumb,
+.kalender-section .timeline-kegiatan::-webkit-scrollbar-thumb {
+    background: #458483;
+    border-radius: 10px;
+}
+
+.kalender-section .daftar-kegiatan::-webkit-scrollbar-track,
+.kalender-section .timeline-kegiatan::-webkit-scrollbar-track {
+    background: #edf3ef;
+    border-radius: 10px;
+}
