@@ -52,6 +52,7 @@ $pustakaPopuler = Libraries::withCount(['views as views_count' => function ($que
 
         $grafikViewsPustaka = Libraries::withCount('views')
             ->get()
+            ->filter(fn($item) => $item->created_at !== null)
             ->groupBy(fn($item) => $item->created_at->format('m'))
             ->map(fn($group) => [
                 'bulan' => Carbon::create(null, (int) $group->first()->created_at->format('m'), 1)->translatedFormat('F'),

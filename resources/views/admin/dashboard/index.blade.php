@@ -137,7 +137,7 @@
                         @foreach ($pustakaTerbaru as $pustaka)
                             <hr class="my-3">
                             <div class="d-flex justify-content-between">
-                                <p class="text-muted mb-1"><i class="bx bx-tag"></i> {{ $pustaka->collection->name }}
+                                <p class="text-muted mb-1"><i class="bx bx-tag"></i> {{ $pustaka->collection?->name ?? 'Tanpa Kategori' }}
                                 </p>
                                 <p class="text-muted mb-1">
                                     <i class="bx bx-calendar"></i>
@@ -172,7 +172,7 @@
                         @foreach ($pustakaPopuler as $pustaka)
                             <hr class="my-3">
                             <div class="d-flex justify-content-between">
-                                <p class="text-muted mb-1"><i class="bx bx-tag"></i> {{ $pustaka->collection->name }}
+                                <p class="text-muted mb-1"><i class="bx bx-tag"></i> {{ $pustaka->collection?->name ?? 'Tanpa Kategori' }}
                                 <p class="text-muted mb-1">
                                     <i class="bx bx-calendar"></i>
                                     {{ \Carbon\Carbon::parse($pustaka->created_at)->locale('id')->translatedFormat('d F Y') }}
