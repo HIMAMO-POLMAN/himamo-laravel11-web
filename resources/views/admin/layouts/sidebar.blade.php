@@ -17,12 +17,14 @@
     <div class="menu-inner-shadow"></div>
 
     <ul class="menu-inner py-1">
-        <li class="menu-item {{ Request::is('dashboard') ? 'active' : '' }}">
-            <a href="{{ route('dashboard') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Dashboard</div>
-            </a>
-        </li>
+        @if (in_array(auth()->user()->role, ['admin', 'staff'], true))
+            <li class="menu-item {{ Request::is('dashboard') ? 'active' : '' }}">
+                <a href="{{ route('dashboard') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="Analytics">Dashboard</div>
+                </a>
+            </li>
+        @endif
 
         @if (auth()->user()->role === 'admin')
             <li class="menu-header small text-uppercase">
@@ -37,6 +39,7 @@
             </li>
         @endif
 
+        @if (in_array(auth()->user()->role, ['admin', 'staff'], true))
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Informasi & Pustaka</span>
         </li>
@@ -107,7 +110,19 @@
                 <div data-i18n="Ketua Himpunan">Ketua Himpunan</div>
             </a>
         </li>
+        @endif
 
+        @if (in_array(auth()->user()->role, ['admin', 'ekraf'], true))
+            <li class="menu-header small text-uppercase">
+                <span class="menu-header-text">Toko Merchandise</span>
+            </li>
+            <li class="menu-item {{ Request::is('ekraf/produk*') ? 'active open' : '' }}">
+                <a href="{{ route('ekraf.produk.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-store"></i>
+                    <div data-i18n="Kelola Produk">Kelola Produk</div>
+                </a>
+            </li>
+        @endif
 
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Bantuan</span>

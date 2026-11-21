@@ -62,11 +62,15 @@
                         <label for="role" class="form-label">Peran</label>
                         <select class="form-select @error('role') is-invalid @enderror" name="role" required
                             id="role" aria-label="Default select example">
-                            <option selected>Pilih Peran</option>
-                            <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin
+                            <option value="" disabled>Pilih Peran</option>
+                            <option value="admin" {{ old('role', $user->role) == 'admin' ? 'selected' : '' }}>Admin
                             </option>
-                            <option value="staff" {{ old('role') == 'staff' ? 'selected' : '' }}>
+                            <option value="staff" {{ old('role', $user->role) == 'staff' ? 'selected' : '' }}>
                                 Staff</option>
+                            <option value="ekraf" {{ old('role', $user->role) == 'ekraf' ? 'selected' : '' }}>
+                                Ekraf</option>
+                            <option value="member" {{ old('role', $user->role) == 'member' ? 'selected' : '' }}>
+                                Member</option>
                         </select>
                         @error('role')
                             <div class="invalid-feedback">

@@ -51,6 +51,9 @@
                                 <button class="btn btn-primary d-grid w-100" type="submit">Masuk</button>
                             </div>
                         </form>
+                        <p class="text-center mb-0">
+                            Belum punya akun? <a href="{{ route('register') }}">Daftar</a>
+                        </p>
                     </div>
                 </div>
             </div>

@@ -90,7 +90,7 @@
                 <div class="mt-10 flex flex-wrap items-center gap-5"><a href="#koleksi"
                         class="bg-[#20e0bd] px-7 py-4 text-xs font-black uppercase tracking-[.12em] text-[#080a09] transition hover:bg-white">Lihat
                         koleksi <span class="ml-3">↗</span></a><span
-                        class="mono text-[10px] uppercase tracking-[.14em] text-white/40">● Pre-order dibuka</span>
+                        class="mono text-[10px] uppercase tracking-[.14em] text-white/40">● Informasi pemesanan menyusul</span>
                 </div>
             </div>
             <div class="relative mx-auto w-full max-w-[520px]">
@@ -121,24 +121,36 @@
                         item membawa energi HIMAMO ke luar ruang kelas.</p>
                 </div>
                 <div class="grid gap-x-5 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-                    @foreach ([['stiker1.jpeg', 'HM-01', 'Stiker HIMAMO', 'Koleksi stiker resmi HIMAMO.'], ['stiker2.jpeg', 'HM-02', 'Stiker HIMAMO', 'Koleksi stiker resmi HIMAMO.'], ['stiker3.jpeg', 'HM-03', 'Stiker HIMAMO', 'Koleksi stiker resmi HIMAMO.'], ['stiker4.jpeg', 'HM-04', 'Stiker HIMAMO', 'Koleksi stiker resmi HIMAMO.'], ['lanyard.jpeg', 'HM-05', 'Lanyard HIMAMO', 'Lanyard dengan identitas HIMAMO.'], ['gelang.jpeg', 'HM-06', 'Gelang HIMAMO', 'Gelang merchandise resmi HIMAMO.'], ['gantungan_kunci.jpeg', 'HM-07', 'Gantungan Kunci HIMAMO', 'Gantungan kunci merchandise HIMAMO.'], ['enamel.jpeg', 'HM-08', 'Enamel HIMAMO', 'Enamel pin dengan identitas HIMAMO.']] as $item)
+                    @forelse ($products as $product)
                         <article class="product-card group">
                             <div class="relative mb-5 overflow-hidden border border-white/10 bg-[#1a1e1a]"><img
-                                    src="{{ asset('assets/katalog_assets/' . $item[0]) }}" alt="{{ $item[2] }}"
+                                    src="{{ $product->image_url ?: asset('assets/katalog_assets/all.jpeg') }}"
+                                    alt="{{ $product->name }}"
                                     class="aspect-[4/4.5] w-full object-cover grayscale-[.2]"><span
-                                    class="absolute left-3 top-3 border border-[#20e0bd] bg-[#080a09] px-2 py-1 mono text-[9px] font-bold tracking-[.18em] text-[#20e0bd]">{{ $item[1] }}</span>
+                                    class="absolute left-3 top-3 border border-[#20e0bd] bg-[#080a09] px-2 py-1 mono text-[9px] font-bold tracking-[.18em] text-[#20e0bd]">{{ $product->sku ?: ($product->category ?: 'HIMAMO') }}</span>
                             </div>
                             <div class="flex items-start justify-between gap-3">
                                 <div>
-                                    <h3 class="text-sm font-black uppercase tracking-[-.02em]">{{ $item[2] }}</h3>
-                                    <p class="mt-2 text-xs leading-5 text-white/40">{{ $item[3] }}</p>
+                                    <h3 class="text-sm font-black uppercase tracking-[-.02em]">{{ $product->name }}</h3>
+                                    <p class="mt-2 text-xs leading-5 text-white/40">{{ $product->description }}</p>
                                 </div><span
-                                    class="whitespace-nowrap mono text-xs font-bold text-[#20e0bd]">Rp.xxx</span>
+                                    class="whitespace-nowrap mono text-xs font-bold text-[#20e0bd]">Rp{{ number_format($product->price, 0, ',', '.') }}</span>
                             </div><button
-                                class="mt-5 w-full border border-white/15 py-3 text-[10px] font-black uppercase tracking-[.16em] text-white/60 transition hover:border-[#20e0bd] hover:text-[#20e0bd]">Lihat
-                                detail +</button>
+                                type="button" disabled
+                                class="mt-5 w-full border border-white/15 py-3 text-[10px] font-black uppercase tracking-[.16em] text-white/60">
+                                {{ $product->available_stock > 0 ? 'Tersedia' : 'Stok habis' }}
+                                @if ($product->variants->isNotEmpty())
+                                    <span class="mt-1 block normal-case tracking-normal text-white/35">
+                                        {{ $product->variants->pluck('name')->join(' · ') }}
+                                    </span>
+                                @endif
+                            </button>
                         </article>
-                    @endforeach
+                    @empty
+                        <p class="col-span-full border border-white/10 px-6 py-10 text-center text-sm text-white/50">
+                            Belum ada produk aktif. Informasi pemesanan dan pengambilan akan diumumkan kemudian.
+                        </p>
+                    @endforelse
                 </div>
             </div>
         </section>

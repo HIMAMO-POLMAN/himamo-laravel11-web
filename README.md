@@ -78,6 +78,50 @@
 * Buka `http://localhost:8000` atau `http://127.0.0.1:8000` di browser.
 * Login dengan akun yang memiliki izin akses untuk melihat konten tertentu.
 
+## Toko Merchandise HIMAMO (Tahap 1)
+
+Tahap ini menyediakan katalog publik dinamis dan panel produk untuk role `admin` dan `ekraf`. Akun Ekraf tidak mendapat akses ke dashboard organisasi atau administrasi pengguna. Role tetap disimpan di `users.role`; Spatie Permission belum digunakan oleh fitur ini.
+
+1. Jalankan migrasi biasa untuk menambah tabel produk dan variasi. Migrasi ini tidak menghapus data lama:
+
+   ```bash
+   php artisan migrate
+   ```
+
+2. Pastikan symbolic link penyimpanan publik tersedia agar gambar produk dapat ditampilkan:
+
+   ```bash
+   php artisan storage:link
+   ```
+
+3. Buat akun `ekraf@himamo.com` melalui pendaftaran atau panel admin, lalu tetapkan rolenya:
+
+   ```bash
+   php artisan db:seed --class='Database\Seeders\EkrafUserSeeder'
+   ```
+
+   Seeder hanya mengubah role akun tersebut menjadi `ekraf`; seeder akan menampilkan error bila akun belum ada. Jangan memasukkan kata sandi ke seeder.
+
+4. Isi katalog dengan produk demo untuk presentasi:
+
+   ```bash
+   php artisan db:seed --class='Database\Seeders\MerchandiseCatalogSeeder'
+   ```
+
+   Seeder menambahkan 8 contoh produk dan variasi dengan gambar katalog yang sudah tersedia. Harga dan stok hanya data demonstrasi, bukan harga atau persediaan resmi. Seeder aman dijalankan kembali dan tidak menimpa perubahan produk yang sudah ada.
+
+5. Login sebagai Ekraf dan buka **Toko Merchandise → Kelola Produk**. Produk baru ditampilkan di katalog secara default, dan katalog publik hanya menampilkan produk aktif. Variasi memiliki stok masing-masing dan mengikuti harga produk utama. Produk dinonaktifkan, bukan dihapus permanen.
+
+6. Jalankan pengujian fitur terkait:
+
+   ```bash
+   php artisan test --filter=MerchandiseTest
+   ```
+
+   Aktifkan ekstensi `pdo_sqlite` untuk PHP CLI terlebih dahulu. `phpunit.xml` memakai SQLite in-memory agar pengujian tidak menyentuh database pada `.env`.
+
+   Pembeli belum dapat membuat pesanan pada tahap ini. Keranjang, checkout, QRIS, pemberitahuan, dan pengumuman pengambilan tetap menjadi pekerjaan tahap berikutnya.
+
 ## Standar Branching Git/GitHub
 
 * `main`: Kode siap produksi

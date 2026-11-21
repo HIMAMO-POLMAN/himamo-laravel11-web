@@ -91,11 +91,15 @@
                                                 class="text-danger">*</span></label>
                                         <select class="form-select @error('role') is-invalid @enderror" name="role"
                                             required id="role" aria-label="Default select example">
-                                            <option selected>Pilih Peran</option>
+                                            <option value="" disabled selected>Pilih Peran</option>
                                             <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin
                                             </option>
                                             <option value="staff" {{ old('role') == 'staff' ? 'selected' : '' }}>
                                                 Staff</option>
+                                            <option value="ekraf" {{ old('role') == 'ekraf' ? 'selected' : '' }}>
+                                                Ekraf</option>
+                                            <option value="member" {{ old('role') == 'member' ? 'selected' : '' }}>
+                                                Member</option>
                                         </select>
                                         @error('role')
                                             <div class="invalid-feedback">
