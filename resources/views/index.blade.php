@@ -19,6 +19,9 @@
     {{-- Struktur Bidang & Majelis Tinggi Himpunan --}}
     @include('guest.layouts.partials.sections.divisions')
 
+    {{-- Kalender Kegiatan --}}
+    @include('guest.components.kalender')
+
     {{-- Galeri Pemimpin & Testimoni (Native CSS Snap Carousel) --}}
     @include('guest.layouts.partials.sections.leadership')
 

@@ -1,3 +1,6 @@
+import '../css/kalender.css';
+import './kalender.js';
+
 document.addEventListener('DOMContentLoaded', () => {
     const bootScreen = document.getElementById('boot-screen');
     const terminalOutput = document.getElementById('terminal-output');

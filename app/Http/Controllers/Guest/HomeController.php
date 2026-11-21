@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
 
+use App\Models\Kegiatan;
 use App\Models\Information;
 use App\Models\Leader;
 use Illuminate\Http\Request;
@@ -12,10 +13,12 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class HomeController extends Controller
 {
 
-      public function index(){
-        return view('index',[
+    public function index()
+    {
+        return view('index', [
             "informasi" => Information::with(['user'])->orderBy('updated_at', 'asc')->paginate(4),
             "leaders" => Leader::active()->orderByDesc('period_start')->get(),
+            "kegiatan" => Kegiatan::orderBy('tanggal_mulai', 'asc')->get(),
         ]);
     }
 

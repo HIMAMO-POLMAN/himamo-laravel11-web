@@ -13,6 +13,7 @@ use App\Http\Controllers\Guest\ContactController;
 use App\Http\Controllers\Guest\GuestInformationController;
 use App\Http\Controllers\Guest\HomeController;
 use App\Http\Controllers\Guest\MerchandiseController;
+use App\Http\Controllers\Dashboard\KegiatanController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -52,6 +53,17 @@ Route::middleware('auth-check')->group(function () {
         Route::resource('ae-library', LibrariesController::class);
         Route::resource('information-categories', InformationCategoriesController::class);
         Route::resource('library-collection', LibraryCollectionController::class);
+
+        // Manajemen Jadwal Kegiatan
+        Route::prefix('ae-kegiatan')->name('ae-kegiatan.')->group(function () {
+            Route::get('/', [KegiatanController::class, 'index'])->name('index');
+            Route::get('/kategori', [KegiatanController::class, 'kategori'])->name('kategori');
+            Route::get('/create', [KegiatanController::class, 'create'])->name('create');
+            Route::post('/', [KegiatanController::class, 'store'])->name('store');
+            Route::get('/{ae_kegiatan}/edit', [KegiatanController::class, 'edit'])->name('edit');
+            Route::put('/{ae_kegiatan}', [KegiatanController::class, 'update'])->name('update');
+            Route::delete('/{ae_kegiatan}', [KegiatanController::class, 'destroy'])->name('destroy');
+        });
     });
 
     Route::prefix('ekraf')->name('ekraf.')->middleware('merchandise-manager')->group(function () {
